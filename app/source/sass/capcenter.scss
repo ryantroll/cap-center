@@ -24,6 +24,11 @@ body.cc-body{
     max-width: $wExtend;
     margin:0 auto;
 }
+/**
+ * ****************************************************************
+ * HEADER *********************************************************
+ * ****************************************************************
+ */
 .cc-header{
     background-color: $cWhite;
     padding:1em 0;
@@ -81,11 +86,17 @@ body.cc-body{
 
 }//// .cc-header
 
+/**
+ * ****************************************************************
+ * PROGRESS BAR ***************************************************
+ * ****************************************************************
+ */
 .ss-progress{
     height: $nProgressHeight;
     max-height: $nProgressHeight;
     overflow: hidden;
     background-color:$cBGMidGray;
+
     @include mxTransition(max-height, 0.8s, ease-out)
     &.expanded{
         height: auto;
@@ -170,10 +181,15 @@ body.cc-body{
     }
 }//// .ss-progress
 
+/**
+ * ****************************************************************
+ * FOOTER *********************************************************
+ * ****************************************************************
+ */
 .cc-footer{
     background-color:$cMidGray;
     padding:2em 0;
-    margin-top:2em;
+    // margin-bottom:2em;
 
     .cc-footer-links{
         padding-bottom:1em;
@@ -231,3 +247,223 @@ body.cc-body{
         }
     }
 }//// .cc-footer
+
+/**
+ * ****************************************************************
+ * MAIN CONTENT ***************************************************
+ * ****************************************************************
+ */
+.cc-content{
+    padding:2em 0;
+
+    .cc-content-inner{
+        max-width:100%;
+
+        @media screen and (min-width:$wTablet){
+            max-width:60%;
+            margin:0 auto;
+        }
+    }//// .cc-content-inner
+}//// .cc-content
+
+/**
+ * ****************************************************************
+ * Box ************************************************************
+ * ****************************************************************
+ */
+.cc-box{
+    background-color:$cWhite;
+    padding:1em;
+    margin-bottom: 2em;
+
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+
+}//// .cc-box
+
+.cc-message{
+    padding-top:2em;
+    position:relative;
+    p{
+        margin:0;
+    }
+    .close{
+        display: block;
+        width:30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        position:absolute;
+        top:2px;
+        right:2px;
+        color:$cTextGray;
+        font-size:0.9;
+    }
+}//// .cc-message
+
+.cc-form{
+
+    .cc-field{
+        margin-bottom: 1em;
+
+        label{
+            display: block;
+            font-weight:400;
+            margin-bottom: 1px;
+            color:$cBGMidGray;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"]{
+            border:1px solid $cBGMidGray;
+            padding:5px 5px;
+            width:100%;
+        }
+
+        button, .cc-btn{
+            // display: block;
+            width:auto;
+            padding:10px 1em;
+            border:none;
+            background-color:transparent;
+
+            &:hover{
+                color:$cOrange;
+            }
+
+            &.gray{
+                background-color:$cMidGray;
+                color:$cWhite;
+                &:hover{
+                    color:$cOrange;
+                }
+            }
+        }//// button
+
+        &.cc-buttons{
+            button, .cc-btn{
+                display: block;
+                clear:both;
+                margin-bottom:1em;
+                min-width:150px;
+            }
+            &:after{
+                display: block;
+                content:" ";
+                clear: both;
+            }
+            &.right{
+                 button, .cc-btn{
+                    float:right;
+                 }
+            }
+        }//// &.cc-buttons
+    }//// .cc-field
+
+    .cc-form-section{
+        padding:1em 1em 1em 1em;
+        position:relative;
+        background-color:$cFormSectionBG;
+        margin-bottom: 1em;
+
+        .title{
+            h5{
+                margin:0;
+                margin-bottom: 1em;
+            }
+        }
+
+        .close{
+            display: block;
+            width:30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            position:absolute;
+            top:2px;
+            right:2px;
+            color:$cTextGray;
+            font-size:0.9;
+        }
+
+        .cc-field{
+            input[type="text"],
+            input[type="password"],
+            input[type="number"],
+            input[type="date"]{
+                border-width:0;
+            }
+        }
+    }//// .cc-form-section
+
+    .cc-dropdown{
+        position:relative;
+        .link{
+            display: block;
+            width:100%;
+            padding:5px 10px;
+            background-color:transparent;
+            position:absolute;
+            bottom:0;
+            text-align: right;
+        }
+
+        ul{
+            list-style: none;
+            display: block;
+            width: auto;
+            padding:0;
+            margin:0;
+            position:absolute;
+            top:100%;
+            z-index:10;
+            background-color:$cWhite;
+            min-width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            @include mxTransition(max-height, 0.3s, linear);
+
+            li{
+                display: block;
+                border-bottom: 1px solid $cFormSectionBG;
+
+                &:last-child{
+                    border-bottom:none;
+                }
+                &.active{
+                    a{
+                        color:$cOrange!important;
+                    }
+                }
+
+                a{
+                    display: block;
+                    padding:10px 1em;
+                    width:100%;
+                    text-decoration: none;
+                    &:hover{
+                        background-color:$cMidGray;
+                        color:$cWhite;
+                    }
+
+                }
+
+            }/// li
+
+            &.open{
+                max-height: 600px;
+                @include mxShadow(1px, 1px, 2px, 1px, rgba(150, 150, 150, 0.5))
+            }
+
+        }//// ul
+
+    }//// .cc-dropdown
+}//// .cc-form
+
+.cc-note{
+    text-align: center;
+    color:$cWhite;
+}//// .cc-note
