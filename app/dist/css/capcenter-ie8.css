@@ -1,0 +1,18 @@
+/**
+ * Width variables for different screen size
+ */
+/**
+ * ****************************************************************
+ * HEADER *********************************************************
+ * ****************************************************************
+ */
+.cc-header .cc-logo {
+  float: left;
+  max-width: 250px;
+  padding-left: 0; }
+
+.cc-header .cc-menu {
+  display: block; }
+
+.cc-header .cc-menu-switch {
+  display: none; }

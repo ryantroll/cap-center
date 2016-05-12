@@ -154,11 +154,17 @@ body.cc-body{
             a{
                 text-align: center;
                 width:100%;
+                height: $nProgressHeight;
                 display: block;
                 color:$cWhite;
                 text-decoration: none;
                 padding:0 2px;
-                @include mxVerticalAlign();
+                @include mxTransition(all, 0.2s, ease-out)
+                span{
+                    display: block;
+                    @include mxVerticalAlign();
+                }
+
                 &:hover{
                     color:$cTextGray;
                 }
@@ -275,6 +281,7 @@ body.cc-body{
     background-color:$cWhite;
     padding:1em;
     margin-bottom: 2em;
+    @include mxRoundCorners(3px);
 
     &:last-of-type{
         margin-bottom: 0;
@@ -312,6 +319,16 @@ body.cc-body{
             font-weight:400;
             margin-bottom: 1px;
             color:$cBGMidGray;
+            font-size:11px;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            i{
+                // visibility: hidden;
+                font-size: 1.2em;
+                display: none;
+                vertical-align: top;
+            }
         }
 
         input[type="text"],
@@ -319,17 +336,26 @@ body.cc-body{
         input[type="number"],
         input[type="date"]{
             border:1px solid $cBGMidGray;
-            padding:5px 5px;
+            padding:0 15px;
+            height: 42px;
+            line-height: 42px;
             width:100%;
+            height: auto;
+            @include mxRoundCorners(3px);
+            // line-height: 2em;
+            // height: 2em;
+            // // padding-bottom:10px;
         }
 
-        button, .cc-btn{
+        button,
+        input[type="button"],
+        .cc-btn{
             // display: block;
             width:auto;
             padding:10px 1em;
             border:none;
             background-color:transparent;
-
+            @include mxRoundCorners(3px);
             &:hover{
                 color:$cOrange;
             }
@@ -363,11 +389,84 @@ body.cc-body{
         }//// &.cc-buttons
     }//// .cc-field
 
+    .cc-field.error{
+        label{
+            color:$cOrange;
+            .icon-error{
+                display: inline-block;
+            }
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"]{
+            border-color:$cOrange;
+        }
+        .link{
+            color:$cOrange;
+        }
+    }//// .cc-field.error
+
+    .cc-field.correct{
+        label{
+            color:$cLightGreen;
+            .icon-correct{
+                display: inline-block;
+            }
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"]{
+            border-color:$cLightGreen;
+        }
+        .link{
+            color:$cLightGreen;
+        }
+    }
+
+    .cc-field.float{
+        position:relative;
+        padding-top:12px;
+        label{
+            position:absolute;
+            bottom:0;
+            left:0;
+            opacity:0.5;
+            padding:0 15px;
+            height: 42px;
+            line-height: 42px;
+            font-size:14px;
+            font-weight: 400;
+            @include mxTransition(all, 0.2s, ease-out);
+        }
+        input[type="text"]{
+            border: none;
+            border-bottom: 1px solid $cBGMidGray;
+            padding:0 15px;
+            @include mxRoundCorners(0);
+        }
+        &.edited{
+            label{
+                position:absolute;
+                bottom:30px;
+                left:0;
+                // top:5px;
+                opacity:1;
+                padding:0;
+                font-size:0.75em;
+                color:$cBlue;
+                font-weight: 700;
+            }
+        }/// &.edited
+    }//// .float
+
     .cc-form-section{
         padding:1em 1em 1em 1em;
         position:relative;
         background-color:$cFormSectionBG;
         margin-bottom: 1em;
+        @include mxRoundCorners(3px);
 
         .title{
             h5{
@@ -404,12 +503,17 @@ body.cc-body{
         .link{
             display: block;
             width:100%;
-            padding:5px 10px;
+            padding:0 15px;
+            height: 42px;
+            line-height: 42px;
             background-color:transparent;
             position:absolute;
             bottom:0;
             text-align: right;
+            background-color:rgba(1, 1, 1, 0);
+            z-index:1;
         }
+
 
         ul{
             list-style: none;
@@ -424,6 +528,7 @@ body.cc-body{
             min-width: 100%;
             max-height: 0;
             overflow: hidden;
+
             @include mxTransition(max-height, 0.3s, linear);
 
             li{
@@ -441,8 +546,10 @@ body.cc-body{
 
                 a{
                     display: block;
-                    padding:10px 1em;
+                    padding:0 15px;
                     width:100%;
+                    height: 42px;
+                    line-height: 42px;
                     text-decoration: none;
                     &:hover{
                         background-color:$cMidGray;
@@ -450,12 +557,19 @@ body.cc-body{
                     }
 
                 }
+                &.hover{
+                    a{
+                        background-color:$cMidGray;
+                        color:$cWhite;
+                    }
+                }
 
             }/// li
 
             &.open{
-                max-height: 600px;
-                @include mxShadow(1px, 1px, 2px, 1px, rgba(150, 150, 150, 0.5))
+                max-height: 200px;
+                @include mxShadow(1px, 1px, 2px, 1px, rgba(150, 150, 150, 0.5));
+                overflow: auto;
             }
 
         }//// ul

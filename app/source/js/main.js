@@ -1,5 +1,9 @@
 jQuery(document).ready(ccDocumentReady);
-
+$.extend($.expr[':'], {
+    startsWith: function(elem,i,match) {
+        return (elem.textContent || elem.innerText || "").toLowerCase().indexOf(match[3].toLowerCase()) == 0;
+    }
+});
 function ccDocumentReady(){
 
     /**
@@ -22,7 +26,7 @@ function ccDocumentReady(){
          * this to make sure the menu is closed when click outside the menu
          */
         if (false === progressNav.hasClass('expanded')) {
-            console.log('soso')
+
             $('body').bind('click', handlePorgresNavClick);
         }
     });
@@ -36,23 +40,86 @@ function ccDocumentReady(){
         var labelField = $(this).find('input[type=text]').eq(0);
         var valueField = $(this).find('input[type=hidden]').eq(0);
         var label = $(this).find('label').eq(0);
+        var list = menu.find('li');
+        var navI = 0;
+        var navC = 0;
+        var navChar = null;
 
         function openMenu(){
-            console.log('open')
-             menu.find('a').off('click').on('click', function(item_e){
+            navI = -1;
+            navC = -1;
+            navChar = null;
+
+            menu.find('a').off('click').on('click', function(item_e){
                 if(item_e.preventDefault) item_e.preventDefault(); else item_e.returnValue = false;
                 var value = $(this).attr('data-value')
                 var label = $(this).text();
-                labelField.val(label);
-                valueField.val(value);
+                labelField.val(label).trigger('change');
+                valueField.val(value).trigger('change');
                 menu.find('.active').removeClass('active')
                 $(this).parent().addClass('active');
             })
+            menu.scrollTop(0);
+
+
+            var keyboardClicks = function(keyEv){
+                var top;
+                var code = keyEv.keyCode || keyEv.which;
+
+                switch(true){
+                    case (code === 40): /// down arrow
+                        navI = navI < list.length-1 ? navI+1 : list.length-1;
+                        list.removeClass('hover');
+                        list.eq(navI).addClass('hover');
+                        list.eq(navI).find('a').focus(); //// in case user press enter click event will trigger
+
+                        // top = list.eq(navI).position().top;
+                        // console.log(navI, top, menu.height(), menu.scrollTop())
+                        // if(top > menu.height() - menu.scrollTop() ){
+                        //     menu.scrollTop( menu.scrollTop() + list.eq(navI).height() )
+                        // }
+
+                        if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+                        break;
+                    case (code === 38): //// up arrow
+                        navI = navI > 0 ? navI-1 : 0;
+                        list.removeClass('hover');
+                        list.eq(navI).addClass('hover')
+                        list.eq(navI).find('a').focus(); //// in case user press enter click event will trigger
+                        // top = list.eq(navI).position().top;
+                        // if(top < 0){
+                        //     menu.scrollTop(menu.scrollTop() + top)
+                        // }
+                        if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+                        break;
+                    case (code === 27): /// escape  click
+                        link.trigger('click');
+                    case (code >= 65 && code <= 90):
+                        var char = String.fromCharCode(code);
+                        if(char === navChar){
+                            navC++;
+                        }
+                        else{
+                            navC = 0;
+                        }
+                        list.removeClass('hover');
+                        var charList = list.find(':startsWith('+char+')');
+                        if(navC > charList.length-1) navC = 0;
+                        charList.eq(navC).trigger('focus').parent().addClass('hover');
+                        navChar = char;
+                        break;
+                    default: break;
+                }
+
+            }
 
             var handleDropClick = function(ev){
+
                 if (true === menu.hasClass('open')){
                     menu.removeClass('open');
-                    $('body').unbind('click', handleDropClick);
+                    $('body').off('click', handleDropClick);
+                    list.removeClass('hover');
+                    document.removeEventListener('keyup', keyboardClicks);
                 }
                 else {
                     menu.addClass('open');
@@ -60,7 +127,8 @@ function ccDocumentReady(){
                 }
             }
             if (false === menu.hasClass('open')) {
-                $('body').bind('click', handleDropClick);
+                $('body').on('click', handleDropClick);
+                document.addEventListener('keyup', keyboardClicks)
             }
         } //// openMenu
 
@@ -72,17 +140,44 @@ function ccDocumentReady(){
 
 
         labelField.off('focus').on('focus', function(e){
-            console.log('fo')
             if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
             $(this).trigger('blur');
             openMenu();
         });
-
-        // label.off('click').on('click', function(e){
-        //     console.log('lc')
-        //     if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
-        //     link.trigger('click');
-        // });
-
     });/// each
+
+    /**
+     * Float label behavior
+     */
+    $('.cc-field.float').each(function(x){
+        var self = $(this);
+        var field = self.find('input[type=text]').eq(0);
+
+        var triggerEvent = 'keyup';
+        if(true === self.hasClass('cc-dropdown')){
+            triggerEvent = 'change';
+        }
+
+        field.on(triggerEvent, function(e){
+            if(field.val()){
+                self.addClass('edited');
+            }
+            else{
+                self.removeClass('edited');
+            }
+        })
+    });/// .each
+
+    /**
+     * Message behavior
+     */
+    $('.jsCollapse').each(function(x){
+        var self = $(this);
+        self.find('a.close').on('click', function(e){
+            if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
+            self.slideUp('fast', function(){
+                self.remove();
+            });
+        })
+    });//// .each
 }

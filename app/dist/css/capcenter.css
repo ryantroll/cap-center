@@ -125,15 +125,22 @@ body.cc-body {
       .ss-progress ul li a {
         text-align: center;
         width: 100%;
+        height: 60px;
         display: block;
         color: #fff;
         text-decoration: none;
         padding: 0 2px;
-        position: relative;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%); }
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        -o-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out; }
+        .ss-progress ul li a span {
+          display: block;
+          position: relative;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
         .ss-progress ul li a:hover {
           color: #767371; }
   .ss-progress .switch {
@@ -223,7 +230,13 @@ body.cc-body {
 .cc-box {
   background-color: #fff;
   padding: 1em;
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* future proofing */
+  -khtml-border-radius: 3px;
+  /* for old Konqueror browsers */ }
   .cc-box:last-of-type {
     margin-bottom: 0; }
 
@@ -250,25 +263,55 @@ body.cc-body {
     display: block;
     font-weight: 400;
     margin-bottom: 1px;
-    color: #a89b94; }
+    color: #a89b94;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase; }
+    .cc-form .cc-field label i {
+      font-size: 1.2em;
+      display: none;
+      vertical-align: top; }
   .cc-form .cc-field input[type="text"],
   .cc-form .cc-field input[type="password"],
   .cc-form .cc-field input[type="number"],
   .cc-form .cc-field input[type="date"] {
     border: 1px solid #a89b94;
-    padding: 5px 5px;
-    width: 100%; }
-  .cc-form .cc-field button, .cc-form .cc-field .cc-btn {
+    padding: 0 15px;
+    height: 42px;
+    line-height: 42px;
+    width: 100%;
+    height: auto;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /* future proofing */
+    -khtml-border-radius: 3px;
+    /* for old Konqueror browsers */ }
+  .cc-form .cc-field button,
+  .cc-form .cc-field input[type="button"],
+  .cc-form .cc-field .cc-btn {
     width: auto;
     padding: 10px 1em;
     border: none;
-    background-color: transparent; }
-    .cc-form .cc-field button:hover, .cc-form .cc-field .cc-btn:hover {
+    background-color: transparent;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /* future proofing */
+    -khtml-border-radius: 3px;
+    /* for old Konqueror browsers */ }
+    .cc-form .cc-field button:hover,
+    .cc-form .cc-field input[type="button"]:hover,
+    .cc-form .cc-field .cc-btn:hover {
       color: #F47C29; }
-    .cc-form .cc-field button.gray, .cc-form .cc-field .cc-btn.gray {
+    .cc-form .cc-field button.gray,
+    .cc-form .cc-field input[type="button"].gray,
+    .cc-form .cc-field .cc-btn.gray {
       background-color: #403e3c;
       color: #fff; }
-      .cc-form .cc-field button.gray:hover, .cc-form .cc-field .cc-btn.gray:hover {
+      .cc-form .cc-field button.gray:hover,
+      .cc-form .cc-field input[type="button"].gray:hover,
+      .cc-form .cc-field .cc-btn.gray:hover {
         color: #F47C29; }
   .cc-form .cc-field.cc-buttons button, .cc-form .cc-field.cc-buttons .cc-btn {
     display: block;
@@ -282,11 +325,82 @@ body.cc-body {
   .cc-form .cc-field.cc-buttons.right button, .cc-form .cc-field.cc-buttons.right .cc-btn {
     float: right; }
 
+.cc-form .cc-field.error label {
+  color: #F47C29; }
+  .cc-form .cc-field.error label .icon-error {
+    display: inline-block; }
+
+.cc-form .cc-field.error input[type="text"],
+.cc-form .cc-field.error input[type="password"],
+.cc-form .cc-field.error input[type="number"],
+.cc-form .cc-field.error input[type="date"] {
+  border-color: #F47C29; }
+
+.cc-form .cc-field.error .link {
+  color: #F47C29; }
+
+.cc-form .cc-field.correct label {
+  color: #50a54c; }
+  .cc-form .cc-field.correct label .icon-correct {
+    display: inline-block; }
+
+.cc-form .cc-field.correct input[type="text"],
+.cc-form .cc-field.correct input[type="password"],
+.cc-form .cc-field.correct input[type="number"],
+.cc-form .cc-field.correct input[type="date"] {
+  border-color: #50a54c; }
+
+.cc-form .cc-field.correct .link {
+  color: #50a54c; }
+
+.cc-form .cc-field.float {
+  position: relative;
+  padding-top: 12px; }
+  .cc-form .cc-field.float label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    padding: 0 15px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out; }
+  .cc-form .cc-field.float input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #a89b94;
+    padding: 0 15px;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    /* future proofing */
+    -khtml-border-radius: 0;
+    /* for old Konqueror browsers */ }
+  .cc-form .cc-field.float.edited label {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    opacity: 1;
+    padding: 0;
+    font-size: 0.75em;
+    color: #005366;
+    font-weight: 700; }
+
 .cc-form .cc-form-section {
   padding: 1em 1em 1em 1em;
   position: relative;
   background-color: #dfdfdf;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* future proofing */
+  -khtml-border-radius: 3px;
+  /* for old Konqueror browsers */ }
   .cc-form .cc-form-section .title h5 {
     margin: 0;
     margin-bottom: 1em; }
@@ -312,11 +426,15 @@ body.cc-body {
   .cc-form .cc-dropdown .link {
     display: block;
     width: 100%;
-    padding: 5px 10px;
+    padding: 0 15px;
+    height: 42px;
+    line-height: 42px;
     background-color: transparent;
     position: absolute;
     bottom: 0;
-    text-align: right; }
+    text-align: right;
+    background-color: rgba(1, 1, 1, 0);
+    z-index: 1; }
   .cc-form .cc-dropdown ul {
     list-style: none;
     display: block;
@@ -343,17 +461,23 @@ body.cc-body {
         color: #F47C29 !important; }
       .cc-form .cc-dropdown ul li a {
         display: block;
-        padding: 10px 1em;
+        padding: 0 15px;
         width: 100%;
+        height: 42px;
+        line-height: 42px;
         text-decoration: none; }
         .cc-form .cc-dropdown ul li a:hover {
           background-color: #403e3c;
           color: #fff; }
+      .cc-form .cc-dropdown ul li.hover a {
+        background-color: #403e3c;
+        color: #fff; }
     .cc-form .cc-dropdown ul.open {
-      max-height: 600px;
+      max-height: 200px;
       -moz-box-shadow: 1px 1px 2px 1px rgba(150, 150, 150, 0.5);
       -webkit-box-shadow: 1px 1px 2px 1px rgba(150, 150, 150, 0.5);
-      box-shadow: 1px 1px 2px 1px rgba(150, 150, 150, 0.5); }
+      box-shadow: 1px 1px 2px 1px rgba(150, 150, 150, 0.5);
+      overflow: auto; }
 
 .cc-note {
   text-align: center;
