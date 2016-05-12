@@ -96,8 +96,20 @@ body.cc-body{
     max-height: $nProgressHeight;
     overflow: hidden;
     background-color:$cBGMidGray;
+    width:100%;
 
-    @include mxTransition(max-height, 0.8s, ease-out)
+    @include mxTransition(max-height, 0.8s, ease-out);
+
+    &.float{
+        padding-bottom:$nProgressHeight;
+        .container{
+            width:100%;
+            position:fixed;
+            top:0;
+            z-index: 1000;
+        }
+
+    }
     &.expanded{
         height: auto;
         max-height: 1000px;
@@ -106,6 +118,12 @@ body.cc-body{
             display: block;
             &.active{
                 background-color:$cOrange!important;
+            }
+
+            border-bottom:1px solid $cBGLightGray;
+
+            &:last-child{
+                border-bottom: none;
             }
         }
     }//// ss-progress.expanded
@@ -128,9 +146,11 @@ body.cc-body{
             color:$cWhite;
             background-color:$cBGMidGray;
 
+
             @media screen and (min-width:$wTablet){
                 width:0% + 100%/7%;
                 border-right: 1px solid $cWhite;
+                border-bottom:none;
                 display: block;
             }
 
@@ -173,12 +193,13 @@ body.cc-body{
     }//// ul
     .switch{
         display: block;
-        width:$nProgressHeight;
+        width:100%;
         height:$nProgressHeight;
-        text-align: center;
+        text-align: right;
         color:$cWhite;
         line-height: $nProgressHeight;
         position:absolute;
+        padding-right:20px;
         right:0;
         z-index: 2;
         @media screen and (min-width:$wTablet){
@@ -266,7 +287,7 @@ body.cc-body{
         max-width:100%;
 
         @media screen and (min-width:$wTablet){
-            max-width:60%;
+            max-width:800px;//60%;
             margin:0 auto;
         }
     }//// .cc-content-inner
@@ -313,6 +334,7 @@ body.cc-body{
 
     .cc-field{
         margin-bottom: 1em;
+        position:relative;
 
         label{
             display: block;
@@ -337,8 +359,8 @@ body.cc-body{
         input[type="date"]{
             border:1px solid $cBGMidGray;
             padding:0 15px;
-            height: 42px;
-            line-height: 42px;
+            height: $nFieldHeight;
+            line-height: $nFieldHeight;
             width:100%;
             height: auto;
             @include mxRoundCorners(3px);
@@ -352,12 +374,18 @@ body.cc-body{
         .cc-btn{
             // display: block;
             width:auto;
-            padding:10px 1em;
+            padding:0 1em;
             border:none;
             background-color:transparent;
+            // border:1px solid $cMidGray;
+            height: $nFieldHeight;
+            line-height: $nFieldHeight;
             @include mxRoundCorners(3px);
+            @include mxTransition(all, 0.3s, ease-out);
+            text-transform: uppercase;
             &:hover{
                 color:$cOrange;
+                border-color:$cOrange;
             }
 
             &.gray{
@@ -365,6 +393,17 @@ body.cc-body{
                 color:$cWhite;
                 &:hover{
                     color:$cOrange;
+                    border-color: $cMidGray;
+                }
+            }
+
+            &.green{
+                background-color:$cLightGreen;
+                color:$cWhite;
+                &:hover{
+                    background-color:$cDarkGreen;
+                    // color:$cOrange;
+                    // border-color: $cMidGray;
                 }
             }
         }//// button
@@ -387,6 +426,35 @@ body.cc-body{
                  }
             }
         }//// &.cc-buttons
+
+        .message{
+            display: none;
+            max-width:280px;
+            background-color:$cMidGray;
+            color:$cWhite;
+            text-align: center;
+            font-size:11px;
+            position:absolute;
+            bottom:42px + 11px;
+            padding:5px;
+            right:0;
+            @include mxRoundCorners(3px);
+            @include mxShadow(1px, 1px, 2spx, 1px, rgba(128, 128, 128, 0.3))
+
+            &:after{
+                display: block;
+                content:' ';
+                width:10px;
+                height: 10px;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid $cMidGray;
+                position:absolute;
+                bottom:-10px;
+                right:5px;
+                margin-left:-5px;
+            }
+        }
     }//// .cc-field
 
     .cc-field.error{
@@ -434,8 +502,8 @@ body.cc-body{
             left:0;
             opacity:0.5;
             padding:0 15px;
-            height: 42px;
-            line-height: 42px;
+            height: $nFieldHeight;
+            line-height: $nFieldHeight;
             font-size:14px;
             font-weight: 400;
             @include mxTransition(all, 0.2s, ease-out);
@@ -496,6 +564,10 @@ body.cc-body{
                 border-width:0;
             }
         }
+
+        a{
+            color:$cOrange;
+        }
     }//// .cc-form-section
 
     .cc-dropdown{
@@ -504,9 +576,10 @@ body.cc-body{
             display: block;
             width:100%;
             padding:0 15px;
-            height: 42px;
-            line-height: 42px;
+            height: $nFieldHeight;
+            line-height: $nFieldHeight;
             background-color:transparent;
+            color:$cTextGray;
             position:absolute;
             bottom:0;
             text-align: right;
@@ -548,9 +621,10 @@ body.cc-body{
                     display: block;
                     padding:0 15px;
                     width:100%;
-                    height: 42px;
-                    line-height: 42px;
+                    height: $nFieldHeight;
+                    line-height: $nFieldHeight;
                     text-decoration: none;
+                    color:$cTextGray;
                     &:hover{
                         background-color:$cMidGray;
                         color:$cWhite;

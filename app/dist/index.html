@@ -38,7 +38,7 @@
 
 <nav class="ss-progress" id="progress_nav">
   <div class="container">
-    <a href="javascript:void(0)" class="switch" id="progres_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
+    <a href="javascript:void(0);" class="switch" id="progres_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
     <ul>
       <li class="done"><a href="javascript:void(0)"><span>Borrower</span></a></li>
       <li class="done"><a href="javascript:void(0)"><span>Property</span></a></li>
@@ -66,12 +66,12 @@
         <div class="title">
             <h4>About Borrower</h4>
         </div>
-        <form>
+        <form method="post" id="borrowerForm">
           <fieldset>
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-dropdown error">
+                <div class="cc-field cc-dropdown cc-required">
                   <label for="know_about_us_label">How did you know about CapCenter? <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="hidden" name="know_about_us" id="know_about_us" />
                   <input type="text" name="know_about_us_label" id="know_about_us_label" />
@@ -86,15 +86,18 @@
                     <li><a href="javascript:void(0)" data-value="3">Three</a></li>
                     <li><a href="javascript:void(0)" data-value="4">Four</a></li>
                   </ul>
+                  <!-- <div class="message cc-required">This Filed is Required</div> -->
+
                 </div><!--field-->
               </div>
             </div><!--row-->
 
             <div class="row">
               <div class="col-xs-8 col-sm-4">
-                <div class="cc-field correct">
+                <div class="cc-field cc-required">
                   <label for="first_name">First Name <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="text" name="first_name" id="first_name" />
+                  <!-- <div class="message cc-required">This Filed is Required</div> -->
                 </div><!--field-->
               </div>
 
@@ -106,9 +109,10 @@
               </div>
 
               <div class="col-xs-8 col-sm-4">
-                <div class="cc-field">
-                  <label for="last_name">Last Name</label>
+                <div class="cc-field cc-required">
+                  <label for="last_name">Last Name <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="text" name="last_name" id="last_name" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
                 </div><!--field-->
               </div>
 
@@ -123,33 +127,73 @@
 
             <div class="row">
               <div class="col-sm-6">
-                <div class="cc-field">
-                  <label for="email_address">Email Address</label>
+                <div class="cc-field cc-required cc-email">
+                  <label for="email_address">Email Address <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="text" name="email_address" id="email_address" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
+                  <div class="message cc-email">Invalid email</div>
                 </div><!--field-->
               </div>
 
               <div class="col-sm-6">
-                <div class="cc-field">
-                  <label for="dob">Date Of Birth</label>
-                  <input type="text" name="dob" id="dob" />
+                <div class="cc-field cc-required cc-date">
+                  <label for="dob">Date Of Birth <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                  <input type="text" name="dob" id="dob" class="date" placeholder="MM/DD/YYYY" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
+                  <div class="message cc-date">Invalid date</div>
                 </div><!--field-->
               </div>
 
             </div><!--row-->
 
+            <div class="cc-form-section">
+              <div class="row">
+                <div class="col-xs-12">
+                <p>Optional - Create a password to save and return to your application later and to check the status.</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="cc-field">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" id="password" />
+                  </div><!--field-->
+                </div>
+
+                <div class="col-xs-6">
+                  <div class="cc-field">
+                    <label for="retype_password">Retype Password</label>
+                    <input type="text" name="retype_password" id="retype_password" />
+                  </div><!--field-->
+                </div>
+
+              </div><!--row-->
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <p class="text-center">Return Applicant? <a href="javascript:void(0);">Login</a></p>
+                </div>
+              </div>
+
+            </div><!--cc-form-section-->
+
             <div class="row">
               <div class="col-sm-6">
-                <div class="cc-field">
-                  <label for="home_phone">Home Phone</label>
-                  <input type="text" name="home_phone" id="home_phone" />
+                <div class="cc-field cc-required cc-phone">
+                  <label for="home_phone">Home Phone <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                  <input type="text" name="home_phone" id="home_phone" class="phone" placeholder="(NNN) NNN-NNNN" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
+                  <div class="message cc-phone">Invalid Phone Number</div>
+
                 </div><!--field-->
               </div>
 
               <div class="col-sm-6">
-                <div class="cc-field">
-                  <label for="mobile_phone">Mobile Phone</label>
-                  <input type="text" name="mobile_phone" id="mobile_phone" />
+                <div class="cc-field cc-phone">
+                  <label for="mobile_phone">Mobile Phone <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                  <input type="text" name="mobile_phone" id="mobile_phone" class="phone"  placeholder="(NNN) NNN-NNNN"  />
+                  <div class="message cc-phone">Invalid Phone Number</div>
                 </div><!--field-->
               </div>
 
@@ -157,9 +201,10 @@
 
             <div class="row">
               <div class="col-xs-8">
-                <div class="cc-field">
-                  <label for="street_address">Street Address</label>
+                <div class="cc-field cc-required">
+                  <label for="street_address">Street Address <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="text" name="street_address" id="street_address" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
                 </div><!--field-->
               </div>
 
@@ -174,22 +219,25 @@
 
             <div class="row">
               <div class="col-sm-4">
-                <div class="cc-field">
-                  <label for="zip">Zip</label>
+                <div class="cc-field cc-required cc-number">
+                  <label for="zip">Zip <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="text" name="zip" id="zip" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
+                  <div class="message cc-number">Invalid ZIP code</div>
                 </div><!--field-->
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field">
-                  <label for="city">City</label>
+                <div class="cc-field cc-required">
+                  <label for="city">City <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="text" name="city" id="city" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
                 </div><!--field-->
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-dropdown">
-                  <label for="state_label">State</label>
+                <div class="cc-field cc-dropdown cc-required">
+                  <label for="state_label">State <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="hidden" name="state" id="state" />
                   <input type="text" name="state_label" id="state_label" />
                   <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
@@ -199,27 +247,61 @@
                     <li><a href="javascript:void(0)" data-value="3">Three</a></li>
                     <li><a href="javascript:void(0)" data-value="4">Four</a></li>
                   </ul>
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
                 </div><!--field-->
               </div>
 
             </div><!--row-->
 
-            <div class="cc-form-section jsCollapse">
-              <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="cc-field cc-required cc-number">
+                  <label for="address_time">Time At Address <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                  <input type="text" name="address_time" id="address_time" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
+                  <div class="message cc-number">Numbers Only</div>
+                </div><!--field-->
+              </div>
+
+              <div class="col-sm-4">
+                <div class="cc-field cc-dropdown cc-required">
+                  <label for="address_length_label">Length <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                  <input type="hidden" name="address_length" id="address_length" />
+                  <input type="text" name="address_length_label" id="address_length_label" />
+                  <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+                  <ul>
+                    <li><a href="javascript:void(0)" data-value="y">Year</a></li>
+                    <li><a href="javascript:void(0)" data-value="m">Month</a></li>
+                  </ul>
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
+                </div><!--field-->
+              </div>
+
+              <div class="col-sm-4">
+                <div class="cc-field">
+                  <label for="address_rent">Month Rent (if any) <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                  <input type="text" name="address_rent" id="address_rent" />
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="cc-form-section jsCollapse" id="preAddress0" style="display:none;">
+              <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a> -->
               <div class="title">
                 <h5>Previous Address</h5>
               </div>
               <div class="row">
                 <div class="col-xs-8">
-                  <div class="cc-field">
-                    <label for="street_address">Street Address</label>
+                  <div class="cc-field cc-required">
+                    <label for="street_address">Street Address <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="text" name="street_address" id="street_address" />
                   </div><!--field-->
                 </div>
 
                 <div class="col-xs-4">
-                  <div class="cc-field">
-                    <label for="apt_unit">Apt/Unit</label>
+                  <div class="cc-field cc-required">
+                    <label for="apt_unit">Apt/Unit <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="text" name="apt_unit" id="apt_unit" />
                   </div><!--field-->
                 </div>
@@ -228,22 +310,23 @@
 
               <div class="row">
                 <div class="col-sm-4">
-                  <div class="cc-field">
-                    <label for="zip">Zip</label>
+                  <div class="cc-field cc-requried">
+                    <label for="zip">Zip <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="text" name="zip" id="zip" />
+                  <!-- <div class="message cc-required">This Field is Required</div> -->
                   </div><!--field-->
                 </div>
 
                 <div class="col-sm-4">
-                  <div class="cc-field">
-                    <label for="city">City</label>
+                  <div class="cc-field cc-required">
+                    <label for="city">City <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="text" name="city" id="city" />
                   </div><!--field-->
                 </div>
 
                 <div class="col-sm-4">
-                  <div class="cc-field cc-dropdown">
-                    <label for="state_label_pre">State</label>
+                  <div class="cc-field cc-dropdown cc-required">
+                    <label for="state_label_pre">State <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="hidden" name="state" id="state" />
                     <input type="text" name="state_label_pre" id="state_label_pre" />
                     <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
@@ -261,8 +344,8 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-dropdown">
-                  <label for="education_level_label">Eduction Level</label>
+                <div class="cc-field cc-dropdown cc-required">
+                  <label for="education_level_label">Eduction Level <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="hidden" name="education_level" id="education_level" />
                   <input type="text" name="education_level_label" id="education_level_label" />
                     <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
@@ -279,16 +362,16 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-dropdown">
-                  <label for="marital_status_label">Marital Status</label>
+                <div class="cc-field cc-dropdown cc-required">
+                  <label for="marital_status_label">Marital Status <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="hidden" name="marital_status" id="marital_status" />
                   <input type="text" name="marital_status_label" id="marital_status_label" />
                     <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
                     <ul>
-                      <li><a href="javascript:void(0)" data-value="1">One</a></li>
-                      <li><a href="javascript:void(0)" data-value="2">Two</a></li>
-                      <li><a href="javascript:void(0)" data-value="3">Three</a></li>
-                      <li><a href="javascript:void(0)" data-value="4">Four</a></li>
+                      <li><a href="javascript:void(0)" data-value="Single">Single</a></li>
+                      <li><a href="javascript:void(0)" data-value="Married">Married</a></li>
+                      <li><a href="javascript:void(0)" data-value="Divorced">Divorced</a></li>
+                      <li><a href="javascript:void(0)" data-value="Widow">Widow</a></li>
                     </ul>
                 </div><!--field-->
               </div>
@@ -297,12 +380,13 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-dropdown">
-                  <label for="num_dependents_label">Number of Dependents</label>
-                  <input type="hidden" name="num_dependents" id="num_dependents" />
-                  <input type="text" name="num_dependents_label" id="num_dependents_label" />
+                <div class="cc-field cc-dropdown cc-required">
+                  <label for="num_dependents_label">Number of Dependents <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                  <input type="hidden" name="num_dependents" id="num_dependents"  value="0"/>
+                  <input type="text" name="num_dependents_label" id="num_dependents_label" value="No Dependents"/>
                     <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
                     <ul>
+                      <li><a href="javascript:void(0)" data-value="0">No Dependents</a></li>
                       <li><a href="javascript:void(0)" data-value="1">One</a></li>
                       <li><a href="javascript:void(0)" data-value="2">Two</a></li>
                       <li><a href="javascript:void(0)" data-value="3">Three</a></li>
@@ -313,35 +397,39 @@
 
             </div><!--row-->
 
-            <div class="cc-form-section">
+            <div class="cc-form-section" id="dependentSection" style="display:none;">
               <div class="title">
                 <h5>Age of Dependents</h5>
               </div>
               <div class="row">
                 <div class="col-xs-6 col-sm-3">
-                  <div class="cc-field">
-                    <label for="dependent_age_1">Dependent 1</label>
+                  <div class="cc-field cc-required cc-number">
+                    <label for="dependent_age_1">Dependent 1 <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="text" name="dependent_age_1" id="dependent_age_1" />
+                    <div class="message cc-number">Numbers Only</div>
                   </div><!--field-->
                 </div>
 
                 <div class="col-xs-6 col-sm-3">
-                  <div class="cc-field">
-                    <label for="dependent_age_2">Dependent 2</label>
+                  <div class="cc-field cc-required cc-number">
+                    <label for="dependent_age_2">Dependent 2 <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="text" name="dependent_age_2" id="dependent_age_2" />
+                    <div class="message cc-number">Numbers Only</div>
                   </div><!--field-->
                 </div>
 
                 <div class="col-xs-6 col-sm-3">
-                  <div class="cc-field">
-                    <label for="dependent_age_3">Dependent 3</label>
+                  <div class="cc-field cc-required cc-number">
+                    <label for="dependent_age_3">Dependent 3 <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                     <input type="text" name="dependent_age_3" id="dependent_age_3" />
+                    <div class="message cc-number">Numbers Only</div>
                   </div><!--field-->
                 </div>
 
                 <div class="col-xs-6 col-sm-3">
-                  <div class="cc-field">
-                    <label for="dependent_age_4">Dependent 4</label>
+                  <div class="cc-field cc-required cc-number">
+                    <label for="dependent_age_4">Dependent 4 <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
+                    <div class="message cc-number">Numbers Only</div>
                     <input type="text" name="dependent_age_4" id="dependent_age_4" />
                   </div><!--field-->
                 </div>
@@ -351,16 +439,14 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-dropdown">
-                  <label for="appliny_as_label">Applying As</label>
+                <div class="cc-field cc-dropdown cc-required">
+                  <label for="appliny_as_label">Applying As <i class="icon-error glyphicon glyphicon-remove-sign"></i><i class="icon-correct glyphicon glyphicon-ok-sign"></i></label>
                   <input type="hidden" name="appling_as" id="appling_as" />
                   <input type="text" name="appliny_as_label" id="appliny_as_label" />
                     <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
                     <ul>
                       <li><a href="javascript:void(0)" data-value="1">One</a></li>
                       <li><a href="javascript:void(0)" data-value="2">Two</a></li>
-                      <li><a href="javascript:void(0)" data-value="3">Three</a></li>
-                      <li><a href="javascript:void(0)" data-value="4">Four</a></li>
                     </ul>
                 </div><!--field-->
               </div>
@@ -370,7 +456,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-buttons right">
-                  <button class="gray" name="continue" id="continue">Continue</button>
+                  <button class="green" name="continue" id="continue">Continue</button>
                   <button  name="continue" id="continue">Save For Later</button>
                 </div><!--field-->
               </div>

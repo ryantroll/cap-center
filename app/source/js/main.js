@@ -7,18 +7,26 @@ $.extend($.expr[':'], {
 function ccDocumentReady(){
 
     /**
+     * initialize form validation
+     */
+    $('#borrowerForm').validate();
+
+    /**
      * Progress navigation mobile behavior
      */
     $('#progres_switch').on('click', function(ev){
+        var self = $(this);
         var progressNav = $('#progress_nav');
         var handlePorgresNavClick = function (e) {
             if (true === progressNav.hasClass('expanded')) {
-                progressNav.removeClass('expanded')
+                progressNav.removeClass('expanded');
+                self.width('100%');
                 //// unbind when menu closed no need to check for click
                 $('body').unbind('click', handlePorgresNavClick);
             }
             else {
                 progressNav.addClass('expanded');
+                self.width(40); // changing the width to make the first button of progress bar clickable
             }
         };
         /**
@@ -30,6 +38,14 @@ function ccDocumentReady(){
             $('body').bind('click', handlePorgresNavClick);
         }
     });
+
+    /**
+     * Add scrolling event listener to make the progress bar sticky
+     */
+    // if($('body').width() < 678){
+        $(window).off('scroll').on('scroll', mainScroll);
+    // }
+
 
     /**
      * Drop-down behavior
@@ -180,4 +196,122 @@ function ccDocumentReady(){
             });
         })
     });//// .each
+
+    /**
+     * Field formating while typing
+     */
+    $('input.phone').on('keyup',function(e){
+        var val = $(this).val();
+        $(this).val(formatPhone(val));
+    })
+    // $('input.date').on('blur',function(e){
+    //     var val = $(this).val();
+    //     $(this).val(formatDate(val));
+    // })
+    //
+    $('#address_time').on('change', function(e){
+        var v = parseInt($(this).val(), 10);
+        var length = $('#address_length').val();
+        console.log(length)
+        if(length == 'y'){
+            v *= 12;
+        }
+
+        if(v >= 24){
+            $('#preAddress0').slideDown();
+        }
+        else{
+            $('#preAddress0').slideUp();
+        }
+    })
+    //
+    $('#address_length').on('change', function(e){
+        var v = parseInt($('#address_length').val(), 10);
+        var length = $(this).val();
+
+        if(length == 'y'){
+            v *= 12;
+        }
+
+        if(v >= 24){
+            $('#preAddress0').slideDown();
+        }
+        else{
+            $('#preAddress0').slideUp();
+        }
+    })
+
+    $('#num_dependents').on('change', function(e){
+
+        var v = parseInt($(this).val(), 10);
+        var agesDiv = $('#dependentSection');
+        var cols = agesDiv.find('.col-xs-6').hide();
+
+        if(v > 0){
+            for(var x=0; x<v; x++){
+                cols.eq(x).show();
+            }
+            agesDiv.slideDown();
+        }
+        else{
+            agesDiv.slideUp();
+        }
+    })
+
+}
+
+function mainScroll(e){
+    if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
+    if($('body').width() > 678) return;
+
+    var s = $(window).scrollTop();
+    var bar = $('#progress_nav');
+    if(s > 200){
+        if(false === bar.hasClass('float')){
+            bar.addClass('float');
+            bar.parent().css('padding-bottom', bar.height())
+        }
+    }
+    else{
+        bar.removeClass('float');
+        bar.parent().css('padding-bottom', null)
+    }
+
+}//// fun. mainScroll
+
+var clearPhoneFormat = function(val){
+  if (val) {
+    return val.split(/[\(|\)| |\-|\+|\.]/).join('');
+  } else return '';
+}
+
+var formatPhone = function(val){
+  var rawValue = clearPhoneFormat(val);
+  var formated = '';
+  if(rawValue.length > 3){
+    formated += '(' + rawValue.slice(0,3) + ') ';
+    rawValue = rawValue.slice(3);
+  }
+  if(rawValue.length > 3){
+    formated += rawValue.slice(0,3) + '-';
+    rawValue = rawValue.slice(3);
+  }
+  formated += rawValue;
+
+  return formated;
+}//// fun. formatPhone
+
+var formatDate = function(val){
+  var ret = '';
+  val = new Date(val);
+
+  var m = val.getMonth()+1;
+  var d = val.getDate();
+  var y = val.getFullYear();
+
+  ret += (m<10 ? '0' : '') + m + '/';
+  ret += (d<10 ? '0' : '') + d + '/';
+  ret += y;
+
+  return ret;
 }
