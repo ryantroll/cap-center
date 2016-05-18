@@ -7,11 +7,6 @@ $.extend($.expr[':'], {
 function ccDocumentReady(){
 
     /**
-     * initialize form validation
-     */
-    $('#borrowerForm').validate();
-
-    /**
      * Progress navigation mobile behavior
      */
     $('#progres_switch').on('click', function(ev){
@@ -46,121 +41,17 @@ function ccDocumentReady(){
         $(window).off('scroll').on('scroll', mainScroll);
     // }
 
+    /**
+     * Populate the states drop-downs
+     */
+     fillStateDropdown( $('.state-dropdown') );
+
 
     /**
      * Drop-down behavior
      */
-    $('.cc-dropdown').each(function(x){
-        var menu = $(this).find('ul').eq(0);
-        var link = $(this).find('a.link').eq(0);
-        var labelField = $(this).find('input[type=text]').eq(0);
-        var valueField = $(this).find('input[type=hidden]').eq(0);
-        var label = $(this).find('label').eq(0);
-        var list = menu.find('li');
-        var navI = 0;
-        var navC = 0;
-        var navChar = null;
+    $('.cc-dropdown').dropdown();
 
-        function openMenu(){
-            navI = -1;
-            navC = -1;
-            navChar = null;
-
-            menu.find('a').off('click').on('click', function(item_e){
-                if(item_e.preventDefault) item_e.preventDefault(); else item_e.returnValue = false;
-                var value = $(this).attr('data-value')
-                var label = $(this).text();
-                labelField.val(label).trigger('change');
-                valueField.val(value).trigger('change');
-                menu.find('.active').removeClass('active')
-                $(this).parent().addClass('active');
-            })
-            menu.scrollTop(0);
-
-
-            var keyboardClicks = function(keyEv){
-                var top;
-                var code = keyEv.keyCode || keyEv.which;
-
-                switch(true){
-                    case (code === 40): /// down arrow
-                        navI = navI < list.length-1 ? navI+1 : list.length-1;
-                        list.removeClass('hover');
-                        list.eq(navI).addClass('hover');
-                        list.eq(navI).find('a').focus(); //// in case user press enter click event will trigger
-
-                        // top = list.eq(navI).position().top;
-                        // console.log(navI, top, menu.height(), menu.scrollTop())
-                        // if(top > menu.height() - menu.scrollTop() ){
-                        //     menu.scrollTop( menu.scrollTop() + list.eq(navI).height() )
-                        // }
-
-                        if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
-                        break;
-                    case (code === 38): //// up arrow
-                        navI = navI > 0 ? navI-1 : 0;
-                        list.removeClass('hover');
-                        list.eq(navI).addClass('hover')
-                        list.eq(navI).find('a').focus(); //// in case user press enter click event will trigger
-                        // top = list.eq(navI).position().top;
-                        // if(top < 0){
-                        //     menu.scrollTop(menu.scrollTop() + top)
-                        // }
-                        if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
-                        break;
-                    case (code === 27): /// escape  click
-                        link.trigger('click');
-                    case (code >= 65 && code <= 90):
-                        var char = String.fromCharCode(code);
-                        if(char === navChar){
-                            navC++;
-                        }
-                        else{
-                            navC = 0;
-                        }
-                        list.removeClass('hover');
-                        var charList = list.find(':startsWith('+char+')');
-                        if(navC > charList.length-1) navC = 0;
-                        charList.eq(navC).trigger('focus').parent().addClass('hover');
-                        navChar = char;
-                        break;
-                    default: break;
-                }
-
-            }
-
-            var handleDropClick = function(ev){
-
-                if (true === menu.hasClass('open')){
-                    menu.removeClass('open');
-                    $('body').off('click', handleDropClick);
-                    list.removeClass('hover');
-                    document.removeEventListener('keyup', keyboardClicks);
-                }
-                else {
-                    menu.addClass('open');
-                    ev.stopPropagation();
-                }
-            }
-            if (false === menu.hasClass('open')) {
-                $('body').on('click', handleDropClick);
-                document.addEventListener('keyup', keyboardClicks)
-            }
-        } //// openMenu
-
-        link.off('click').on('click', function(e){
-            if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
-
-           openMenu();
-        })//// click
-
-
-        labelField.off('focus').on('focus', function(e){
-            if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
-            $(this).trigger('blur');
-            openMenu();
-        });
-    });/// each
 
     /**
      * Float label behavior
@@ -197,66 +88,7 @@ function ccDocumentReady(){
         })
     });//// .each
 
-    /**
-     * Field formating while typing
-     */
-    $('input.phone').on('keyup',function(e){
-        var val = $(this).val();
-        $(this).val(formatPhone(val));
-    })
-    // $('input.date').on('blur',function(e){
-    //     var val = $(this).val();
-    //     $(this).val(formatDate(val));
-    // })
-    //
-    $('#address_time').on('change', function(e){
-        var v = parseInt($(this).val(), 10);
-        var length = $('#address_length').val();
-        console.log(length)
-        if(length == 'y'){
-            v *= 12;
-        }
 
-        if(v >= 24){
-            $('#preAddress0').slideDown();
-        }
-        else{
-            $('#preAddress0').slideUp();
-        }
-    })
-    //
-    $('#address_length').on('change', function(e){
-        var v = parseInt($('#address_length').val(), 10);
-        var length = $(this).val();
-
-        if(length == 'y'){
-            v *= 12;
-        }
-
-        if(v >= 24){
-            $('#preAddress0').slideDown();
-        }
-        else{
-            $('#preAddress0').slideUp();
-        }
-    })
-
-    $('#num_dependents').on('change', function(e){
-
-        var v = parseInt($(this).val(), 10);
-        var agesDiv = $('#dependentSection');
-        var cols = agesDiv.find('.col-xs-6').hide();
-
-        if(v > 0){
-            for(var x=0; x<v; x++){
-                cols.eq(x).show();
-            }
-            agesDiv.slideDown();
-        }
-        else{
-            agesDiv.slideUp();
-        }
-    })
 
 }
 
@@ -278,6 +110,23 @@ function mainScroll(e){
     }
 
 }//// fun. mainScroll
+
+function updateTabIndex(selector){
+    selector.find('.cc-field').each(function(x){
+        $(this).find('input[type=text]')
+        .eq(0).attr('tabindex', x);
+    })
+}//// fun. updateTabIndex
+
+function fillStateDropdown(selector){
+    selector.each(function(x){
+        var ul = $(this).find('ul');
+        for(var s=0; s<usStates.length; s++){
+            var li = $('<li><a href="javascript:void(0)" data-value="' + usStates[s].abbreviation + '">' + usStates[s].name + '</a></li>');
+            ul.append(li);
+        }//// for
+    });
+}
 
 var clearPhoneFormat = function(val){
   if (val) {
@@ -301,17 +150,118 @@ var formatPhone = function(val){
   return formated;
 }//// fun. formatPhone
 
+var restrictDate = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var char = String.fromCharCode(code);
+  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 191, 9, 8, 37, 38, 39, 40, 13];
+
+  if(allowed.indexOf(code) == -1 ){
+    if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+  }
+
+}//// fun. formateDate
+
 var formatDate = function(val){
   var ret = '';
-  val = new Date(val);
+  var raw = val.replace(/\//g, '');
 
-  var m = val.getMonth()+1;
-  var d = val.getDate();
-  var y = val.getFullYear();
+  if(raw.length > 2){
+    ret += raw.slice(0, 2) + '/';
+    raw = raw.slice(2);
 
-  ret += (m<10 ? '0' : '') + m + '/';
-  ret += (d<10 ? '0' : '') + d + '/';
-  ret += y;
+    if(raw.length > 2){
+      ret += raw.slice(0, 2) + '/';
+      raw = raw.slice(2);
+    }
+  }
 
+  ret += raw;
   return ret;
+}
+
+var restrictSSN = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var char = String.fromCharCode(code);
+
+  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 189, 9, 8, 37, 38, 39, 40, 13];
+
+  if(allowed.indexOf(code) == -1 ){
+    if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+  }
+}//// fun. formateSSN
+
+var formatSSN = function(val){
+  var ret = '';
+  var raw = val.replace(/\-/g, '');
+
+  if(raw.length > 3){
+    ret += raw.slice(0, 3) + '-';
+    raw = raw.slice(3);
+
+    if(raw.length > 2){
+      ret += raw.slice(0, 2) + '-';
+      raw = raw.slice(2);
+    }
+  }
+
+  ret += raw;
+  return ret;
+}
+
+var restrictNumbers = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var char = String.fromCharCode(code);
+
+  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 9, 8, 37, 38, 39, 40, 13];
+
+  if(allowed.indexOf(code) == -1 ){
+    if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+  }
+}//// fun. formateSSN
+
+var restrictCurrency = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var char = String.fromCharCode(code);
+
+  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 9, 8, 37, 38, 39, 40, 13];
+
+  if(allowed.indexOf(code) == -1 ){
+    if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+  }
+}//// fun. formateSSN
+
+var formateCurrency = function(val){
+    var ret = '';
+    var raw = val.split(/[\$| \,]/).join('');
+
+    // if(raw.length > 0){
+    //     ret = ret + ',' + raw.slice(-3);
+    //     raw = raw.split(0, raw.length-4)
+    // }
+
+    if(raw.length > 0){
+      ret += '$' + raw;
+    }
+
+    return ret;
+}
+
+var dynamicPlacholder = function(selector){
+  selector.find('.cc-field').each(function(x){
+      var self = $(this)
+      var field = self.find('input[type=text]');
+      var placeholder = self.find('.placeholder');
+
+      if(placeholder.length > 0){
+        field.on('keyup', function(){
+          if(field.val()){
+            self.addClass('placeholder');
+          }
+          else{
+            self.removeClass('placeholder')
+          }
+        })
+      }
+
+    });
 }

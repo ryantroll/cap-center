@@ -28,6 +28,13 @@
     -khtml-border-radius: $r; /* for old Konqueror browsers */
 }
 
+@mixin mxBorderRadius($t, $r, $b, $l){
+    -moz-border-radius: $t $r $b $l;
+    -webkit-border-radius: $t $r $b $l;
+    border-radius: $t $r $b $l; /* future proofing */
+    -khtml-border-radius: $t $r $b $l /* for old Konqueror browsers */
+}
+
 @mixin mxTransition($p, $t, $ease){
     -webkit-transition: $p $t $ease;
     -moz-transition: $p $t $ease;

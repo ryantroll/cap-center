@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
-    <title>About Borrower - CapCenter</title>
+    <title>About Co-Borrower - CapCenter</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900,300,100,700" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
@@ -64,43 +64,10 @@
 
       <div class="cc-box cc-form">
         <div class="title">
-            <h4>About Borrower</h4>
+            <h4>About Co-Borrower</h4>
         </div>
-        <form method="post" id="borrowerForm">
+        <form method="post" id="coBorrowerForm">
           <fieldset>
-
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-dropdown cc-validate cc-required">
-                  <label for="know_about_us_label">HOW DID YOU HEAR ABOUT CAPCENTER? </label>
-                  <input type="hidden" name="know_about_us" id="know_about_us" />
-                  <input type="text" tabindex="0" name="know_about_us_label" id="know_about_us_label" value="Please Select" />
-                  <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                  <ul>
-                    <li><a href="javascript:void(0)" data-value="1">I’m a Past Client</a></li>
-                    <li><a href="javascript:void(0)" data-value="2"> Friend, Family or Co-Worker</a></li>
-                    <li><a href="javascript:void(0)" data-value="3">CapCenter Employee</a></li>
-                    <li><a href="javascript:void(0)" data-value="4">Financial Advisor/Accountant/Lawyer</a></li>
-                    <li><a href="javascript:void(0)" data-value="5">Real Estate Agent</a></li>
-                    <li><a href="javascript:void(0)" data-value="6">Newspaper Advertisement</a></li>
-                    <li><a href="javascript:void(0)" data-value="7">Radio</a></li>
-                  </ul>
-                  <div class="message cc-required">Required</div>
-
-                </div><!--field-->
-              </div>
-            </div><!--row-->
-
-            <div class="row" id="referralField" style="display:none">
-              <div class="col-sm-12">
-                <div class="cc-field cc-required">
-                  <label for="referral">Person or institution who referred you</label>
-                  <input type="text" tabindex="1" name="referral" id="referral" />
-                  <div class="message cc-required">Required</div>
-                </div><!--field-->
-              </div>
-            </div><!--row-->
-
             <div class="row">
               <div class="col-xs-8 col-sm-4">
                 <div class="cc-field cc-validate cc-required">
@@ -180,7 +147,7 @@
               <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-phone">
                   <label for="mobile_phone">Mobile Phone </label>
-                  <input type="text" tabindex="8" name="mobile_phone" id="mobile_phone" class="phone" maxlength="14"  placeholder="(xxx) xxx-xxxx" />
+                  <input type="text" tabindex="8" name="mobile_phone" id="mobile_phone" class="phone" maxlength="14"  placeholder="(xxx) xxx-xxxx"  />
                   <div class="message cc-phone">Invalid Phone Number</div>
                 </div><!--field-->
               </div>
@@ -198,95 +165,109 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="cc-field cc-validate cc-ssn">
                     <label for="ssn">SSN</label>
-                    <input type="text" name="ssn" id="ssn" class="ssn" maxlength="11" placeholder="xxx-xx-xxxx" pattern="\d*"/>
+                    <input type="text" name="ssn" id="ssn" class="ssn" maxlength="11" placeholder="xxx-xx-xxxx"/>
                     <div class="message cc-ssn">Invalid SSN</div>
                   </div><!--field-->
                 </div>
 
               </div><!--row-->
 
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="cc-field cc-radio cc-validate">
+                    <label for="ssn">Does the co-borrower live at the same address?</label>
+                    <div class="radio-group">
+                      <label><input type="radio" name="co_livesame" value="yes" id="co_livesame_yes" checked /> YES</label>
+                      <label><input type="radio" name="co_livesame" value="no" id="co_livesame_no" /> NO</label>
+                    </div>
+                  </div><!--field-->
+                </div>
 
-            <div class="row">
-              <div class="col-xs-12 col-sm-8">
-                <div class="cc-field cc-validate cc-required">
-                  <label for="street_address">Street Address </label>
-                  <input type="text" tabindex="9" name="street_address" id="street_address" placeholder="" />
-                  <div class="message cc-required">Required</div>
-                </div><!--field-->
-              </div>
+              </div><!--row-->
 
-              <div class="col-xs-12 col-sm-4">
-                <div class="cc-field">
-                  <label for="apt_unit">Apt/Unit</label>
-                  <input type="text" tabindex="10" name="apt_unit" id="apt_unit" />
-                </div><!--field-->
-              </div>
+            <div id="addressDiv" style="display: none;">
+              <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                  <div class="cc-field cc-validate cc-required">
+                    <label for="street_address">Street Address </label>
+                    <input type="text" tabindex="9" name="street_address" id="street_address" placeholder="" />
+                    <div class="message cc-required">Required</div>
+                  </div><!--field-->
+                </div>
 
-            </div><!--row-->
+                <div class="col-xs-12 col-sm-4">
+                  <div class="cc-field">
+                    <label for="apt_unit">Apt/Unit</label>
+                    <input type="text" tabindex="10" name="apt_unit" id="apt_unit" />
+                  </div><!--field-->
+                </div>
 
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="cc-field cc-validate cc-required">
-                  <label for="city">City </label>
-                  <input type="text" tabindex="12" name="city" id="city" />
-                  <div class="message cc-required">Required</div>
-                </div><!--field-->
-              </div>
+              </div><!--row-->
 
-              <div class="col-sm-4">
-                <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
-                  <label for="state_label">State </label>
-                  <input type="hidden" name="state" id="state" />
-                  <input type="text" tabindex="13" name="state_label" id="state_label" value="Select" />
-                  <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                  <ul>
-                    <li class="active"><a href="javascript:void(0)" data-value="">Select</a></li>
-                  </ul>
-                  <div class="message cc-required">Required</div>
-                </div><!--field-->
-              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="cc-field cc-validate cc-required">
+                    <label for="city">City </label>
+                    <input type="text" tabindex="12" name="city" id="city" />
+                    <div class="message cc-required">Required</div>
+                  </div><!--field-->
+                </div>
 
-              <div class="col-sm-4">
-                <div class="cc-field cc-validate cc-required cc-number">
-                  <label for="zip">Zip </label>
-                  <input type="text" tabindex="11" class="numbers" maxlength="6" name="zip" id="zip" />
-                  <div class="message cc-required">Required</div>
-                  <div class="message cc-number">Invalid ZIP code</div>
-                </div><!--field-->
-              </div>
+                <div class="col-sm-4">
+                  <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
+                    <label for="state_label">State </label>
+                    <input type="hidden" name="state" id="state" />
+                    <input type="text" tabindex="13" name="state_label" id="state_label" value="Select" />
+                    <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+                    <ul>
+                      <li class="active"><a href="javascript:void(0)" data-value="">Select</a></li>
+                    </ul>
+                    <div class="message cc-required">Required</div>
+                  </div><!--field-->
+                </div>
 
-            </div><!--row-->
+                <div class="col-sm-4">
+                  <div class="cc-field cc-validate cc-required cc-number">
+                    <label for="zip">Zip </label>
+                    <input type="text" tabindex="11" class="numbers" maxlength="6" name="zip" id="zip" />
+                    <div class="message cc-required">Required</div>
+                    <div class="message cc-number">Invalid ZIP code</div>
+                  </div><!--field-->
+                </div>
 
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="cc-field cc-required cc-validate cc-number">
-                  <label for="address_time_year">Time At Address </label>
-                  <input type="text" tabindex="14" class="numbers" name="address_time_year" id="address_time_year" maxlength="2" placeholder="Years" data-address="0" />
-                  <div class="message cc-required">Required</div>
-                  <div class="message cc-number">Numbers Only</div>
-                  <div class="placeholder">Year</div>
-                </div><!--field-->
-              </div>
+              </div><!--row-->
 
-              <div class="col-sm-4">
-                <div class="cc-field cc-required cc-validate cc-number">
-                  <label for="address_time_month">&nbsp;</label>
-                  <input type="text" tabindex="14" class="numbers" name="address_time_month" id="address_time_month" maxlength="2"  placeholder="Months" data-address="0" />
-                  <div class="message cc-required">Required</div>
-                  <div class="message cc-number">Numbers Only</div>
-                  <div class="placeholder">Month</div>
-                </div><!--field-->
-              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="cc-field cc-required cc-validate cc-number">
+                    <label for="address_time_year">Time At Address </label>
+                    <input type="text" tabindex="14" class="numbers" name="address_time_year" id="address_time_year" maxlength="2" placeholder="Years" data-address="0" />
+                    <div class="message cc-required">Required</div>
+                    <div class="message cc-number">Numbers Only</div>
+                    <div class="placeholder">Year</div>
+                  </div><!--field-->
+                </div>
 
-              <div class="col-sm-4">
-                <div class="cc-field cc-validate cc-currency">
-                  <label for="address_rent">MONTHLY RENT (IF ANY) </label>
-                  <input type="text" class="currency" tabindex="16" maxlength="6" name="address_rent" id="address_rent" />
-                  <div class="message cc-currency">Invalid Rent Value</div>
-                </div><!--field-->
-              </div>
+                <div class="col-sm-4">
+                  <div class="cc-field cc-required cc-validate cc-number">
+                    <label for="address_time_month">&nbsp;</label>
+                    <input type="text" tabindex="14" class="numbers" name="address_time_month" id="address_time_month" maxlength="2"  placeholder="Months" data-address="0" />
+                    <div class="message cc-required">Required</div>
+                    <div class="message cc-number">Numbers Only</div>
+                    <div class="placeholder">Month</div>
+                  </div><!--field-->
+                </div>
 
-            </div><!--row-->
+                <div class="col-sm-4">
+                  <div class="cc-field cc-validate cc-currency">
+                    <label for="address_rent">MONTHLY RENT (IF ANY) </label>
+                    <input type="text" class="currency" tabindex="16" maxlength="6" name="address_rent" id="address_rent" />
+                    <div class="message cc-currency">Invalid Rent Value</div>
+                  </div><!--field-->
+                </div>
+
+              </div><!--row-->
+            </div><!--addressDiv-->
 
             <div class="cc-form-section jsCollapse" id="preAddress" style="display:none;">
 
@@ -399,28 +380,12 @@
               </div><!--row-->
             </div><!--cc-form-section-->
 
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-dropdown cc-validate cc-required">
-                  <label for="appliny_as_label">Applying As </label>
-                  <input type="hidden" name="appling_as" id="appling_as" value=""/>
-                  <input type="text" tabindex="28" name="appliny_as_label" id="appliny_as_label" value="Please Select" />
-                    <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                    <ul>
-                      <li class="active"><a href="javascript:void(0)" data-value="">Pleas Select</a></li>
-                      <li><a href="javascript:void(0)" data-value="1">One</a></li>
-                      <li><a href="javascript:void(0)" data-value="2">Two or More</a></li>
-                    </ul>
-                    <div class="message cc-required">Required</div>
-                </div><!--field-->
-              </div>
-
-            </div><!--row-->
 
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-buttons right more-padding">
                   <button class="green" name="continue" id="continue">Continue</button>
+                  <button class="gray" name="back" id="back">Back</button>
                 </div><!--field-->
               </div>
 
@@ -482,18 +447,16 @@
   </div><!--container-->
 </footer>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmhRm89_rJvOBbb-6fKl4ZL5rGK0D5IoM&libraries=places"></script>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/all.js"></script>
-
 <script id="addressTemplate" type="text/template">
 <div id="address_1">
     <div class="title" style="margin-top:1.3em;">
       <h5>Previous Address</h5>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-8">
+      <div class="cols-xs-12 col-sm-8">
         <div class="cc-field cc-required">
           <label for="street_address_1">Street Address </label>
           <input type="text" tabindex="17" name="street_address_1" id="street_address_1" placeholder=""/>
@@ -501,7 +464,7 @@
         </div><!--field-->
       </div>
 
-      <div class="col-xs-12 col-sm-4">
+      <div class="cols-xs-12 col-sm-4">
         <div class="cc-field cc-required">
           <label for="apt_unit_1">Apt/Unit </label>
           <input type="text" tabindex="18" name="apt_unit_1" id="apt_unit_1" />

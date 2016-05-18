@@ -333,8 +333,15 @@ body.cc-body{
 .cc-form{
 
     .cc-field{
-        margin-bottom: 1em;
+        margin-bottom: 12px;
         position:relative;
+
+        input, textarea{
+            @media screen and (max-width:$wTablet){
+                font-size:12px;
+            }
+
+        }
 
         label{
             display: block;
@@ -347,9 +354,9 @@ body.cc-body{
 
             i{
                 // visibility: hidden;
-                font-size: 1.2em;
-                display: none;
-                vertical-align: top;
+                font-size: 1em;
+                // display: none;
+                vertical-align: baseline;
             }
         }
 
@@ -367,6 +374,9 @@ body.cc-body{
             // line-height: 2em;
             // height: 2em;
             // // padding-bottom:10px;
+            &:focus{
+                background-color: #f7f7f7;
+            }
         }
 
         button,
@@ -411,9 +421,14 @@ body.cc-body{
         &.cc-buttons{
             button, .cc-btn{
                 display: block;
-                clear:both;
+                // clear:both;
                 margin-bottom:1em;
                 min-width:150px;
+                margin-right:1em;
+
+                &:first-of-type{
+                    margin-right: 0;
+                }
             }
             &:after{
                 display: block;
@@ -425,37 +440,47 @@ body.cc-body{
                     float:right;
                  }
             }
+            &.more-padding{
+                padding-top:4em;
+            }
         }//// &.cc-buttons
 
         .message{
             display: none;
             max-width:280px;
-            background-color:$cMidGray;
+            background-color:$cOrange;
             color:$cWhite;
             text-align: center;
             font-size:11px;
             position:absolute;
-            bottom:42px + 11px;
-            padding:5px;
+            bottom:43px;
+            padding:0 5px;
+            height: 20px;
+            line-height: 20px;
             right:0;
-            @include mxRoundCorners(3px);
-            @include mxShadow(1px, 1px, 2spx, 1px, rgba(128, 128, 128, 0.3))
+            @include mxBorderRadius(3px, 3px, 0, 0);
 
-            &:after{
+        }//// message
+
+        .placeholder{
+            display: none;
+            width:auto;
+            height: 42px;
+            line-height:42px;
+            position:absolute;
+            right:0;
+            bottom:0;
+            padding:0 15px;
+            color:$cBGMidGray;
+        }//// .placeholder
+
+        &.placeholder{
+            .placeholder{
                 display: block;
-                content:' ';
-                width:10px;
-                height: 10px;
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 10px solid $cMidGray;
-                position:absolute;
-                bottom:-10px;
-                right:5px;
-                margin-left:-5px;
             }
         }
     }//// .cc-field
+
 
     .cc-field.error{
         label{
@@ -476,20 +501,29 @@ body.cc-body{
     }//// .cc-field.error
 
     .cc-field.correct{
-        label{
-            color:$cLightGreen;
-            .icon-correct{
-                display: inline-block;
-            }
-        }
+        // label{
+        //     color:$cLightGreen;
+        //     .icon-correct{
+        //         display: inline-block;
+        //     }
+        // }
+        // input[type="text"],
+        // input[type="password"],
+        // input[type="number"],
+        // input[type="date"]{
+        //     border-color:$cLightGreen;
+        // }
+        // .link{
+        //     color:$cLightGreen;
+        // }
+    }
+
+    .cc-field.message{
         input[type="text"],
         input[type="password"],
         input[type="number"],
         input[type="date"]{
-            border-color:$cLightGreen;
-        }
-        .link{
-            color:$cLightGreen;
+            @include mxBorderRadius(3px, 0, 3px, 3px);
         }
     }
 
@@ -561,7 +595,7 @@ body.cc-body{
             input[type="password"],
             input[type="number"],
             input[type="date"]{
-                border-width:0;
+                border-color:$cWhite;
             }
         }
 
@@ -585,8 +619,8 @@ body.cc-body{
             text-align: right;
             background-color:rgba(1, 1, 1, 0);
             z-index:1;
-        }
 
+        }
 
         ul{
             list-style: none;
@@ -625,6 +659,8 @@ body.cc-body{
                     line-height: $nFieldHeight;
                     text-decoration: none;
                     color:$cTextGray;
+                    word-wrap: none;
+                    overflow: hidden;
                     &:hover{
                         background-color:$cMidGray;
                         color:$cWhite;
@@ -649,6 +685,54 @@ body.cc-body{
         }//// ul
 
     }//// .cc-dropdown
+
+    .cc-radio{
+        .radio-group{
+            height: 42px;
+            padding-top:10px;
+            input[type="radio"]{
+                display:inline-block;
+                width:20px;
+                height: 20px;
+                opacity: 1;
+                position:relative;
+                float:left;
+                margin-right:10px;
+                margin-top:0;
+
+
+                &:after{
+                    display: block;
+                    content: " ";
+                    width:20px;
+                    height: 20px;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    background-color:$cWhite;
+                    @include mxRoundCorners(10px);
+                    border:1px solid $cTextGray;
+                }
+
+                &:checked{
+                    &:after{
+                        background-color:$cLightGreen;
+                        border-color:$cLightGreen;
+                    }
+                }
+            }
+
+            label{
+                float:left;
+                margin-right:2em;
+                display: table;
+                width:auto;
+                line-height:20px;
+                margin-top: 0;
+            }
+        }//// .radio-group
+
+    }//// .cc-radio
 }//// .cc-form
 
 .cc-note{

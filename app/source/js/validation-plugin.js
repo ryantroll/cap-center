@@ -1,5 +1,5 @@
 (function( $ ) {
-    $.fn.validate = function() {
+    $.fn.validate = function(callback) {
         var form = this.filter('form');
 
         var fieldChangedAfterError = function(e){
@@ -31,7 +31,7 @@
 
             if(true === self.hasClass('cc-number') && v){
                 isValidated = true;
-                var regx = /^\d*$/;
+                var regx = /^(\d)+(\.\d+)?$/;
                 if(!regx.test(v)){
                     isValid = false;
                     var msg = self.find('.message.cc-number');
@@ -111,7 +111,6 @@
             }
 
             if(true === self.hasClass('cc-phone')){
-
                 if(v){
                     isValidated = true;
                     var regx = /^\(\d{3}\)( )?\d{3}\-\d{4}$/;
@@ -127,50 +126,118 @@
                     }
                 }
                 else{
+
                     delete err['cc-phone'];
                 }
             }
 
+            if(true === self.hasClass('cc-currency')){
+                if(v){
+                    isValidated = true;
+                    var regx = /^\$?(\d{1,3})+(\,*\d{3})*$/;
+                    if(!regx.test(v)){
+                        isValid = false;
+                        var msg = self.find('.message.cc-currency');
+                        if(msg.length > 0){
+                            err['cc-currency'] = msg.eq(0).text();
+                        }
+                    }
+                    else{
+                        delete err['cc-currency'];
+                    }
+                }
+                else{
+
+                    delete err['cc-currency'];
+                }
+            }
+
+            if(true === self.hasClass('cc-ssn')){
+
+                if(v){
+                    isValidated = true;
+                    var regx = /^\d{3}(\-)?\d{2}(\-)?\d{4}$/;
+                    if(!regx.test(v)){
+                        isValid = false;
+                        var msg = self.find('.message.cc-ssn');
+                        if(msg.length > 0){
+                            err['cc-ssn'] = msg.eq(0).text();
+                        }
+                    }
+                    else{
+                        delete err['cc-ssn'];
+                    }
+                }
+                else{
+
+                    delete err['cc-ssn'];
+                }
+            }
+
+            //// reset the field errors before adding them again
+            self.removeClass('error correct message').find('#errorMsg').remove();
+
+            //// if field passed through validation show error if any
             if(true === isValidated){
-                self.find('#errorMsg').remove();
                 if(false === isValid){
                     self.addClass('error');
                     self.removeClass('correct');
 
-                    var str = ''
+                    var str = [];
                     for(var e in err){
-                        str += err[e]+'<br>';
-                    }
-                    if('' !== str ){
-                        var msg = $('<div class="message" id="errorMsg">' + str + '</div>').show();
-                        self.append(msg);
+                        str.push(err[e]);
                     }
 
-                    f.off('keyup change').on('keyup change', fieldChangedAfterError)
+                    if(str.length > 0 ){
+                        var msg = $('<div class="message" id="errorMsg"><i class="icon-error glyphicon glyphicon-remove-sign"></i> ' + str.join(' | ') + '</div>').show();
+                        self.append(msg);
+                        self.addClass('message');
+                    }
+                    else{
+                        //// nothting
+                    }
+
+                    f.off('keyup change', fieldChangedAfterError).on('keyup change', fieldChangedAfterError)
+
+                    return false;
                 }
                 else if(true === isValid){
                     self.addClass('correct');
                     self.removeClass('error');
+                    self.removeClass('message');
+
+                    return true;
                 }
-                return isValid;
+
             }//// if isValidated
 
         }//// fun. validateFild
 
         form.off('submit').on('submit', function(e){
+            var isFormValid = true;
 
-            if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
-
-            form.find('.cc-field').each(function(n){
+            form.find('.cc-field.cc-validate').each(function(n){
                 var self = $(this);
 
                 var isValid = validateField(self);
 
                 //// false and true strictly test as null will returned is field is not validated
+                if(false === isValid){
+                    isFormValid = isFormValid && false;
+                }
 
-            });
 
-        })
+            }); /// .each
+
+            var extra = callback(isFormValid);
+
+            isFormValid = isFormValid && extra;
+
+            if(true !== isFormValid){
+                if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
+            }
+
+        });//// .on submit
         return this;
     };
 }( jQuery ));
