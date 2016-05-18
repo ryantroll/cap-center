@@ -94,17 +94,15 @@
 
               <div class="col-xs-4 col-sm-2">
                 <div class="cc-field cc-dropdown">
-                  <label for="suffix_label">Suffix</label>
-                  <input type="hidden"  name="suffix" id="suffix" />
-                  <input type="text" tabindex="4" name="suffix_label" id="suffix_label" />
-                  <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                  <ul>
-                    <li><a href="javascript:void(0)" data-value="1">Jr</a></li>
-                    <li><a href="javascript:void(0)" data-value="2">Sr</a></li>
-                    <li><a href="javascript:void(0)" data-value="3">II</a></li>
-                    <li><a href="javascript:void(0)" data-value="4">III</a></li>
-                    <li><a href="javascript:void(0)" data-value="5">IV</a></li>
-                  </ul>
+                  <label for="suffix">Suffix</label>
+                  <select id="suffix" name="suffix">
+                    <option value="">Select</option>
+                    <option value="1">Jr</option>
+                    <option value="2">Sr</option>
+                    <option value="3">II</option>
+                    <option value="4">III</option>
+                    <option value="5">IV</option>
+                  </select >
                 </div><!--field-->
               </div>
 
@@ -188,7 +186,7 @@
             <div id="addressDiv" style="display: none;">
               <div class="row">
                 <div class="col-xs-12 col-sm-8">
-                  <div class="cc-field cc-validate cc-required">
+                  <div class="cc-field cc-to-be-validate cc-required">
                     <label for="street_address">Street Address </label>
                     <input type="text" tabindex="9" name="street_address" id="street_address" placeholder="" />
                     <div class="message cc-required">Required</div>
@@ -206,7 +204,7 @@
 
               <div class="row">
                 <div class="col-sm-4">
-                  <div class="cc-field cc-validate cc-required">
+                  <div class="cc-field cc-to-be-validate cc-required">
                     <label for="city">City </label>
                     <input type="text" tabindex="12" name="city" id="city" />
                     <div class="message cc-required">Required</div>
@@ -214,20 +212,18 @@
                 </div>
 
                 <div class="col-sm-4">
-                  <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
-                    <label for="state_label">State </label>
-                    <input type="hidden" name="state" id="state" />
-                    <input type="text" tabindex="13" name="state_label" id="state_label" value="Select" />
-                    <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                    <ul>
-                      <li class="active"><a href="javascript:void(0)" data-value="">Select</a></li>
-                    </ul>
-                    <div class="message cc-required">Required</div>
-                  </div><!--field-->
-                </div>
+                <div class="cc-field cc-dropdown cc-to-be-validate cc-required state-dropdown">
+                  <label for="state">State </label>
+
+                  <select name="state" id="state">
+                    <option value="">Select</option>
+                  </select>
+                  <div class="message cc-required">Required</div>
+                </div><!--field-->
+              </div>
 
                 <div class="col-sm-4">
-                  <div class="cc-field cc-validate cc-required cc-number">
+                  <div class="cc-field cc-to-be-validate cc-required cc-number">
                     <label for="zip">Zip </label>
                     <input type="text" tabindex="11" class="numbers" maxlength="6" name="zip" id="zip" />
                     <div class="message cc-required">Required</div>
@@ -239,7 +235,7 @@
 
               <div class="row">
                 <div class="col-sm-4">
-                  <div class="cc-field cc-required cc-validate cc-number">
+                  <div class="cc-field cc-required cc-to-be-validate cc-number">
                     <label for="address_time_year">Time At Address </label>
                     <input type="text" tabindex="14" class="numbers" name="address_time_year" id="address_time_year" maxlength="2" placeholder="Years" data-address="0" />
                     <div class="message cc-required">Required</div>
@@ -249,7 +245,7 @@
                 </div>
 
                 <div class="col-sm-4">
-                  <div class="cc-field cc-required cc-validate cc-number">
+                  <div class="cc-field cc-required cc-to-be-validate cc-number">
                     <label for="address_time_month">&nbsp;</label>
                     <input type="text" tabindex="14" class="numbers" name="address_time_month" id="address_time_month" maxlength="2"  placeholder="Months" data-address="0" />
                     <div class="message cc-required">Required</div>
@@ -259,7 +255,7 @@
                 </div>
 
                 <div class="col-sm-4">
-                  <div class="cc-field cc-validate cc-currency">
+                  <div class="cc-field cc-to-be-validate cc-currency">
                     <label for="address_rent">MONTHLY RENT (IF ANY) </label>
                     <input type="text" class="currency" tabindex="16" maxlength="6" name="address_rent" id="address_rent" />
                     <div class="message cc-currency">Invalid Rent Value</div>
@@ -276,19 +272,16 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-dropdown">
-                  <label for="education_level_label">Eduction Level </label>
-                  <input type="hidden" name="education_level" id="education_level" value="" />
-                  <input type="text" tabindex="22" name="education_level_label" id="education_level_label"  value="Please Select"/>
-                    <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                    <ul>
-                      <li class="active"><a href="javascript:void(0)" data-value="">Please Select</a></li>
-                      <li><a href="javascript:void(0)" data-value="10">Some High School </a></li>
-                      <li><a href="javascript:void(0)" data-value="12"> High School</a></li>
-                      <li><a href="javascript:void(0)" data-value="14">Some College</a></li>
-                      <li><a href="javascript:void(0)" data-value="16">College</a></li>
-                      <li><a href="javascript:void(0)" data-value="18">Masters</a></li>
-                      <li><a href="javascript:void(0)" data-value="20">Professional (PhD, MD, JD, etc)</a></li>
-                    </ul>
+                  <label for="education_level">Eduction Level </label>
+                    <select id="education_level" name="education_level">
+                      <option value="">Please Select</option>
+                      <option value="10">Some High School </option>
+                      <option value="12"> High School</option>
+                      <option value="14">Some College</option>
+                      <option value="16">College</option>
+                      <option value="18">Masters</option>
+                      <option value="20">Professional (PhD, MD, JD, etc)</option>
+                    </select>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -298,16 +291,14 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-dropdown">
-                  <label for="marital_status_label">Marital Status </label>
-                  <input type="hidden" name="marital_status" id="marital_status" value="" />
-                  <input type="text" tabindex="23" name="marital_status_label" id="marital_status_label" value="Please Select" />
-                    <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                    <ul>
-                      <li class="active"><a href="javascript:void(0)" data-value="">Please Select</a></li>
-                      <li><a href="javascript:void(0)" data-value="Single">Single</a></li>
-                      <li><a href="javascript:void(0)" data-value="Married">Married</a></li>
-                      <li><a href="javascript:void(0)" data-value="Separated">Separated</a></li>
-                    </ul>
+                  <label for="marital_status">Marital Status </label>
+
+                    <select id="marital_status" name="marital_status">
+                      <option value="">Please Select</option>
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Separated">Separated</option>
+                    </select>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -317,18 +308,15 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-dropdown">
-                  <label for="num_dependents_label">Number of Dependents</label>
-                  <input type="hidden" name="num_dependents" id="num_dependents"/>
-                  <input type="text" tabindex="24" name="num_dependents_label" id="num_dependents_label" value="Please Select"/>
-                    <a href="javascript:void(0);" class="link"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
-                    <ul>
-                      <li class="active"><a href="javascript:void(0)" data-value="">Please Select</a></li>
-                      <li><a href="javascript:void(0)" data-value="0">No Dependents</a></li>
-                      <li><a href="javascript:void(0)" data-value="1">One</a></li>
-                      <li><a href="javascript:void(0)" data-value="2">Two</a></li>
-                      <li><a href="javascript:void(0)" data-value="3">Three</a></li>
-                      <li><a href="javascript:void(0)" data-value="4">Four</a></li>
-                    </ul>
+                  <label for="num_dependents">Number of Dependents</label>
+                    <select name="num_dependents" id="num_dependents">
+                      <option value="">Please Select</option>
+                      <option value="0">No Dependents</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                    </select>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>

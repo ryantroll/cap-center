@@ -493,7 +493,7 @@ var usStates = [
         }
 
         var validateField = function(self){
-            var f = self.find('input[type="text"], input[type="hidden"]').eq(0)
+            var f = self.find('input[type="text"], input[type="hidden"], select').eq(0)
             var v = $.trim(f.val());
             var err = {};
             var isValid = true;
@@ -848,9 +848,9 @@ function updateTabIndex(selector){
 
 function fillStateDropdown(selector){
     selector.each(function(x){
-        var ul = $(this).find('ul');
+        var ul = $(this).find('select');
         for(var s=0; s<usStates.length; s++){
-            var li = $('<li><a href="javascript:void(0)" data-value="' + usStates[s].abbreviation + '">' + usStates[s].name + '</a></li>');
+            var li = $('<option value="' + usStates[s].abbreviation + '">' + usStates[s].name + '</option>');
             ul.append(li);
         }//// for
     });
@@ -1015,6 +1015,7 @@ function borrowerReady(){
      * initialize form validation
      */
     $('#borrowerForm').validate(function(isVald){
+
         if(isVald){
             ///// save address in cookies
             $.cookie.json = true;
@@ -1029,6 +1030,7 @@ function borrowerReady(){
             $.cookie('address', address);
 
             var isTwo =  $('#appling_as').val() === '2';
+            console.log('...', isTwo)
 
             if(true === isTwo){
                 $('#borrowerForm').attr('action', 'index-co-borrower.html');
@@ -1319,23 +1321,18 @@ function coBorrowerReady(){
     $('input[name=co_livesame]').off('change').on('change', function(ev){
         if($(this).val() === 'yes'){
 
-            $('#addressDiv').slideUp();
-            // $('#street_address').val(address.street_address);
-            // $('#apt_unit').val(address.apt_unit);
-            // $('#city').val(address.city);
-            // $('#state').val(address.state);
-            // $('#state_label').val(address.state_name);
-            // $('#zip').val(address.zip);
+            $('#addressDiv').slideUp()
+            .find('.cc-validate')
+            .removeClass('cc-validate error correct message')
+            .addClass('cc-to-be-validate')
+            .find('#errorMsg').remove();
+
         }
         else{
-            $('#addressDiv').slideDown();
-
-            // $('#street_address').val('');
-            // $('#apt_unit').val('');
-            // $('#city').val('');
-            // $('#state').val('');
-            // $('#state_label').val('');
-            // $('#zip').val('');
+            $('#addressDiv').slideDown()
+            .find('.cc-to-be-validate')
+            .removeClass('cc-to-be-validate')
+            .addClass('cc-validate');
         }
     });
 

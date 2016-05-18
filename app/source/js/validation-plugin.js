@@ -8,7 +8,7 @@
         }
 
         var validateField = function(self){
-            var f = self.find('input[type="text"], input[type="hidden"]').eq(0)
+            var f = self.find('input[type="text"], input[type="hidden"], select').eq(0)
             var v = $.trim(f.val());
             var err = {};
             var isValid = true;

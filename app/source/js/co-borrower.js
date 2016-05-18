@@ -63,23 +63,18 @@ function coBorrowerReady(){
     $('input[name=co_livesame]').off('change').on('change', function(ev){
         if($(this).val() === 'yes'){
 
-            $('#addressDiv').slideUp();
-            // $('#street_address').val(address.street_address);
-            // $('#apt_unit').val(address.apt_unit);
-            // $('#city').val(address.city);
-            // $('#state').val(address.state);
-            // $('#state_label').val(address.state_name);
-            // $('#zip').val(address.zip);
+            $('#addressDiv').slideUp()
+            .find('.cc-validate')
+            .removeClass('cc-validate error correct message')
+            .addClass('cc-to-be-validate')
+            .find('#errorMsg').remove();
+
         }
         else{
-            $('#addressDiv').slideDown();
-
-            // $('#street_address').val('');
-            // $('#apt_unit').val('');
-            // $('#city').val('');
-            // $('#state').val('');
-            // $('#state_label').val('');
-            // $('#zip').val('');
+            $('#addressDiv').slideDown()
+            .find('.cc-to-be-validate')
+            .removeClass('cc-to-be-validate')
+            .addClass('cc-validate');
         }
     });
 

@@ -20,6 +20,7 @@ function borrowerReady(){
      * initialize form validation
      */
     $('#borrowerForm').validate(function(isVald){
+
         if(isVald){
             ///// save address in cookies
             $.cookie.json = true;
@@ -34,6 +35,7 @@ function borrowerReady(){
             $.cookie('address', address);
 
             var isTwo =  $('#appling_as').val() === '2';
+            console.log('...', isTwo)
 
             if(true === isTwo){
                 $('#borrowerForm').attr('action', 'index-co-borrower.html');

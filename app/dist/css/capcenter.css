@@ -273,9 +273,8 @@ body.cc-body {
 .cc-form .cc-field {
   margin-bottom: 12px;
   position: relative; }
-  @media screen and (max-width: 768px) {
-    .cc-form .cc-field input, .cc-form .cc-field textarea {
-      font-size: 12px; } }
+  .cc-form .cc-field input, .cc-form .cc-field textarea, .cc-form .cc-field select, .cc-form .cc-field option {
+    font-size: 16px; }
   .cc-form .cc-field label {
     display: block;
     font-weight: 400;
@@ -308,6 +307,19 @@ body.cc-body {
     .cc-form .cc-field input[type="number"]:focus,
     .cc-form .cc-field input[type="date"]:focus {
       background-color: #f7f7f7; }
+  .cc-form .cc-field select {
+    display: block;
+    border: 1px solid #a89b94;
+    padding: 0 15px;
+    height: 42px;
+    line-height: 42px;
+    width: 100%;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /* future proofing */
+    -khtml-border-radius: 3px;
+    /* for old Konqueror browsers */ }
   .cc-form .cc-field button,
   .cc-form .cc-field input[type="button"],
   .cc-form .cc-field .cc-btn {
@@ -406,7 +418,11 @@ body.cc-body {
 .cc-form .cc-field.error input[type="text"],
 .cc-form .cc-field.error input[type="password"],
 .cc-form .cc-field.error input[type="number"],
-.cc-form .cc-field.error input[type="date"] {
+.cc-form .cc-field.error input[type="date"],
+.cc-form .cc-field.error textarea {
+  border-color: #F47C29; }
+
+.cc-form .cc-field.error select {
   border-color: #F47C29; }
 
 .cc-form .cc-field.error .link {
@@ -415,7 +431,9 @@ body.cc-body {
 .cc-form .cc-field.message input[type="text"],
 .cc-form .cc-field.message input[type="password"],
 .cc-form .cc-field.message input[type="number"],
-.cc-form .cc-field.message input[type="date"] {
+.cc-form .cc-field.message input[type="date"],
+.cc-form .cc-field.message textarea,
+.cc-form .cc-field.message select {
   -moz-border-radius: 3px 0 3px 3px;
   -webkit-border-radius: 3px 0 3px 3px;
   border-radius: 3px 0 3px 3px;
@@ -487,13 +505,17 @@ body.cc-body {
   .cc-form .cc-form-section .cc-field input[type="text"],
   .cc-form .cc-form-section .cc-field input[type="password"],
   .cc-form .cc-form-section .cc-field input[type="number"],
-  .cc-form .cc-form-section .cc-field input[type="date"] {
+  .cc-form .cc-form-section .cc-field input[type="date"],
+  .cc-form .cc-form-section .cc-field textarea,
+  .cc-form .cc-form-section .cc-field select {
     border-color: #fff; }
   .cc-form .cc-form-section a {
     color: #F47C29; }
 
 .cc-form .cc-dropdown {
   position: relative; }
+  .cc-form .cc-dropdown .message {
+    bottom: 42px; }
   .cc-form .cc-dropdown .link {
     display: block;
     width: 100%;

@@ -120,9 +120,9 @@ function updateTabIndex(selector){
 
 function fillStateDropdown(selector){
     selector.each(function(x){
-        var ul = $(this).find('ul');
+        var ul = $(this).find('select');
         for(var s=0; s<usStates.length; s++){
-            var li = $('<li><a href="javascript:void(0)" data-value="' + usStates[s].abbreviation + '">' + usStates[s].name + '</a></li>');
+            var li = $('<option value="' + usStates[s].abbreviation + '">' + usStates[s].name + '</option>');
             ul.append(li);
         }//// for
     });

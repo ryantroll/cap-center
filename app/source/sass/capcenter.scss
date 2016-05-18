@@ -336,11 +336,8 @@ body.cc-body{
         margin-bottom: 12px;
         position:relative;
 
-        input, textarea{
-            @media screen and (max-width:$wTablet){
-                font-size:12px;
-            }
-
+        input, textarea, select, option{
+                font-size:16px;/// fixing the iphone zoom issue
         }
 
         label{
@@ -371,12 +368,21 @@ body.cc-body{
             width:100%;
             height: auto;
             @include mxRoundCorners(3px);
-            // line-height: 2em;
-            // height: 2em;
-            // // padding-bottom:10px;
+
             &:focus{
                 background-color: #f7f7f7;
             }
+        }
+
+        select{
+            display: block;
+            border:1px solid $cBGMidGray;
+            padding:0 15px;
+            height: $nFieldHeight;
+            line-height: $nFieldHeight;
+            width:100%;
+            // height: auto;
+            @include mxRoundCorners(3px);
         }
 
         button,
@@ -492,7 +498,11 @@ body.cc-body{
         input[type="text"],
         input[type="password"],
         input[type="number"],
-        input[type="date"]{
+        input[type="date"],
+        textarea{
+            border-color:$cOrange;
+        }
+        select{
             border-color:$cOrange;
         }
         .link{
@@ -522,7 +532,9 @@ body.cc-body{
         input[type="text"],
         input[type="password"],
         input[type="number"],
-        input[type="date"]{
+        input[type="date"],
+        textarea,
+        select{
             @include mxBorderRadius(3px, 0, 3px, 3px);
         }
     }
@@ -594,7 +606,9 @@ body.cc-body{
             input[type="text"],
             input[type="password"],
             input[type="number"],
-            input[type="date"]{
+            input[type="date"],
+            textarea,
+            select{
                 border-color:$cWhite;
             }
         }
@@ -606,6 +620,9 @@ body.cc-body{
 
     .cc-dropdown{
         position:relative;
+        .message{
+            bottom:42px;
+        }
         .link{
             display: block;
             width:100%;
