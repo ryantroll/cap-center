@@ -295,7 +295,6 @@ body.cc-body {
     height: 42px;
     line-height: 42px;
     width: 100%;
-    height: auto;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -310,7 +309,7 @@ body.cc-body {
   .cc-form .cc-field select {
     display: block;
     border: 1px solid #a89b94;
-    padding: 0 15px;
+    padding: 0 0 0 15px;
     height: 42px;
     line-height: 42px;
     width: 100%;

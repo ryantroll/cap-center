@@ -366,7 +366,7 @@ body.cc-body{
             height: $nFieldHeight;
             line-height: $nFieldHeight;
             width:100%;
-            height: auto;
+
             @include mxRoundCorners(3px);
 
             &:focus{
@@ -377,7 +377,7 @@ body.cc-body{
         select{
             display: block;
             border:1px solid $cBGMidGray;
-            padding:0 15px;
+            padding:0 0 0 15px;
             height: $nFieldHeight;
             line-height: $nFieldHeight;
             width:100%;
