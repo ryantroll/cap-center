@@ -47,7 +47,8 @@ function coBorrowerReady(){
     /**
      * Continue Click
      */
-    $('#continue').on('click', function(e){
+    $('#continue').on('mousedown touchstart', function(e){
+
         isContinueClicked = true;
     })
 
@@ -111,7 +112,7 @@ function coBorrowerReady(){
         var v = parseInt($(this).val(), 10);
         var agesDiv = $('#dependentSection');
         var cols = agesDiv.find('.col-xs-6').hide();
-        console.log(v)
+
         if(v > 0){
             for(var x=0; x<v; x++){
                 cols.eq(x).show();

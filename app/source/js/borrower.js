@@ -54,7 +54,7 @@ function borrowerReady(){
     /**
      * Continue Click
      */
-    $('#continue').on('click', function(e){
+    $('#continue').on('mousedown touchstart', function(e){
         isContinueClicked = true;
     });
 
@@ -204,15 +204,16 @@ function addAddress(nextId){
 
     address.find('.cc-field.cc-to-be-validate').addClass('cc-validate');
     fillStateDropdown( address.find('.state-dropdown') );
-    address.find('.cc-dropdown').dropdown();
+
     address.find('input.numbers').on('keydown', restrictNumbers);
 
     checkAddressLength(address, addressIndex);
 
     section.append(address);
-
+    console.log(section.parent('form').hide())
     addAutoAddress(addressIndex);
-    updateTabIndex( $('#borrowerForm'))
+    // updateTabIndex( $('#borrowerForm'))
+    updateTabIndex( $('.cc-form'))
     section.slideDown();
 }
 

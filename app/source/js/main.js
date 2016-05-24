@@ -44,10 +44,7 @@ function ccDocumentReady(){
      fillStateDropdown( $('.state-dropdown') );
 
 
-    /**
-     * Drop-down behavior
-     */
-    $('.cc-dropdown').dropdown();
+
 
 
     /**
@@ -115,6 +112,7 @@ function updateTabIndex(selector){
     selector.find('.cc-field').each(function(x){
         var s = $(this).find('input[type=text], input[type=email], input[type=date], input[type=tel], input[type=radio], input[type=checkbox], input[type=number], textarea, select')
         .attr('tabindex', x+1);
+
     })
 }//// fun. updateTabIndex
 
@@ -164,6 +162,11 @@ var restrictPhone = function(keyEv){
 }
 
 var formatPhone = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var allowed = [191, 9, 8, 37, 38, 39, 40, 13];
+  if(isAndroid() && code == 229) return;
+  if(allowed.indexOf(code) > -1) return;
+
   var val = $(this).val();
   var rawValue = val.split(/[\(|\)| |\-|\+|\.]/).join('');
   var formated = '';
@@ -239,7 +242,12 @@ var restrictSSN = function(keyEv){
   }
 }//// fun. formateSSN
 
-var formatSSN = function(){
+var formatSSN = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var allowed = [191, 9, 8, 37, 38, 39, 40, 13];
+  if(isAndroid() && code == 229) return;
+  if(allowed.indexOf(code) > -1) return;
+
   var val = $(this).val();
   var ret = '';
   var raw = val.replace(/\-/g, '');
@@ -290,28 +298,33 @@ var restrictCurrency = function(keyEv){
   }
 }//// fun. formateSSN
 
-var formatCurrency = function(){
-    var val = $(this).val();
-    var ret = '';
-    var raw = val.split(/[\$| |\,]/).join('');
+var formatCurrency = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var allowed = [191, 9, 8, 37, 38, 39, 40, 13];
+  if(isAndroid() && code == 229) return;
+  if(allowed.indexOf(code) > -1) return;
 
-    if(raw.length > 3){
-        var arr = raw.split('');
-        var sep = 1;
-        for(var x=arr.length-1; x>=0; x--){
-          ret = (sep % 3 == 0 ? ',' : '') + arr[x]  + ret;
-          sep++;
-        }
-        ret = '$' + ret;
-    }
-    else if(raw.length > 0){
-      ret = '$' + raw;
-    }
-    else{
-      ret = raw;
-    }
+  var val = $(this).val();
+  var ret = '';
+  var raw = val.split(/[\$| |\,]/).join('');
 
-    $(this).val(ret);
+  if(raw.length > 3){
+      var arr = raw.split('');
+      var sep = 1;
+      for(var x=arr.length-1; x>=0; x--){
+        ret = (sep % 3 == 0 ? ',' : '') + arr[x]  + ret;
+        sep++;
+      }
+      ret = '$' + ret;
+  }
+  else if(raw.length > 0){
+    ret = '$' + raw;
+  }
+  else{
+    ret = raw;
+  }
+
+  $(this).val(ret);
 }///// fun. formatCurrency
 
 var animateScroll = function(y, time){
