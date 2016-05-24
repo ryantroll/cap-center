@@ -5,84 +5,89 @@ var addressIndex;
 
 function borrowerReady(){
 
+    var myForm = $('#borrowerForm');
     /**
      * do nothing if the form is not #borrowerForm
      */
-    if($('#borrowerForm').length <= 0) return;
+    if(myForm.length <= 0) return;
 
-    addressIndex = 0;
+    addressIndex = 1;
 
     addressTemplate = $('#addressTemplate').html();
 
-    updateTabIndex( $('#borrowerForm'))
+    updateTabIndex( myForm);
+
+    /**
+     * [isContinueClicked it will be set to true when continue button clicked ]
+     * this var will help detect form submit on button click and scroll up the page to the first form error
+     * @type {Boolean}
+     */
+    var isContinueClicked = false;
 
     /**
      * initialize form validation
      */
-    $('#borrowerForm').validate(function(isVald){
+    myForm.validate(function(isVald, invalidFields){
 
         if(isVald){
-            ///// save address in cookies
-            $.cookie.json = true;
-            var address = {};
-            address.street_address = $('#street_address').val();
-            address.apt_unit = $('#apt_unit').val();
-            address.city = $('#city').val();
-            address.state = $('#state').val();
-            address.state_name = $('#state_label').val();
-            address.zip = $('#zip').val();
 
-            $.cookie('address', address);
+            var isCoBorrower =  String('234').split('').indexOf( $('#bo_applytype').val() ) > -1;
 
-            var isTwo =  $('#appling_as').val() === '2';
-            console.log('...', isTwo)
-
-            if(true === isTwo){
-                $('#borrowerForm').attr('action', 'index-co-borrower.html');
+            if(true === isCoBorrower){
+                myForm.attr('action', 'index-co-borrower.html');
             }
 
             return true;
-        }
+        }/// if isValid
+        else{
+            if(invalidFields && true === isContinueClicked){
+                var scrollTo = $('#' + invalidFields[0].id).offset().top;
+                //// scroll the form to the first error
+                animateScroll(scrollTo-20, 1);
+
+                isContinueClicked = false;
+            }
+        } //// if isValid else
         return false;
+    });
+
+    /**
+     * Continue Click
+     */
+    $('#continue').on('click', function(e){
+        isContinueClicked = true;
     });
 
 
     /**
      * Field formating while typing
      */
-    $('input.phone').on('keyup',function(e){
-        var val = $(this).val();
-        $(this).val(formatPhone(val));
-    });
+
+    $('input.phone')
+    .on('keydown', restrictPhone)
+    .on('keyup', formatPhone)
 
     $('input.date')
     .on('keydown', restrictDate)
-    .on('keyup', function(){
-        var val = $(this).val();
-        $(this).val(formatDate(val));
-    });
+    .on('keyup', formatDate);
 
     $('input.numbers')
     .on('keydown', restrictNumbers)
 
     $('input.ssn')
     .on('keydown', restrictSSN)
-    .on('keyup', function(){
-        var val = $(this).val();
-        $(this).val(formatSSN(val));
-    });
+    .on('keyup', formatSSN);
 
     $('input.currency')
     .on('keydown', restrictCurrency)
-    .on('keyup',function(e){
-        var val = $(this).val();
-        $(this).val(formateCurrency(val));
-    })
+    .on('keyup', formatCurrency)
 
-    $('#know_about_us').off('change').on('change', function(e){
+
+
+    $('#bo_howhear').off('change').on('change', function(e){
         var val = parseInt($(this).val(),10);
-        console.log(val)
-        if(val === 2){
+        var arr = [2,3,4,5];
+        if(arr.indexOf(val) > -1){
             $('#referralField').slideDown().find('.cc-field').addClass('cc-validate');
         }
         else{
@@ -93,9 +98,9 @@ function borrowerReady(){
     /**
      * check for address length change
      */
-    checkAddressLength($('#borrowerForm'), addressIndex);
+    checkAddressLength(myForm, addressIndex);
 
-    $('#num_dependents').on('change', function(e){
+    $('#bo_dependants').on('change', function(e){
 
         var v = parseInt($(this).val(), 10);
         var agesDiv = $('#dependentSection');
@@ -112,29 +117,44 @@ function borrowerReady(){
         }
     });
 
-    addAutoAddress(0);
+    $('input[name=bo_currently]').on('change', function(){
+        var val = $(this).val();
+        var rentCol = $('#monthlyRent');
+        var container = rentCol.find('.cc-field').eq(0);
+        if(val.toLowerCase() === 'rent'){
+            rentCol.removeClass('hidden');
+            container.removeClass('cc-to-be-validate').addClass('cc-validate');
+        }
+        else{
+            rentCol.addClass('hidden');
+            container
+            .removeClass('cc-validate message error')
+            .addClass('cc-to-be-validate')
+            .find('#errorMsg').remove();
+        }
+    });
 
-    /**
-     * Dynamic placeholder
-     */
-    dynamicPlacholder($('#borrowerForm'))
+    addAutoAddress(1);
 
 };//// borrowerReady
 
 
 
 function checkAddressLength(container, index){
-    var post = index > 0 ? '_'+index : '';
+    var post = index > 1 ? ''+index : '';
 
-    container.find('#address_time_month' + post)
+    container.find('#bo_time_month' + post)
     .attr('data-address', index)
     .on('change', function(e){
         var v = parseInt($(this).val(), 10);
 
-        var years = parseInt($('#address_time_year' + post).val(), 10);
+        var years = parseInt($('#bo_time_year' + post).val(), 10);
         var myId = parseInt($(this).attr('data-address'), 10);
         if(!v) v =0;
-        if(!years) years = 0;
+        if(!years){
+            years = 0;
+            $('#bo_time_year' + post).val(0)
+        }
 
         if(years){
             v += years * 12;
@@ -148,14 +168,17 @@ function checkAddressLength(container, index){
     });
 
 
-    container.find('#address_time_year' + post)
+    container.find('#bo_time_year' + post)
     .attr('data-address', index)
     .on('change', function(e){
-        var v = parseInt($('#address_time_month' + post).val(), 10);
+        var v = parseInt($('#bo_time_month' + post).val(), 10);
         var years = parseInt($(this).val(), 10);
         var myId = parseInt($(this).attr('data-address'), 10);
 
-        if(!v) v =0;
+        if(!v) {
+            v =0;
+            $('#bo_time_month' + post).val(0)
+        }
         if(!years) years = 0;
 
         if(years){
@@ -172,21 +195,20 @@ function checkAddressLength(container, index){
 }///// fun. checkAddressLength
 
 function addAddress(nextId){
-    if(nextId >= 4) return false;
+    if(nextId >= 5) return false;
     if(addressIndex >= nextId) return false;
 
     var section = $('#preAddress');
     addressIndex = nextId;
-    var address = $(addressTemplate.replace(/(\_1)/g, '_'+addressIndex));
+    var address = $(addressTemplate.replace(/(\{\#\})/g, addressIndex));
 
-    address.find('.cc-field').addClass('cc-validate');
+    address.find('.cc-field.cc-to-be-validate').addClass('cc-validate');
     fillStateDropdown( address.find('.state-dropdown') );
     address.find('.cc-dropdown').dropdown();
     address.find('input.numbers').on('keydown', restrictNumbers);
 
-
     checkAddressLength(address, addressIndex);
-    dynamicPlacholder(address);
+
     section.append(address);
 
     addAutoAddress(addressIndex);
@@ -196,7 +218,7 @@ function addAddress(nextId){
 
 function removeAddress(idRemove){
 
-    if(idRemove <=0) return false;
+    if(idRemove <=1) return false;
     if(idRemove > addressIndex) return false;
 
     var section = $('#preAddress');
@@ -208,14 +230,14 @@ function removeAddress(idRemove){
         updateTabIndex( $('#borrowerForm'));
     }
     addressIndex = idRemove-1;
-    if(addressIndex == 0) section.slideUp()
+    if(addressIndex <= 1) section.slideUp()
 }
 
 function addAutoAddress(index){
-    var post = index > 0 ? '_'+index : '';
+    var post = index >= 2 ? ''+index : '';
 
     var autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('street_address' + post),
+        document.getElementById('bo_address' + post),
         {types: ['geocode']}
     );
     autocomplete.index = 0;
@@ -255,9 +277,9 @@ function fillInAddress(){
     }//// for
     address.administrative_area_level_1_long_name = long_name;
 
-    $('#street_address'+this.post).val(address.street_number + ' ' + address.route).trigger('change');
-    $('#city'+this.post).val(address.locality).trigger('change');
-    $('#state'+this.post).val(address.administrative_area_level_1).trigger('change');
-    $('#state_label'+this.post).val(address.administrative_area_level_1_long_name).trigger('change');
-    $('#zip'+this.post).val(address.postal_code).trigger('change');
+    $('#bo_address'+this.post).val(address.street_number + ' ' + address.route).trigger('change');
+    $('#bo_city'+this.post).val(address.locality).trigger('change');
+    $('#bo_state'+this.post).val(address.administrative_area_level_1).trigger('change');
+    // $('#state_label'+this.post).val(address.administrative_area_level_1_long_name).trigger('change');
+    $('#bo_zip'+this.post).val(address.postal_code).trigger('change');
 }

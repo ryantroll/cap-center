@@ -4,63 +4,79 @@ var addressIndex;
 
 function coBorrowerReady(){
 
+    var myForm = $('#coBorrowerForm');
     /**
      * do nothing if the form is not #coBorrowerForm
      */
-    if($('#coBorrowerForm').length <= 0) return;
+    if(myForm.length <= 0) return;
 
-    addressIndex = 0;
+    addressIndex = 1;
 
     addressTemplate = $('#addressTemplate').html();
 
-    updateTabIndex( $('#coBorrowerForm'));
+    updateTabIndex( myForm);
 
-    // $.cookie.json = true;
-    // var address = $.cookie('address');
-
-    // address = {street_address:'24 Kenter Place', apt_unit:'', state:'NJ', state_name:'New Jersey', city:'Clifton', zip:'07012'};
+    /**
+     * [isContinueClicked it will be set to true when continue button clicked ]
+     * this var will help detect form submit on button click and scroll up the page to the first form error
+     * @type {Boolean}
+     */
+    var isContinueClicked = false;
 
     /**
      * initialize form validation
      */
-    $('#coBorrowerForm').validate(function(isValid){
+    myForm.validate(function(isValid, invalidFields){
+        if(isValid){
 
+            return true;
+        }//// if isValid
+        else{
+            if(invalidFields && true === isContinueClicked){
+                var scrollTo = $('#' + invalidFields[0].id).offset().top;
+                //// scroll the form to the first error
+                animateScroll(scrollTo-20, 1);
+
+                isContinueClicked = false;
+            }
+        }//// if isValid Else
+
+        return false;
     });
+
+    /**
+     * Continue Click
+     */
+    $('#continue').on('click', function(e){
+        isContinueClicked = true;
+    })
 
     /**
      * Field formating while typing
      */
-    $('input.phone').on('keyup',function(e){
-        var val = $(this).val();
-        $(this).val(formatPhone(val));
-    });
+
+    $('input.phone')
+    .on('keydown', restrictPhone)
+    .on('keyup', formatPhone)
 
     $('input.date')
     .on('keydown', restrictDate)
-    .on('keyup', function(){
-        var val = $(this).val();
-        $(this).val(formatDate(val));
-    });
+    .on('keyup', formatDate);
 
     $('input.numbers')
     .on('keydown', restrictNumbers)
 
     $('input.ssn')
     .on('keydown', restrictSSN)
-    .on('keyup', function(){
-        var val = $(this).val();
-        $(this).val(formatSSN(val));
-    });
+    .on('keyup', formatSSN);
 
     $('input.currency')
     .on('keydown', restrictCurrency)
-    .on('keyup',function(e){
-        var val = $(this).val();
-        $(this).val(formateCurrency(val));
-    })
+    .on('keyup', formatCurrency)
 
 
-    $('input[name=co_livesame]').off('change').on('change', function(ev){
+
+    $('input[name=co_livesame]').on('change', function(ev){
         if($(this).val() === 'yes'){
 
             $('#addressDiv').slideUp()
@@ -68,14 +84,17 @@ function coBorrowerReady(){
             .removeClass('cc-validate error correct message')
             .addClass('cc-to-be-validate')
             .find('#errorMsg').remove();
-
+            $('#preAddress').slideUp().empty();
         }
         else{
             $('#addressDiv').slideDown()
             .find('.cc-to-be-validate')
             .removeClass('cc-to-be-validate')
             .addClass('cc-validate');
+
+            addAutoAddress(1);
         }
+        updateTabIndex(myForm);
     });
 
     $('#back').on('click', function(ce){
@@ -85,14 +104,14 @@ function coBorrowerReady(){
     /**
      * check for address length change
      */
-    checkAddressLength($('#coBorrowerForm'), addressIndex);
+    checkAddressLength(myForm, addressIndex);
 
-    $('#num_dependents').on('change', function(e){
+    $('#co_dependants').on('change', function(e){
 
         var v = parseInt($(this).val(), 10);
         var agesDiv = $('#dependentSection');
         var cols = agesDiv.find('.col-xs-6').hide();
-
+        console.log(v)
         if(v > 0){
             for(var x=0; x<v; x++){
                 cols.eq(x).show();
@@ -105,91 +124,11 @@ function coBorrowerReady(){
     });
 
     /**
-     * Dynamic placeholder
+     * update co-borrower name
      */
-    dynamicPlacholder($('#coBorrowerForm'))
+    var nameHolder = $('.coBorrowerName');
+    $('#co_fname').on('keyup', function(e){
+        var val = $.trim( $(this).val() );
+        nameHolder.text( val ? val : 'Co-Borrower');
+    })
 };//// borrowerReady
-
-// function checkAddressLength(container, index){
-//     var post = index > 0 ? '_'+index : '';
-
-//     container.find('#address_time_month' + post)
-//     .attr('data-address', index)
-//     .on('change', function(e){
-//         var v = parseInt($(this).val(), 10);
-
-//         var years = parseInt($('#address_time_year' + post).val(), 10);
-//         var myId = parseInt($(this).attr('data-address'), 10);
-//         if(!v) v =0;
-//         if(!years) years = 0;
-
-//         if(years){
-//             v += years * 12;
-//         }
-//         if(v < 24){
-//             addAddress(myId+1);
-//         }
-//         else{
-//             removeAddress(myId+1);
-//         }
-//     });
-
-
-//     container.find('#address_time_year' + post)
-//     .attr('data-address', index)
-//     .on('change', function(e){
-//         var v = parseInt($('#address_time_month' + post).val(), 10);
-//         var years = parseInt($(this).val(), 10);
-//         var myId = parseInt($(this).attr('data-address'), 10);
-
-//         if(!v) v =0;
-//         if(!years) years = 0;
-
-//         if(years){
-//             v += years * 12;
-//         }
-//         console.log(v)
-//         if(v < 24){
-//             addAddress(myId+1);
-//         }
-//         else{
-//             removeAddress(myId+1);
-//         }
-//     })
-// }///// fun. checkAddressLength
-
-// function addAddress(nextId){
-//     if(nextId >= 4) return false;
-//     if(addressIndex >= nextId) return false;
-
-//     var section = $('#preAddress');
-//     addressIndex = nextId;
-//     var address = $(addressTemplate.replace(/(\_1)/g, '_'+addressIndex));
-
-//     address.find('.cc-field').addClass('cc-validate');
-//     fillStateDropdown( address.find('.state-dropdown') );
-//     address.find('.cc-dropdown').dropdown();
-//     address.find('input.numbers').on('keydown', restrictNumbers);
-
-//     checkAddressLength(address, addressIndex)
-//     section.append(address);
-//     updateTabIndex( $('#coBorrowerForm'))
-//     section.slideDown();
-// }
-
-// function removeAddress(idRemove){
-
-//     if(idRemove <=0) return false;
-//     if(idRemove > addressIndex) return false;
-
-//     var section = $('#preAddress');
-//     for(var x = idRemove; x<=addressIndex; x++){
-//         var address = section.find('#address_' + x);
-
-//         address.find('.cc-field').removeClass('cc-validate error correct');
-//         address.remove();
-//         updateTabIndex( $('#coBorrowerForm'));
-//     }
-//     addressIndex = idRemove-1;
-//     if(addressIndex == 0) section.slideUp()
-// }

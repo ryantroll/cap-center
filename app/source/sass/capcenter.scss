@@ -148,7 +148,7 @@ body.cc-body{
 
 
             @media screen and (min-width:$wTablet){
-                width:0% + 100%/7%;
+                width:0% + 100%/6%;
                 border-right: 1px solid $cWhite;
                 border-bottom:none;
                 display: block;
@@ -308,6 +308,18 @@ body.cc-body{
         margin-bottom: 0;
     }
 
+    .title{
+        h3{
+            padding-bottom:30px;
+            font-weight: 400;
+        }
+        h4{
+            padding-top:15px;
+            padding-bottom:5px;
+            font-weight: 400;
+        }
+    }
+
 }//// .cc-box
 
 .cc-message{
@@ -337,7 +349,7 @@ body.cc-body{
         position:relative;
 
         input, textarea, select, option{
-                font-size:16px;/// fixing the iphone zoom issue
+            font-size:16px;/// fixing the iphone zoom issue
         }
 
         label{
@@ -360,6 +372,7 @@ body.cc-body{
         input[type="text"],
         input[type="password"],
         input[type="number"],
+        input[type="tel"],
         input[type="date"]{
             border:1px solid $cBGMidGray;
             padding:0 15px;
@@ -376,13 +389,41 @@ body.cc-body{
 
         select{
             display: block;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance:none;
+            appearance: none;
             border:1px solid $cBGMidGray;
             padding:0 0 0 15px;
             height: $nFieldHeight;
             line-height: $nFieldHeight;
             width:100%;
-            // height: auto;
+            background-color:$cWhite;
+            padding: 0 30px 0 15px;
             @include mxRoundCorners(3px);
+            cursor: pointer;
+            overflow:hidden;
+
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                /* IE10+ CSS styles go here */
+                padding-right:0;
+            }
+
+        }
+        select + span.arrow{
+            position:absolute;
+            width:$nFieldHeight;
+            height: $nFieldHeight;
+            line-height: $nFieldHeight;
+            text-align:center;
+            bottom:0;
+            right:0;
+            top:auto;//// conflict fix
+
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                /* IE10+ CSS styles go here */
+                display:none;
+            }
         }
 
         button,
@@ -430,7 +471,7 @@ body.cc-body{
                 // clear:both;
                 margin-bottom:1em;
                 min-width:150px;
-                margin-right:1em;
+                margin-right:0;
 
                 &:first-of-type{
                     margin-right: 0;
@@ -444,6 +485,11 @@ body.cc-body{
             &.right{
                  button, .cc-btn{
                     float:right;
+                    clear:both;
+                    @media screen and (min-width:$wMobile){
+                        margin-right:1em;
+                        clear:none;
+                    }
                  }
             }
             &.more-padding{
@@ -459,7 +505,7 @@ body.cc-body{
             text-align: center;
             font-size:11px;
             position:absolute;
-            bottom:43px;
+            bottom:42px;
             padding:0 5px;
             height: 20px;
             line-height: 20px;
@@ -485,6 +531,59 @@ body.cc-body{
                 display: block;
             }
         }
+
+
+        .cc-address-length{
+            display: block;
+            width:100%;
+
+            border: 1px solid $cBGMidGray;
+            @include mxRoundCorners(3px);
+            padding:0 1em 0  0;
+
+            &:after{
+                display: block;
+                content: " ";
+                clear: both;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            input[type="number"],
+            input[type="tel"],
+            input[type="date"]{
+                border:none;
+                width:20%;
+                float:left;
+                padding-left:2px;
+                padding-right:2px;
+                text-align: center;
+                background-color:transparent;
+            }
+            .slash{
+                display: block;
+                float:left;
+                height: $nFieldHeight;
+                width:10%;
+                text-align: right;
+                line-height: $nFieldHeight;
+                color:$cBGMidGray;
+            }
+            .label1{
+                display: block;
+                float:left;
+                height: $nFieldHeight;
+                font-size:0.8em;
+                font-weight: 400;
+                margin-bottom:0;
+
+                width:25%;
+                text-align: left;
+                line-height: $nFieldHeight;
+                color:$cBGMidGray;
+            }
+        }///.cc-address-length
+
     }//// .cc-field
 
 
@@ -498,6 +597,7 @@ body.cc-body{
         input[type="text"],
         input[type="password"],
         input[type="number"],
+        input[type="tel"],
         input[type="date"],
         textarea{
             border-color:$cOrange;
@@ -505,7 +605,10 @@ body.cc-body{
         select{
             border-color:$cOrange;
         }
-        .link{
+        .cc-address-length{
+            border-color:$cOrange;
+        }
+        .arrow{
             color:$cOrange;
         }
     }//// .cc-field.error
@@ -532,48 +635,13 @@ body.cc-body{
         input[type="text"],
         input[type="password"],
         input[type="number"],
+        input[type="tel"],
         input[type="date"],
         textarea,
         select{
             @include mxBorderRadius(3px, 0, 3px, 3px);
         }
     }
-
-    .cc-field.float{
-        position:relative;
-        padding-top:12px;
-        label{
-            position:absolute;
-            bottom:0;
-            left:0;
-            opacity:0.5;
-            padding:0 15px;
-            height: $nFieldHeight;
-            line-height: $nFieldHeight;
-            font-size:14px;
-            font-weight: 400;
-            @include mxTransition(all, 0.2s, ease-out);
-        }
-        input[type="text"]{
-            border: none;
-            border-bottom: 1px solid $cBGMidGray;
-            padding:0 15px;
-            @include mxRoundCorners(0);
-        }
-        &.edited{
-            label{
-                position:absolute;
-                bottom:30px;
-                left:0;
-                // top:5px;
-                opacity:1;
-                padding:0;
-                font-size:0.75em;
-                color:$cBlue;
-                font-weight: 700;
-            }
-        }/// &.edited
-    }//// .float
 
     .cc-form-section{
         padding:1em 1em 1em 1em;
@@ -606,23 +674,40 @@ body.cc-body{
             input[type="text"],
             input[type="password"],
             input[type="number"],
+            input[type="tel"],
             input[type="date"],
             textarea,
             select{
                 border-color:$cWhite;
             }
         }
+        .cc-field.error{
+            input[type="text"],
+            input[type="password"],
+            input[type="number"],
+            input[type="tel"],
+            input[type="date"],
+            textarea,
+            select{
+                border-color:$cOrange!important;
+            }
+        }
 
         a{
             color:$cOrange;
+        }
+
+        .cc-address-length{
+            background-color:$cWhite;
+            border-color:$cWhite;
         }
     }//// .cc-form-section
 
     .cc-dropdown{
         position:relative;
-        .message{
-            bottom:42px;
-        }
+        // .message{
+        //     bottom:42px;
+        // }
         .link{
             display: block;
             width:100%;
@@ -704,49 +789,66 @@ body.cc-body{
     }//// .cc-dropdown
 
     .cc-radio{
-        .radio-group{
+        .radio-yesno{
             height: 42px;
-            padding-top:10px;
+            // padding-top:10px;
             input[type="radio"]{
                 display:inline-block;
                 width:20px;
                 height: 20px;
                 opacity: 1;
-                position:relative;
                 float:left;
                 margin-right:10px;
                 margin-top:0;
-
-
-                &:after{
-                    display: block;
-                    content: " ";
-                    width:20px;
-                    height: 20px;
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    background-color:$cWhite;
-                    @include mxRoundCorners(10px);
-                    border:1px solid $cTextGray;
-                }
-
-                &:checked{
-                    &:after{
-                        background-color:$cLightGreen;
-                        border-color:$cLightGreen;
-                    }
-                }
+                display: block;
+                margin-left:2px;
             }
 
             label{
                 float:left;
-                margin-right:2em;
+                // margin-right:2em;
                 display: table;
-                width:auto;
-                line-height:20px;
+                width:48%;
                 margin-top: 0;
-            }
+                position: relative;
+                color:$cWhite;
+                cursor:pointer;
+
+
+                &:first-of-type{
+                    margin-right:2%;
+                }
+
+                span{
+                    position:absolute;
+                    display: block;
+                    text-align:center;
+                    line-height:$nFieldHeight+1px;
+                    height: $nFieldHeight +1px;
+                    width:100%;
+                    z-index: 2;
+                    @include mxRoundCorners(3px);
+                    // border: 1px solid $cBGMidGray;
+                }
+                &:after{
+                    display: block;
+                    content: " ";
+                    width:100%;
+                    height: $nFieldHeight+1px;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    background-color:$cBGMidGray;
+
+                    @include mxRoundCorners(3px);
+                    z-index: 0;
+                }
+                &.checked{
+                    &:after{
+                        background-color:$cLightGreen;
+                    }
+                }
+            }//// label
         }//// .radio-group
 
     }//// .cc-radio

@@ -1,4 +1,9 @@
 (function( $ ) {
+    $.extend($.expr[':'], {
+        startsWith: function(elem,i,match) {
+            return (elem.textContent || elem.innerText || "").toLowerCase().indexOf(match[3].toLowerCase()) == 0;
+        }
+    });
     $.fn.dropdown = function() {
         var dropdowns = this.filter('.cc-dropdown');
 

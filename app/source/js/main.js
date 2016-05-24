@@ -1,9 +1,6 @@
+var _appVars = {};
 jQuery(document).ready(ccDocumentReady);
-$.extend($.expr[':'], {
-    startsWith: function(elem,i,match) {
-        return (elem.textContent || elem.innerText || "").toLowerCase().indexOf(match[3].toLowerCase()) == 0;
-    }
-});
+
 function ccDocumentReady(){
 
     /**
@@ -88,9 +85,11 @@ function ccDocumentReady(){
         })
     });//// .each
 
-
-
-}
+    /**
+     * Set yes/no radio button
+     */
+    yesNoRadio();
+}//// fun. ccDocumentReady
 
 function mainScroll(e){
     if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
@@ -111,12 +110,26 @@ function mainScroll(e){
 
 }//// fun. mainScroll
 
+
 function updateTabIndex(selector){
     selector.find('.cc-field').each(function(x){
-        $(this).find('input[type=text]')
-        .eq(0).attr('tabindex', x);
+        var s = $(this).find('input[type=text], input[type=email], input[type=date], input[type=tel], input[type=radio], input[type=checkbox], input[type=number], textarea, select')
+        .attr('tabindex', x+1);
     })
 }//// fun. updateTabIndex
+
+function yesNoRadio(){
+  var radios = $('.radio-yesno input[type=radio]').on('change', function(e){
+    if($(this).attr('checked')){
+      $(this).parent().parent().find('label.checked').removeClass('checked');
+      $(this).parent().addClass('checked');
+    }
+    else{
+      $(this).parent().removeClass('checked');
+    }
+  });
+  radios.trigger('change')
+}
 
 function fillStateDropdown(selector){
     selector.each(function(x){
@@ -126,142 +139,232 @@ function fillStateDropdown(selector){
             ul.append(li);
         }//// for
     });
+}//// fun. fillStateDropdown
+
+var isAndroid = function(){
+  return /(android)/i.test(navigator.userAgent);
+}//// fun. isAndroid
+
+
+var restrictPhone = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which || keyEv.charCode;
+  var char = String.fromCharCode(code);
+  if(isAndroid() && code == 229) return;
+
+  var allowedChars = String("01234567890-() ").split('');
+  var allowed = [189, 48, 57, 9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  $(this).removeError('cc-numbers-only')
+
+  if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
+    if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+    $(this).addError('cc-numbers-only');
+    $(this).showError();
+    return false;
+  }
 }
 
-var clearPhoneFormat = function(val){
-  if (val) {
-    return val.split(/[\(|\)| |\-|\+|\.]/).join('');
-  } else return '';
-}
-
-var formatPhone = function(val){
-  var rawValue = clearPhoneFormat(val);
+var formatPhone = function(keyEv){
+  var val = $(this).val();
+  var rawValue = val.split(/[\(|\)| |\-|\+|\.]/).join('');
   var formated = '';
-  if(rawValue.length > 3){
+  if(rawValue.length >= 3){
     formated += '(' + rawValue.slice(0,3) + ') ';
     rawValue = rawValue.slice(3);
   }
-  if(rawValue.length > 3){
+  if(rawValue.length >= 3){
     formated += rawValue.slice(0,3) + '-';
     rawValue = rawValue.slice(3);
   }
   formated += rawValue;
 
-  return formated;
+  $(this).val(formated);
 }//// fun. formatPhone
 
 var restrictDate = function(keyEv){
-  var code = keyEv.keyCode || keyEv.which;
+  var code = keyEv.keyCode || keyEv.which || keyEv.charCode;
   var char = String.fromCharCode(code);
-  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 191, 9, 8, 37, 38, 39, 40, 13];
+  if(isAndroid() && code == 229) return;
 
-  if(allowed.indexOf(code) == -1 ){
+  var allowedChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/']
+  var allowed = [191, 9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  $(this).removeError('cc-numbers-only')
+
+  if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+    $(this).addError('cc-numbers-only');
+    $(this).showError();
+    return false;
   }
-
 }//// fun. formateDate
 
-var formatDate = function(val){
+var formatDate = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var allowed = [191, 9, 8, 37, 38, 39, 40, 13];
+  if(isAndroid() && code == 229) return;
+  if(allowed.indexOf(code) > -1) return;
+
+
+  var val = $(this).val();
+
   var ret = '';
   var raw = val.replace(/\//g, '');
 
-  if(raw.length > 2){
+  if(raw.length >= 2){
     ret += raw.slice(0, 2) + '/';
     raw = raw.slice(2);
 
-    if(raw.length > 2){
+    if(raw.length >= 2){
       ret += raw.slice(0, 2) + '/';
       raw = raw.slice(2);
     }
   }
 
   ret += raw;
-  return ret;
-}
+  $(this).val(ret);
+}//// fun. formateDate
 
 var restrictSSN = function(keyEv){
-  var code = keyEv.keyCode || keyEv.which;
+  var code = keyEv.keyCode || keyEv.which || keyEv.charCode;
   var char = String.fromCharCode(code);
+  if(isAndroid() && code == 229) return;
+  var allowedChars = String("01234567890-").split('');
+  var allowed = [189, 9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  $(this).removeError('cc-numbers-only');
 
-  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 189, 9, 8, 37, 38, 39, 40, 13];
-
-  if(allowed.indexOf(code) == -1 ){
+  if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+    $(this).addError('cc-numbers-only');
+    $(this).showError();
+    return false;
   }
 }//// fun. formateSSN
 
-var formatSSN = function(val){
+var formatSSN = function(){
+  var val = $(this).val();
   var ret = '';
   var raw = val.replace(/\-/g, '');
 
-  if(raw.length > 3){
+  if(raw.length >= 3){
     ret += raw.slice(0, 3) + '-';
     raw = raw.slice(3);
 
-    if(raw.length > 2){
+    if(raw.length >= 2){
       ret += raw.slice(0, 2) + '-';
       raw = raw.slice(2);
     }
   }
 
   ret += raw;
-  return ret;
+  $(this).val(ret);
 }
 
 var restrictNumbers = function(keyEv){
-  var code = keyEv.keyCode || keyEv.which;
+  var code = keyEv.keyCode || keyEv.which || keyEv.charCode;
   var char = String.fromCharCode(code);
+  if(isAndroid() && code == 229) return;
+  var allowedChars = String("01234567890").split('');
+  var allowed = [9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  $(this).removeError('cc-numbers-only');
 
-  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 9, 8, 37, 38, 39, 40, 13];
-
-  if(allowed.indexOf(code) == -1 ){
+  if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+    $(this).addError('cc-numbers-only');
+    $(this).showError();
+    return false;
   }
 }//// fun. formateSSN
 
 var restrictCurrency = function(keyEv){
-  var code = keyEv.keyCode || keyEv.which;
+  var code = keyEv.keyCode || keyEv.which || keyEv.charCode;
   var char = String.fromCharCode(code);
+  if(isAndroid() && code == 229) return;
+  var allowedChars = String("01234567890$,").split('');
+  var allowed = [9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  $(this).removeError('cc-numbers-only');
 
-  var allowed = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 9, 8, 37, 38, 39, 40, 13];
-
-  if(allowed.indexOf(code) == -1 ){
+  if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+    $(this).addError('cc-numbers-only');
+    $(this).showError();
+    return false;
   }
 }//// fun. formateSSN
 
-var formateCurrency = function(val){
+var formatCurrency = function(){
+    var val = $(this).val();
     var ret = '';
-    var raw = val.split(/[\$| \,]/).join('');
+    var raw = val.split(/[\$| |\,]/).join('');
 
-    // if(raw.length > 0){
-    //     ret = ret + ',' + raw.slice(-3);
-    //     raw = raw.split(0, raw.length-4)
-    // }
-
-    if(raw.length > 0){
-      ret += '$' + raw;
+    if(raw.length > 3){
+        var arr = raw.split('');
+        var sep = 1;
+        for(var x=arr.length-1; x>=0; x--){
+          ret = (sep % 3 == 0 ? ',' : '') + arr[x]  + ret;
+          sep++;
+        }
+        ret = '$' + ret;
+    }
+    else if(raw.length > 0){
+      ret = '$' + raw;
+    }
+    else{
+      ret = raw;
     }
 
-    return ret;
-}
+    $(this).val(ret);
+}///// fun. formatCurrency
 
-var dynamicPlacholder = function(selector){
-  selector.find('.cc-field').each(function(x){
-      var self = $(this)
-      var field = self.find('input[type=text]');
-      var placeholder = self.find('.placeholder');
+var animateScroll = function(y, time){
 
-      if(placeholder.length > 0){
-        field.on('keyup', function(){
-          if(field.val()){
-            self.addClass('placeholder');
-          }
-          else{
-            self.removeClass('placeholder')
-          }
-        })
-      }
+    clearInterval(_appVars.scrollInte);//// stop anyscrolling
 
-    });
-}
+    if(undefined === time) time = 1;//// set default value for time
+    var fps = 60; //// frames per secons
+    var frameTime = Math.ceil(1000 / fps);
+    var d = time * frameTime; /// number of frames duration
+    var t = 0; //// time ticker / frame counter
+
+    //// set begin point whihc the currrent point
+    // b = document.documentElement.scrollTop ? document.documentElement.scrollTop : window.scrollY;
+    var b = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+    //
+    if(b === undefined){
+        b = 0;
+    }
+
+
+    //// check if scrolling destination is bigger than page height limits
+    var limit = Math.max( document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+    );
+    if(y>limit){
+        y = limit;
+    }
+
+    //// set the change between current and destination point
+    c = b - y;
+
+    //// do nothing if destination is same as current
+    if(Math.abs(c) < 1) return;
+
+    //// start time ticker
+    _appVars.scrollInte = setInterval(function(){
+        /// ease out math
+        var per = 1 - t/d;
+        var newY =  -c * (1-per*per*per*per) + b;
+
+        // console.log(">>", 1-(1-per)*(1-per));
+        window.scrollTo(0, newY);
+
+
+        if(t == d){
+            clearInterval(_appVars.scrollInte);
+            $(window).trigger('animateScrollEnd');
+        }
+        t++;
+
+    }, frameTime);
+}//// fun. animateScroll

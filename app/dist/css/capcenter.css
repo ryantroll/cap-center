@@ -119,7 +119,7 @@ body.cc-body {
       background-color: #a89b94; }
       @media screen and (min-width: 768px) {
         .ss-progress ul li {
-          width: 14.28571%;
+          width: 16.66667%;
           border-right: 1px solid #fff;
           border-bottom: none;
           display: block; } }
@@ -252,6 +252,13 @@ body.cc-body {
   /* for old Konqueror browsers */ }
   .cc-box:last-of-type {
     margin-bottom: 0; }
+  .cc-box .title h3 {
+    padding-bottom: 30px;
+    font-weight: 400; }
+  .cc-box .title h4 {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    font-weight: 400; }
 
 .cc-message {
   padding-top: 2em;
@@ -289,6 +296,7 @@ body.cc-body {
   .cc-form .cc-field input[type="text"],
   .cc-form .cc-field input[type="password"],
   .cc-form .cc-field input[type="number"],
+  .cc-form .cc-field input[type="tel"],
   .cc-form .cc-field input[type="date"] {
     border: 1px solid #a89b94;
     padding: 0 15px;
@@ -304,21 +312,47 @@ body.cc-body {
     .cc-form .cc-field input[type="text"]:focus,
     .cc-form .cc-field input[type="password"]:focus,
     .cc-form .cc-field input[type="number"]:focus,
+    .cc-form .cc-field input[type="tel"]:focus,
     .cc-form .cc-field input[type="date"]:focus {
       background-color: #f7f7f7; }
   .cc-form .cc-field select {
     display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
     border: 1px solid #a89b94;
     padding: 0 0 0 15px;
     height: 42px;
     line-height: 42px;
     width: 100%;
+    background-color: #fff;
+    padding: 0 30px 0 15px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     /* future proofing */
     -khtml-border-radius: 3px;
-    /* for old Konqueror browsers */ }
+    /* for old Konqueror browsers */
+    cursor: pointer;
+    overflow: hidden; }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .cc-form .cc-field select {
+        /* IE10+ CSS styles go here */
+        padding-right: 0; } }
+  .cc-form .cc-field select + span.arrow {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    bottom: 0;
+    right: 0;
+    top: auto; }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .cc-form .cc-field select + span.arrow {
+        /* IE10+ CSS styles go here */
+        display: none; } }
   .cc-form .cc-field button,
   .cc-form .cc-field input[type="button"],
   .cc-form .cc-field .cc-btn {
@@ -367,7 +401,7 @@ body.cc-body {
     display: block;
     margin-bottom: 1em;
     min-width: 150px;
-    margin-right: 1em; }
+    margin-right: 0; }
     .cc-form .cc-field.cc-buttons button:first-of-type, .cc-form .cc-field.cc-buttons .cc-btn:first-of-type {
       margin-right: 0; }
   .cc-form .cc-field.cc-buttons:after {
@@ -375,7 +409,12 @@ body.cc-body {
     content: " ";
     clear: both; }
   .cc-form .cc-field.cc-buttons.right button, .cc-form .cc-field.cc-buttons.right .cc-btn {
-    float: right; }
+    float: right;
+    clear: both; }
+    @media screen and (min-width: 320px) {
+      .cc-form .cc-field.cc-buttons.right button, .cc-form .cc-field.cc-buttons.right .cc-btn {
+        margin-right: 1em;
+        clear: none; } }
   .cc-form .cc-field.cc-buttons.more-padding {
     padding-top: 4em; }
   .cc-form .cc-field .message {
@@ -386,7 +425,7 @@ body.cc-body {
     text-align: center;
     font-size: 11px;
     position: absolute;
-    bottom: 43px;
+    bottom: 42px;
     padding: 0 5px;
     height: 20px;
     line-height: 20px;
@@ -408,6 +447,52 @@ body.cc-body {
     color: #a89b94; }
   .cc-form .cc-field.placeholder .placeholder {
     display: block; }
+  .cc-form .cc-field .cc-address-length {
+    display: block;
+    width: 100%;
+    border: 1px solid #a89b94;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /* future proofing */
+    -khtml-border-radius: 3px;
+    /* for old Konqueror browsers */
+    padding: 0 1em 0  0; }
+    .cc-form .cc-field .cc-address-length:after {
+      display: block;
+      content: " ";
+      clear: both; }
+    .cc-form .cc-field .cc-address-length input[type="text"],
+    .cc-form .cc-field .cc-address-length input[type="password"],
+    .cc-form .cc-field .cc-address-length input[type="number"],
+    .cc-form .cc-field .cc-address-length input[type="tel"],
+    .cc-form .cc-field .cc-address-length input[type="date"] {
+      border: none;
+      width: 20%;
+      float: left;
+      padding-left: 2px;
+      padding-right: 2px;
+      text-align: center;
+      background-color: transparent; }
+    .cc-form .cc-field .cc-address-length .slash {
+      display: block;
+      float: left;
+      height: 42px;
+      width: 10%;
+      text-align: right;
+      line-height: 42px;
+      color: #a89b94; }
+    .cc-form .cc-field .cc-address-length .label1 {
+      display: block;
+      float: left;
+      height: 42px;
+      font-size: 0.8em;
+      font-weight: 400;
+      margin-bottom: 0;
+      width: 25%;
+      text-align: left;
+      line-height: 42px;
+      color: #a89b94; }
 
 .cc-form .cc-field.error label {
   color: #F47C29; }
@@ -417,6 +502,7 @@ body.cc-body {
 .cc-form .cc-field.error input[type="text"],
 .cc-form .cc-field.error input[type="password"],
 .cc-form .cc-field.error input[type="number"],
+.cc-form .cc-field.error input[type="tel"],
 .cc-form .cc-field.error input[type="date"],
 .cc-form .cc-field.error textarea {
   border-color: #F47C29; }
@@ -424,12 +510,16 @@ body.cc-body {
 .cc-form .cc-field.error select {
   border-color: #F47C29; }
 
-.cc-form .cc-field.error .link {
+.cc-form .cc-field.error .cc-address-length {
+  border-color: #F47C29; }
+
+.cc-form .cc-field.error .arrow {
   color: #F47C29; }
 
 .cc-form .cc-field.message input[type="text"],
 .cc-form .cc-field.message input[type="password"],
 .cc-form .cc-field.message input[type="number"],
+.cc-form .cc-field.message input[type="tel"],
 .cc-form .cc-field.message input[type="date"],
 .cc-form .cc-field.message textarea,
 .cc-form .cc-field.message select {
@@ -438,43 +528,6 @@ body.cc-body {
   border-radius: 3px 0 3px 3px;
   /* future proofing */
   -khtml-border-radius: 3px 0 3px 3px; }
-
-.cc-form .cc-field.float {
-  position: relative;
-  padding-top: 12px; }
-  .cc-form .cc-field.float label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    opacity: 0.5;
-    padding: 0 15px;
-    height: 42px;
-    line-height: 42px;
-    font-size: 14px;
-    font-weight: 400;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out; }
-  .cc-form .cc-field.float input[type="text"] {
-    border: none;
-    border-bottom: 1px solid #a89b94;
-    padding: 0 15px;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;
-    /* future proofing */
-    -khtml-border-radius: 0;
-    /* for old Konqueror browsers */ }
-  .cc-form .cc-field.float.edited label {
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    opacity: 1;
-    padding: 0;
-    font-size: 0.75em;
-    color: #005366;
-    font-weight: 700; }
 
 .cc-form .cc-form-section {
   padding: 1em 1em 1em 1em;
@@ -504,17 +557,27 @@ body.cc-body {
   .cc-form .cc-form-section .cc-field input[type="text"],
   .cc-form .cc-form-section .cc-field input[type="password"],
   .cc-form .cc-form-section .cc-field input[type="number"],
+  .cc-form .cc-form-section .cc-field input[type="tel"],
   .cc-form .cc-form-section .cc-field input[type="date"],
   .cc-form .cc-form-section .cc-field textarea,
   .cc-form .cc-form-section .cc-field select {
     border-color: #fff; }
+  .cc-form .cc-form-section .cc-field.error input[type="text"],
+  .cc-form .cc-form-section .cc-field.error input[type="password"],
+  .cc-form .cc-form-section .cc-field.error input[type="number"],
+  .cc-form .cc-form-section .cc-field.error input[type="tel"],
+  .cc-form .cc-form-section .cc-field.error input[type="date"],
+  .cc-form .cc-form-section .cc-field.error textarea,
+  .cc-form .cc-form-section .cc-field.error select {
+    border-color: #F47C29 !important; }
   .cc-form .cc-form-section a {
     color: #F47C29; }
+  .cc-form .cc-form-section .cc-address-length {
+    background-color: #fff;
+    border-color: #fff; }
 
 .cc-form .cc-dropdown {
   position: relative; }
-  .cc-form .cc-dropdown .message {
-    bottom: 42px; }
   .cc-form .cc-dropdown .link {
     display: block;
     width: 100%;
@@ -575,44 +638,60 @@ body.cc-body {
       box-shadow: 1px 1px 2px 1px rgba(150, 150, 150, 0.5);
       overflow: auto; }
 
-.cc-form .cc-radio .radio-group {
-  height: 42px;
-  padding-top: 10px; }
-  .cc-form .cc-radio .radio-group input[type="radio"] {
+.cc-form .cc-radio .radio-yesno {
+  height: 42px; }
+  .cc-form .cc-radio .radio-yesno input[type="radio"] {
     display: inline-block;
     width: 20px;
     height: 20px;
     opacity: 1;
-    position: relative;
     float: left;
     margin-right: 10px;
-    margin-top: 0; }
-    .cc-form .cc-radio .radio-group input[type="radio"]:after {
+    margin-top: 0;
+    display: block;
+    margin-left: 2px; }
+  .cc-form .cc-radio .radio-yesno label {
+    float: left;
+    display: table;
+    width: 48%;
+    margin-top: 0;
+    position: relative;
+    color: #fff;
+    cursor: pointer; }
+    .cc-form .cc-radio .radio-yesno label:first-of-type {
+      margin-right: 2%; }
+    .cc-form .cc-radio .radio-yesno label span {
+      position: absolute;
+      display: block;
+      text-align: center;
+      line-height: 43px;
+      height: 43px;
+      width: 100%;
+      z-index: 2;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      /* future proofing */
+      -khtml-border-radius: 3px;
+      /* for old Konqueror browsers */ }
+    .cc-form .cc-radio .radio-yesno label:after {
       display: block;
       content: " ";
-      width: 20px;
-      height: 20px;
+      width: 100%;
+      height: 43px;
       position: absolute;
       top: 0;
       left: 0;
-      background-color: #fff;
-      -moz-border-radius: 10px;
-      -webkit-border-radius: 10px;
-      border-radius: 10px;
+      background-color: #a89b94;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
       /* future proofing */
-      -khtml-border-radius: 10px;
+      -khtml-border-radius: 3px;
       /* for old Konqueror browsers */
-      border: 1px solid #767371; }
-    .cc-form .cc-radio .radio-group input[type="radio"]:checked:after {
-      background-color: #50a54c;
-      border-color: #50a54c; }
-  .cc-form .cc-radio .radio-group label {
-    float: left;
-    margin-right: 2em;
-    display: table;
-    width: auto;
-    line-height: 20px;
-    margin-top: 0; }
+      z-index: 0; }
+    .cc-form .cc-radio .radio-yesno label.checked:after {
+      background-color: #50a54c; }
 
 .cc-note {
   text-align: center;

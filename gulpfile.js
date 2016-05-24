@@ -32,10 +32,10 @@ gulp.task('scripts', function(){
         ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./app/dist/js/'))
         .pipe(rename('all.min.js'))
         .pipe(uglify())
-        pipe(sourcemaps.write())
         .pipe(gulp.dest('./app/dist/js/'))
 });
 

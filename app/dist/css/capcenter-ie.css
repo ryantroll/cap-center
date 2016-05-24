@@ -1,0 +1,8 @@
+body {
+  background-color: #f00; }
+
+.cc-form .cc-field select {
+  padding-right: 0; }
+
+.cc-form .cc-field select + span.arrow {
+  display: none; }
