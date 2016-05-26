@@ -11,11 +11,15 @@ function borrowerReady(){
      */
     if(myForm.length <= 0) return;
 
+    /**
+     * [addressIndex will track the number of address added and stop if total of 4 address]
+     * @type {Number}
+     */
     addressIndex = 1;
 
     addressTemplate = $('#addressTemplate').html();
 
-    updateTabIndex( myForm);
+    updateTabIndex( myForm); //// function in main.js
 
     /**
      * [isContinueClicked it will be set to true when continue button clicked ]
@@ -34,16 +38,19 @@ function borrowerReady(){
             var isCoBorrower =  String('234').split('').indexOf( $('#bo_applytype').val() ) > -1;
 
             if(true === isCoBorrower){
-                myForm.attr('action', 'index-co-borrower.html');
+                myForm.attr('action', '02-coborrower.html');
             }
 
             return true;
         }/// if isValid
         else{
+            //// if the form is not valid and continue button is clicked
+            //// scroll to the page to first field with error
             if(invalidFields && true === isContinueClicked){
+
                 var scrollTo = $('#' + invalidFields[0].id).offset().top;
                 //// scroll the form to the first error
-                animateScroll(scrollTo-20, 1);
+                animateScroll(scrollTo-20, 1);  //// function in main.js
 
                 isContinueClicked = false;
             }
@@ -61,6 +68,7 @@ function borrowerReady(){
 
     /**
      * Field formating while typing
+     * event handlers are in main.js
      */
 
     $('input.phone')
@@ -98,8 +106,11 @@ function borrowerReady(){
     /**
      * check for address length change
      */
-    checkAddressLength(myForm, addressIndex);
+    checkAddressLength(myForm, addressIndex); //// function in main.js
 
+    /**
+     * Check number of dependents change and show ages fields
+     */
     $('#bo_dependants').on('change', function(e){
 
         var v = parseInt($(this).val(), 10);
@@ -117,6 +128,9 @@ function borrowerReady(){
         }
     });
 
+    /**
+     * Check change of radio button current address own/rent
+     */
     $('input[name=bo_currently]').on('change', function(){
         var val = $(this).val();
         var rentCol = $('#monthlyRent');
@@ -134,6 +148,9 @@ function borrowerReady(){
         }
     });
 
+    /**
+     * Add address type ahead functionality to address
+     */
     addAutoAddress(1);
 
 };//// borrowerReady
@@ -203,17 +220,16 @@ function addAddress(nextId){
     var address = $(addressTemplate.replace(/(\{\#\})/g, addressIndex));
 
     address.find('.cc-field.cc-to-be-validate').addClass('cc-validate');
-    fillStateDropdown( address.find('.state-dropdown') );
+    fillStateDropdown( address.find('.state-dropdown') ); //// fun. in main.js
 
     address.find('input.numbers').on('keydown', restrictNumbers);
 
     checkAddressLength(address, addressIndex);
 
     section.append(address);
-    console.log(section.parent('form').hide())
     addAutoAddress(addressIndex);
-    // updateTabIndex( $('#borrowerForm'))
-    updateTabIndex( $('.cc-form'))
+
+    updateTabIndex( $('.cc-form')); //// function in main.js
     section.slideDown();
 }
 
@@ -228,12 +244,16 @@ function removeAddress(idRemove){
 
         address.find('.cc-field').removeClass('cc-validate error correct');
         address.remove();
-        updateTabIndex( $('#borrowerForm'));
+        updateTabIndex( $('.cc-form')); //// function in main.js
     }
     addressIndex = idRemove-1;
     if(addressIndex <= 1) section.slideUp()
 }
 
+/**
+ * [addAutoAddress will add address type ahead functionality to text field with id 'bo_address']
+ * @param {[type]} index [in multi-address case this variable will tel the function which address to bind the type ahead to]
+ */
 function addAutoAddress(index){
     var post = index >= 2 ? ''+index : '';
 
@@ -241,6 +261,7 @@ function addAutoAddress(index){
         document.getElementById('bo_address' + post),
         {types: ['geocode']}
     );
+    //// set the address index and post in autocomplete object to be used in fillInAddress function
     autocomplete.index = 0;
     autocomplete.post = post;
 
@@ -249,6 +270,11 @@ function addAutoAddress(index){
     autocomplete.addListener('place_changed', fillInAddress);
 }
 
+/**
+ * [fillInAddress will update the address city, stat, and zip filed after user select address form type ahead]
+ * this inside this function will reference google autocompete object
+ * @return {[null]} [description]
+ */
 function fillInAddress(){
     //// this refer to the auto complete object
 

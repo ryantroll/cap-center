@@ -9,18 +9,15 @@
 
             form.find('.cc-field.cc-validate').each(function(n){
                 var self = $(this);
-                // if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
 
                 var isValid = self.validateField();
-
-                if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
-
+                // if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
 
 
                 //// false and true strictly test as null will returned is field is not validated
                 if(false === isValid){
                     isFormValid = isFormValid && false;
-                    var field = self.find('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="hidden"], select, textarea');
+                    var field = self.find('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="radio"], input[type="hidden"], select, textarea');
                     var label = self.find('label').eq(0);
                     var err = field.data('err');
                     var fErr = {filed:label.text(), id:field.attr('id'), error:err};
@@ -28,9 +25,11 @@
                 }
             }); /// .each
 
+
             var extra = callback(isFormValid, invalidFields.length > 0 ? invalidFields : null);
 
-            isFormValid = isFormValid && extra;
+            isFormValid = isFormValid && !!extra;
+
 
             if(true !== isFormValid){
                 if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
@@ -41,20 +40,28 @@
         return this;
     };
 
+    var getMyContainer = function(field){
+        var p = field.parent();
+        if(true === p.hasClass('cc-field')){
+            return p;
+        }
+        else{
+            return getMyContainer(p);
+        }
+    }//// fun. getMyContainer
+
 
     var fieldChangedAfterError = function(e){
-        var container = $(this).parent()
-        if(container.hasClass('cc-address-length')){
-            container = container.parent();
-        }
+        var container = getMyContainer($(this));
         container.validateField()
     }
 
     $.fn.validateField = function(self){
         var self = this;
-        var f = self.find('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="hidden"], select, textarea');
+        var f = self.find('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="radio"], input[type="hidden"], select, textarea');
         var v = $.trim(f.val());
         var err = f.data('err');
+        var type = f.attr('type');
 
         if(!err) err = {};
 
@@ -63,15 +70,33 @@
 
         if(true === self.hasClass('cc-required')){
             isValidated = true;
-            if(v.length < 1){
-                isValid = false;
+
+            //// handle radio button case
+            if(type && type.toLowerCase() === 'radio'){
+                var name = f.attr('name');
+                var radios = self.find("input[name="+name+"]");
+                radios.each(function(r){
+                    isValid = !!radios.eq(r).attr('checked');
+                    ///// break .each of on radio button found checked
+                    if(true === isValid) return false;
+                })
+                f = radios;
+            }
+            else{
+                if(v.length < 1){
+                    isValid = false;
+                }
+            }//// if type radio else
+
+            if(true !== isValid){
                 var msg = self.find('.message.cc-required');
 
                 if(msg.length > 0){
                     err['cc-required'] = msg.eq(0).text();
                 }
-            }
+            } /// if v.length
             else{
+
                 delete err['cc-required'];
             }
         } //// if cc-required
@@ -225,11 +250,13 @@
         self.removeClass('error correct message').find('#errorMsg').remove();
 
         f.data('err', err);
+        f.data('isValid', isValid);
 
         //// if field passed through validation show error if any
         // if(true === isValidated ){
-        if(Object.keys(err).length > 0){
-            if(false === isValid || Object.keys(err).length > 0){
+        // if(Object.keys(err).length > 0){
+
+            if(false == isValid || Object.keys(err).length > 0){
 
                 f.showError();
 
@@ -241,18 +268,17 @@
                 return true;
             }
 
-        }//// if isValidated
+        // }//// if isValidated
 
     }//// fun. validateFild
 
     $.fn.showError = function(){
-        var f = this.filter('input, textarea, select').eq(0);
-        var container = f.parent();
-        if(container.hasClass('cc-address-length')){
-            container = container.parent();
-        }
+        var f = this.filter('input, textarea, select');
+        var container = getMyContainer(f);
+        var type = f.attr('type');
 
         var err = f.data('err');
+        var isValid = f.data('isValid');
 
         var str = [];
         for(var e in err){
@@ -261,38 +287,37 @@
 
         container.find('#errorMsg').remove();
 
+        f.off('keyup change', fieldChangedAfterError);
+
+        if(true !== isValid){
+            container.addClass('error');
+            f.off('keyup change', fieldChangedAfterError).on('keyup change', fieldChangedAfterError)
+        }
+
+
         if(str.length > 0 ){
             var msg = $('<div class="message" id="errorMsg"><i class="icon-error glyphicon glyphicon-remove-sign"></i> ' + str.join(' | ') + '</div>').show();
             container.append(msg);
-            container.addClass('error message');
-            f.off('keyup change', fieldChangedAfterError).on('keyup change', fieldChangedAfterError)
+            container.addClass('message');
         }
-        else{
-            f.off('keyup change', fieldChangedAfterError)
-        }
-
-
 
     }//// fun. showError
 
     $.fn.hideError = function(){
-        var f = this.filter('input').eq(0);
-        var container = f.parent();
-        if(container.hasClass('cc-address-length')){
-            container = container.parent();
-        }
+        var f = this.filter('input, select, textarea').eq(0);
 
-        container.addClass('correct');
+        var container = getMyContainer(f);
+
+        // container.addClass('correct');
         container.removeClass('error message');
+
+        container.find('#errorMsg').remove();
     }
 
     $.fn.addError = function(errorClass) {
         var field = this.filter('input, textarea, select');
         if(field.length < 1) return;
-        var container = field.parent();
-        if(container.hasClass('cc-address-length')){
-            container = container.parent();
-        }
+        var container = getMyContainer(field);
 
         var msg = container.find('.message.'+errorClass).eq(0).text();
         var err = field.data('err');
@@ -311,4 +336,6 @@
         delete err[errorClass];
         field.data('err', err);
     }
+
+
 }( jQuery ));

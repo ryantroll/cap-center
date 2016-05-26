@@ -6,7 +6,7 @@ function ccDocumentReady(){
     /**
      * Progress navigation mobile behavior
      */
-    $('#progres_switch').on('click', function(ev){
+    $('#progress_switch').on('click', function(ev){
         var self = $(this);
         var progressNav = $('#progress_nav');
         var handlePorgresNavClick = function (e) {
@@ -28,6 +28,31 @@ function ccDocumentReady(){
         if (false === progressNav.hasClass('expanded')) {
 
             $('body').bind('click', handlePorgresNavClick);
+        }
+    });
+
+    /**
+     * Hamburger menu button mobile behavior
+     */
+    $('#menu_switch').on('click', function(ev){
+        var self = $(this);
+        var menuNav = $('#menu_nav');
+        var handleMenuNavClick = function (e) {
+            if (true === menuNav.hasClass('expanded')) {
+                menuNav.removeClass('expanded');
+                self.removeClass('expanded');
+                //// unbind when menu closed no need to check for click
+                $('body').unbind('click', handleMenuNavClick);
+            }
+            else {
+                menuNav.addClass('expanded');
+                self.addClass('expanded');
+
+            }
+        };
+
+        if (false === menuNav.hasClass('expanded')) {
+            $('body').bind('click', handleMenuNavClick);
         }
     });
 
@@ -116,6 +141,10 @@ function updateTabIndex(selector){
     })
 }//// fun. updateTabIndex
 
+/**
+ * [yesNoRadio Will set the behavior of yes/no radio buttons by adding .checked class to the label of the button]
+ * the function assume the input[type=radion] is included inside <label> tag
+ */
 function yesNoRadio(){
   var radios = $('.radio-yesno input[type=radio]').on('change', function(e){
     if($(this).attr('checked')){
@@ -126,9 +155,15 @@ function yesNoRadio(){
       $(this).parent().removeClass('checked');
     }
   });
-  radios.trigger('change')
+
+  radios.trigger('change');//// this to set the initial state
 }
 
+/**
+ * [fillStateDropdown will fill the dropdon of USA states form usState variable]
+ * @param  {[type]} selector [jQuery object that contain <select> tag to be filled]
+ * usSate is array of object defined in us-status.js file
+ */
 function fillStateDropdown(selector){
     selector.each(function(x){
         var ul = $(this).find('select');
@@ -139,6 +174,11 @@ function fillStateDropdown(selector){
     });
 }//// fun. fillStateDropdown
 
+/**
+ * [isAndroid simple function to detect Android OS]
+ * this function is used to detect the bug in Android when keydown, keyup event doesn't send the right key code
+ * @return {Boolean} [true if Android OS]
+ */
 var isAndroid = function(){
   return /(android)/i.test(navigator.userAgent);
 }//// fun. isAndroid
@@ -300,7 +340,8 @@ var restrictCurrency = function(keyEv){
 
 var formatCurrency = function(keyEv){
   var code = keyEv.keyCode || keyEv.which;
-  var allowed = [191, 9, 8, 37, 38, 39, 40, 13];
+
+  var allowed = [191, 9, 37, 38, 39, 40, 13];
   if(isAndroid() && code == 229) return;
   if(allowed.indexOf(code) > -1) return;
 
@@ -312,7 +353,8 @@ var formatCurrency = function(keyEv){
       var arr = raw.split('');
       var sep = 1;
       for(var x=arr.length-1; x>=0; x--){
-        ret = (sep % 3 == 0 ? ',' : '') + arr[x]  + ret;
+        //// add reading comma after 3 digits and only if there is next digit
+        ret = (sep % 3 == 0 && true === !!arr[x-1]? ',' : '') + arr[x]  + ret;
         sep++;
       }
       ret = '$' + ret;
@@ -381,3 +423,54 @@ var animateScroll = function(y, time){
 
     }, frameTime);
 }//// fun. animateScroll
+
+/**
+ * [resetFields will search for input field inside a container and rest its value and any error status]
+ * @param  {[type]} container [jQueyr object that should contain input filed that need be reset]
+ */
+var resetFields = function(container){
+  var fields = container.find('input, select, textarea');
+
+  fields.each(function(x){
+    var type = $(this).attr('type');
+    if(type === 'radio'){
+      $(this).removeAttr('checked');
+      $(this).parent().filter('label').removeClass('checked');
+    }
+    else{
+      $(this).val('');
+    }
+    $(this).hideError();
+  });
+
+}//// fun. resetFields
+
+/**
+ * [includeFields will add hidden fields in form and set the right validation]
+ * @param  {Object} options should have 2 properties as below
+ * options.selector a string that passed to jQuery to select the section need to be included e.g. ".new-fields", "#clodingDate"
+ * options.validationClass a string that passed to jQuery to identify the .cc-field that need to be include in validation
+ * @return {[type]}         [description]
+ */
+var includeFields = function(options){
+  if(!options.selector || !options.validationClass) return false;
+
+  var fields = $(options.selector);
+  fields.find(options.validationClass).addClass('cc-validate');
+  fields.slideDown();
+}
+
+/**
+ * [excludeFields will exclude fields from form and set remove the validation]
+ * @param  {Object} options should have 2 properties as below
+ * options.selector a string that passed to jQuery to select the section need to be excluded
+ * options.validationClass a string that passed to jQuery to identify the .cc-field that need to be excluded from validation
+ */
+var excludeFields = function(options){
+  if(!options.selector || !options.validationClass) return false;
+
+  var fields = $(options.selector);
+  fields.find(options.validationClass).removeClass('cc-validate');
+  resetFields(fields);
+  fields.slideUp();
+}

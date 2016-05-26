@@ -23,15 +23,15 @@
 
 <header class="cc-header">
   <div class="container">
-    <a href="javascript:void(0)" class="cc-menu-switch" title="Menu"><img src="images/menu-icon.png" alt="Menu"/></a>
+    <a href="javascript:void(0)" class="cc-menu-switch" id="menu_switch" title="Menu">Menu</a>
     <div class="cc-logo">
       <a href="javascript:void(0)"><img src="images/capcenter-logo.png" alt="CapCenter" /></a>
     </div>
-    <nav class="cc-menu clearfix">
+    <nav class="cc-menu clearfix" id="menu_nav">
       <ul>
-        <li><a href="javascript:void(0)">800-968-5844</a></li>
-        <li><a href="javascript:void(0)">Support</a></li>
-        <li><a href="javascript:void(0)">Login</a></li>
+        <li><a href="javascript:void(0)">Application 72775</a></li>
+        <li><a href="javascript:void(0)">My Applications</a></li>
+        <li><a href="javascript:void(0)">Logout</a></li>
       </ul>
     </nav>
   </div><!--container-->
@@ -39,10 +39,10 @@
 
 <nav class="ss-progress" id="progress_nav">
   <div class="container">
-    <a href="javascript:void(0);" class="switch" id="progres_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
+    <a href="javascript:void(0);" class="switch" id="progress_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
     <ul>
-      <li class="active"><a href="javascript:void(0)"><span>Borrower</span></a></li>
-      <li class=""><a href="javascript:void(0)"><span>Property</span></a></li>
+      <li class="active"><a href="01-borrower.html"><span>Borrower</span></a></li>
+      <li class=""><a href="03-purchase.html"><span>Purchase</span></a></li>
       <li class=""><a href="javascript:void(0)"><span>Income</span></a></li>
       <li><a href="javascript:void(0)"><span>Assets &amp; Liabilities</span></a></li>
       <li><a href="javascript:void(0)"><span>Questions</span></a></li>
@@ -168,12 +168,13 @@
 
               <div class="row">
                 <div class="col-sm-6">
-                  <div class="cc-field cc-radio cc-validate">
+                  <div class="cc-field cc-radio cc-validate cc-required">
                     <label for="ssn">Does the co-borrower live at the same address?</label>
                     <div class="radio-yesno">
-                      <label><input type="radio" name="co_livesame" value="yes" id="co_livesame_yes" checked /><span> YES</span></label>
+                      <label><input type="radio" name="co_livesame" value="yes" id="co_livesame_yes" /><span> YES</span></label>
                       <label><input type="radio" name="co_livesame" value="no" id="co_livesame_no" /><span> No</span></label>
                     </div>
+                    <div class="message cc-required">Required</div>
                   </div><!--field-->
                 </div>
 

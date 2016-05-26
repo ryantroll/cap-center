@@ -44,27 +44,55 @@ body.cc-body {
       display: block;
       width: 100%; }
   .cc-header .cc-menu {
-    float: right;
-    display: none; }
+    float: none;
+    max-height: 0;
+    overflow: hidden;
+    clear: both;
+    -webkit-transition: max-height 0.3s ease-out;
+    -moz-transition: max-height 0.3s ease-out;
+    -o-transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-out; }
     @media screen and (min-width: 768px) {
       .cc-header .cc-menu {
-        display: block; } }
+        max-height: 400px;
+        float: right;
+        clear: none; } }
+    .cc-header .cc-menu.expanded {
+      display: block;
+      max-height: 400px; }
     .cc-header .cc-menu ul {
       display: table;
-      width: auto;
+      width: 100%;
       list-style: none;
-      padding-top: 15px; }
+      padding-top: 15px;
+      padding-left: 10px; }
+      @media screen and (min-width: 768px) {
+        .cc-header .cc-menu ul {
+          width: auto;
+          padding-left: 0; } }
       .cc-header .cc-menu ul li {
         margin-right: 2em;
         vertical-align: middle;
-        display: inline-block; }
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 1em; }
+        @media screen and (min-width: 768px) {
+          .cc-header .cc-menu ul li {
+            width: auto;
+            margin-bottom: 0; } }
         .cc-header .cc-menu ul li:last-child {
           margin-right: 0; }
   .cc-header .cc-menu-switch {
     display: block;
     width: 50px;
     height: 50px;
-    float: left; }
+    float: left;
+    overflow: hidden;
+    text-indent: -2000px;
+    background-repeat: no-repeat;
+    background-image: url("../images/menu-icon.png"); }
+    .cc-header .cc-menu-switch.expanded {
+      background-image: url("../images/menu-icon-x.png"); }
     @media screen and (min-width: 768px) {
       .cc-header .cc-menu-switch {
         display: none; } }
@@ -516,6 +544,9 @@ body.cc-body {
 .cc-form .cc-field.error .arrow {
   color: #F47C29; }
 
+.cc-form .cc-field.error .radio-yesno {
+  border-color: #F47C29; }
+
 .cc-form .cc-field.message input[type="text"],
 .cc-form .cc-field.message input[type="password"],
 .cc-form .cc-field.message input[type="number"],
@@ -638,8 +669,25 @@ body.cc-body {
       box-shadow: 1px 1px 2px 1px rgba(150, 150, 150, 0.5);
       overflow: auto; }
 
+.cc-form .cc-radio .half-width {
+  max-width: 100%;
+  padding-right: 0; }
+  @media screen and (min-width: 768px) {
+    .cc-form .cc-radio .half-width {
+      max-width: 50%;
+      padding-right: 15px; } }
+
 .cc-form .cc-radio .radio-yesno {
-  height: 42px; }
+  height: 44px;
+  padding: 2px;
+  border: 1px solid #fff;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* future proofing */
+  -khtml-border-radius: 3px;
+  /* for old Konqueror browsers */
+  position: relative; }
   .cc-form .cc-radio .radio-yesno input[type="radio"] {
     display: inline-block;
     width: 20px;
@@ -659,13 +707,13 @@ body.cc-body {
     color: #fff;
     cursor: pointer; }
     .cc-form .cc-radio .radio-yesno label:first-of-type {
-      margin-right: 2%; }
+      margin-right: 4%; }
     .cc-form .cc-radio .radio-yesno label span {
       position: absolute;
       display: block;
       text-align: center;
-      line-height: 43px;
-      height: 43px;
+      line-height: 38px;
+      height: 38px;
       width: 100%;
       z-index: 2;
       -moz-border-radius: 3px;
@@ -678,7 +726,7 @@ body.cc-body {
       display: block;
       content: " ";
       width: 100%;
-      height: 43px;
+      height: 38px;
       position: absolute;
       top: 0;
       left: 0;

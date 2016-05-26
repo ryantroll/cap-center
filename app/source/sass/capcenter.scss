@@ -50,27 +50,52 @@ body.cc-body{
         }
     }
     .cc-menu{
-        float:right;
-        display: none;
+        float:none;
+        // display: none;
+        max-height: 0;
+        overflow: hidden;
+        clear:both;
+        @include mxTransition(max-height, 0.3s, ease-out);
+
         @media screen and (min-width:$wTablet){
-            display:block;
+            max-height: 400px;
+            float:right;
+            clear: none;
+        }
+        &.expanded{
+            display: block;
+            max-height: 400px;
         }
         ul{
             display: table;
-            width:auto;
+            width:100%;
             list-style: none;
             padding-top:15px;
+            padding-left:10px;
+
+            @media screen and (min-width:$wTablet){
+                width:auto;
+                padding-left:0;
+            }
 
             li{
                 margin-right:2em;
                 vertical-align: middle;
                 display: inline-block;
+                width:100%;
+                margin-bottom:1em;
+
+                @media screen and (min-width:$wTablet){
+                    width:auto;
+                    margin-bottom: 0;
+                }
 
                 &:last-child{
                     margin-right: 0;
                 }
-            }
-        }
+
+            }//// li
+        }/// ul
     } //// .cc-menu
 
     .cc-menu-switch{
@@ -78,6 +103,14 @@ body.cc-body{
         width:50px;
         height: 50px;
         float:left;
+        overflow: hidden;
+        text-indent: -2000px;
+        background-repeat:no-repeat;
+        background-image: url('../images/menu-icon.png');
+
+        &.expanded{
+            background-image: url('../images/menu-icon-x.png');
+        }
 
         @media screen and (min-width:$wTablet){
             display: none;
@@ -611,6 +644,9 @@ body.cc-body{
         .arrow{
             color:$cOrange;
         }
+        .radio-yesno{
+            border-color:$cOrange;
+        }
     }//// .cc-field.error
 
     .cc-field.correct{
@@ -789,8 +825,23 @@ body.cc-body{
     }//// .cc-dropdown
 
     .cc-radio{
+        .half-width{
+            max-width: 100%;
+            padding-right: 0;
+
+            @media screen and (min-width:$wTablet){
+                max-width: 50%;
+                padding-right: 15px;
+            }
+        }//// half-width
+
         .radio-yesno{
-            height: 42px;
+            height: $nFieldHeight + 2px;
+            padding:2px;
+            border:1px solid $cWhite;
+            @include mxRoundCorners(3px);
+            position:relative;
+
             // padding-top:10px;
             input[type="radio"]{
                 display:inline-block;
@@ -816,25 +867,24 @@ body.cc-body{
 
 
                 &:first-of-type{
-                    margin-right:2%;
+                    margin-right:4%;
                 }
 
                 span{
                     position:absolute;
                     display: block;
                     text-align:center;
-                    line-height:$nFieldHeight+1px;
-                    height: $nFieldHeight +1px;
+                    line-height:$nFieldHeight - 4px;
+                    height: $nFieldHeight  - 4px;
                     width:100%;
                     z-index: 2;
                     @include mxRoundCorners(3px);
-                    // border: 1px solid $cBGMidGray;
                 }
                 &:after{
                     display: block;
                     content: " ";
                     width:100%;
-                    height: $nFieldHeight+1px;
+                    height: $nFieldHeight - 4px;
                     position:absolute;
                     top:0;
                     left:0;
@@ -849,7 +899,9 @@ body.cc-body{
                     }
                 }
             }//// label
-        }//// .radio-group
+
+
+        }//// .radio-yesno
 
     }//// .cc-radio
 }//// .cc-form

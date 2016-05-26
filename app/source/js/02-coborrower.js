@@ -10,11 +10,15 @@ function coBorrowerReady(){
      */
     if(myForm.length <= 0) return;
 
+    /**
+     * [addressIndex will track the number of address added and stop if total of 4 address]
+     * @type {Number}
+     */
     addressIndex = 1;
 
     addressTemplate = $('#addressTemplate').html();
 
-    updateTabIndex( myForm);
+    updateTabIndex( myForm); //// function in main.js
 
     /**
      * [isContinueClicked it will be set to true when continue button clicked ]
@@ -32,6 +36,9 @@ function coBorrowerReady(){
             return true;
         }//// if isValid
         else{
+            /**
+             * if Not valid scroll to first invalid field
+             */
             if(invalidFields && true === isContinueClicked){
                 var scrollTo = $('#' + invalidFields[0].id).offset().top;
                 //// scroll the form to the first error
@@ -48,12 +55,12 @@ function coBorrowerReady(){
      * Continue Click
      */
     $('#continue').on('mousedown touchstart', function(e){
-
         isContinueClicked = true;
     })
 
     /**
      * Field formating while typing
+     * Event handlers in main.js
      */
 
     $('input.phone')
@@ -76,7 +83,9 @@ function coBorrowerReady(){
     .on('keyup', formatCurrency)
 
 
-
+    /**
+     * Check if co-borrower live in different address
+     */
     $('input[name=co_livesame]').on('change', function(ev){
         if($(this).val() === 'yes'){
 
@@ -93,20 +102,27 @@ function coBorrowerReady(){
             .removeClass('cc-to-be-validate')
             .addClass('cc-validate');
 
-            addAutoAddress(1);
+            addAutoAddress(1); //// function in 01-borrower.js
         }
-        updateTabIndex(myForm);
+        updateTabIndex(myForm); /// function in main.js
     });
 
+    /**
+     * Back button click handlers
+     */
     $('#back').on('click', function(ce){
         history.back();
     })
 
     /**
      * check for address length change
+     * function in 01-borrower.js
      */
     checkAddressLength(myForm, addressIndex);
 
+    /**
+     * Check number of dependents change and show ages fields
+     */
     $('#co_dependants').on('change', function(e){
 
         var v = parseInt($(this).val(), 10);
@@ -125,7 +141,7 @@ function coBorrowerReady(){
     });
 
     /**
-     * update co-borrower name
+     * update co-borrower name in sub titles
      */
     var nameHolder = $('.coBorrowerName');
     $('#co_fname').on('keyup', function(e){

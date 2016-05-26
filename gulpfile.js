@@ -27,8 +27,9 @@ gulp.task('scripts', function(){
         // './app/source/js/dropdown-plugin.js',
         './app/source/js/validation-plugin.js',
         './app/source/js/main.js',
-        './app/source/js/borrower.js',
-        './app/source/js/co-borrower.js'
+        './app/source/js/01-borrower.js',
+        './app/source/js/02-coborrower.js',
+        './app/source/js/03-purchase.js'
         ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
