@@ -160,17 +160,17 @@ function borrowerReady(){
 function checkAddressLength(container, index){
     var post = index > 1 ? ''+index : '';
 
-    container.find('#bo_time_month' + post)
+    container.find('.addressLengthM' + post).eq(0)
     .attr('data-address', index)
     .on('change', function(e){
         var v = parseInt($(this).val(), 10);
 
-        var years = parseInt($('#bo_time_year' + post).val(), 10);
+        var years = parseInt($('.addressLengthY' + post).eq(0).val(), 10);
         var myId = parseInt($(this).attr('data-address'), 10);
         if(!v) v =0;
         if(!years){
             years = 0;
-            $('#bo_time_year' + post).val(0)
+            $('.addressLengthY' + post).eq(0).val(0)
         }
 
         if(years){
@@ -185,16 +185,16 @@ function checkAddressLength(container, index){
     });
 
 
-    container.find('#bo_time_year' + post)
+    container.find('.addressLengthY' + post).eq(0)
     .attr('data-address', index)
     .on('change', function(e){
-        var v = parseInt($('#bo_time_month' + post).val(), 10);
+        var v = parseInt($('.addressLengthM' + post).eq(0).val(), 10);
         var years = parseInt($(this).val(), 10);
         var myId = parseInt($(this).attr('data-address'), 10);
 
         if(!v) {
             v =0;
-            $('#bo_time_month' + post).val(0)
+            $('.addressLengthM' + post).eq(0).val(0)
         }
         if(!years) years = 0;
 
@@ -258,7 +258,8 @@ function addAutoAddress(index){
     var post = index >= 2 ? ''+index : '';
 
     var autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('bo_address' + post),
+        // document.getElementById('bo_address' + post),
+        $('.typeahead_address' + post).filter('input')[0],
         {types: ['geocode']}
     );
     //// set the address index and post in autocomplete object to be used in fillInAddress function
@@ -304,9 +305,9 @@ function fillInAddress(){
     }//// for
     address.administrative_area_level_1_long_name = long_name;
 
-    $('#bo_address'+this.post).val(address.street_number + ' ' + address.route).trigger('change');
-    $('#bo_city'+this.post).val(address.locality).trigger('change');
-    $('#bo_state'+this.post).val(address.administrative_area_level_1).trigger('change');
+    $('.typeahead_address'+this.post).eq(0).val(address.street_number + ' ' + address.route).trigger('change');
+    $('.typeahead_city'+this.post).eq(0).val(address.locality).trigger('change');
+    $('.typeahead_state'+this.post).eq(0).val(address.administrative_area_level_1).trigger('change');
     // $('#state_label'+this.post).val(address.administrative_area_level_1_long_name).trigger('change');
-    $('#bo_zip'+this.post).val(address.postal_code).trigger('change');
+    $('.typeahead_zip'+this.post).eq(0).val(address.postal_code).trigger('change');
 }

@@ -1,8 +1,8 @@
-$(document).ready(coBorrowerReady);
+$(document).ready(purchaseReady);
 var addressTemplate;
 var addressIndex;
 
-function coBorrowerReady(){
+function purchaseReady(){
 
     var myForm = $('#purchaseForm');
     /**
@@ -11,7 +11,6 @@ function coBorrowerReady(){
     if(myForm.length <= 0) return;
 
     updateTabIndex( myForm); //// function in main.js
-
     /**
      * [isContinueClicked it will be set to true when continue button clicked ]
      * this var will help detect form submit on button click and scroll up the page to the first form error
@@ -127,7 +126,10 @@ function coBorrowerReady(){
             includeFields({selector:'.property-fields', validationClass:'.cc-to-be-validate'}); //// function in main.js
         }
         else{
-            excludeFields({selector:'.property-fields, #subName, #closingDate, #monthlyHOA', validationClass:'.cc-to-be-validate, .cc-to-be-validate-sub, .cc-to-be-validate-closing, .cc-to-be-validate-HOA'}); //// function in main.js
+            excludeFields({
+                selector:'.property-fields, #subName, #closingDate, #monthlyHOA',
+                validationClass:'.cc-to-be-validate, .cc-to-be-validate-sub, .cc-to-be-validate-closing, .cc-to-be-validate-HOA'
+            }); //// function in main.js
         }
 
     });/// on.change
@@ -135,7 +137,7 @@ function coBorrowerReady(){
     /**
      * check if HOA dues
      */
-    $('input[name=rf_plannedunit]').on('change', function(){
+    $('input[name=pu_plannedunit]').on('change', function(){
         var val = $(this).val();
         if(val === 'yes' && !!$(this).attr('checked')){
             includeFields({selector:'#monthlyHOA', validationClass:'.cc-to-be-validate-HOA'}); //// function in main.js

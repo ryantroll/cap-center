@@ -221,7 +221,7 @@
               <div class="col-xs-12 col-sm-8">
                 <div class="cc-field cc-validate cc-required">
                   <label for="bo_address">Street Address </label>
-                  <input type="text" tabindex="9" name="bo_address" id="bo_address" placeholder="" />
+                  <input type="text" tabindex="9" class="typeahead_address" name="bo_address" id="bo_address" placeholder="" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -239,7 +239,7 @@
               <div class="col-sm-4">
                 <div class="cc-field cc-validate cc-required">
                   <label for="bo_city">City </label>
-                  <input type="text" tabindex="12" name="bo_city" id="bo_city" />
+                  <input type="text" tabindex="12" class="typeahead_city" name="bo_city" id="bo_city" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -248,7 +248,7 @@
                 <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
                   <label for="bo_state">State </label>
 
-                  <select name="bo_state" id="bo_state">
+                  <select name="bo_state" id="bo_state" class="typeahead_state">
                     <option value="">Select</option>
                   </select>
                   <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
@@ -259,7 +259,7 @@
               <div class="col-sm-4">
                 <div class="cc-field cc-validate cc-required cc-number">
                   <label for="bo_zip">Zip </label>
-                  <input type="tel" tabindex="11" class="numbers" maxlength="6" name="bo_zip" id="bo_zip" />
+                  <input type="tel" tabindex="11" class="numbers typeahead_zip" maxlength="6" name="bo_zip" id="bo_zip" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-number">Invalid ZIP code</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
@@ -274,10 +274,10 @@
                   <label for="bo_time_year">Time At Address </label>
 
                   <div class="cc-address-length">
-                    <input type="tel" tabindex="14" class="numbers" name="bo_time_year" id="bo_time_year" maxlength="2" data-address="1" />
+                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="bo_time_year" id="bo_time_year" maxlength="2" data-address="1" />
                     <label class="label1" for="bo_time_year">Years</label>
                     <div class="slash">/</div>
-                    <input type="tel" tabindex="14" class="numbers" name="bo_time_month" id="bo_time_month" maxlength="2" data-address="1" />
+                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="bo_time_month" id="bo_time_month" maxlength="2" data-address="1" />
                     <label class="label1" for="bo_time_month">Months</label>
                   </div>
 
@@ -476,7 +476,9 @@
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/all.js"></script>
-
+<!-- BEGIN ProvideSupport.com Graphics Chat Button Code -->
+<div id="cierr2" style="z-index:100;position:absolute"></div><div id="scerr2" style="display:inline;position:fixed;z-index:9999;bottom:1%;right:1%;"></div><div id="sderr2" style="display:none"></div><script type="text/javascript">var seerr2=document.createElement("script");seerr2.type="text/javascript";var seerr2s=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1dzrzf119zyp20leyk1m9ljy7l/safe-standard.js?ps_h=err2&ps_t="+new Date().getTime();setTimeout("seerr2.src=seerr2s;document.getElementById('sderr2').appendChild(seerr2)",1)</script><noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1dzrzf119zyp20leyk1m9ljy7l">Chat Support</a></div></noscript>
+<!-- END ProvideSupport.com Graphics Chat Button Code -->
 <script id="addressTemplate" type="text/template">
 <div id="address_{#}">
     <div class="title" style="margin-top:1.3em;">
@@ -486,7 +488,7 @@
       <div class="col-xs-12 col-sm-8">
         <div class="cc-field cc-required cc-to-be-validate">
           <label for="bo_address{#}">Street Address </label>
-          <input type="text" tabindex="17" name="bo_formeraddress{#}" id="bo_address{#}" placeholder=""/>
+          <input type="text" tabindex="17"  class="typeahead_address{#}" name="bo_formeraddress{#}" id="bo_address{#}" placeholder=""/>
         <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
@@ -505,7 +507,7 @@
       <div class="col-sm-4">
         <div class="cc-field cc-required cc-to-be-validate">
           <label for="bo_city{#}">City </label>
-          <input type="text" tabindex="20" name="bo_formercity{#}" id="bo_city{#}" />
+          <input type="text" tabindex="20" class="typeahead_city{#}" name="bo_formercity{#}" id="bo_city{#}" />
         <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
@@ -514,7 +516,7 @@
           <div class="cc-field cc-dropdown cc-to-be-validate cc-required state-dropdown">
             <label for="bo_state{#}">State </label>
 
-            <select name="bo_formerstate{#}" id="bo_state{#}">
+            <select name="bo_formerstate{#}" id="bo_state{#}" class="typeahead_state{#}">
               <option value="">Select</option>
             </select>
             <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
@@ -525,7 +527,7 @@
       <div class="col-sm-4">
         <div class="cc-field cc-to-be-validate cc-required cc-number">
           <label for="bo_zip{#}">Zip </label>
-          <input type="tel" tabindex="19" class="numbers" maxlength="6" name="bo_formerzip{#}" id="bo_zip{#}" />
+          <input type="tel" tabindex="19" class="numbers typeahead_zip{#}" maxlength="6" name="bo_formerzip{#}" id="bo_zip{#}" />
         <div class="message cc-required">Required</div>
         <div class="message cc-number">Numbers only</div>
         <div class="message cc-numbers-only">Numbers Only</div>
@@ -540,10 +542,10 @@
                   <label for="bo_time_year{#}">Time At Address </label>
 
                   <div class="cc-address-length">
-                    <input type="tel" tabindex="14" class="numbers" name="bo_time_year{#}" id="bo_time_year{#}" maxlength="2" data-address="{#}" />
+                    <input type="tel" tabindex="14" class="numbers addressLengthY{#}" name="bo_time_year{#}" id="bo_time_year{#}" maxlength="2" data-address="{#}" />
                     <label class="label1" for="bo_time_year{#}">Years</label>
                     <div class="slash">/</div>
-                    <input type="tel" tabindex="14" class="numbers" name="bo_time_month{#}" id="bo_time_month{#}" maxlength="2" data-address="{#}" />
+                    <input type="tel" tabindex="14" class="numbers addressLengthM{#}" name="bo_time_month{#}" id="bo_time_month{#}" maxlength="2" data-address="{#}" />
                     <label class="label1" for="bo_time_month{#}">Months</label>
                   </div>
 

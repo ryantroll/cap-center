@@ -350,7 +350,6 @@ body.cc-body {
     -ms-appearance: none;
     appearance: none;
     border: 1px solid #a89b94;
-    padding: 0 0 0 15px;
     height: 42px;
     line-height: 42px;
     width: 100%;
@@ -368,6 +367,8 @@ body.cc-body {
       .cc-form .cc-field select {
         /* IE10+ CSS styles go here */
         padding-right: 0; } }
+    .cc-form .cc-field select option {
+      padding: 0 0 0 15px; }
   .cc-form .cc-field select + span.arrow {
     position: absolute;
     width: 42px;
@@ -381,6 +382,18 @@ body.cc-body {
       .cc-form .cc-field select + span.arrow {
         /* IE10+ CSS styles go here */
         display: none; } }
+  .cc-form .cc-field textarea {
+    border: 1px solid #a89b94;
+    padding: 5px;
+    height: 126px;
+    line-height: 1.3em;
+    width: 100%;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /* future proofing */
+    -khtml-border-radius: 3px;
+    /* for old Konqueror browsers */ }
   .cc-form .cc-field button,
   .cc-form .cc-field input[type="button"],
   .cc-form .cc-field .cc-btn {
@@ -453,7 +466,7 @@ body.cc-body {
     text-align: center;
     font-size: 11px;
     position: absolute;
-    bottom: 42px;
+    top: -3px;
     padding: 0 5px;
     height: 20px;
     line-height: 20px;
@@ -739,7 +752,10 @@ body.cc-body {
       /* for old Konqueror browsers */
       z-index: 0; }
     .cc-form .cc-radio .radio-yesno label.checked:after {
-      background-color: #50a54c; }
+      background-color: #50a54c;
+      border-color: #50a54c; }
+    .cc-form .cc-radio .radio-yesno label.focus:after {
+      border: 1px solid #767371; }
 
 .cc-note {
   text-align: center;

@@ -134,10 +134,13 @@ function mainScroll(e){
 
 
 function updateTabIndex(selector){
-    selector.find('.cc-field').each(function(x){
+  var x = 0;
+    selector.find('.cc-field').each(function(i){
         var s = $(this).find('input[type=text], input[type=email], input[type=date], input[type=tel], input[type=radio], input[type=checkbox], input[type=number], textarea, select')
-        .attr('tabindex', x+1);
-
+        s.each(function(z){
+          $(this).attr('tabindex', x+1);
+          x++;
+        })
     })
 }//// fun. updateTabIndex
 
@@ -149,11 +152,17 @@ function yesNoRadio(){
   var radios = $('.radio-yesno input[type=radio]').on('change', function(e){
     if($(this).attr('checked')){
       $(this).parent().parent().find('label.checked').removeClass('checked');
-      $(this).parent().addClass('checked');
+      $(this).parent().addClass('checked').removeClass('focus');
     }
     else{
       $(this).parent().removeClass('checked');
     }
+  })
+  .on('focus', function(e){
+    $(this).parent().addClass('focus');
+  })
+  .on('blur killfocus', function(e){
+    $(this).parent().removeClass('focus');
   });
 
   radios.trigger('change');//// this to set the initial state
@@ -458,6 +467,7 @@ var includeFields = function(options){
   var fields = $(options.selector);
   fields.find(options.validationClass).addClass('cc-validate');
   fields.slideDown();
+
 }
 
 /**
@@ -473,4 +483,5 @@ var excludeFields = function(options){
   fields.find(options.validationClass).removeClass('cc-validate');
   resetFields(fields);
   fields.slideUp();
+
 }

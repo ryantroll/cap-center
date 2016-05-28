@@ -427,7 +427,7 @@ body.cc-body{
             -ms-appearance:none;
             appearance: none;
             border:1px solid $cBGMidGray;
-            padding:0 0 0 15px;
+
             height: $nFieldHeight;
             line-height: $nFieldHeight;
             width:100%;
@@ -442,7 +442,10 @@ body.cc-body{
                 padding-right:0;
             }
 
-        }
+            option{
+                padding:0 0 0 15px;
+            }
+        }/// select
         select + span.arrow{
             position:absolute;
             width:$nFieldHeight;
@@ -458,6 +461,15 @@ body.cc-body{
                 display:none;
             }
         }
+
+        textarea{
+            border:1px solid $cBGMidGray;
+            padding:5px;
+            height: $nFieldHeight * 3;
+            line-height: 1.3em;
+            width:100%;
+            @include mxRoundCorners(3px);
+        }//// text area
 
         button,
         input[type="button"],
@@ -538,7 +550,7 @@ body.cc-body{
             text-align: center;
             font-size:11px;
             position:absolute;
-            bottom:42px;
+            top:-3px;
             padding:0 5px;
             height: 20px;
             line-height: 20px;
@@ -896,6 +908,12 @@ body.cc-body{
                 &.checked{
                     &:after{
                         background-color:$cLightGreen;
+                        border-color:$cLightGreen;
+                    }
+                }
+                &.focus{
+                    &:after{
+                        border:1px solid $cTextGray;
                     }
                 }
             }//// label
