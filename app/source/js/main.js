@@ -111,6 +111,11 @@ function ccDocumentReady(){
      * Set yes/no radio button
      */
     yesNoRadio();
+
+    /**
+     * Set multi checkbox
+     */
+    multiCheckbox();
 }//// fun. ccDocumentReady
 
 function mainScroll(e){
@@ -167,6 +172,20 @@ function yesNoRadio(){
 
   radios.trigger('change');//// this to set the initial state
 }
+
+function multiCheckbox(){
+  var radios = $('.cc-checkbox input[type=checkbox]').on('change', function(e){
+    if($(this).attr('checked')){
+      // $(this).parent().parent().find('label.checked').removeClass('checked');
+      $(this).parent().addClass('checked').removeClass('focus');
+      $(this).parent().find('i').addClass('glyphicon glyphicon-ok');
+    }
+    else{
+      $(this).parent().removeClass('checked');
+      $(this).parent().find('i').removeClass();
+    }
+  })
+}//// fun. multiCheckBox
 
 /**
  * [fillStateDropdown will fill the dropdon of USA states form usState variable]
@@ -321,7 +340,7 @@ var restrictNumbers = function(keyEv){
   if(isAndroid() && code == 229) return;
   var allowedChars = String("01234567890").split('');
   var allowed = [9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
-  $(this).removeError('cc-numbers-only');
+  $(this).removeError('cc-numbers-only').hideError();
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
@@ -337,12 +356,11 @@ var restrictCurrency = function(keyEv){
   if(isAndroid() && code == 229) return;
   var allowedChars = String("01234567890$,").split('');
   var allowed = [9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
-  $(this).removeError('cc-numbers-only');
+  $(this).removeError('cc-numbers-only').hideError();
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
-    $(this).addError('cc-numbers-only');
-    $(this).showError();
+    $(this).addError('cc-numbers-only').showError();
     return false;
   }
 }//// fun. formateSSN

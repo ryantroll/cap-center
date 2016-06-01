@@ -353,6 +353,20 @@ body.cc-body{
         }
     }
 
+    .title-box{
+        padding:10px 15px;
+        background-color:$cBGMidGray;
+        margin-top:2em;
+        margin-bottom:1em;
+        color:$cWhite;
+        @include mxRoundCorners(3px);
+        h4{
+            padding-top:0;
+            padding-bottom:0;
+            font-weight: 400;
+        }
+    }
+
 }//// .cc-box
 
 .cc-message{
@@ -518,10 +532,10 @@ body.cc-body{
                 min-width:150px;
                 margin-right:0;
 
-                &:first-of-type{
+                &:last-of-type{
                     margin-right: 0;
                 }
-            }
+            }///// button
             &:after{
                 display: block;
                 content:" ";
@@ -535,8 +549,13 @@ body.cc-body{
                         margin-right:1em;
                         clear:none;
                     }
-                 }
-            }
+                    &:first-of-type{
+                        @media screen and (min-width:$wMobile){
+                            margin-right:0;
+                        }
+                    }
+                 }///// button
+            }//// &.right
             &.more-padding{
                 padding-top:4em;
             }
@@ -627,7 +646,64 @@ body.cc-body{
                 line-height: $nFieldHeight;
                 color:$cBGMidGray;
             }
+
+            &.one-field{
+                input[type="text"],
+                input[type="password"],
+                input[type="number"],
+                input[type="tel"],
+                input[type="date"]{
+                    border:none;
+                    width:60%;
+                    text-align: left;
+                }
+            }/// &.one-filed
         }///.cc-address-length
+
+        .cc-in-box-label{
+            display: block;
+            width:100%;
+
+            border: 1px solid $cBGMidGray;
+            @include mxRoundCorners(3px);
+            padding:0 6px 0  0;
+
+            &:after{
+                display: block;
+                content: " ";
+                clear: both;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            input[type="number"],
+            input[type="tel"],
+            input[type="date"]{
+                border:none;
+                width:74%;
+                float:left;
+                padding-left:8px;
+                padding-right:8px;
+
+                background-color:transparent;
+            }
+
+            .label1{
+                display: block;
+                float:right;
+                height: $nFieldHeight;
+                font-size:0.8em;
+                font-weight: 400;
+                margin-bottom:0;
+
+                width:26%;
+                text-align: right;
+                line-height: $nFieldHeight;
+                color:$cBGMidGray;
+            }
+
+
+        }///cc-in-box-label
 
     }//// .cc-field
 
@@ -653,10 +729,17 @@ body.cc-body{
         .cc-address-length{
             border-color:$cOrange;
         }
+        .cc-in-box-label{
+            border-color:$cOrange;
+        }
         .arrow{
             color:$cOrange;
         }
         .radio-yesno{
+            border-color:$cOrange;
+        }
+
+        .two-cols {
             border-color:$cOrange;
         }
     }//// .cc-field.error
@@ -850,7 +933,7 @@ body.cc-body{
         .radio-yesno{
             height: $nFieldHeight + 2px;
             padding:2px;
-            border:1px solid $cWhite;
+            border:1px solid transparent;
             @include mxRoundCorners(3px);
             position:relative;
 
@@ -876,7 +959,6 @@ body.cc-body{
                 position: relative;
                 color:$cWhite;
                 cursor:pointer;
-
 
                 &:first-of-type{
                     margin-right:4%;
@@ -918,10 +1000,85 @@ body.cc-body{
                 }
             }//// label
 
+            &.three{
+                label{
+                    width: (100% - 6%) / 3;
+                    margin-right:3%;
+                    &:first-of-type{
+                        margin-right: 3%;
+                    }
+                    &:last-of-type{
+                        margin-right: 0;
+                    }
+                }
+            }//// &.three
 
         }//// .radio-yesno
 
     }//// .cc-radio
+
+    .cc-checkbox{
+        .two-cols{
+            border: 1px solid transparent;
+            padding:2px;
+            @include mxRoundCorners(3px);
+
+            &:after{
+                display: block;
+                content: " ";
+                clear: both;
+            }
+
+            label{
+                display: block;
+                width:100%;
+                height: 50px;
+                line-height: 50px;
+                background-color:$cBGMidGray;
+                float:left;
+                color:$cWhite;
+                position: relative;
+                overflow: hidden;
+                padding:0 15px;
+                cursor:pointer;
+                font-weight: 400;
+                font-size:1em;
+
+                @media screen and (min-width:$wTablet){
+                    width:50%;
+                    border-right:1px solid $cWhite;
+                }
+
+                &:nth-child(2n+2){
+                    border-right:none;
+                }
+
+                i{
+                    display: block;
+                    width:25px;
+                    height: 25px;
+                    line-height: 25px;
+                    text-align: center;
+                    background-color:$cWhite;
+                    color:$cWhite;
+                    position:absolute;
+                    right:15px;
+                    top:12px;
+                    @include mxRoundCorners(15px);
+                }
+            }//// label
+
+            label.checked{
+                i{
+                    background-color:$cLightGreen;
+                }
+            }
+            input[type="checkbox"]{
+                position:absolute;
+                left:-50px;
+            }//// input
+        }//// .two-cols
+    }///// .cc-checkbox
 }//// .cc-form
 
 .cc-note{

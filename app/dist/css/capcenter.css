@@ -287,6 +287,22 @@ body.cc-body {
     padding-top: 15px;
     padding-bottom: 5px;
     font-weight: 400; }
+  .cc-box .title-box {
+    padding: 10px 15px;
+    background-color: #a89b94;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    color: #fff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /* future proofing */
+    -khtml-border-radius: 3px;
+    /* for old Konqueror browsers */ }
+    .cc-box .title-box h4 {
+      padding-top: 0;
+      padding-bottom: 0;
+      font-weight: 400; }
 
 .cc-message {
   padding-top: 2em;
@@ -443,7 +459,7 @@ body.cc-body {
     margin-bottom: 1em;
     min-width: 150px;
     margin-right: 0; }
-    .cc-form .cc-field.cc-buttons button:first-of-type, .cc-form .cc-field.cc-buttons .cc-btn:first-of-type {
+    .cc-form .cc-field.cc-buttons button:last-of-type, .cc-form .cc-field.cc-buttons .cc-btn:last-of-type {
       margin-right: 0; }
   .cc-form .cc-field.cc-buttons:after {
     display: block;
@@ -456,6 +472,9 @@ body.cc-body {
       .cc-form .cc-field.cc-buttons.right button, .cc-form .cc-field.cc-buttons.right .cc-btn {
         margin-right: 1em;
         clear: none; } }
+    @media screen and (min-width: 320px) {
+      .cc-form .cc-field.cc-buttons.right button:first-of-type, .cc-form .cc-field.cc-buttons.right .cc-btn:first-of-type {
+        margin-right: 0; } }
   .cc-form .cc-field.cc-buttons.more-padding {
     padding-top: 4em; }
   .cc-form .cc-field .message {
@@ -534,6 +553,51 @@ body.cc-body {
       text-align: left;
       line-height: 42px;
       color: #a89b94; }
+    .cc-form .cc-field .cc-address-length.one-field input[type="text"],
+    .cc-form .cc-field .cc-address-length.one-field input[type="password"],
+    .cc-form .cc-field .cc-address-length.one-field input[type="number"],
+    .cc-form .cc-field .cc-address-length.one-field input[type="tel"],
+    .cc-form .cc-field .cc-address-length.one-field input[type="date"] {
+      border: none;
+      width: 60%;
+      text-align: left; }
+  .cc-form .cc-field .cc-in-box-label {
+    display: block;
+    width: 100%;
+    border: 1px solid #a89b94;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    /* future proofing */
+    -khtml-border-radius: 3px;
+    /* for old Konqueror browsers */
+    padding: 0 6px 0  0; }
+    .cc-form .cc-field .cc-in-box-label:after {
+      display: block;
+      content: " ";
+      clear: both; }
+    .cc-form .cc-field .cc-in-box-label input[type="text"],
+    .cc-form .cc-field .cc-in-box-label input[type="password"],
+    .cc-form .cc-field .cc-in-box-label input[type="number"],
+    .cc-form .cc-field .cc-in-box-label input[type="tel"],
+    .cc-form .cc-field .cc-in-box-label input[type="date"] {
+      border: none;
+      width: 74%;
+      float: left;
+      padding-left: 8px;
+      padding-right: 8px;
+      background-color: transparent; }
+    .cc-form .cc-field .cc-in-box-label .label1 {
+      display: block;
+      float: right;
+      height: 42px;
+      font-size: 0.8em;
+      font-weight: 400;
+      margin-bottom: 0;
+      width: 26%;
+      text-align: right;
+      line-height: 42px;
+      color: #a89b94; }
 
 .cc-form .cc-field.error label {
   color: #F47C29; }
@@ -554,10 +618,16 @@ body.cc-body {
 .cc-form .cc-field.error .cc-address-length {
   border-color: #F47C29; }
 
+.cc-form .cc-field.error .cc-in-box-label {
+  border-color: #F47C29; }
+
 .cc-form .cc-field.error .arrow {
   color: #F47C29; }
 
 .cc-form .cc-field.error .radio-yesno {
+  border-color: #F47C29; }
+
+.cc-form .cc-field.error .two-cols {
   border-color: #F47C29; }
 
 .cc-form .cc-field.message input[type="text"],
@@ -693,7 +763,7 @@ body.cc-body {
 .cc-form .cc-radio .radio-yesno {
   height: 44px;
   padding: 2px;
-  border: 1px solid #fff;
+  border: 1px solid transparent;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -756,6 +826,69 @@ body.cc-body {
       border-color: #50a54c; }
     .cc-form .cc-radio .radio-yesno label.focus:after {
       border: 1px solid #767371; }
+  .cc-form .cc-radio .radio-yesno.three label {
+    width: 31.33333%;
+    margin-right: 3%; }
+    .cc-form .cc-radio .radio-yesno.three label:first-of-type {
+      margin-right: 3%; }
+    .cc-form .cc-radio .radio-yesno.three label:last-of-type {
+      margin-right: 0; }
+
+.cc-form .cc-checkbox .two-cols {
+  border: 1px solid transparent;
+  padding: 2px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* future proofing */
+  -khtml-border-radius: 3px;
+  /* for old Konqueror browsers */ }
+  .cc-form .cc-checkbox .two-cols:after {
+    display: block;
+    content: " ";
+    clear: both; }
+  .cc-form .cc-checkbox .two-cols label {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #a89b94;
+    float: left;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 0 15px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1em; }
+    @media screen and (min-width: 768px) {
+      .cc-form .cc-checkbox .two-cols label {
+        width: 50%;
+        border-right: 1px solid #fff; } }
+    .cc-form .cc-checkbox .two-cols label:nth-child(2n+2) {
+      border-right: none; }
+    .cc-form .cc-checkbox .two-cols label i {
+      display: block;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      background-color: #fff;
+      color: #fff;
+      position: absolute;
+      right: 15px;
+      top: 12px;
+      -moz-border-radius: 15px;
+      -webkit-border-radius: 15px;
+      border-radius: 15px;
+      /* future proofing */
+      -khtml-border-radius: 15px;
+      /* for old Konqueror browsers */ }
+  .cc-form .cc-checkbox .two-cols label.checked i {
+    background-color: #50a54c; }
+  .cc-form .cc-checkbox .two-cols input[type="checkbox"] {
+    position: absolute;
+    left: -50px; }
 
 .cc-note {
   text-align: center;

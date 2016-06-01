@@ -85,7 +85,7 @@ function refinanceReady(){
      */
     addAutoAddress(1); /// function in 01-borrower.js
 
-    $('input[name=rf_sameAddress]').on('change', function(){
+    $('input[name=rf_propertyrefinancing]').on('change', function(){
         var val = $(this).val();
         if(val === 'no' && !!$(this).attr('checked')){
             includeFields({selector:'.otherAddress', validationClass:'.cc-to-be-validate'}); //// function in main.js
@@ -109,7 +109,7 @@ function refinanceReady(){
         }
     });
 
-    $('input[name=rf_forSale]').on('change', function(){
+    $('input[name=rf_forsale]').on('change', function(){
         var val = $(this).val();
 
         if(val === 'yes' && !!$(this).attr('checked')){
@@ -120,7 +120,7 @@ function refinanceReady(){
         }
     });
 
-    $('input[name=rf_construction]').on('change', function(){
+    $('input[name=rf_subject]').on('change', function(){
         var val = $(this).val();
 
         if(val === 'yes' && !!$(this).attr('checked')){
@@ -131,7 +131,7 @@ function refinanceReady(){
         }
     });
 
-    $('input[name=rf_trust]').on('change', function(){
+    $('input[name=rf_istitled]').on('change', function(){
         var val = $(this).val();
 
         if(val === 'yes' && !!$(this).attr('checked')){
@@ -153,7 +153,7 @@ function refinanceReady(){
         }
     });
 
-    $('input[name=rf_isSecured]').on('change', function(){
+    $('input[name=rf_haveMortgage1]').on('change', function(){
         var val = $(this).val();
 
         if(val === 'yes' && !!$(this).attr('checked')){
@@ -161,20 +161,45 @@ function refinanceReady(){
         }//// if
         else{
             excludeFields({
-                selector:'.firstMortgage, .secondMortgage',
-                validationClass:'.cc-to-be-validate, .cc-to-be-validate-mortgage2'
+                selector:'.firstMortgage, .secondMortgage, .credit-limit',
+                validationClass:'.cc-to-be-validate, .cc-to-be-validate-mortgage2, .cc-to-be-validate-cl'
             }); //// function in main.js
         }
     });
 
-    $('input[name=rf_isSecured2]').on('change', function(){
+    $('input[name=rf_secmortgage]').on('change', function(){
         var val = $(this).val();
 
         if(val === 'yes' && !!$(this).attr('checked')){
             includeFields({selector:'.secondMortgage', validationClass:'.cc-to-be-validate-mortgage2'}); //// function in main.js
         }//// if
         else{
-            excludeFields({selector:'.secondMortgage', validationClass:'.cc-to-be-validate-mortgage2'}); //// function in main.js
+            excludeFields({
+                selector:'.secondMortgage, .credit-limit, #additionalLiens',
+                validationClass:'.cc-to-be-validate-mortgage2, .cc-to-be-validate-cl, .cc-to-be-validate-line'
+            }); //// function in main.js
+        }
+    });
+
+    $('input[name=rf_mortgage2LOC]').on('change', function(){
+        var val = $(this).val();
+
+        if(val === 'yes' && !!$(this).attr('checked')){
+            includeFields({selector:'.credit-limit', validationClass:'.cc-to-be-validate-cl'}); //// function in main.js
+        }//// if
+        else{
+            excludeFields({selector:'.credit-limit', validationClass:'.cc-to-be-validate-cl'}); //// function in main.js
+        }
+    });
+
+    $('input[name=as_additionalliens]').on('change', function(){
+        var val = $(this).val();
+
+        if(val === 'yes' && !!$(this).attr('checked')){
+            includeFields({selector:'#additionalLiens', validationClass:'.cc-to-be-validate-lien'}); //// function in main.js
+        }//// if
+        else{
+            excludeFields({selector:'#additionalLiens', validationClass:'.cc-to-be-validate-lien'}); //// function in main.js
         }
     });
 };//// borrowerReady

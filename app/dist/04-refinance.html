@@ -65,10 +65,10 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-validate cc-required">
-                  <label for="rf_sameAddress_yes">Do live at the same address being refinanced?</label>
+                  <label for="rf_propertyrefinancing_yes">Do live at the same address being refinanced?</label>
                   <div class="radio-yesno">
-                    <label><input type="radio" name="rf_sameAddress" value="yes" id="rf_sameAddress_yes" /><span>Yes</span></label>
-                    <label><input type="radio" name="rf_sameAddress" value="no" id="rf_sameAddress_no" /><span>No</span></label>
+                    <label><input type="radio" name="rf_propertyrefinancing" value="yes" id="rf_propertyrefinancing_yes" /><span>Yes</span></label>
+                    <label><input type="radio" name="rf_propertyrefinancing" value="no" id="rf_propertyrefinancing_no" /><span>No</span></label>
                   </div>
                   <!-- <div class="message cc-required">Required</div> -->
                 </div><!--field-->
@@ -146,8 +146,8 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-dropdown cc-validate cc-required">
-                  <label for="rf_propUsePurchase">Property Use?</label>
-                  <select id="rf_propUsePurchase" name="rf_propUsePurchase">
+                  <label for="rf_propUse">Property Use?</label>
+                  <select id="rf_propUse" name="rf_propUse">
                     <option value="">Please Select</option>
                     <option value="1">Primary Residence</option>
                     <option value="2">Second Home</option>
@@ -163,14 +163,12 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-dropdown cc-validate cc-required">
-                  <label for="rf_typePropPurchase">Property Type?</label>
-                  <select id="rf_typePropPurchase" name="rf_typePropPurchase">
+                  <label for="rf_typeProp">Property Type?</label>
+                  <select id="rf_typeProp" name="rf_typeProp">
                     <option value="">Please Select</option>
-                    <option value="1">Single Family</option>
-                    <option value="2">Townhouse</option>
+                    <option value="1">Single Family Residence</option>
+                    <option value="2">Townhouse (attached PUD)</option>
                     <option value="3">Condominium</option>
-                    <option value="4">Duplex (2 Units)</option>
-                    <option value="5">3 or 4 Units</option>
                   </select>
                   <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
                   <div class="message cc-required">Required</div>
@@ -200,8 +198,8 @@
 
               <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-required cc-currency">
-                  <label for="rf_purchaseprice">Purchase Price</label>
-                  <input type="tel" class="currency" tabindex="16" maxlength="11" name="rf_purchaseprice" id="rf_purchaseprice" />
+                  <label for="rf_cost">Purchase Price</label>
+                  <input type="tel" class="currency" tabindex="16" maxlength="11" name="rf_cost" id="rf_cost" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-currency">Invalid Value</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
@@ -210,8 +208,8 @@
 
               <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-required">
-                  <label for="rf_purchaseyear">Purchase Year</label>
-                  <input type="tel" class="numbers" tabindex="16" maxlength="4" name="rf_purchaseyear" id="rf_purchaseyear" />
+                  <label for="rf_year">Purchase Year</label>
+                  <input type="tel" class="numbers" tabindex="16" maxlength="4" name="rf_year" id="rf_year" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-currency">Invalid Value</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
@@ -250,10 +248,10 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-validate cc-required">
-                  <label for="rf_forSale_yes">Has the property been for sale in the last 6 months?</label>
+                  <label for="rf_forsale_yes">Has the property been for sale in the last 6 months?</label>
                   <div class="radio-yesno">
-                    <label><input type="radio" name="rf_forSale" value="yes" id="rf_forSale_yes" /><span>Yes</span></label>
-                    <label><input type="radio" name="rf_forSale" value="no" id="rf_forSale_no" /><span>No</span></label>
+                    <label><input type="radio" name="rf_forsale" value="yes" id="rf_forsale_yes" /><span>Yes</span></label>
+                    <label><input type="radio" name="rf_forsale" value="no" id="rf_forsale_no" /><span>No</span></label>
                   </div>
                   <!-- <div class="message cc-required">Required</div> -->
                 </div><!--field-->
@@ -264,8 +262,8 @@
             <div class="row" id="dateOffMarket" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-to-be-validate cc-required cc-date">
-                  <label for="rf_offMarketDate">What date did you take off the market?</label>
-                  <input type="tel" tabindex="6" class="date"  name="rf_offMarketDate" id="rf_offMarketDate" maxlength="10" placeholder="mm/dd/yyyy"/>
+                  <label for="rf_dateOffMarket">What date did you take off the market?</label>
+                  <input type="tel" tabindex="6" class="date"  name="rf_dateOffMarket" id="rf_dateOffMarket" maxlength="10" placeholder="mm/dd/yyyy"/>
                   <div class="message cc-required">Required</div>
                   <div class="message cc-currency">Invalid value</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
@@ -277,11 +275,11 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate cc-required">
-                  <label for="rf_construction_yes">Has any construction or renovation occurred during the past 6 months? </label>
+                  <label for="rf_subject_yes">Has any construction or renovation occurred during the past 6 months? </label>
                   <div class="half-width">
                     <div class="radio-yesno">
-                      <label><input type="radio" name="rf_construction" value="yes" id="rf_construction_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="rf_construction" value="no" id="rf_construction_no" /><span>No</span></label>
+                      <label><input type="radio" name="rf_subject" value="yes" id="rf_subject_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="rf_subject" value="no" id="rf_subject_no" /><span>No</span></label>
                     </div>
                   </div><!--half-width-->
                   <!-- <div class="message cc-required">Required</div> -->
@@ -293,8 +291,8 @@
             <div class="row" id="constructionBrief" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-to-be-validate cc-required">
-                  <label for="rf_contructionBrief">Please briefly describe the construction or renovation</label>
-                  <textarea tabindex="6" name="rf_contructionBrief" id="rf_contructionBrief"></textarea>
+                  <label for="rf_renovationdetails">Please briefly describe the construction or renovation</label>
+                  <textarea tabindex="6" name="rf_renovationdetails" id="rf_renovationdetails"></textarea>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -304,11 +302,11 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate cc-required">
-                  <label for="rf_trust_yes">Is this property in trust, corporation, partnership or LLC?</label>
+                  <label for="rf_istitled_yes">Is this property in trust, corporation, partnership or LLC?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
-                      <label><input type="radio" name="rf_trust" value="yes" id="rf_trust_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="rf_trust" value="no" id="rf_trust_no" /><span>No</span></label>
+                      <label><input type="radio" name="rf_istitled" value="yes" id="rf_istitled_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="rf_istitled" value="no" id="rf_istitled_no" /><span>No</span></label>
                     </div>
                   </div><!--half-width-->
                   <!-- <div class="message cc-required">Required</div> -->
@@ -363,8 +361,8 @@
             <div class="row" id="subName" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-to-be-validate cc-required">
-                  <label for="rf_subdivision">Subdivision Name</label>
-                  <input type="text" tabindex="6"  name="rf_subdivision" id="rf_subdivision"/>
+                  <label for="ot_subdivision">Subdivision Name</label>
+                  <input type="text" tabindex="6"  name="ot_subdivision" id="ot_subdivision"/>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -374,11 +372,11 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate cc-required">
-                  <label for="rf_isSecured_yes">is this property secured by mortgage?</label>
+                  <label for="rf_haveMortgage1_yes">is this property secured by mortgage?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
-                      <label><input type="radio" name="rf_isSecured" value="yes" id="rf_isSecured_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="rf_isSecured" value="no" id="rf_isSecured_no" /><span>No</span></label>
+                      <label><input type="radio" name="rf_haveMortgage1" value="yes" id="rf_haveMortgage1_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="rf_haveMortgage1" value="no" id="rf_haveMortgage1_no" /><span>No</span></label>
                     </div>
                   </div><!--half-width-->
 
@@ -391,8 +389,8 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="cc-field cc-to-be-validate cc-required">
-                    <label for="rf_mortgageLender1">Lender</label>
-                    <input type="text" tabindex="6" name="rf_mortgageLender1" id="rf_mortgageLender1"/>
+                    <label for="rf_mortgage1Lender">Lender</label>
+                    <input type="text" tabindex="6" name="rf_mortgage1Lender" id="rf_mortgage1Lender"/>
                     <div class="message cc-required">Required</div>
                   </div><!--field-->
                 </div>
@@ -402,17 +400,18 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="cc-field cc-to-be-validate cc-required cc-currency">
-                    <label for="rf_mortgagePayemnt1">Monthly Payment</label>
-                    <input type="tel" tabindex="6" class="currency" name="rf_mortgagePayemnt1" id="rf_mortgagePayemnt1" maxlength="7"/>
+                    <label for="rf_mortgage1Monthly">Monthly Payment</label>
+                    <input type="tel" tabindex="6" class="currency" name="rf_mortgage1Monthly" id="rf_mortgage1Monthly" maxlength="7"/>
                     <div class="message cc-required">Required</div>
                   </div><!--field-->
                 </div>
 
                 <div class="col-sm-6">
                   <div class="cc-field cc-to-be-validate cc-required cc-currency">
-                    <label for="rf_mortgageBalance1">Balance Owned</label>
-                    <input type="tel" tabindex="6" class="currency" name="rf_mortgageBalance1" id="rf_mortgageBalance1"/>
+                    <label for="rf_1mortgage">Balance Owned</label>
+                    <input type="tel" tabindex="6" class="currency" name="rf_1mortgage" id="rf_1mortgage"/>
                     <div class="message cc-required">Required</div>
+                    <div class="message cc-numbers-only">Numbers only</div>
                   </div><!--field-->
                 </div>
 
@@ -423,11 +422,11 @@
             <div class="row firstMortgage" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-to-be-validate cc-required">
-                  <label for="rf_isSecured2_yes">is this property secured by another mortgage or home equity lien (even if the balance is $0)?</label>
+                  <label for="rf_secmortgage_yes">is this property secured by another mortgage or home equity lien (even if the balance is $0)?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
-                      <label><input type="radio" name="rf_isSecured2" value="yes" id="rf_isSecured2_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="rf_isSecured2" value="no" id="rf_isSecured2_no" /><span>No</span></label>
+                      <label><input type="radio" name="rf_secmortgage" value="yes" id="rf_secmortgage_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="rf_secmortgage" value="no" id="rf_secmortgage_no" /><span>No</span></label>
                     </div>
                   </div><!--half-width-->
 
@@ -440,8 +439,8 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="cc-field cc-to-be-validate-mortgage2 cc-required">
-                    <label for="rf_mortgageLender2">Lender</label>
-                    <input type="text" tabindex="6" name="rf_mortgageLender2" id="rf_mortgageLender2"/>
+                    <label for="rf_mortgage2Lender">Lender</label>
+                    <input type="text" tabindex="6" name="rf_mortgage2Lender" id="rf_mortgage2Lender"/>
                     <div class="message cc-required">Required</div>
                   </div><!--field-->
                 </div>
@@ -451,17 +450,46 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="cc-field cc-to-be-validate-mortgage2 cc-required cc-currency">
-                    <label for="rf_mortgagePayemnt2">Monthly Payment</label>
-                    <input type="tel" tabindex="6" class="currency" name="rf_mortgagePayemnt2" id="rf_mortgagePayemnt2" maxlength="7"/>
+                    <label for="rf_mortgage2Monthly">Monthly Payment</label>
+                    <input type="tel" tabindex="6" class="currency" name="rf_mortgage2Monthly" id="rf_mortgage2Monthly" maxlength="7"/>
                     <div class="message cc-required">Required</div>
                   </div><!--field-->
                 </div>
 
                 <div class="col-sm-6">
                   <div class="cc-field cc-to-be-validate-mortgage2 cc-required cc-currency">
-                    <label for="rf_mortgageBalance2">Balance Owned</label>
-                    <input type="tel" tabindex="6" class="currency" name="rf_mortgageBalance2" id="rf_mortgageBalance2"/>
+                    <label for="rf_2mortgage">Balance Owned</label>
+                    <input type="tel" tabindex="6" class="currency" name="rf_2mortgage" id="rf_2mortgage"/>
                     <div class="message cc-required">Required</div>
+                    <div class="message cc-numbers-only">Numbers only</div>
+                  </div><!--field-->
+                </div>
+
+              </div><!--row-->
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="cc-field cc-radio cc-to-be-validate-mortgage2 cc-required">
+                    <label for="rf_mortgage2LOC_yes">Is this a line of credit?</label>
+                    <div class="half-width">
+                      <div class="radio-yesno">
+                        <label><input type="radio" name="rf_mortgage2LOC" value="yes" id="rf_mortgage2LOC_yes" /><span>Yes</span></label>
+                        <label><input type="radio" name="rf_mortgage2LOC" value="no" id="rf_mortgage2LOC_no" /><span>No</span></label>
+                      </div>
+                    </div><!--half-width-->
+
+                  </div><!--field-->
+                </div>
+
+              </div><!--row-->
+
+               <div class="row credit-limit" style="display:none;">
+                <div class="col-sm-6">
+                  <div class="cc-field cc-to-be-validate-cl cc-required cc-currency">
+                    <label for="rf_facemortgage">Credit Limit</label>
+                    <input type="tel" tabindex="6" class="currency" name="rf_facemortgage" id="rf_facemortgage"/>
+                    <div class="message cc-required">Required</div>
+                  <div class="message cc-numbers-only">Numbers only</div>
                   </div><!--field-->
                 </div>
 
@@ -472,11 +500,11 @@
             <div class="row secondMortgage" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-to-be-validate-mortgage2 cc-required">
-                  <label for="rf_otherLiens_yes">Are there other liens against this property?</label>
+                  <label for="as_additionalliens_yes">Are there other liens against this property?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
-                      <label><input type="radio" name="rf_otherLiens" value="yes" id="rf_otherLiens_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="rf_otherLiens" value="no" id="rf_otherLiens_no" /><span>No</span></label>
+                      <label><input type="radio" name="as_additionalliens" value="yes" id="as_additionalliens_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="as_additionalliens" value="no" id="as_additionalliens_no" /><span>No</span></label>
                     </div>
                   </div><!--half-width-->
 
@@ -485,14 +513,25 @@
 
             </div><!--row-->
 
+            <div class="row" id="additionalLiens" style="display:none;">
+              <div class="col-sm-6">
+                <div class="cc-field cc-to-be-validate-lien cc-required">
+                  <label for="rf_liens">Please describe any additional liens below:</label>
+                  <textarea tabindex="6" name="rf_liens" id="rf_liens"></textarea>
+                  <div class="message cc-required">Required</div>
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate cc-required">
-                  <label for="rf_includeInsurance_yes">Do you want to include homeowner insurance and real estate tax in your monthly payment?</label>
+                  <label for="rf_loanincrease_yes">Do you want to include homeowner insurance and real estate tax in your monthly payment?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
-                      <label><input type="radio" name="rf_includeInsurance" value="yes" id="rf_includeInsurance_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="rf_includeInsurance" value="no" id="rf_includeInsurance_no" /><span>No</span></label>
+                      <label><input type="radio" name="rf_loanincrease" value="yes" id="rf_loanincrease_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="rf_loanincrease" value="no" id="rf_loanincrease_no" /><span>No</span></label>
                     </div>
                   </div><!--half-width-->
 
