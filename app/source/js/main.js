@@ -153,8 +153,10 @@ function updateTabIndex(selector){
  * [yesNoRadio Will set the behavior of yes/no radio buttons by adding .checked class to the label of the button]
  * the function assume the input[type=radion] is included inside <label> tag
  */
-function yesNoRadio(){
-  var radios = $('.radio-yesno input[type=radio]').on('change', function(e){
+function yesNoRadio(container){
+  //// if container is passed find the radios inside it or do a document global find
+  var radios = !!container ? container.find('.radio-yesno input[type=radio]') : $('.radio-yesno input[type=radio]');
+  radios.on('change', function(e){
     if($(this).attr('checked')){
       $(this).parent().parent().find('label.checked').removeClass('checked');
       $(this).parent().addClass('checked').removeClass('focus');

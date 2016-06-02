@@ -355,7 +355,7 @@ body.cc-body{
 
     .title-box{
         padding:10px 15px;
-        background-color:$cBGMidGray;
+        background-color:$cBGLightGray;
         margin-top:2em;
         margin-bottom:1em;
         color:$cWhite;
@@ -781,6 +781,10 @@ body.cc-body{
         margin-bottom: 1em;
         @include mxRoundCorners(3px);
 
+        &.close-btn{
+            padding-top:2.3em;
+        }
+
         .title{
             h5{
                 margin:0;
@@ -795,9 +799,9 @@ body.cc-body{
             line-height: 30px;
             text-align: center;
             position:absolute;
-            top:2px;
-            right:2px;
-            color:$cTextGray;
+            top:5px;
+            right:5px;
+            color:$cDarkGray;
             font-size:0.9;
         }
 

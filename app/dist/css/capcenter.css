@@ -289,7 +289,7 @@ body.cc-body {
     font-weight: 400; }
   .cc-box .title-box {
     padding: 10px 15px;
-    background-color: #a89b94;
+    background-color: #c2b7af;
     margin-top: 2em;
     margin-bottom: 1em;
     color: #fff;
@@ -654,6 +654,8 @@ body.cc-body {
   /* future proofing */
   -khtml-border-radius: 3px;
   /* for old Konqueror browsers */ }
+  .cc-form .cc-form-section.close-btn {
+    padding-top: 2.3em; }
   .cc-form .cc-form-section .title h5 {
     margin: 0;
     margin-bottom: 1em; }
@@ -664,9 +666,9 @@ body.cc-body {
     line-height: 30px;
     text-align: center;
     position: absolute;
-    top: 2px;
-    right: 2px;
-    color: #767371;
+    top: 5px;
+    right: 5px;
+    color: #333333;
     font-size: 0.9; }
   .cc-form .cc-form-section .cc-field input[type="text"],
   .cc-form .cc-form-section .cc-field input[type="password"],

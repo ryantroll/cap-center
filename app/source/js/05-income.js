@@ -1,8 +1,6 @@
 $(document).ready(boIncomeReady);
-var employerTemplate;
-var employerIndex;
-var employersHolder;
-
+var employerTemplate, employerIndex, employersHolder;
+var rentTemplate, rentIndex, rentsHolder, rentsArray;
 function boIncomeReady(){
 
     var myForm = $('#boIncomeForm');
@@ -13,8 +11,32 @@ function boIncomeReady(){
 
     employerTemplate = $('#employerTmplt').text();
     employerIndex = 1;
-    employersHolder = $('#employersHolder')
+    employersHolder = $('#employersHolder');
 
+
+    /**
+     * [rentTemplate variable to hold the html template as string]
+     */
+    rentTemplate = $('#rentTmplt').text();
+    /**
+     * [rentIndex a variable to track the rent property inside the DOM
+     * this variable work similar to auto increment field in data base and it is not related to fields name and fields id]
+     * @type {Number}
+     */
+    rentIndex = 0;
+
+    /**
+     * [rentsHolder the div where rent properties will be appended]
+     */
+    rentsHolder = $('#rentsHolder');
+
+    /**
+     * [rentsArray will track the position of each rent property index
+     * when user start adding and removing rents randomly this array will keep track of
+     * e.g retnsArray = [4, 6] means the first rent has index of 4 and second rent has index of 6
+     * the positions of this array elements will help enforce the fields names and ids to stay in sequence of 1,2,3,... with help of updateRentsFields function
+     */
+    rentsArray = [];
 
     updateTabIndex( myForm); //// function in main.js
 
@@ -38,7 +60,6 @@ function boIncomeReady(){
 
 
         if(isValid){
-
 
             return true;
         }//// if isValid
@@ -210,17 +231,32 @@ function boIncomeReady(){
         var val = $(this).val().toLowerCase();
 
         if(true === !!$(this).attr('checked')){
-            includeFields({selector:'.rental', validationClass:'.cc-to-be-validate-rental'}); //// function in main.js
+            includeFields({selector:'.rental', validationClass:'.cc-to-be-validate'}); //// function in main.js
 
+            /**
+             * Add new property if the property count is 0
+             */
+            if(rentsArray.length < 1){
+                addRent();
+            }
         }//// if
         else{
             excludeFields({
                 selector:'.rental',
-                validationClass:'.cc-to-be-validate-rental'
+                validationClass:'.cc-to-be-validate'
             }); //// function in main.js
 
+            while(rentsArray.length > 0){
+                removeRent(rentsArray[rentsArray.length-1]);
+            }/// while
         }
     });
+
+    $('#addRentProperty').on('click', function(ev){
+        if(ev.preventDefault) ev.preventDefault(); else ev.returnValue = false;
+
+        addRent();
+    })
 
 };//// borrowerReady
 
@@ -320,3 +356,132 @@ function checkEmploymentDate(ev){
         }
     }//// else
 }//// fun. checkEmplymentDate
+
+function addRent(){
+
+    rentIndex++;
+    rentsArray.push(rentIndex);
+    var template = rentTemplate.replace(/(\{\#index\})/g, rentIndex);
+
+    var id = rentsArray.length;
+    template = template.replace(/(\{\#id\})/g, id);
+
+
+    /**
+     * [addressIndex is used to help add and track the address fields for type ahead address functionality]
+     * 100 + is added to differentiate the rent property address fields from employer address fields
+     */
+    var addressIndex = 100 + rentIndex;
+    template = template.replace(/(\{\#indexPlus\})/g, addressIndex);
+
+
+    var rent = $(template);
+
+    rent.find('a.close').on('click', function(ev){
+        var i = parseInt($(this).attr('data-index'), 10);
+        removeRent(i);
+    });
+
+    fillStateDropdown( rent.find('.state-dropdown') );
+
+    /**
+     * Set yes/no radio button behavior
+     */
+    yesNoRadio(rent);
+
+
+
+    /**
+     * Behavior setting for numbers only and currency fields
+     */
+    rent.find('input.numbers')
+    .on('keydown', restrictNumbers)
+
+    rent.find('input.currency')
+    .on('keydown', restrictCurrency)
+    .on('keyup', formatCurrency);
+
+    /**
+     * Set mortgage yes/no action
+     */
+    rent.find('input[name=re_hasmortgage' + id +']').on('change', function(){
+        var myIndex = $(this).attr('data-index');
+        var myVal = $(this).val();
+        if(true === !!$(this).attr('checked') && myVal === 'yes'){
+            includeFields({selector:'.mortgage'+myIndex, validationClass:'.cc-to-be-validate-mort'+myIndex}); //// function in main.js
+        }
+        else{
+            excludeFields({selector:'.mortgage'+myIndex, validationClass:'.cc-to-be-validate-mort'+myIndex}); //// function in main.js
+
+        }
+    })
+
+
+
+    rentsHolder.append(rent);
+
+    rent.slideDown();
+
+    addAutoAddress(addressIndex);
+
+    updateTabIndex($('.cc-form'));
+
+    updateRentCloseBtn();
+}//// fun. addRent
+
+function removeRent(removeIndex){
+    var position = rentsArray.indexOf(removeIndex);
+
+    $('#property_' + removeIndex).slideUp({
+        complete:function(){
+            $(this).remove();
+            updateTabIndex($('.cc-form'));
+        }
+    });
+    rentsArray.splice(position, 1);
+
+    updateRentsFields();
+
+    updateRentCloseBtn();
+}//// fun. removeRent
+
+/**
+ * [updateRentsFields this function will ensure the rent property name and id is always in series of 1,2,3,4,....]
+ * this function is called in addRent and removeRent
+ */
+function updateRentsFields(){
+    var limit = rentsArray.length;
+    if(limit < 1) return;
+
+    for(var x=0; x<limit; x++){
+        var index = rentsArray[x];
+
+        var rentDiv = $('#property_'+index);
+
+        rentDiv.find('input').each(function(z){
+            var name = $(this).attr('name');
+            var newName = name.replace(/\d/g, x+1);
+            var label = $('label[for=' + name + ']');
+            $(this).attr({name:newName, id:newName});
+            label.attr('for', newName);
+        });
+    }//// for x
+}//// fun. updateRentsFields
+
+/**
+ * [updateRentCloseBtn this function will ensure the remove button is hidden if there is only one property]
+ * it will be called from addRent and removeRent
+ */
+function updateRentCloseBtn(){
+    if(rentsArray.length > 1){
+        var index = rentsArray[0];
+        var rentDiv = $('#property_'+index);
+        rentDiv.find('a.close').show();
+    }
+    else{
+        var index = rentsArray[0];
+        var rentDiv = $('#property_'+index);
+        rentDiv.find('a.close').hide();
+    }
+
+}//// fun. updateRentCloseBtn
