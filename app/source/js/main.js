@@ -172,6 +172,9 @@ function yesNoRadio(container){
     $(this).parent().removeClass('focus');
   });
 
+  /**
+   * Trigger change to set the right appearance when form is pre-loaded with data
+   */
   radios.trigger('change');//// this to set the initial state
 }
 
@@ -186,7 +189,11 @@ function multiCheckbox(){
       $(this).parent().removeClass('checked');
       $(this).parent().find('i').removeClass();
     }
-  })
+  });
+  /**
+   * Trigger change to set the right appearance when form is pre-loaded with data
+   */
+  radios.trigger('change');
 }//// fun. multiCheckBox
 
 /**
