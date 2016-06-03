@@ -456,6 +456,7 @@ body.cc-body{
                 padding-right:0;
             }
 
+
             option{
                 padding:0 0 0 15px;
             }
@@ -465,6 +466,7 @@ body.cc-body{
             width:$nFieldHeight;
             height: $nFieldHeight;
             line-height: $nFieldHeight;
+            // background-color:$cWhite;
             text-align:center;
             bottom:0;
             right:0;
@@ -561,6 +563,11 @@ body.cc-body{
             }//// &.right
             &.more-padding{
                 padding-top:4em;
+            }
+            &.center{
+                 button, .cc-btn{
+                    margin:0 auto;
+                 }
             }
         }//// &.cc-buttons
 
@@ -1110,6 +1117,32 @@ body.cc-body{
         }//// .two-cols
     }///// .cc-checkbox
 }//// .cc-form
+
+/**
+ * Targeting Firefox on windows for <select> element
+ */
+@-moz-document url-prefix() {
+  .cc-form{
+    .cc-field{
+        select {
+         padding-right: 0;
+         outline:0;
+
+        option{
+            height: $nFieldHeight;
+            line-height: $nFieldHeight;
+            padding-top:5px;
+        }//// option
+      }//// select
+      select + span.arrow{
+            background-color:$cWhite;
+            border:1px solid $cBGMidGray;
+            border-left:none;
+            @include mxBorderRadius(0, 3px, 3px, 0);
+        }
+    }//// .cc-field
+  }//// .cc-form
+}
 
 .cc-note{
     text-align: center;

@@ -477,6 +477,8 @@ body.cc-body {
         margin-right: 0; } }
   .cc-form .cc-field.cc-buttons.more-padding {
     padding-top: 4em; }
+  .cc-form .cc-field.cc-buttons.center button, .cc-form .cc-field.cc-buttons.center .cc-btn {
+    margin: 0 auto; }
   .cc-form .cc-field .message {
     display: none;
     max-width: 280px;
@@ -906,6 +908,27 @@ body.cc-body {
   .cc-form .cc-checkbox .two-cols input[type="checkbox"] {
     position: absolute;
     left: -50px; }
+
+/**
+ * Targeting Firefox on windows for <select> element
+ */
+@-moz-document url-prefix() {
+  .cc-form .cc-field select {
+    padding-right: 0;
+    outline: 0; }
+    .cc-form .cc-field select option {
+      height: 42px;
+      line-height: 42px;
+      padding-top: 5px; }
+  .cc-form .cc-field select + span.arrow {
+    background-color: #fff;
+    border: 1px solid #a89b94;
+    border-left: none;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+    /* future proofing */
+    -khtml-border-radius: 0 3px 3px 0; } }
 
 .cc-note {
   text-align: center;

@@ -41,7 +41,7 @@ function borrowerReady(){
                 myForm.attr('action', '02-coborrower.html');
             }
 
-            return true;
+            return false;
         }/// if isValid
         else{
             //// if the form is not valid and continue button is clicked
@@ -148,12 +148,60 @@ function borrowerReady(){
         }
     });
 
+    $('#bo_email').on('change', function(){
+        /**
+         * make sure email field is validate before doing any check
+         * id #emailField is given to .cc-field container of email field
+         */
+        $('#emailField').validateField();
+
+        var val = $.trim($(this).val());
+        var isValid = $(this).data('isValid');
+
+        if(val && true === isValid){
+            $.ajax({
+                url:"api-response/is-email-exists.json",
+                data:{email:val},
+                method:"post",
+                dataType:"json",
+                error:function(err){
+                    console.log(err);
+                    updateLoginSection(false);
+                },
+                success:function(ret){
+                    if(ret.email.toLowerCase() == val.toLowerCase() ){
+                        updateLoginSection(ret.exists);
+                        if(ret.exists === true){
+                            $('#login_email').val(val);
+                        }
+                    }
+                    else{
+                        updateLoginSection(false);
+                    }
+                }
+            });
+        }/// if val
+        else{
+            updateLoginSection(false);
+        }//// not val
+
+    });
+
     /**
      * Add address type ahead functionality to address
      */
     addAutoAddress(1);
 
 };//// borrowerReady
+
+function updateLoginSection(emailExists){
+    if(true === emailExists) {
+        includeFields({selector:'#loginSection', validationClass:'.cc-to-be-validate'}); //// function in main.js
+    }
+    else{
+        excludeFields({selector:'#loginSection', validationClass:'.cc-to-be-validate'}); //// function in main.js
+    }
+}///// fun. updateLoginSection
 
 
 

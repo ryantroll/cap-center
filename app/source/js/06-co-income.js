@@ -267,7 +267,7 @@ function coIncomeReady(){
     .trigger('change');
 
     $('input[name=in_co_ck_income9]').on('change', function(){
-        console.log('lsl')
+
         var val = $(this).val().toLowerCase();
 
         if(true === !!$(this).attr('checked')){

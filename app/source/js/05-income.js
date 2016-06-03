@@ -267,7 +267,6 @@ function boIncomeReady(){
     .trigger('change');
 
     $('input[name=in_ck_income9]').on('change', function(){
-        console.log('lsl')
         var val = $(this).val().toLowerCase();
 
         if(true === !!$(this).attr('checked')){
@@ -305,10 +304,14 @@ function boIncomeReady(){
 
 function bindEmploymentDate(index){
 
-    var fields = $('input.startDate' + index + ', input.endDate' + index)
-    .off('change', checkEmploymentDate)
-    .on('change', checkEmploymentDate);
+    var fields = $('input.startDate' + index + ', input.endDate' + index);
+    var eventName = $.browser.msie ? 'keyup' : 'change'; /// change is not firing on IE !!!
+    fields.each(function(){
 
+        $(this)
+        .off(eventName, checkEmploymentDate)
+        .on(eventName, checkEmploymentDate);
+    })
     // fields.off('change', checkEmploymentDate)
 }///// fun. bindEmploymentDate
 
@@ -405,6 +408,7 @@ function checkEmploymentDate(ev){
     else{
         return;
     }
+
     if(endDate <= startDate){
         endDateField.addError('cc-date-gt').showError();
     }

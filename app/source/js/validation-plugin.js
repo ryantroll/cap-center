@@ -17,7 +17,7 @@
                 //// false and true strictly test as null will returned is field is not validated
                 if(false === isValid){
                     isFormValid = isFormValid && false;
-                    var field = self.find('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="radio"], input[type="checkbox"], input[type="hidden"], select, textarea');
+                    var field = self.find('input[type="text"], input[type="password"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="radio"], input[type="checkbox"], input[type="hidden"], select, textarea');
                     var label = self.find('label').eq(0);
                     var err = field.data('err');
                     var fErr = {filed:label.text(), id:field.attr('id'), error:err};
@@ -58,7 +58,7 @@
 
     $.fn.validateField = function(self){
         var self = this;
-        var f = self.find('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="radio"], input[type="checkbox"], input[type="hidden"], select, textarea');
+        var f = self.find('input[type="text"], input[type="password"], input[type="password"],  input[type="number"], input[type="tel"], input[type="email"], input[type="date"], input[type="radio"], input[type="checkbox"], input[type="hidden"], select, textarea');
         var v = $.trim(f.val());
         var err = f.data('err');
         var type = f.attr('type');
