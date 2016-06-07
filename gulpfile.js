@@ -32,7 +32,9 @@ gulp.task('scripts', function(){
         './app/source/js/03-purchase.js',
         './app/source/js/04-refinance.js',
         './app/source/js/05-income.js',
-        './app/source/js/06-co-income.js'
+        './app/source/js/06-co-income.js',
+        './app/source/js/07-assets.js',
+        './app/source/js/08-liabilities.js'
         ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))

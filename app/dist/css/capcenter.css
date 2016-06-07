@@ -255,7 +255,9 @@ body.cc-body {
  * ****************************************************************
  */
 .cc-content {
-  padding: 2em 0; }
+  padding: 2em 0;
+  background-repeat: no-repeat;
+  background-position: center bottom; }
   .cc-content .cc-content-inner {
     max-width: 100%; }
     @media screen and (min-width: 768px) {
@@ -305,10 +307,20 @@ body.cc-body {
       font-weight: 400; }
 
 .cc-message {
-  padding-top: 2em;
+  padding: 24px;
   position: relative; }
+  .cc-message:after {
+    display: block;
+    content: " ";
+    clear: both; }
   .cc-message p {
-    margin: 0; }
+    margin: 0;
+    margin-bottom: 20px; }
+    .cc-message p:last-child {
+      margin-bottom: 0; }
+  .cc-message h4 {
+    margin: 0;
+    margin-bottom: 20px; }
   .cc-message .close {
     display: block;
     width: 30px;
@@ -320,6 +332,9 @@ body.cc-body {
     right: 2px;
     color: #767371;
     font-size: 0.9; }
+  .cc-message .dismiss {
+    margin-right: 0;
+    float: right; }
 
 .cc-form .cc-field {
   margin-bottom: 12px;
@@ -413,6 +428,7 @@ body.cc-body {
   .cc-form .cc-field button,
   .cc-form .cc-field input[type="button"],
   .cc-form .cc-field .cc-btn {
+    display: table;
     width: auto;
     padding: 0 1em;
     border: none;
@@ -429,7 +445,8 @@ body.cc-body {
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    text-decoration: none; }
     .cc-form .cc-field button:hover,
     .cc-form .cc-field input[type="button"]:hover,
     .cc-form .cc-field .cc-btn:hover {
@@ -455,10 +472,12 @@ body.cc-body {
       .cc-form .cc-field .cc-btn.green:hover {
         background-color: #046e3d; }
   .cc-form .cc-field.cc-buttons button, .cc-form .cc-field.cc-buttons .cc-btn {
-    display: block;
+    display: table;
+    width: auto;
     margin-bottom: 1em;
     min-width: 150px;
-    margin-right: 0; }
+    margin-right: 0;
+    cursor: pointer; }
     .cc-form .cc-field.cc-buttons button:last-of-type, .cc-form .cc-field.cc-buttons .cc-btn:last-of-type {
       margin-right: 0; }
   .cc-form .cc-field.cc-buttons:after {
@@ -704,6 +723,9 @@ body.cc-body {
     border-color: #fff; }
   .cc-form .cc-form-section .cc-radio .radio-yesno label:after {
     border-color: #fff; }
+  .cc-form .cc-form-section .cc-in-box-label {
+    background-color: #fff;
+    border-color: #fff; }
 
 .cc-form .cc-dropdown {
   position: relative; }
@@ -928,7 +950,11 @@ body.cc-body {
     -webkit-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;
     /* future proofing */
-    -khtml-border-radius: 0 3px 3px 0; } }
+    -khtml-border-radius: 0 3px 3px 0; }
+  .cc-form .cc-form-section .cc-field select + span.arrow {
+    border-color: #fff; }
+  .cc-form .cc-form-section .cc-field.error select + span.arrow {
+    border-color: #F47C29; } }
 
 .cc-note {
   text-align: center;

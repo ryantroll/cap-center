@@ -43,8 +43,8 @@
     <ul>
       <li class="done"><a href="01-borrower.html"><span>Borrower</span></a></li>
       <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
-      <li class="active"><a href="javascript:void(0)"><span>Income</span></a></li>
-      <li><a href="javascript:void(0)"><span>Assets &amp; Liabilities</span></a></li>
+      <li class="active"><a href="05-income.html"><span>Income</span></a></li>
+      <li><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
       <li><a href="javascript:void(0)"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
@@ -56,9 +56,12 @@
     <div class="cc-content-inner">
 
       <div class="cc-box cc-message jsCollapse">
-        <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a>
+        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a> -->
         <p>
           Many borrower can qualify for a loan on their base income. You can skip the following fields asking about other income if you don't have other income or if you don't want us to consider your other income in our initial credit decision.
+        </p>
+        <p>
+          <a href="javascript:void(0)" class="dismiss">DISMISS</a>
         </p>
       </div><!--cc-box-->
 
@@ -852,7 +855,7 @@
             <div class="row rental" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-buttons">
-                  <button class="gray" name="addRentProperty" id="addRentProperty">Add Another Property</button>
+                  <a class="cc-btn gray" name="addRentProperty" id="addRentProperty">Add Another Property</a>
                 </div><!--field-->
               </div>
 

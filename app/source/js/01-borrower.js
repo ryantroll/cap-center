@@ -148,7 +148,8 @@ function borrowerReady(){
         }
     });
 
-    $('#bo_email').on('change', function(){
+    var eventName = $.browser.safari=== true ? 'blur' : 'change'; //// change is not fired when autofill is used on safari
+    $('#bo_email').on(eventName, function(){
         /**
          * make sure email field is validate before doing any check
          * id #emailField is given to .cc-field container of email field

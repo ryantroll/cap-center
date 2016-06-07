@@ -99,7 +99,7 @@ function ccDocumentReady(){
      */
     $('.jsCollapse').each(function(x){
         var self = $(this);
-        self.find('a.close').on('click', function(e){
+        self.find('a.close, a.dismiss').on('click', function(e){
             if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
             self.slideUp('fast', function(){
                 self.remove();
@@ -116,6 +116,15 @@ function ccDocumentReady(){
      * Set multi checkbox
      */
     multiCheckbox();
+
+    /**
+     * Back button click handlers
+     */
+    $('#back').on('click', function(ev){
+        if(ev.preventDefault) ev.preventDefault(); else ev.returnValue = false;
+        history.back();
+    })
+
 }//// fun. ccDocumentReady
 
 function mainScroll(e){
