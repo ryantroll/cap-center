@@ -69,7 +69,10 @@ function ccDocumentReady(){
      fillStateDropdown( $('.state-dropdown') );
 
 
-
+     /**
+      * Start Support
+      */
+     $(document).ccSupport();
 
 
     /**

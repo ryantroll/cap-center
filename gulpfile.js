@@ -26,6 +26,7 @@ gulp.task('scripts', function(){
         // './app/source/js/cookie-plugin.js',
         // './app/source/js/dropdown-plugin.js',
         './app/source/js/validation-plugin.js',
+        './app/source/js/support.js',
         './app/source/js/main.js',
         './app/source/js/01-borrower.js',
         './app/source/js/02-coborrower.js',
