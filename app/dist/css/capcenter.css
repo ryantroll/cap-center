@@ -339,6 +339,10 @@ body.cc-body {
 .cc-form .cc-field {
   margin-bottom: 12px;
   position: relative; }
+  .cc-form .cc-field:after {
+    display: block;
+    content: " ";
+    clear: both; }
   .cc-form .cc-field input, .cc-form .cc-field textarea, .cc-form .cc-field select, .cc-form .cc-field option {
     font-size: 16px; }
   .cc-form .cc-field label {
@@ -665,7 +669,7 @@ body.cc-body {
   -khtml-border-radius: 3px 0 3px 3px; }
 
 .cc-form .cc-form-section {
-  padding: 1em 1em 1em 1em;
+  padding: 15px;
   position: relative;
   background-color: #dfdfdf;
   margin-bottom: 1em;
@@ -676,10 +680,10 @@ body.cc-body {
   -khtml-border-radius: 3px;
   /* for old Konqueror browsers */ }
   .cc-form .cc-form-section.close-btn {
-    padding-top: 2.3em; }
+    padding-top: 24px; }
   .cc-form .cc-form-section .title h5 {
     margin: 0;
-    margin-bottom: 1em; }
+    margin-bottom: 24px; }
   .cc-form .cc-form-section .close {
     display: table;
     width: auto;
@@ -931,6 +935,46 @@ body.cc-body {
     position: absolute;
     left: -50px; }
 
+.cc-form .cc-checkbox .check-box {
+  display: block;
+  width: 20%;
+  float: left;
+  cursor: pointer;
+  position: relative;
+  text-align: center; }
+  .cc-form .cc-checkbox .check-box input[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+    top: 0; }
+  .cc-form .cc-checkbox .check-box i {
+    display: block;
+    content: " ";
+    width: 26px;
+    height: 26px;
+    line-height: 22px;
+    border: 1px solid #a89b94;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+    /* future proofing */
+    -khtml-border-radius: 13px;
+    /* for old Konqueror browsers */
+    margin: 0 auto;
+    text-align: center; }
+  .cc-form .cc-checkbox .check-box.checked i {
+    background-color: #50a54c;
+    border-color: #50a54c;
+    color: #fff; }
+
+.cc-form .cc-checkbox label {
+  display: block;
+  width: 60%;
+  float: left;
+  text-transform: none;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 26px; }
+
 /**
  * ****************************************************************
  * SUPPORT CLASSES ************************************************
@@ -938,17 +982,17 @@ body.cc-body {
  */
 .cc-support {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 2000; }
   .cc-support > a.btn {
     display: block;
-    width: 40px;
-    height: 40px;
-    line-height: 27px;
+    width: 50px;
+    height: 50px;
+    line-height: 35px;
     text-align: center;
     background-color: #F47C29;
     border: 1px solid #fff;
@@ -960,11 +1004,11 @@ body.cc-body {
     bottom: 20px;
     right: 20px;
     z-index: 2000;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    border-radius: 20px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
     /* future proofing */
-    -khtml-border-radius: 20px;
+    -khtml-border-radius: 25px;
     /* for old Konqueror browsers */
     -moz-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
@@ -974,7 +1018,7 @@ body.cc-body {
     -o-transition: right 0.3s ease-out;
     transition: right 0.3s ease-out; }
     .cc-support > a.btn.out {
-      right: -40px; }
+      right: -50px; }
   .cc-support .cc-support-popup {
     display: block;
     width: 300px;
@@ -1028,7 +1072,7 @@ body.cc-body {
     top: 0;
     z-index: 2000;
     border-left: 1px solid #a89b94;
-    padding: 15px;
+    padding: 0 15px;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -1050,7 +1094,8 @@ body.cc-body {
       opacity: 1;
       z-index: 2001; }
     .cc-support .cc-support-panel .cc-support-questions {
-      list-style: none; }
+      list-style: none;
+      margin-top: 2em; }
       .cc-support .cc-support-panel .cc-support-questions li {
         padding-bottom: 6px; }
         .cc-support .cc-support-panel .cc-support-questions li:after {
@@ -1078,6 +1123,10 @@ body.cc-body {
       .cc-support .cc-support-panel .cc-support-questions li.expanded p {
         max-height: 400px;
         margin-top: 10px; }
+  .cc-support .message {
+    display: none; }
+  .cc-support .white {
+    background-color: #fff; }
 
 /**
  * Targeting Firefox on windows for <select> element

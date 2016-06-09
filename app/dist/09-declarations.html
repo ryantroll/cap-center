@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
-    <title>Liabilities - CapCenter</title>
+    <title>Declarations - CapCenter</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900,300,100,700" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
@@ -44,8 +44,8 @@
       <li class="done"><a href="01-borrower.html"><span>Borrower</span></a></li>
       <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
-      <li class="active"><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
-      <li><a href="javascript:void(0)"><span>Questions</span></a></li>
+      <li class="done"><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
+      <li class="active"><a href="09-declarations.html"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -55,8 +55,7 @@
   <div class="container">
     <div class="cc-content-inner">
 
-      <div class="cc-box cc-message jsCollapse">
-        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a> -->
+      <!-- <div class="cc-box cc-message jsCollapse">
         <h4>Application Tip</h4>
         <p>
           Your credit report will provide information about most of your liabilities, so you may skip this question. However, we do need information about any account or loan opened in past 90 days, including new credit cards, car loans or student loans.
@@ -64,126 +63,53 @@
         <p>
           <a href="javascript:void(0);" class="dismiss">DISMISS</a>
         </p>
-      </div><!--cc-box-->
+      </div> --><!--cc-box-->
 
       <div class="cc-box cc-form">
         <div class="title">
-            <h3>Liabilities</h3>
+            <h3>Declarations</h3>
+            <p>Please review each question and check the box if statement is true</p>
         </div>
-        <form method="post" id="liabilitiesForm">
+        <form method="post" id="declarationsForm">
           <fieldset>
 
-            <div id="liabilitiesHolder">
-              <div class="cc-form-section close-btn" id="liability_1" data-index="1">
-                <a href="javascript:void(0);" class="close" data-index="1"><i class="glyphicon glyphicon-remove-circle"></i> REMOVE</a>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="title">
-                      <h5>Liability</h5>
-                    </div>
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-dropdown cc-validate cc-required">
-                      <label for="li_type1">Type </label>
-
-                      <select name="li_type1" id="li_type1" data-index="1">
-                        <option value="">Select</option>
-                        <option value="1">Credit Card</option>
-                        <option value="2">Installment Loan</option>
-                        <option value="4">Lease Payment</option>
-                        <option value="5">Student Loans</option>
-                        <option value="6">Job related expense</option>
-                        <option value="6">Other</option>
-                      </select>
-                      <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required">
-                      <label for="li_creditor1">Bank or Institution</label>
-                      <input type="text" tabindex="12" name="li_creditor1" id="li_creditor1"  data-index="1"/>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required cc-currency">
-                      <label for="li_unpaid1">Balance </label>
-                      <input type="tel" tabindex="11" class="currency" maxlength="11" name="li_unpaid1" id="li_unpaid1"  data-index="1"/>
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-currency">Invalid value</div>
-                      <div class="message cc-numbers-only">Numbers Only</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required cc-currency">
-                      <label for="li_minpay1">Payment</label>
-
-                      <div class="cc-in-box-label">
-                        <input type="tel" tabindex="14" class="currency" name="li_minpay1" id="li_minpay1" maxlength="11" data-index="1"/>
-                        <label class="label1" for="li_minpay1">/ Month</label>
-                      </div>
-
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-numbers-only">Numbers only</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-radio cc-validate cc-required">
-                      <label for="li_yesno1_yes">Paying of with this loan</label>
-                      <div class="radio-yesno">
-                        <label><input type="radio" name="li_yesno1" value="yes" id="li_yesno1_yes" data-index="1" /><span>Yes</span></label>
-                        <label><input type="radio" name="li_yesno1" value="no" id="li_yesno1_no" data-index="1" /><span>No</span></label>
-                      </div>
-                      <!-- <div class="message cc-required">Required</div> -->
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-              </div><!--form-section-->
-
-            </div><!--liabilitiesHolder-->
-
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-buttons">
-                  <a href=="javascript:void(0);" class="cc-btn gray" name="addAnotherLiability" id="addAnotherLiability">Add Another Liability</a>
+                <div class="cc-field cc-checkbox cc-validate cc-required">
+                    <label class="check-box">
+                      Borrower
+                    </label>
+                    <label for="">&nbsp;</label>
+                  </div>
                 </div><!--field-->
-              </div>
-
-            </div><!--row-->
-
-
-
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-buttons right more-padding">
-                  <button class="green" name="continue" id="continue">Continue</button>
-                  <button class="gray" name="back" id="back">Back</button>
-                </div><!--field-->
-              </div>
 
             </div><!--row-->
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-buttons right">
-                  <button  name="continue" id="continue">Save For Later</button>
+                <div class="cc-field cc-checkbox cc-validate cc-required">
+
+                    <label class="check-box">
+                      <i class="glyphicon glyphicon-ok"></i>
+                      <input type="checkbox" id="in_ck_income2" name="in_ck_income2" value="Employment"/>
+                    </label>
+                    <label for="in_ck_income2">Do you have outstanding judgment?</label>
+                  </div>
                 </div><!--field-->
-              </div>
+
+            </div><!--row-->
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-checkbox cc-validate cc-required">
+
+                    <label class="check-box">
+                      <i class="glyphicon glyphicon-ok"></i>
+                      <input type="checkbox" id="in_ck_income2" name="in_ck_income2" value="Employment"/>
+                    </label>
+                    <label for="in_ck_income2">Do you have outstanding judgment?</label>
+                  </div>
+                </div><!--field-->
 
             </div><!--row-->
 

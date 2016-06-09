@@ -346,6 +346,7 @@ body.cc-body{
     }
 
     .title{
+
         h3{
             padding-bottom:30px;
             font-weight: 400;
@@ -416,6 +417,12 @@ body.cc-body{
     .cc-field{
         margin-bottom: 12px;
         position:relative;
+
+        &:after{
+            display:block;
+            content: " ";
+            clear: both;
+        }
 
         input, textarea, select, option{
             font-size:16px;/// fixing the iphone zoom issue
@@ -807,20 +814,20 @@ body.cc-body{
     }
 
     .cc-form-section{
-        padding:1em 1em 1em 1em;
+        padding:15px;
         position:relative;
         background-color:$cFormSectionBG;
         margin-bottom: 1em;
         @include mxRoundCorners(3px);
 
         &.close-btn{
-            padding-top:2.3em;
+            padding-top:24px
         }
 
         .title{
             h5{
                 margin:0;
-                margin-bottom: 1em;
+                margin-bottom: 24px;
             }
         }
 
@@ -1141,6 +1148,50 @@ body.cc-body{
                 left:-50px;
             }//// input
         }//// .two-cols
+
+        .check-box{
+            display: block;
+            width:20%;
+            float:left;
+            cursor: pointer;
+            position:relative;
+            text-align: center;
+
+            input[type=checkbox]{
+                opacity: 0;
+                position:absolute;
+                top:0;
+            }
+
+            i{
+                display: block;
+                content:" ";
+                width:26px;
+                height: 26px;
+                line-height: 22px;
+                border:1px solid $cBGMidGray;
+                @include mxRoundCorners(13px);
+                margin:0 auto;
+                text-align: center;
+            }
+
+            &.checked{
+                i{
+                    background-color:$cLightGreen;
+                    border-color:$cLightGreen;
+                    color:$cWhite;
+                }
+            }
+        }
+        label{
+            display: block;
+            width:60%;
+            float: left;
+            text-transform: none;
+            font-size:1em;
+            font-weight: 400;
+            line-height: 26px;
+        }
     }///// .cc-checkbox
 }//// .cc-form
 
@@ -1152,8 +1203,8 @@ body.cc-body{
  */
 .cc-support{
     display: block;
-    width:40px;
-    height: 40px;
+    width:50px;
+    height: 50px;
     position:fixed;
     bottom:20px;
     right: 20px;
@@ -1161,9 +1212,9 @@ body.cc-body{
 
     > a.btn{
         display: block;
-        width:40px;
-        height: 40px;
-        line-height: 27px;
+        width:50px;
+        height: 50px;
+        line-height: 35px;
         text-align: center;
         background-color:$cOrange;
         border: 1px solid $cWhite;
@@ -1175,12 +1226,12 @@ body.cc-body{
         bottom:20px;
         right: 20px;
         z-index: 2000;
-        @include mxRoundCorners(20px);
+        @include mxRoundCorners(25px);
         @include mxShadow(2px, 2px, 3px, 1px, rgba(0, 0, 0, 0.3));
         @include mxTransition(right, 0.3s, ease-out);
 
         &.out{
-            right:-40px;
+            right:-50px;
         }
 
     }
@@ -1237,7 +1288,7 @@ body.cc-body{
         top:0;
         z-index: 2000;
         border-left:1px solid $cBGMidGray;
-        padding:15px;
+        padding:0 15px;
         @include mxTransition(all, 0.3s, ease-out);
 
         @media screen and (min-width:$wTablet){
@@ -1263,6 +1314,7 @@ body.cc-body{
 
         .cc-support-questions{
             list-style:none;
+            margin-top: 2em;
 
             li{
                 padding-bottom:6px;
@@ -1301,6 +1353,14 @@ body.cc-body{
             }
         }//// support-questions
     }//// support-panel
+
+    .message{
+        display: none;
+    }
+
+    .white{
+        background-color:$cWhite;
+    }
 }//// .cc-support
 
 /**

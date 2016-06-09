@@ -1,17 +1,22 @@
 (function( $ ) {
+    var panle, popup, btn, questions, activeQuestion, fields;
+    var helloMessage;
+
     $.fn.ccSupport = function() {
         var self = this.find('.cc-support');
 
 
         if(self.length < 1) return;
 
-        var panel = self.find('.cc-support-panel').eq(0);
-        var popup = self.find('.cc-support-popup').eq(0);
-        var btn = self.find('.btn').eq(0);
-        var questions = panel.find('.cc-support-questions li');
-        var activeQuestion = null;
+        panel = self.find('.cc-support-panel').eq(0);
+        popup = self.find('.cc-support-popup').eq(0);
+        btn = self.find('.btn').eq(0);
+        questions = panel.find('.cc-support-questions li');
+        activeQuestion = null;
 
-        var fields = {};
+        fields = {};
+
+        helloMessage = self.find('.message.hello').text();
 
         questions.each(function(x){
             var id = $(this).attr('for');
@@ -37,13 +42,26 @@
             }//// if hasCalss
             else{
                 btn.addClass('out');
+                /**
+                 * hide the popup if its visible
+                 */
+                if(popup.hasClass('visible')){
+                    popup.removeClass('visible');
+                }
                 setTimeout(function(){
                     panel.addClass('expanded');
+
+                    /**
+                     * Expand question when panel is opened if the activeQustion is
+                     * been set with field focus event
+                     */
                     if(null !== activeQuestion){
                         questions.eq(activeQuestion).find('a').trigger('click');
                         activeQuestion = null;
                     }
-                }, 300)
+
+
+                }, 300); /// setTimeout
                 //
             }/// if hasClass else
         }//// fun. togglePanel
@@ -66,6 +84,9 @@
 
         }//// fun. toggleQuestion
 
+        /**
+         * Focus Event handler for fields to show helper message
+         */
         var showPopup = function(e){
             var id = $(this).attr('id');
 
@@ -79,14 +100,66 @@
             popup.removeClass('visible').text('');
         }//// fun.showPopup
 
+
+        /**
+         * Panel close button
+         */
         panel.find('a.close').on('click', togglePanel);
-        btn.on('click', togglePanel);
+
+        /**
+         * ? button behavior
+         */
+        btn.on('click', togglePanel)
+        .on('mouseover', function(e){
+            if(true === !!helloMessage){
+                $(this).showSupportMessage(helloMessage);
+            }
+        });
+
+        /**
+         * popup behavior
+         */
         popup.on('click', togglePanel);
 
+        /**
+         * inside panel question click behavior
+         */
         panel.find('.cc-support-questions li a').on('click', toggleQuestion);
 
-        $('input, select, textarea').on('blur', hidePopup).on('focus', showPopup);
+        /**
+         * Set focus event for fields to show the right question as popup
+         * if there a question related to this field
+         */
+        // $('input, select, textarea').on('blur', hidePopup).on('focus', showPopup);
 
+        setTimeout(function(){
+            btn.removeClass('out');
+        }, 3*1000);
 
-    };//// $.fn funcion
+        return this;
+    };//// $.fn function
+
+    $.fn.showSupportMessage = function(message) {
+        if(false === !!popup) return this;
+
+        var inte;
+        var beforeHide = function(){
+            clearInterval(inte);
+            inte = setTimeout(hideMessage, 200);
+        }
+        var hideMessage = function(){
+            popup.removeClass('visible');
+        }
+        var stopHide = function(){
+            clearInterval(inte);
+        }
+
+        btn.off('mouseout', beforeHide).on('mouseout', beforeHide);
+        popup.off('mouseout', beforeHide).on('mouseout', beforeHide);
+        popup.off('mouseover', stopHide).on('mouseover', stopHide);
+
+        popup.text(message).addClass('visible');
+
+        return this;
+    }
 }( jQuery ));
