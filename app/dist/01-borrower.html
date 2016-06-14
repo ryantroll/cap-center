@@ -45,7 +45,7 @@
       <li class=""><a href="03-purchase.html"><span>Purchase</span></a></li>
       <li class=""><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
-      <li><a href="javascript:void(0)"><span>Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -56,7 +56,7 @@
     <div class="cc-content-inner">
 
       <div class="cc-box cc-message jsCollapse">
-        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a> -->
+        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove"></i></a> -->
         <h4>Thank you for your interest in CapCenter</h4>
         <p>
           Thank you for your interest in CapCenter! we've streamlined the process of make as easy for you as possibl. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while competing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
@@ -70,7 +70,7 @@
         <div class="title">
             <h3>About Borrower</h3>
         </div>
-        <form method="post" id="borrowerForm">
+        <form method="post" id="borrowerForm" action="03-purchase.html">
           <fieldset>
 
             <div class="row">
@@ -94,7 +94,7 @@
                     <option value="12">Internet Search</option>
                     <option value="13">Other</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="bo_howhear" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -112,7 +112,7 @@
             </div><!--row-->
 
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-xs-8 col-sm-4">
                 <div class="cc-field cc-validate cc-required">
                   <label for="bo_fname">First Name </label>
                   <input type="text" tabindex="1" name="bo_fname" id="bo_fname" />
@@ -120,14 +120,14 @@
                 </div><!--field-->
               </div>
 
-              <!-- <div class="col-xs-4 col-sm-2">
+              <div class="col-xs-4 col-sm-2">
                 <div class="cc-field">
                   <label for="bo_minitial">Initial</label>
                   <input type="text" tabindex="2" name="bo_minitial" id="bo_minitial" />
                 </div>
-              </div> -->
+              </div>
 
-              <div class="col-sm-6">
+              <div class="col-xs-8 col-sm-4">
                 <div class="cc-field cc-validate cc-required">
                   <label for="bo_lname">Last Name </label>
                   <input type="text" tabindex="3" name="bo_lname" id="bo_lname" />
@@ -135,7 +135,7 @@
                 </div><!--field-->
               </div>
 
-              <!-- <div class="col-xs-4 col-sm-2">
+              <div class="col-xs-4 col-sm-2">
                 <div class="cc-field cc-dropdown">
                   <label for="bo_suffix">Suffix</label>
                   <select id="bo_suffix" name="bo_suffix">
@@ -146,9 +146,9 @@
                     <option value="4">III</option>
                     <option value="5">IV</option>
                   </select >
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="bo_suffix" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                 </div>
-              </div> -->
+              </div>
 
             </div><!--row-->
 
@@ -163,11 +163,11 @@
               </div>
 
               <div class="col-sm-6">
-                <div class="cc-field cc-validate cc-required cc-phone">
-                  <label for="bo_phone1">Phone</label>
-                  <input type="tel" tabindex="7" name="bo_phone1" id="bo_phone1" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
+                <div class="cc-field cc-validate cc-required cc-date">
+                  <label for="bo_dob">Date Of Birth </label>
+                  <input type="tel" tabindex="6"  name="bo_dob" id="bo_dob" class="date" maxlength="10" placeholder="mm/dd/yyyy" />
                   <div class="message cc-required">Required</div>
-                  <div class="message cc-phone">Invalid Phone Number</div>
+                  <div class="message cc-date">Invalid date</div>
                   <div class="message cc-numbers-only">Numbers only</div>
                 </div><!--field-->
               </div>
@@ -224,8 +224,16 @@
 
             </div><!--cc-form-section-->
 
-            <!-- <div class="row">
-
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="cc-field cc-validate cc-required cc-phone">
+                  <label for="bo_phone1">Phone</label>
+                  <input type="tel" tabindex="7" name="bo_phone1" id="bo_phone1" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
+                  <div class="message cc-required">Required</div>
+                  <div class="message cc-phone">Invalid Phone Number</div>
+                  <div class="message cc-numbers-only">Numbers only</div>
+                </div><!--field-->
+              </div>
 
               <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-phone">
@@ -236,19 +244,11 @@
                 </div>
               </div>
 
-            </div> --><!--row-->
+            </div><!--row-->
 
 
               <div class="row">
-                <div class="col-sm-6">
-                  <div class="cc-field cc-validate cc-required cc-date">
-                    <label for="bo_dob">Date Of Birth </label>
-                    <input type="tel" tabindex="6"  name="bo_dob" id="bo_dob" class="date" maxlength="10" placeholder="mm/dd/yyyy" />
-                    <div class="message cc-required">Required</div>
-                    <div class="message cc-date">Invalid date</div>
-                    <div class="message cc-numbers-only">Numbers only</div>
-                  </div><!--field-->
-                </div>
+
 
                 <div class="col-sm-6">
                   <div class="cc-field cc-validate cc-ssn">
@@ -304,7 +304,7 @@
                   <select name="bo_state" id="bo_state" class="typeahead_state">
                     <option value="">Select</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="bo_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -376,7 +376,7 @@
             </div><!--row-->
 
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="cc-field cc-dropdown">
                   <label for="bo_school">EDUCATION Level </label>
                     <select id="bo_school" name="bo_school">
@@ -388,15 +388,12 @@
                       <option value="18">Masters</option>
                       <option value="20">Professional (PhD, MD, JD, etc)</option>
                     </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="bo_school" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
-            </div><!--row-->
-
-            <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="cc-field cc-dropdown">
                   <label for="bo_marital">Marital Status </label>
 
@@ -406,12 +403,14 @@
                       <option value="Married">Married</option>
                       <option value="Separated">Separated</option>
                     </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="bo_marital" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
             </div><!--row-->
+
+
 
             <div class="row">
               <div class="col-sm-12">
@@ -425,7 +424,7 @@
                       <option value="3">Three</option>
                       <option value="4">Four</option>
                     </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="bo_dependants" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -491,7 +490,7 @@
                       <option value="3">Jointly with another person</option>
                       <option value="4">With a total of more than 2 people</option>
                     </select>
-                    <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                    <label for="bo_applytype" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                     <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -531,7 +530,7 @@
   <div class="message hello">Hi there, welcome to CapCenter! Have a question or need some help?</div>
 
   <div class="cc-support-panel">
-    <a href="javascript:void(0)" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a>
+    <a href="javascript:void(0)" class="close"><i class="glyphicon glyphicon-remove"></i></a>
 
     <div class="row white">
       <div class="col-sm-12 text-center">
@@ -551,7 +550,7 @@
       <div class="col-sm-12">
         <ul class="cc-support-questions">
           <li for="bo_ssn">
-            <!-- <i class="glyphicon glyphicon-triangle-right"></i> -->
+            <i class="glyphicon glyphicon-triangle-right"></i>
             <a href="javascript:void(0)">Why do I need to provide my SSN?</a>
             <p>
               Thank you for your interest in CapCenter! we've streamlined the process of make as easy for you as possibl. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while competing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
@@ -559,7 +558,7 @@
           </li>
 
           <li>
-            <!-- <i class="glyphicon glyphicon-triangle-right"></i> -->
+            <i class="glyphicon glyphicon-triangle-right"></i>
             <a href="javascript:void(0)">How do I access my previously started application?</a>
             <p>
               Thank you for your interest in CapCenter! we've streamlined the process of make as easy for you as possibl. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while competing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
@@ -567,7 +566,7 @@
           </li>
 
           <li for="bo_address2">
-            <!-- <i class="glyphicon glyphicon-triangle-right"></i> -->
+            <i class="glyphicon glyphicon-triangle-right"></i>
             <a href="javascript:void(0)">Why do you require my previous address?</a>
             <p>
               Thank you for your interest in CapCenter! we've streamlined the process of make as easy for you as possibl. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while competing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
@@ -575,7 +574,7 @@
           </li>
 
           <li for="bo_school">
-            <!-- <i class="glyphicon glyphicon-triangle-right"></i> -->
+            <i class="glyphicon glyphicon-triangle-right"></i>
             <a href="javascript:void(0)">Why do you ask for eduction level?</a>
             <p>
               Thank you for your interest in CapCenter! we've streamlined the process of make as easy for you as possibl. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while competing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
@@ -586,6 +585,28 @@
         </ul>
       </div>
 
+    </div><!--row-->
+
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h4>Talk to Agent</h4>
+      </div>
+    </div><!--row-->
+
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <!-- BEGIN ProvideSupport.com Graphics Chat Button Code -->
+        <div id="cierr2" style="margin:0 auto;"></div><div id="scerr2" style="display:block; margin:0 auto;"></div><div id="sderr2" style="display:none"></div><script type="text/javascript">var seerr2=document.createElement("script");seerr2.type="text/javascript";var seerr2s=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1dzrzf119zyp20leyk1m9ljy7l/safe-standard.js?ps_h=err2&ps_t="+new Date().getTime();setTimeout("seerr2.src=seerr2s;document.getElementById('sderr2').appendChild(seerr2)",1)</script><noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1dzrzf119zyp20leyk1m9ljy7l">Chat Support</a></div></noscript>
+        <!-- END ProvideSupport.com Graphics Chat Button Code -->
+      </div>
+    </div><!--row-->
+
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p>
+          or call us at <a href="tel:8049685000">(804) 968-5000</a>
+        </p>
+      </div>
     </div><!--row-->
 
   </div><!--support-panel-->
@@ -640,7 +661,7 @@
             <select name="bo_formerstate{#}" id="bo_state{#}" class="typeahead_state{#}">
               <option value="">Select</option>
             </select>
-            <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+            <label for="bo_state{#}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
             <div class="message cc-required">Required</div>
           </div><!--field-->
         </div>

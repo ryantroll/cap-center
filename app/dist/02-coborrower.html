@@ -45,7 +45,7 @@
       <li class=""><a href="03-purchase.html"><span>Purchase</span></a></li>
       <li class=""><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
-      <li><a href="javascript:void(0)"><span>Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -56,7 +56,7 @@
     <div class="cc-content-inner">
 
       <!-- <div class="cc-box cc-message jsCollapse">
-        <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a>
+        <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove"></i></a>
         <p>
           Thank you for your interest in CapCenter! we've streamlined the process of make as easy for you as possibl. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while competing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
         </p>
@@ -66,10 +66,10 @@
         <div class="title">
             <h3>About Co-Borrower</h3>
         </div>
-        <form method="post" id="coBorrowerForm">
+        <form method="post" id="coBorrowerForm" action="03-purchase.html">
           <fieldset>
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-xs-8 col-sm-4">
                 <div class="cc-field cc-validate cc-required">
                   <label for="co_fname">First Name </label>
                   <input type="text" tabindex="1" name="co_fname" id="co_fname" />
@@ -77,14 +77,14 @@
                 </div><!--field-->
               </div>
 
-              <!-- <div class="col-xs-4 col-sm-2">
+              <div class="col-xs-4 col-sm-2">
                 <div class="cc-field">
                   <label for="co_minitial">Initial</label>
                   <input type="text" tabindex="2" name="co_minitial" id="co_minitial" />
                 </div>
-              </div> -->
+              </div>
 
-              <div class="col-sm-6">
+              <div class="col-xs-8 col-sm-4">
                 <div class="cc-field cc-validate cc-required">
                   <label for="co_lname">Last Name </label>
                   <input type="text" tabindex="3" name="co_lname" id="co_lname" />
@@ -92,7 +92,7 @@
                 </div><!--field-->
               </div>
 
-              <!-- <div class="col-xs-4 col-sm-2">
+              <div class="col-xs-4 col-sm-2">
                 <div class="cc-field cc-dropdown">
                   <label for="co_suffix">Suffix</label>
                   <select id="co_suffix" name="co_suffix">
@@ -103,9 +103,9 @@
                     <option value="4">III</option>
                     <option value="5">IV</option>
                   </select >
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="co_suffix" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                 </div>
-              </div> -->
+              </div>
 
             </div><!--row-->
 
@@ -120,21 +120,6 @@
               </div>
 
               <div class="col-sm-6">
-                <div class="cc-field cc-validate cc-required cc-phone">
-                  <label for="co_phone1">Phone </label>
-                  <input type="tel" tabindex="7" name="co_phone1" id="co_phone1" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
-                  <div class="message cc-required">Required</div>
-                  <div class="message cc-phone">Invalid Phone Number</div>
-                  <div class="message cc-numbers-only">Numbers Only</div>
-                </div><!--field-->
-              </div>
-
-            </div><!--row-->
-
-
-
-            <div class="row">
-              <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-required cc-date">
                   <label for="co_dob">Date Of Birth </label>
                   <input type="tel" tabindex="6"  name="co_dob" id="co_dob" class="date" maxlength="10" placeholder="mm/dd/yyy" />
@@ -144,6 +129,33 @@
                 </div><!--field-->
               </div>
 
+            </div><!--row-->
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="cc-field cc-validate cc-required cc-phone">
+                  <label for="co_phone1">Phone </label>
+                  <input type="tel" tabindex="7" name="co_phone1" id="co_phone1" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
+                  <div class="message cc-required">Required</div>
+                  <div class="message cc-phone">Invalid Phone Number</div>
+                  <div class="message cc-numbers-only">Numbers Only</div>
+                </div><!--field-->
+              </div>
+
+              <div class="col-sm-6">
+                <div class="cc-field cc-validate cc-phone">
+                  <label for="co_phone2">Mobile Phone </label>
+                  <input type="text" tabindex="8" name="co_phone2" id="co_phone2" class="phone" maxlength="14"  placeholder="(xxx) xxx-xxxx"  />
+                  <div class="message cc-phone">Invalid Phone Number</div>
+                  <div class="message cc-numbers-only">Numbers Only</div>
+                </div>
+              </div>
+
+            </div><!--row-->
+
+
+
+            <div class="row">
                <div class="col-sm-6">
                   <div class="cc-field cc-validate cc-ssn">
                     <label for="co_ssn">Social Security Number</label>
@@ -153,16 +165,9 @@
                   </div><!--field-->
                 </div>
 
-              <!-- <div class="col-sm-6">
-                <div class="cc-field cc-validate cc-phone">
-                  <label for="co_phone2">Mobile Phone </label>
-                  <input type="text" tabindex="8" name="co_phone2" id="co_phone2" class="phone" maxlength="14"  placeholder="(xxx) xxx-xxxx"  />
-                  <div class="message cc-phone">Invalid Phone Number</div>
-                  <div class="message cc-numbers-only">Numbers Only</div>
-                </div>
-              </div> -->
-
             </div><!--row-->
+
+
 
 
 
@@ -223,7 +228,7 @@
                     <select name="co_state" id="co_state" class="typeahead_state">
                       <option value="">Select</option>
                     </select>
-                    <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                    <label for="co_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                     <div class="message cc-required">Required</div>
                   </div><!--field-->
                 </div>
@@ -275,7 +280,7 @@
             </div><!--row-->
 
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="cc-field cc-dropdown">
                   <label for="co_school">EDUCATION Level </label>
                     <select id="co_school" name="co_school">
@@ -287,15 +292,12 @@
                       <option value="18">Masters</option>
                       <option value="20">Professional (PhD, MD, JD, etc)</option>
                     </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="co_school" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
-            </div><!--row-->
-
-            <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="cc-field cc-dropdown">
                   <label for="co_marital">Marital Status </label>
 
@@ -305,7 +307,7 @@
                       <option value="Married">Married</option>
                       <option value="Separated">Separated</option>
                     </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="co_marital" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -324,7 +326,7 @@
                       <option value="3">Three</option>
                       <option value="4">Four</option>
                     </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="co_dependants" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -457,7 +459,7 @@
             <select name="co_formerstate{#}" id="co_state{#}"  class="typeahead_state{#}">
               <option value="">Select</option>
             </select>
-            <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+            <label name="co_formerstate{#}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
             <div class="message cc-required">Required</div>
           </div><!--field-->
         </div>

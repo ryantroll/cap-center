@@ -45,7 +45,7 @@
       <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
       <li class="active"><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
-      <li><a href="javascript:void(0)"><span>Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -56,7 +56,7 @@
     <div class="cc-content-inner">
 
       <div class="cc-box cc-message jsCollapse">
-        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a> -->
+        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove"></i></a> -->
         <h4>Application Tip</h4>
         <p>
           Many borrower can qualify for a loan on their base income. You can skip the following fields asking about other income if you don't have other income or if you don't want us to consider your other income in our initial credit decision.
@@ -70,7 +70,7 @@
         <div class="title">
             <h3>Borrower Income</h3>
         </div>
-        <form method="post" id="boIncomeForm">
+        <form method="post" id="boIncomeForm" action="07-assets.html">
           <fieldset>
 
             <div class="row">
@@ -173,7 +173,7 @@
                   <select name="rf_state" id="rf_state" class="typeahead_state">
                     <option value="">Select</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="rf_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -364,7 +364,7 @@
                   <select name="e3_state" id="e3_state" class="typeahead_state5">
                     <option value="">Select</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="e3_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -528,7 +528,7 @@
                   <select name="e2_state" id="e2_state" class="typeahead_state6">
                     <option value="">Select</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="e2_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -985,7 +985,7 @@
             <select name="bo_e{#}state" id="bo_e{#}state" class="typeahead_state{#}">
               <option value="">Select</option>
             </select>
-            <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+            <label for="bo_e{#}state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
             <div class="message cc-required">Required</div>
           </div><!--field-->
         </div>
@@ -1108,7 +1108,7 @@
 
 <script type="text/template" id="rentTmplt">
 <div class="cc-form-section close-btn" style="display:none;" id="property_{#index}" data-index="{#index}">
-  <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove-circle"></i> REMOVE</a>
+  <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
 
   <div class="row">
     <div class="col-xs-12 col-sm-8">
@@ -1144,7 +1144,7 @@
         <select name="re_state{#id}" id="re_state{#id}" class="typeahead_state{#indexPlus}" data-index="{#index}">
           <option value="">Select</option>
         </select>
-        <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+        <label for="re_state{#id}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
         <div class="message cc-required">Required</div>
       </div><!--field-->
     </div>

@@ -183,6 +183,8 @@ function addAsset(){
     .on('keydown', restrictCurrency)
     .on('keyup', formatCurrency);
 
+    dropdownLabel(asset);
+
 
     assetsHolder.append(asset);
 

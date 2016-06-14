@@ -4,5 +4,13 @@ body {
 .cc-form .cc-field select {
   padding-right: 0; }
 
-.cc-form .cc-field select + span.arrow {
+.cc-form .cc-field select + label.arrow {
   display: none; }
+
+/**
+ * ****************************************************************
+ * SUPPORT CLASSES ************************************************
+ * ****************************************************************
+ */
+.cc-support .cc-support-panel a.close {
+  right: 15px; }

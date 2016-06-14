@@ -1,0 +1,140 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
+    <title>Acknowledgment Agreement - CapCenter</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900,300,100,700" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/capcenter.css">
+    <!--[if IE]><link rel="stylesheet" href="css/capcenter-ie.css" /><![endif]-->
+    <!--[if lt IE 9]><link rel="stylesheet" href="css/capcenter-ie8.css" /><![endif]-->
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/capcenter-ie7.css" /><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js" /></script>
+    <script src="js/ie8-html5fix.js"></script>
+    <![endif]-->
+</head>
+
+<body class="cc-body">
+
+<header class="cc-header">
+  <div class="container">
+    <a href="javascript:void(0)" class="cc-menu-switch" id="menu_switch" title="Menu">Menu</a>
+    <div class="cc-logo">
+      <a href="javascript:void(0)"><img src="images/capcenter-logo.png" alt="CapCenter" /></a>
+    </div>
+    <nav class="cc-menu clearfix" id="menu_nav">
+      <ul>
+        <li><a href="javascript:void(0)">Application 72775</a></li>
+        <li><a href="javascript:void(0)">My Applications</a></li>
+        <li><a href="javascript:void(0)">Logout</a></li>
+      </ul>
+    </nav>
+  </div><!--container-->
+</header>
+
+<nav class="ss-progress" id="progress_nav">
+  <div class="container">
+    <a href="javascript:void(0);" class="switch" id="progress_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
+    <ul>
+      <li class="done"><a href="01-borrower.html"><span>Borrower</span></a></li>
+      <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
+      <li class="done"><a href="05-income.html"><span>Income</span></a></li>
+      <li class="done"><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
+      <li class="active"><a href="09-declarations.html"><span>Questions</span></a></li>
+      <li><a href="javascript:void(0)"><span>Submit</span></a></li>
+    </ul>
+  </div><!--container-->
+</nav>
+
+<section class="cc-content">
+  <div class="container">
+    <div class="cc-content-inner">
+
+      <!-- <div class="cc-box cc-message jsCollapse">
+        <h4>Application Tip</h4>
+        <p>
+          Your credit report will provide information about most of your liabilities, so you may skip this question. However, we do need information about any account or loan opened in past 90 days, including new credit cards, car loans or student loans.
+        </p>
+        <p>
+          <a href="javascript:void(0);" class="dismiss">DISMISS</a>
+        </p>
+      </div> --><!--cc-box-->
+
+      <div class="cc-box cc-form">
+        <div class="title">
+            <h3>Acknowledgment Agreement</h3>
+        </div>
+        <form method="post" id="ackForm" action="13-edisclosure.html">
+          <fieldset>
+          <div class="row">
+              <div class="col-sm-12">
+                <p>The federal law also requires all applicants to provide proof of identity, including name, residential street address, date of birth and social security number. We will collect this information from you later in the loan process.</p>
+                <p>Mortgage fraud is investigated by the Federal Bureau of Investigation and is punishable by up to 30 years in federal prison or $1,000,000 fine, or both. It is illegal for a person to make any false statement regarding income, assets, debt, or matters of identification, or to willfully overvalue any land or property, in a loan and credit application for the purpose of influencing in any way the action of a financial institution.</p>
+                <p>&nbsp;</p>
+              </div>
+
+          </div><!--row-->
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="cc-field cc-checkbox cc-validate cc-required">
+
+                <!-- <label for="de_q_1" class="visible-xs">I do not wish for this information to be used by the government in analyzing the results of these surveys</label> -->
+
+                  <label class="check-box">
+                    <i class="glyphicon glyphicon-ok"></i>
+                    <input type="checkbox" id="bo_agrees" name="bo_agrees" value="true"/>
+                    <span class="visible-xs">By checking this box you acknowledge that you have read the above discliamer from the Federal Bureau of Investigation.</span>
+                  </label>
+
+                  <label for="bo_agrees" class="visible-sm visible-md visible-lg">By checking this box you acknowledge that you have read the above discliamer from the Federal Bureau of Investigation.</label>
+                </div>
+              </div><!--field-->
+
+          </div><!--row-->
+
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-buttons right more-padding">
+                  <button class="green" name="continue" id="continue">Continue</button>
+                  <button class="gray" name="back" id="back">Back</button>
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-buttons right">
+                  <button  name="continue" id="continue">Save For Later</button>
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+          </fieldset>
+        </form>
+      </div><!--cc-box-->
+      <div class="cc-note"><i class="glyphicon glyphicon-check"></i> SSL SECURE</div>
+
+    </div><!--cc-content-inner-->
+  </div><!--container-->
+</section>
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmhRm89_rJvOBbb-6fKl4ZL5rGK0D5IoM&libraries=places"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/all.js"></script>
+<!-- BEGIN ProvideSupport.com Graphics Chat Button Code -->
+<div id="cierr2" style="z-index:100;position:absolute"></div><div id="scerr2" style="display:inline;position:fixed;z-index:9999;bottom:1%;right:1%;"></div><div id="sderr2" style="display:none"></div><script type="text/javascript">var seerr2=document.createElement("script");seerr2.type="text/javascript";var seerr2s=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1dzrzf119zyp20leyk1m9ljy7l/safe-standard.js?ps_h=err2&ps_t="+new Date().getTime();setTimeout("seerr2.src=seerr2s;document.getElementById('sderr2').appendChild(seerr2)",1)</script><noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1dzrzf119zyp20leyk1m9ljy7l">Chat Support</a></div></noscript>
+<!-- END ProvideSupport.com Graphics Chat Button Code -->
+
+</body>
+</html>

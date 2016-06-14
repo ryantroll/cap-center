@@ -45,7 +45,7 @@
       <li class="active"><a href="03-purchase.html"><span>Property</span></a></li>
       <li class=""><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
-      <li><a href="javascript:void(0)"><span>Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -60,7 +60,7 @@
             <h3>About Purchase</h3>
         </div>
 
-        <form method="post" id="purchaseForm">
+        <form method="post" id="purchaseForm" action="05-income.html">
           <fieldset>
 
             <div class="row">
@@ -74,7 +74,7 @@
                     <option value="3">I found a property and am ready to make an offer</option>
                     <option value="4">I have signed a purchase agreement to buy a property</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="pu_searchtypepurchase" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -164,7 +164,7 @@
                     <option value="2">Second Home</option>
                     <option value="3">Investment Property</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="pu_propUsePurchase" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -181,7 +181,7 @@
                     <option value="2">Townhouse (attached PUD)</option>
                     <option value="3">Condominium</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="pu_typePropPurchase" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -204,7 +204,7 @@
                   <select id="pu_state" name="pu_state">
                     <option value="">Please Select</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="pu_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -239,7 +239,7 @@
                     <option value="1">Less Than 5</option>
                     <option value="2">Greater Than 5</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="pu_acres" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -257,7 +257,7 @@
                     <option value="3">Jointly With Other</option>
                     <option value="4">In A Trust</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="pu_holdtype" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->

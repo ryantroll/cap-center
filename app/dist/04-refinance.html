@@ -45,7 +45,7 @@
       <li class="active"><a href="03-purchase.html"><span>Refinance</span></a></li>
       <li class=""><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
-      <li><a href="javascript:void(0)"><span>Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -59,7 +59,7 @@
         <div class="title">
             <h3>About Refinance</h3>
         </div>
-        <form method="post" id="refinanceForm">
+        <form method="post" id="refinanceForm" action="05-income.html">
           <fieldset>
 
             <div class="row">
@@ -118,7 +118,7 @@
                   <select name="rf_state" id="rf_state" class="typeahead_state">
                     <option value="">Select</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="rf_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -153,7 +153,7 @@
                     <option value="2">Second Home</option>
                     <option value="3">Investment Property</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="rf_propUse" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -170,7 +170,7 @@
                     <option value="2">Townhouse (attached PUD)</option>
                     <option value="3">Condominium</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="rf_typeProp" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->
@@ -186,7 +186,7 @@
                     <option value="1">Less Than 5</option>
                     <option value="2">Greater Than 5</option>
                   </select>
-                  <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                  <label for="rf_acres" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
 
                 </div><!--field-->

@@ -35,7 +35,13 @@ gulp.task('scripts', function(){
         './app/source/js/05-income.js',
         './app/source/js/06-co-income.js',
         './app/source/js/07-assets.js',
-        './app/source/js/08-liabilities.js'
+        './app/source/js/08-liabilities.js',
+        './app/source/js/09-declarations.js',
+        './app/source/js/10-co-declarations.js',
+        './app/source/js/11-government.js',
+        './app/source/js/12-acknowledgemtn.js',
+        './app/source/js/13-edisclosure.js',
+        './app/source/js/14-instructions.js'
         ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))

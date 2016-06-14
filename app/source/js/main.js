@@ -121,12 +121,20 @@ function ccDocumentReady(){
     multiCheckbox();
 
     /**
+     * Set arrow label behavior for <select>
+     */
+    dropdownLabel();
+
+
+    /**
      * Back button click handlers
      */
     $('#back').on('click', function(ev){
         if(ev.preventDefault) ev.preventDefault(); else ev.returnValue = false;
         history.back();
-    })
+    });
+
+
 
 }//// fun. ccDocumentReady
 
@@ -207,6 +215,21 @@ function multiCheckbox(){
    */
   radios.trigger('change');
 }//// fun. multiCheckBox
+
+/**
+ * [dropdownLabel Set the click event for arrow label for <select> element]
+ * this solution works only safari and chrome due to browser limitation
+ */
+function dropdownLabel(container){
+  var labels = container ? container.find('.cc-dropdown label.arrow') : $('.cc-dropdown label.arrow');
+  labels.on('click', function(){
+      var id = $(this).attr('for');
+      if(false === !!id) return;
+      var field = document.getElementById(id);
+      var event = new MouseEvent('mousedown');
+      field.dispatchEvent(event);
+    })
+}//// fun. dropdownLabel
 
 /**
  * [fillStateDropdown will fill the dropdon of USA states form usState variable]

@@ -134,26 +134,6 @@ function liabilitiesReady(){
     });
 
 
-    // $('input[name=as_additionalrealestate]').on('change', function(){
-    //     var val = $(this).val();
-    //     if(true === !!$(this).attr('checked') && val === 'yes'){
-    //         includeFields({selector:'.property', validationClass:'.cc-to-be-validate'}); //// function in main.js
-    //     }
-    //     else{
-    //         excludeFields({selector:'.property, .mortgage7', validationClass:'.cc-to-be-validate, .cc-to-be-validate-mort7'}); //// function in main.js
-    //     }
-    // });
-
-    // $('input.mortgageRadio7').on('change', function(){
-    //     var val = $(this).val();
-    //     if(true === !!$(this).attr('checked') && val === 'yes'){
-    //         includeFields({selector:'.mortgage7', validationClass:'.cc-to-be-validate-mort7'}); //// function in main.js
-    //     }
-    //     else{
-    //         excludeFields({selector:'.mortgage7', validationClass:'.cc-to-be-validate-mort7'}); //// function in main.js
-    //     }
-    // })
-
 };//// borrowerReady
 
 
@@ -185,7 +165,8 @@ function addLiability(){
     .on('keydown', restrictCurrency)
     .on('keyup', formatCurrency);
 
-    yesNoRadio(liability)
+    yesNoRadio(liability);
+    dropdownLabel(liability);
 
 
     liabilitiesHolder.append(liability);

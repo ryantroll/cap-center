@@ -340,6 +340,7 @@ function addEmployer(index){
     fillStateDropdown( employer.find('.state-dropdown') );
 
     yesNoRadio(employer);
+    dropdownLabel(employer);
 
     employer.find('input.phone')
     .on('keydown', restrictPhone)
@@ -456,6 +457,7 @@ function addRent(){
      * Set yes/no radio button behavior
      */
     yesNoRadio(rent);
+    dropdownLabel(rent);
 
 
 

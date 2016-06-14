@@ -45,7 +45,7 @@
       <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
       <li class="active"><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
-      <li><a href="javascript:void(0)"><span>Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Questions</span></a></li>
       <li><a href="javascript:void(0)"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -56,7 +56,7 @@
     <div class="cc-content-inner">
 
       <div class="cc-box cc-message jsCollapse">
-        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove-circle"></i></a> -->
+        <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove"></i></a> -->
         <h4>Application Tip</h4>
         <p>
           Please provide information about one or two account that contains liquid assets, such as checking account, saving or investment account.
@@ -70,12 +70,12 @@
         <div class="title">
             <h3>Assets</h3>
         </div>
-        <form method="post" id="assetsForm">
+        <form method="post" id="assetsForm" action="08-liabilities.html">
           <fieldset>
 
             <div id="assetsHolder">
               <div class="cc-form-section close-btn" id="asset_1" data-index="1">
-                <a href="javascript:void(0);" class="close" data-index="1"><i class="glyphicon glyphicon-remove-circle"></i> REMOVE</a>
+                <a href="javascript:void(0);" class="close" data-index="1"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="title">
@@ -102,7 +102,7 @@
                         <option value="8">Gift Not Deposited</option>
                         <option value="9">Trust Funds</option>
                       </select>
-                      <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                      <label for="as_type1" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                       <div class="message cc-required">Required</div>
                     </div><!--field-->
                   </div>
@@ -166,7 +166,7 @@
 
             <div id="propertiesHolder" class="property" style="display:none;">
               <div class="cc-form-section close-btn" id="property_7" data-index="7">
-                <!-- <a href="javascript:void(0);" class="close" data-index="7"><i class="glyphicon glyphicon-remove-circle"></i> REMOVE</a> -->
+                <!-- <a href="javascript:void(0);" class="close" data-index="7"><i class="glyphicon glyphicon-remove"></i> REMOVE</a> -->
 
                 <div class="row">
                   <div class="col-sm-12">
@@ -211,7 +211,7 @@
                       <select name="re_state7" id="re_state7" class="typeahead_state7" data-index="7">
                         <option value="">Select</option>
                       </select>
-                      <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+                      <label for="re_state7" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                       <div class="message cc-required">Required</div>
                     </div><!--field-->
                   </div>
@@ -341,7 +341,7 @@
 
 <script type="text/template" id="assetTmplt">
   <div class="cc-form-section close-btn" style="display:none;" id="asset_{#index}" data-index="{#index}">
-    <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove-circle"></i> REMOVE</a>
+    <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
     <div class="row">
       <div class="col-sm-12">
         <div class="title">
@@ -368,7 +368,7 @@
             <option value="8">Gift Not Deposited</option>
             <option value="9">Trust Funds</option>
           </select>
-          <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+          <label for="as_type{#id}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
           <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
@@ -405,7 +405,7 @@
 
 <script type="text/template" id="propertyTmplt">
 <div class="cc-form-section close-btn" style="display:none;" id="property_{#index}" data-index="{#index}">
-  <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove-circle"></i> REMOVE</a>
+  <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
 
   <div class="row">
     <div class="col-xs-12 col-sm-8">
@@ -441,7 +441,7 @@
         <select name="re_state{#id}" id="re_state{#id}" class="typeahead_state{#indexPlus}" data-index="{#index}">
           <option value="">Select</option>
         </select>
-        <span class="arrow glyphicon glyphicon-triangle-bottom"></span>
+        <label for="re_state{#id}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
         <div class="message cc-required">Required</div>
       </div><!--field-->
     </div>

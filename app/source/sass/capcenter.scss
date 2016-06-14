@@ -337,7 +337,7 @@ body.cc-body{
  */
 .cc-box{
     background-color:$cWhite;
-    padding:1em;
+    padding:24px;
     margin-bottom: 2em;
     @include mxRoundCorners(3px);
 
@@ -345,11 +345,19 @@ body.cc-body{
         margin-bottom: 0;
     }
 
-    .title{
-
+    .form-title{
+        padding-bottom:30px;
         h3{
-            padding-bottom:30px;
             font-weight: 400;
+        }
+    }
+
+    .title{
+        h3{
+            padding-bottom:0;
+            font-weight: 400;
+            margin-top:0;
+            margin-bottom: 24px;
         }
         h4{
             padding-top:15px;
@@ -376,7 +384,7 @@ body.cc-body{
 
 .cc-message{
     // padding-top:2em;
-    padding:24px;
+    // padding:24px;
     position:relative;
     &:after{
         display: block;
@@ -490,7 +498,7 @@ body.cc-body{
                 padding:0 0 0 15px;
             }
         }/// select
-        select + span.arrow{
+        select + label.arrow{
             position:absolute;
             width:$nFieldHeight;
             height: $nFieldHeight;
@@ -500,6 +508,7 @@ body.cc-body{
             bottom:0;
             right:0;
             top:auto;//// conflict fix
+            cursor:pointer;
 
             @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
                 /* IE10+ CSS styles go here */
@@ -1087,6 +1096,37 @@ body.cc-body{
 
     }//// .cc-radio
 
+    .cc-radio.question{
+        .radio-yesno{
+            width:100%;
+            float:none;
+            @media screen and (min-width:$wTablet){
+                width:40%;
+                float:left;
+            }
+            label{
+                width:48%;
+                padding-top: inherit;
+                padding-left:inherit;
+            }
+        }
+        label.question{
+            width:100%;
+            float:none;
+            font-size:1em;
+            font-weight: 400;
+            text-transform: none;
+
+            @media screen and (min-width:$wTablet){
+                @include mxVerticalAlign(absolute);
+                margin-left: 40%;
+                padding-left:1em;
+                width:60%;
+                float:left;
+            }
+        }
+    }
+
     .cc-checkbox{
         .two-cols{
             border: 1px solid transparent;
@@ -1113,6 +1153,8 @@ body.cc-body{
                 cursor:pointer;
                 font-weight: 400;
                 font-size:1em;
+                border-bottom:1px solid $cWhite;
+                margin-bottom:0;
 
                 @media screen and (min-width:$wTablet){
                     width:50%;
@@ -1151,11 +1193,18 @@ body.cc-body{
 
         .check-box{
             display: block;
-            width:20%;
-            float:left;
+            width:100%;
+            float:none;
             cursor: pointer;
             position:relative;
             text-align: center;
+            font-size:1em;
+            margin-bottom: 10px;
+
+            @media screen and (min-width:$wTablet){
+                width:15%;
+                float:left;
+            }
 
             input[type=checkbox]{
                 opacity: 0;
@@ -1171,8 +1220,19 @@ body.cc-body{
                 line-height: 22px;
                 border:1px solid $cBGMidGray;
                 @include mxRoundCorners(13px);
-                margin:0 auto;
+                margin:0 0;
+                float:left;
                 text-align: center;
+
+                 @media screen and (min-width:$wTablet){
+                    margin:0 auto;
+                    float:none;
+                }
+            }//// i
+
+            span{
+                text-align: left;
+                margin-left: 30px;
             }
 
             &.checked{
@@ -1183,15 +1243,23 @@ body.cc-body{
                 }
             }
         }
+
         label{
             display: block;
-            width:60%;
-            float: left;
+            width:100%;
+            float: none;
             text-transform: none;
             font-size:1em;
             font-weight: 400;
             line-height: 26px;
-        }
+            margin-bottom: 5px;
+
+            @media screen and (min-width:$wTablet){
+                width:70%;
+                float:left;
+                margin-bottom: 0;
+            }
+        }//// label
     }///// .cc-checkbox
 }//// .cc-form
 
@@ -1306,8 +1374,8 @@ body.cc-body{
             line-height: 30px;
             text-align: center;
             position:absolute;
-            top:5px;
-            right:5px;
+            top:14px;
+            right:15px;
             opacity: 1;
             z-index: 2001;
         }
@@ -1360,6 +1428,9 @@ body.cc-body{
 
     .white{
         background-color:$cWhite;
+        h5{
+            margin:20px 0;
+        }
     }
 }//// .cc-support
 
@@ -1379,24 +1450,25 @@ body.cc-body{
             padding-top:5px;
         }//// option
       }//// select
-      select + span.arrow{
+      select + label.arrow{
             background-color:$cWhite;
             border:1px solid $cBGMidGray;
             border-left:none;
+            bottom: -1px;
             @include mxBorderRadius(0, 3px, 3px, 0);
         }
     }//// .cc-field
 
+    .cc-field.error{
+        select + label.arrow{
+            border-color:$cOrange;
+        }
+    }
+
     .cc-form-section{
         .cc-field{
-            select + span.arrow{
+            select + label.arrow{
                 border-color:$cWhite;
-            }
-        }
-
-        .cc-field.error{
-            select + span.arrow{
-                border-color:$cOrange;
             }
         }
     }

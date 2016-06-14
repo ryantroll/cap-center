@@ -7,9 +7,23 @@ body{
         select{
             padding-right:0;
         }
-        select + span.arrow{
+        select + label.arrow{
             display: none;
         }
     }///// cc-field
 
 }//// .cc-form
+
+/**
+ * ****************************************************************
+ * SUPPORT CLASSES ************************************************
+ * ****************************************************************
+ */
+.cc-support{
+
+    .cc-support-panel{
+        a.close{
+            right:15px;
+        }
+    }//// support-panel
+}//// .cc-support
