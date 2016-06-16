@@ -44,9 +44,10 @@
       <li class="done"><a href="01-borrower.html"><span>Borrower</span></a></li>
       <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
-      <li class="active"><a href="07-assets.html"><span>Assets &amp; Liabilities</span></a></li>
+      <li class="active"><a href="07-assets.html"><span>Assets</span></a></li>
+      <li><a href="08-liabilities.html"><span>Liabilities</span></a></li>
       <li><a href="09-declarations.html"><span>Questions</span></a></li>
-      <li><a href="javascript:void(0)"><span>Submit</span></a></li>
+      <li><a href="15-deposit.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
 </nav>
@@ -73,66 +74,28 @@
         <form method="post" id="assetsForm" action="08-liabilities.html">
           <fieldset>
 
-            <div id="assetsHolder">
-              <div class="cc-form-section close-btn" id="asset_1" data-index="1">
-                <a href="javascript:void(0);" class="close" data-index="1"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="title">
-                      <h5>Asset</h5>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-radio cc-validate cc-required">
+                  <label for="as_assets_yes">Do you or your co-borrower have any liquid asset accounts to include?</label>
+                  <div class="half-width">
+                    <div class="radio-yesno">
+                      <label><input type="radio" name="as_assets" value="yes" id="as_assets_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="as_assets" value="no" id="as_assets_no" /><span>No</span></label>
                     </div>
-                  </div>
+                  </div><!--half-width-->
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
 
-                </div><!--row-->
+            </div><!--row-->
 
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-dropdown cc-validate cc-required">
-                      <label for="as_type1">Type </label>
+            <div id="assetsHolder" class="assets" style="display:none;">
 
-                      <select name="as_type1" id="as_type1" data-index="1">
-                        <option value="">Select</option>
-                        <option value="1">Checking Account</option>
-                        <option value="2">Saving Account</option>
-                        <option value="3">Certificate of Deposit</option>
-                        <option value="4">Money Market Fund</option>
-                        <option value="5">Mutual Fund</option>
-                        <option value="6">Stocks and Bonds</option>
-                        <option value="7">Retirement</option>
-                        <option value="8">Gift Not Deposited</option>
-                        <option value="9">Trust Funds</option>
-                      </select>
-                      <label for="as_type1" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required">
-                      <label for="as_bank1">Bank or Institution</label>
-                      <input type="text" tabindex="12" name="as_bank1" id="as_bank1"  data-index="1"/>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required cc-currency">
-                      <label for="as_cash1">Balance </label>
-                      <input type="tel" tabindex="11" class="currency" maxlength="11" name="as_cash1" id="as_cash1"  data-index="1"/>
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-currency">Invalid value</div>
-                      <div class="message cc-numbers-only">Numbers Only</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-              </div><!--form-section-->
 
             </div><!--assetsHolder-->
 
-            <div class="row">
+            <div class="row assets" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-buttons">
                   <a href="javascript:void(0);" class="cc-btn gray" name="addAnotherAsset" id="addAnotherAsset">Add Another Asset</a>
@@ -164,139 +127,16 @@
 
             </div><!--row-->
 
-            <div id="propertiesHolder" class="property" style="display:none;">
-              <div class="cc-form-section close-btn" id="property_7" data-index="7">
-                <!-- <a href="javascript:void(0);" class="close" data-index="7"><i class="glyphicon glyphicon-remove"></i> REMOVE</a> -->
+            <div id="estateHolder" class="property" style="display:none;">
 
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="title">
-                      <h5>Real Estate Asset</h5>
-                    </div>
-                  </div>
 
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-xs-12 col-sm-8">
-                    <div class="cc-field cc-to-be-validate cc-required">
-                      <label for="re_address7">Street Address </label>
-                      <input type="text" tabindex="9" class="typeahead_address7" name="re_address7" id="re_address7" placeholder=""  data-index="7"/>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-xs-12 col-sm-4">
-                    <div class="cc-field">
-                      <label for="re_unit7">Apt/Unit</label>
-                      <input type="text" tabindex="10" name="re_unit7" id="re_unit7"  data-index="7"/>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-to-be-validate cc-required">
-                      <label for="re_city7">City </label>
-                      <input type="text" tabindex="12" class="typeahead_city7" name="re_city7" id="re_city7"  data-index="7"/>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-dropdown cc-to-be-validate cc-required state-dropdown">
-                      <label for="re_state7">State </label>
-
-                      <select name="re_state7" id="re_state7" class="typeahead_state7" data-index="7">
-                        <option value="">Select</option>
-                      </select>
-                      <label for="re_state7" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-to-be-validate cc-required cc-number">
-                      <label for="re_zip7">Zip </label>
-                      <input type="tel" tabindex="11" class="numbers typeahead_zip7" maxlength="6" name="re_zip7" id="re_zip7"  data-index="7"/>
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-number">Invalid ZIP code</div>
-                      <div class="message cc-numbers-only">Numbers Only</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-xs-12 col-sm-6">
-                    <div class="cc-field cc-to-be-validate cc-required cc-currency">
-                      <label for="re_presval7">Estimated Property Value</label>
-                      <input type="tel" tabindex="9" class="currency" name="re_presval7" id="re_presval7" placeholder="" maxlength="11"  data-index="7"/>
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-currency">Invalid value</div>
-                      <div class="message cc-numbers-only">Numbers Only</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="cc-field cc-radio cc-to-be-validate cc-required">
-                      <label for="as_additionalrealestatehasmortgage_yes">Do you have mortgage on this property?</label>
-                      <div class="radio-yesno">
-                        <label><input type="radio" class="mortgageRadio7" name="as_additionalrealestatehasmortgage" value="yes" id="as_additionalrealestatehasmortgage_yes" data-index="7" /><span>Yes</span></label>
-                        <label><input type="radio" class="mortgageRadio7" name="as_additionalrealestatehasmortgage" value="no" id="as_additionalrealestatehasmortgage_no" data-index="7" /><span>No</span></label>
-                      </div>
-                      <!-- <div class="message cc-required">Required</div> -->
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row mortgage7" style="display:none">
-                  <div class="col-sm-12">
-                    <div class="cc-field cc-to-be-validate-mort7 cc-required">
-                      <label for="re_lender7">Lender</label>
-                      <input type="text" tabindex="6" name="re_lender7" id="re_lender7" data-index="7"/>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row mortgage7" style="display:none">
-                  <div class="col-sm-6">
-                    <div class="cc-field cc-to-be-validate-mort7 cc-required cc-currency">
-                      <label for="re_mort7">Monthly Payment</label>
-                      <input type="tel" tabindex="6" class="currency" name="re_mort7" id="re_mort7" maxlength="7" data-index="7"/>
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-numbers-only">Numbers only</div>
-                      <div class="message cc-currency">Invalid value</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-6">
-                    <div class="cc-field cc-to-be-validate-mort7 cc-required cc-currency">
-                      <label for="re_monthmort7">Balance Owned</label>
-                      <input type="tel" tabindex="6" class="currency" name="re_monthmort7" id="re_monthmort7" maxlength="11" data-index="7"/>
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-numbers-only">Numbers only</div>
-                      <div class="message cc-currency">Invalid value</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-              </div><!--form-section-->
             </div><!--propertiesHolder-->
 
 
-            <div class="row property_xxxxx" style="display:none;">
+            <div class="row property" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-buttons">
-                  <a href="javascript:void(0);" class="cc-btn gray" name="addAnotherProperty" id="addAnotherProperty">Add Another Real Estate</a>
+                  <a href="javascript:void(0);" class="cc-btn gray" name="addAnotherEstate" id="addAnotherEstate">Add Another Real Estate</a>
                 </div><!--field-->
               </div>
 
@@ -403,15 +243,24 @@
 
 
 
-<script type="text/template" id="propertyTmplt">
-<div class="cc-form-section close-btn" style="display:none;" id="property_{#index}" data-index="{#index}">
+<script type="text/template" id="estateTmplt">
+<div class="cc-form-section close-btn" id="estate_{#index}" data-index="{#index}" style="display:none;">
   <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="title">
+        <h5>Real Estate Asset</h5>
+      </div>
+    </div>
+
+  </div><!--row-->
 
   <div class="row">
     <div class="col-xs-12 col-sm-8">
       <div class="cc-field cc-validate cc-required">
         <label for="re_address{#id}">Street Address </label>
-        <input type="text" tabindex="9" class="typeahead_address{#indexPlus}" name="re_address{#id}" id="re_address{#id}" placeholder=""  data-index="{#index}"/>
+        <input type="text" tabindex="9" class="typeahead_address{#index}" name="re_address{#id}" id="re_address{#id}" placeholder=""  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
       </div><!--field-->
     </div>
@@ -429,7 +278,7 @@
     <div class="col-sm-4">
       <div class="cc-field cc-validate cc-required">
         <label for="re_city{#id}">City </label>
-        <input type="text" tabindex="12" class="typeahead_city{#indexPlus}" name="re_city{#id}" id="re_city{#id}"  data-index="{#index}"/>
+        <input type="text" tabindex="12" class="typeahead_city{#index}" name="re_city{#id}" id="re_city{#id}"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
       </div><!--field-->
     </div>
@@ -438,7 +287,7 @@
       <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
         <label for="re_state{#id}">State </label>
 
-        <select name="re_state{#id}" id="re_state{#id}" class="typeahead_state{#indexPlus}" data-index="{#index}">
+        <select name="re_state{#id}" id="re_state{#id}" class="typeahead_state{#index}" data-index="{#index}">
           <option value="">Select</option>
         </select>
         <label for="re_state{#id}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
@@ -449,7 +298,7 @@
     <div class="col-sm-4">
       <div class="cc-field cc-validate cc-required cc-number">
         <label for="re_zip{#id}">Zip </label>
-        <input type="tel" tabindex="11" class="numbers typeahead_zip{#indexPlus}" maxlength="6" name="re_zip{#id}" id="re_zip{#id}"  data-index="{#index}"/>
+        <input type="tel" tabindex="11" class="numbers typeahead_zip{#index}" maxlength="6" name="re_zip{#id}" id="re_zip{#id}"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
         <div class="message cc-number">Invalid ZIP code</div>
         <div class="message cc-numbers-only">Numbers Only</div>
@@ -461,18 +310,8 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <div class="cc-field cc-validate cc-required cc-currency">
-        <label for="re_gross{#id}">Gross Annual Rental Income?</label>
-        <input type="tel" tabindex="9" class="currency" name="re_gross{#id}" id="re_gross{#id}" placeholder="" maxlength="7"  data-index="{#index}"/>
-        <div class="message cc-required">Required</div>
-        <div class="message cc-currency">Invalid value</div>
-        <div class="message cc-numbers-only">Numbers Only</div>
-      </div><!--field-->
-    </div>
-
-    <div class="col-xs-12 col-sm-6">
-      <div class="cc-field cc-validate cc-required cc-currency">
-        <label for="re_presval{#id}">Estimate Property Value</label>
-        <input type="tel" class="currency" tabindex="10" name="re_presval{#id}" id="re_presval{#id}" maxlength="11" data-index="{#index}" />
+        <label for="re_presval{#id}">Estimated Property Value</label>
+        <input type="tel" tabindex="9" class="currency" name="re_presval{#id}" id="re_presval{#id}" placeholder="" maxlength="11"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
         <div class="message cc-currency">Invalid value</div>
         <div class="message cc-numbers-only">Numbers Only</div>
@@ -484,10 +323,10 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="cc-field cc-radio cc-validate cc-required">
-        <label for="re_hasmortgage{#id}_yes">Do you have mortgage on this property?</label>
+        <label for="as_additionalrealestatehasmortgage{#id}_yes">Do you have mortgage on this property?</label>
         <div class="radio-yesno">
-          <label><input type="radio" class="mortgageRadio{#id}" name="re_hasmortgage{#id}" value="yes" id="re_hasmortgage{#id}_yes" data-index="{#index}" /><span>Yes</span></label>
-          <label><input type="radio" class="mortgageRadio{#id}" name="re_hasmortgage{#id}" value="no" id="re_hasmortgage{#id}_no" data-index="{#index}" /><span>No</span></label>
+          <label><input type="radio" class="mortgageRadio{#index}" name="as_additionalrealestatehasmortgage{#id}" value="yes" id="as_additionalrealestatehasmortgage{#id}_yes" data-index="{#index}" /><span>Yes</span></label>
+          <label><input type="radio" class="mortgageRadio{#index}" name="as_additionalrealestatehasmortgage{#id}" value="no" id="as_additionalrealestatehasmortgage{#id}_no" data-index="{#index}" /><span>No</span></label>
         </div>
         <!-- <div class="message cc-required">Required</div> -->
       </div><!--field-->
@@ -506,11 +345,11 @@
 
   </div><!--row-->
 
-  <div class="row  mortgage{#index}" style="display:none">
+  <div class="row mortgage{#index}" style="display:none">
     <div class="col-sm-6">
       <div class="cc-field cc-to-be-validate-mort{#index} cc-required cc-currency">
-        <label for="re_monthmort{#id}">Monthly Payment</label>
-        <input type="tel" tabindex="6" class="currency" name="re_monthmort{#id}" id="re_monthmort{#id}" maxlength="7" data-index="{#index}"/>
+        <label for="re_mort{#id}">Monthly Payment</label>
+        <input type="tel" tabindex="6" class="currency" name="re_mort{#id}" id="re_mort{#id}" maxlength="7" data-index="{#index}"/>
         <div class="message cc-required">Required</div>
         <div class="message cc-numbers-only">Numbers only</div>
         <div class="message cc-currency">Invalid value</div>
@@ -519,8 +358,8 @@
 
     <div class="col-sm-6">
       <div class="cc-field cc-to-be-validate-mort{#index} cc-required cc-currency">
-        <label for="re_mort{#id}">Balance Owned</label>
-        <input type="tel" tabindex="6" class="currency" name="re_mort{#id}" id="re_mort{#id}" data-index="{#index}"/>
+        <label for="re_monthmort{#id}">Balance Owned</label>
+        <input type="tel" tabindex="6" class="currency" name="re_monthmort{#id}" id="re_monthmort{#id}" maxlength="11" data-index="{#index}"/>
         <div class="message cc-required">Required</div>
         <div class="message cc-numbers-only">Numbers only</div>
         <div class="message cc-currency">Invalid value</div>

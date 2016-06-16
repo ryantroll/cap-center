@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
-    <title>E-Disclosure Agreement - CapCenter</title>
+    <title>Deposit - CapCenter</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900,300,100,700" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
@@ -46,8 +46,8 @@
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
       <li class="done"><a href="07-assets.html"><span>Assets</span></a></li>
       <li class="done"><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li class="active"><a href="09-declarations.html"><span>Questions</span></a></li>
-      <li><a href="15-deposit.html"><span>Submit</span></a></li>
+      <li class="done"><a href="09-declarations.html"><span>Questions</span></a></li>
+      <li class="active"><a href="15-deposit.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
 </nav>
@@ -68,66 +68,89 @@
 
       <div class="cc-box cc-form">
         <div class="form-title">
-            <h3>E-Disclosure Agreement</h3>
+            <h3>Deposit</h3>
         </div>
-        <form method="post" id="edisclosureForm" action="14-instructions.html">
+        <form method="post" id="depositForm">
           <fieldset>
           <div class="row">
               <div class="col-sm-12">
-                <div class="title">
-                    <h4>Your Consent To Receive Documents Electronically (the eDisclosure Agreement)</h4>
-                  </div>
+                    <p>
+                      To submit this application you must provide the credit card information requested below. By providing this information and submitting your application, you are authorizing us to charge your credit card for an $18.50 credit report fee which is CapCenter's out of pocket cost for ordering a credit report. If you close a loan with us, this fee is waived.  However, if you are denied or if you choose to withdraw after we have ordered your credit report, then we will charge the $18.50 to you.
+                    </p>
+                    <p>
+                      When you return your signed committment letter to us, we will require a Good Faith Deposit of $450. When you closer your loan with us, we will refund the entire deposit. If you do not close a loan with CapCenter, we will keep this deposit to offset any third party costs we have incurred, such as the appraisal. This deposit is not required to submit an application.
+                    </p>
+                </div>
+          </div><!--row-->
+          <div class="row">
+              <div class="col-sm-12">
+                    <p>&nbsp;</p>
+                </div>
+          </div><!--row-->
+
+          <div class="cc-form-section">
+            <div class="cc-credit-card">
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="cc-cards">
+                    <ul>
+                      <li><a href="javascript:void(0)"><img src="images/visa.jpg" alt="Visa"/></a></li>
+                      <li><a href="javascript:void(0)"><img src="images/discover.jpg" alt="Discover"/></a></li>
+                      <li><a href="javascript:void(0)"><img src="images/mastercard.jpg" alt="MasterCard"/></a></li>
+                    </ul>
+                  </div><!--cards-->
+                </div>
+              </div><!--row-->
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="cc-field cc-validate cc-required">
+                    <label for="bo_fname">Name (as it appears on card)</label>
+                    <input type="text" tabindex="1" name="bo_fname" id="bo_fname" />
+                    <div class="message cc-required">Required</div>
+                  </div><!--field-->
                 </div>
 
-          </div><!--row-->
+              </div><!--row-->
 
-          <div class="row">
-              <div class="col-sm-12">
-                <p>The loan for which you are applying involves various disclosures, records, and documents (“Loan Documents”), including this eDisclosure Agreement. The purpose of this eDisclosure Agreement is to obtain Your consent to receive certain Loan Documents from Us in electronic form rather than in paper form.</p>
-                <p>Before We can engage in this transaction electronically, it is important that You understand Your rights and responsibilities. Please read the following and affirm Your consent to receive Loan Documents electronically. For purposes of this eDisclosure Agreement, “eDisclosures” means the Loan Documents related to this transaction that are provided electronically, “You” and “Your” mean the borrower(s) under the applicable loan to which such Loan Documents apply, and “We”, “Our” and “Us” mean CapCenter.</p>
-              </div>
-
-          </div><!--row-->
-
-          <div class="row">
-              <div class="col-sm-12">
-                <div class="title">
-                  <h4>Your Consent</h4>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="cc-field cc-validate cc-required">
+                    <label for="bo_fname">Card Number</label>
+                    <input type="text" tabindex="1" class="numbers" name="bo_fname" id="bo_fname" maxlength="16" />
+                    <div class="message cc-required">Required</div>
+                    <div class="message cc-numbers-only">Numbers only</div>
+                  </div><!--field-->
                 </div>
-              </div>
 
-          </div><!--row-->
+              </div><!--row-->
 
-          <div class="row">
-              <div class="col-sm-12">
-                <p>Your consent to receive Loan Documents electronically will apply to all Loan Documents for the applicable loans for which You are applying. If You provide Your consent by clicking the “I/We Accept” button at the bottom of the page, We will conduct this transaction electronically, instead of providing You with the Loan Documents in paper form.</p>
-              </div>
+              <div class="row">
+                <div class="col-xs-9">
+                  <div class="cc-field cc-validate cc-required cc-card-expiration">
+                    <label for="bo_fname">Expiration Date</label>
+                    <input type="text" tabindex="1" class="cardexpiration" name="bo_fname" id="bo_fname" maxlength="7" placeholder="mm/yyyy"/>
+                    <div class="message cc-required">Required</div>
+                    <div class="message cc-card-expiration">Date not valid</div>
+                    <div class="message cc-numbers-only">Numbers only</div>
+                  </div><!--field-->
+                </div>
 
-          </div><!--row-->
+                <div class="col-xs-3">
+                  <div class="cc-field cc-validate cc-required">
+                    <label for="bo_fname">CVS</label>
+                    <input type="text" tabindex="1" class="numbers" name="bo_fname" id="bo_fname" maxlength="3" />
+                    <div class="message cc-required">Required</div>
+                    <div class="message cc-numbers-only">Numbers only</div>
+                    <div class="message cc-numbers-only">Numbers only</div>
+                  </div><!--field-->
+                </div>
 
-          <div class="row">
-              <div class="col-sm-12">
-                <p>&nbsp;</p>
-              </div>
+              </div><!--row-->
 
-          </div><!--row-->
-
-          <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-radio cc-validate cc-required">
-                  <label for="bo_ediscluser_yes">I/We agree to receive Disclosures and other Loan Documents electronically</label>
-                  <div class="half-width">
-                    <div class="radio-yesno">
-                      <label><input type="radio" name="bo_ediscluser" value="yes" id="bo_ediscluser_yes" /><span>Agree</span></label>
-                      <label><input type="radio" name="bo_ediscluser" value="no" id="bo_ediscluser_no" /><span>Do Not Agree</span></label>
-                    </div>
-                  </div><!--half-width-->
-                  <!-- <div class="message cc-required">Required</div> -->
-                </div><!--field-->
-              </div>
-
-            </div><!--row-->
-
+            </div><!--cc-credit-card-->
+          </div><!--form-section-->
 
             <div class="row">
               <div class="col-sm-12">

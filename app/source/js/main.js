@@ -338,6 +338,32 @@ var formatDate = function(keyEv){
   $(this).val(ret);
 }//// fun. formateDate
 
+var formatCardDate = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+  var allowed = [191, 9, 8, 37, 38, 39, 40, 13];
+  if(isAndroid() && code == 229) return;
+  if(allowed.indexOf(code) > -1) return;
+
+
+  var val = $(this).val();
+
+  var ret = '';
+  var raw = val.replace(/\//g, '');
+
+  if(raw.length >= 2){
+    ret += raw.slice(0, 2) + '/';
+    raw = raw.slice(2);
+
+    // if(raw.length >= 2){
+    //   ret += raw.slice(0, 2) + '/';
+    //   raw = raw.slice(2);
+    // }
+  }
+
+  ret += raw;
+  $(this).val(ret);
+}//// fun. formatCardDate
+
 var restrictSSN = function(keyEv){
   var code = keyEv.keyCode || keyEv.which || keyEv.charCode;
   var char = String.fromCharCode(code);
@@ -545,5 +571,66 @@ var excludeFields = function(options){
   fields.find(options.validationClass).removeClass('cc-validate');
   resetFields(fields);
   fields.slideUp();
+}
 
+/**
+ * [addAutoAddress will add address type ahead functionality to text field with id 'bo_address']
+ * @param {[type]} index [in multi-address case this variable will tel the function which address to bind the type ahead to]
+ */
+function addAutoAddress(index, startFrom1){
+    var post = index >= 2 || true === startFrom1 ? ''+index : '';
+
+    var autocomplete = new google.maps.places.Autocomplete(
+        // document.getElementById('bo_address' + post),
+        $('.typeahead_address' + post).filter('input')[0],
+        {types: ['geocode']}
+    );
+    //// set the address index and post in autocomplete object to be used in fillInAddress function
+    autocomplete.index = 0;
+    autocomplete.post = post;
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', fillInAddress);
+}
+
+/**
+ * [fillInAddress will update the address city, stat, and zip filed after user select address form type ahead]
+ * this inside this function will reference google autocompete object
+ * @return {[null]} [description]
+ */
+function fillInAddress(){
+    //// this refer to the auto complete object
+
+    var place = this.getPlace();
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    var address = {};
+    var long_name = '';
+    for (var i = 0; i < place.address_components.length; i++) {
+        var type = place.address_components[i].types[0];
+        var addressType = type;
+
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        address[addressType] = val;
+      }
+      if(addressType === 'administrative_area_level_1'){
+            long_name = place.address_components[i]['long_name'];
+        }
+    }//// for
+    address.administrative_area_level_1_long_name = long_name;
+
+    $('.typeahead_address'+this.post).eq(0).val(address.street_number + ' ' + address.route).trigger('change');
+    $('.typeahead_city'+this.post).eq(0).val(address.locality).trigger('change');
+    $('.typeahead_state'+this.post).eq(0).val(address.administrative_area_level_1).trigger('change');
+    // $('#state_label'+this.post).val(address.administrative_area_level_1_long_name).trigger('change');
+    $('.typeahead_zip'+this.post).eq(0).val(address.postal_code).trigger('change');
 }

@@ -41,7 +41,8 @@ gulp.task('scripts', function(){
         './app/source/js/11-government.js',
         './app/source/js/12-acknowledgemtn.js',
         './app/source/js/13-edisclosure.js',
-        './app/source/js/14-instructions.js'
+        './app/source/js/14-instructions.js',
+        './app/source/js/15-deposit.js'
         ])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))

@@ -181,7 +181,7 @@ body.cc-body{
 
 
             @media screen and (min-width:$wTablet){
-                width:0% + 100%/6%;
+                width:0% + 100%/7%;
                 border-right: 1px solid $cWhite;
                 border-bottom:none;
                 display: block;
@@ -575,9 +575,9 @@ body.cc-body{
                 margin-right:0;
                 cursor: pointer;
 
-                &:last-of-type{
-                    margin-right: 0;
-                }
+                // &:last-of-type{
+                //     margin-right: 0;
+                // }
             }///// button
             &:after{
                 display: block;
@@ -588,14 +588,14 @@ body.cc-body{
                  button, .cc-btn{
                     float:right;
                     clear:both;
-                    @media screen and (min-width:$wMobile){
+                    margin-right:0;
+
+                    @media screen and (min-width:$wTablet){
                         margin-right:1em;
                         clear:none;
                     }
                     &:first-of-type{
-                        @media screen and (min-width:$wMobile){
-                            margin-right:0;
-                        }
+                        margin-right: 0;
                     }
                  }///// button
             }//// &.right
@@ -728,7 +728,7 @@ body.cc-body{
             input[type="tel"],
             input[type="date"]{
                 border:none;
-                width:74%;
+                width:72%;
                 float:left;
                 padding-left:8px;
                 padding-right:8px;
@@ -744,7 +744,7 @@ body.cc-body{
                 font-weight: 400;
                 margin-bottom:0;
 
-                width:26%;
+                width:28%;
                 text-align: right;
                 line-height: $nFieldHeight;
                 color:$cBGMidGray;
@@ -1131,6 +1131,7 @@ body.cc-body{
         .two-cols{
             border: 1px solid transparent;
             padding:2px;
+            clear: both;
             @include mxRoundCorners(3px);
 
             &:after{
@@ -1261,6 +1262,40 @@ body.cc-body{
             }
         }//// label
     }///// .cc-checkbox
+
+    .cc-credit-card{
+        width:100%;
+        margin:0 0;
+
+        @media screen and (min-width:$wTablet){
+            width:70%;
+            margin:0 auto;
+        }
+        .cc-cards{
+            padding-bottom:12px;
+
+            ul{
+                list-style:none;
+                margin:0;
+                &:after{
+                    display: block;
+                    content: " ";
+                    clear:both;
+                }
+            }
+            li{
+                display: block;
+                width:50px;
+                height: auto;
+                float:left;
+                margin-right:1em;
+
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+        }
+    }/////.cc-credit-card
 }//// .cc-form
 
 

@@ -147,7 +147,7 @@ body.cc-body {
       background-color: #a89b94; }
       @media screen and (min-width: 768px) {
         .ss-progress ul li {
-          width: 16.66667%;
+          width: 14.28571%;
           border-right: 1px solid #fff;
           border-bottom: none;
           display: block; } }
@@ -488,22 +488,20 @@ body.cc-body {
     min-width: 150px;
     margin-right: 0;
     cursor: pointer; }
-    .cc-form .cc-field.cc-buttons button:last-of-type, .cc-form .cc-field.cc-buttons .cc-btn:last-of-type {
-      margin-right: 0; }
   .cc-form .cc-field.cc-buttons:after {
     display: block;
     content: " ";
     clear: both; }
   .cc-form .cc-field.cc-buttons.right button, .cc-form .cc-field.cc-buttons.right .cc-btn {
     float: right;
-    clear: both; }
-    @media screen and (min-width: 320px) {
+    clear: both;
+    margin-right: 0; }
+    @media screen and (min-width: 768px) {
       .cc-form .cc-field.cc-buttons.right button, .cc-form .cc-field.cc-buttons.right .cc-btn {
         margin-right: 1em;
         clear: none; } }
-    @media screen and (min-width: 320px) {
-      .cc-form .cc-field.cc-buttons.right button:first-of-type, .cc-form .cc-field.cc-buttons.right .cc-btn:first-of-type {
-        margin-right: 0; } }
+    .cc-form .cc-field.cc-buttons.right button:first-of-type, .cc-form .cc-field.cc-buttons.right .cc-btn:first-of-type {
+      margin-right: 0; }
   .cc-form .cc-field.cc-buttons.more-padding {
     padding-top: 4em; }
   .cc-form .cc-field.cc-buttons.center button, .cc-form .cc-field.cc-buttons.center .cc-btn {
@@ -613,7 +611,7 @@ body.cc-body {
     .cc-form .cc-field .cc-in-box-label input[type="tel"],
     .cc-form .cc-field .cc-in-box-label input[type="date"] {
       border: none;
-      width: 74%;
+      width: 72%;
       float: left;
       padding-left: 8px;
       padding-right: 8px;
@@ -625,7 +623,7 @@ body.cc-body {
       font-size: 0.8em;
       font-weight: 400;
       margin-bottom: 0;
-      width: 26%;
+      width: 28%;
       text-align: right;
       line-height: 42px;
       color: #a89b94; }
@@ -918,6 +916,7 @@ body.cc-body {
 .cc-form .cc-checkbox .two-cols {
   border: 1px solid transparent;
   padding: 2px;
+  clear: both;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -1032,6 +1031,31 @@ body.cc-body {
       width: 70%;
       float: left;
       margin-bottom: 0; } }
+
+.cc-form .cc-credit-card {
+  width: 100%;
+  margin: 0 0; }
+  @media screen and (min-width: 768px) {
+    .cc-form .cc-credit-card {
+      width: 70%;
+      margin: 0 auto; } }
+  .cc-form .cc-credit-card .cc-cards {
+    padding-bottom: 12px; }
+    .cc-form .cc-credit-card .cc-cards ul {
+      list-style: none;
+      margin: 0; }
+      .cc-form .cc-credit-card .cc-cards ul:after {
+        display: block;
+        content: " ";
+        clear: both; }
+    .cc-form .cc-credit-card .cc-cards li {
+      display: block;
+      width: 50px;
+      height: auto;
+      float: left;
+      margin-right: 1em; }
+      .cc-form .cc-credit-card .cc-cards li:last-child {
+        margin-right: 0; }
 
 /**
  * ****************************************************************

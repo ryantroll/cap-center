@@ -234,6 +234,51 @@
             }
         }//// hasClass cc-date-gt
 
+        if(true === self.hasClass('cc-card-expiration')){
+
+            if(v.length > 0){
+                isValidated = true;
+                var regx = /^\d{2}\/\d{4}$/;
+                var split = v.split('/');
+                var m = split[0] ? Number(split[0]) : null;
+                var d = 1;
+                var y = split[1] ? Number(split[1]) : null;
+                var now = new Date();
+                var date = null
+
+                if(!regx.test(v)){
+                    isValid = false;
+                }
+                else{
+                    date = new Date(y, m-1, d);
+                }
+
+                if(!m || m > 12 || m < 1){
+                    isValid = false;
+                }
+
+                if(null !== date && date <= now ){
+                    isValid = false;
+                }
+
+
+                if(!isValid){
+                    var msg = self.find('.message.cc-card-expiration');
+
+                    if(msg.length > 0){
+                        err['cc-card-expiration'] = msg.eq(0).text();
+                    }
+
+                }
+                else{
+                    delete err['cc-card-expiration'];
+                }
+            }//// if v
+            else{
+               delete err['cc-card-expiration'];
+            }
+        }
+
         if(true === self.hasClass('cc-phone')){
             if(v.length > 0){
                 isValidated = true;

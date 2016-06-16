@@ -1,9 +1,9 @@
 (function(){
-    $(document).ready(instructionsReady);
+    $(document).ready(depositReady);
 
-    function instructionsReady(){
+    function depositReady(){
 
-        var myForm = $('#instructionsForm');
+        var myForm = $('#depositForm');
 
         /**
          * do nothing if the form is not #coBorrowerForm
@@ -74,9 +74,10 @@
         .on('keydown', restrictCurrency)
         .on('keyup', formatCurrency);
 
+        $('input.cardexpiration')
+        .on('keydown', restrictDate)
+        .on('keyup', formatCardDate);
 
-    };//// instructionsReady
+
+    };//// depositReady
 })();
-
-
-
