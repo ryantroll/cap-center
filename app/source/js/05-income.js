@@ -1,8 +1,9 @@
 /**
- * Below global variables are shared with co-borrower income page
+ * Below global variables are shared with co-borrower income page 06-co-income.js
+ * _appGlobal.employerTemplate, _appGlobal.employerIndex, _appGlobal.employersHolder;
+ * _appGlobal.rentTemplate, _appGlobal.rentIndex, _appGlobal.rentsHolder, _appGlobal.rentsArray;
  */
-var employerTemplate, employerIndex, employersHolder;
-var rentTemplate, rentIndex, rentsHolder, rentsArray;
+
 
 (function(){
     $(document).ready(boIncomeReady);
@@ -16,34 +17,35 @@ var rentTemplate, rentIndex, rentsHolder, rentsArray;
          */
         if(myForm.length <= 0) return;
 
-        employerTemplate = $('#employerTmplt').text();
-        employerIndex = 1;
-        employersHolder = $('#employersHolder');
+        _appGlobal.employerTemplate = $('#employerTmplt').text();
+        _appGlobal.employerIndex = 1;
+        _appGlobal.employersHolder = $('#employersHolder');
 
 
         /**
-         * [rentTemplate variable to hold the html template as string]
+         * [_appGlobal.rentTemplate variable to hold the html template as string]
          */
-        rentTemplate = $('#rentTmplt').text();
+        _appGlobal.rentTemplate = $('#rentTmplt').text();
+
         /**
-         * [rentIndex a variable to track the rent property inside the DOM
+         * [_appGlobal.rentIndex a variable to track the rent property inside the DOM
          * this variable work similar to auto increment field in data base and it is not related to fields name and fields id]
          * @type {Number}
          */
-        rentIndex = 0;
+        _appGlobal.rentIndex = 0;
 
         /**
-         * [rentsHolder the div where rent properties will be appended]
+         * [_appGlobal.rentsHolder the div where rent properties will be appended]
          */
-        rentsHolder = $('#rentsHolder');
+        _appGlobal.rentsHolder = $('#rentsHolder');
 
         /**
-         * [rentsArray will track the position of each rent property index
+         * [_appGlobal.rentsArray will track the position of each rent property index
          * when user start adding and removing rents randomly this array will keep track of
          * e.g retnsArray = [4, 6] means the first rent has index of 4 and second rent has index of 6
          * the positions of this array elements will help enforce the fields names and ids to stay in sequence of 1,2,3,... with help of updateRentsFields function
          */
-        rentsArray = [];
+        _appGlobal.rentsArray = [];
 
         updateTabIndex( myForm); //// function in main.js
 
@@ -116,24 +118,24 @@ var rentTemplate, rentIndex, rentsHolder, rentsArray;
         /**
          * initialize the form when its preloaded with saved data for employers
          */
-        employersHolder.children().each(function(x){
+        _appGlobal.employersHolder.children().each(function(x){
             var myIndex = parseInt($(this).attr('data-index'), 10);
             addAutoAddress(myIndex);
             bindEmploymentDate(myIndex);
-            employerIndex = myIndex;
+            _appGlobal.employerIndex = myIndex;
         });
 
         /**
          * initialize the form when its preloaded with saved data for rent properties
          */
-        rentsHolder.children().each(function(x){
+        _appGlobal.rentsHolder.children().each(function(x){
             var myIndex = parseInt($(this).attr('data-index'), 10);
             var myId = parseInt($(this).find('input[id^=re_address]').eq(0).attr('id').split('re_address')[1], 10);
 
             addAutoAddress(100 + myIndex);
 
-            rentIndex = myIndex;
-            rentsArray.push(rentIndex);
+            _appGlobal.rentIndex = myIndex;
+            _appGlobal.rentsArray.push(_appGlobal.rentIndex);
 
             bindRentMortgage(myId);
 
@@ -164,7 +166,7 @@ var rentTemplate, rentIndex, rentsHolder, rentsArray;
                     validationClass:'.cc-to-be-validate-em, .cc-to-be-validate-pre'
                 }); //// function in main.js
 
-                if(employerIndex > 1){
+                if(_appGlobal.employerIndex > 1){
                     removeEmployer(2); /// will take care of the rest of
                 }
             }
@@ -282,7 +284,7 @@ var rentTemplate, rentIndex, rentsHolder, rentsArray;
                 /**
                  * Add new property if the property count is 0
                  */
-                if(rentsArray.length < 1){
+                if(_appGlobal.rentsArray.length < 1){
                     addRent();
                     $('#addRentProperty').show();
                 }
@@ -294,8 +296,8 @@ var rentTemplate, rentIndex, rentsHolder, rentsArray;
                     validationClass:'.cc-to-be-validate'
                 }); //// function in main.js
 
-                while(rentsArray.length > 0){
-                    removeRent(rentsArray[rentsArray.length-1]);
+                while(_appGlobal.rentsArray.length > 0){
+                    removeRent(_appGlobal.rentsArray[_appGlobal.rentsArray.length-1]);
                 }/// while
             }
         })
@@ -333,7 +335,7 @@ function addEmployer(index){
     /**
      * Employers should be added in increasing index
      */
-    if(index < employerIndex) return;
+    if(index < _appGlobal.employerIndex) return;
 
     /**
      * if the employer with index is already added do nothing
@@ -342,9 +344,9 @@ function addEmployer(index){
         return;
     }
 
-    employerIndex = index;
+    _appGlobal.employerIndex = index;
 
-    var employer = $(employerTemplate.replace(/(\{\#\})/g, employerIndex));
+    var employer = $(_appGlobal.employerTemplate.replace(/(\{\#\})/g, _appGlobal.employerIndex));
 
     fillStateDropdown( employer.find('.state-dropdown') );
 
@@ -366,10 +368,10 @@ function addEmployer(index){
     .on('keydown', restrictCurrency)
     .on('keyup', formatCurrency);
 
-    employersHolder.append(employer);
+    _appGlobal.employersHolder.append(employer);
 
-    addAutoAddress(employerIndex);
-    bindEmploymentDate(employerIndex);
+    addAutoAddress(_appGlobal.employerIndex);
+    bindEmploymentDate(_appGlobal.employerIndex);
 
     updateTabIndex( $('.cc-form')); //// function in main.js
 
@@ -381,7 +383,7 @@ function removeEmployer(removeIndex){
     if(removeIndex <= 1) return;
     // if(removeIndex > 4) return;
 
-    for(var x=removeIndex; x<=employerIndex; x++){
+    for(var x=removeIndex; x<=_appGlobal.employerIndex; x++){
         $('#employer_' + x).slideUp({
             complete:function(){
                 $(this).detach().remove();
@@ -389,7 +391,7 @@ function removeEmployer(removeIndex){
             }
         })
     }
-    employerIndex = removeIndex - 1;
+    _appGlobal.employerIndex = removeIndex - 1;
 }
 
 function checkEmploymentDate(ev){
@@ -435,13 +437,13 @@ function checkEmploymentDate(ev){
 
 function addRent(){
 
-    if(rentsArray.length >= 5) return;
+    if(_appGlobal.rentsArray.length >= 5) return;
 
-    rentIndex++;
-    rentsArray.push(rentIndex);
-    var template = rentTemplate.replace(/(\{\#index\})/g, rentIndex);
+    _appGlobal.rentIndex++;
+    _appGlobal.rentsArray.push(_appGlobal.rentIndex);
+    var template = _appGlobal.rentTemplate.replace(/(\{\#index\})/g, _appGlobal.rentIndex);
 
-    var id = rentsArray.length;
+    var id = _appGlobal.rentsArray.length;
     template = template.replace(/(\{\#id\})/g, id);
 
 
@@ -449,7 +451,7 @@ function addRent(){
      * [addressIndex is used to help add and track the address fields for type ahead address functionality]
      * 100 + is added to differentiate the rent property address fields from employer address fields
      */
-    var addressIndex = 100 + rentIndex;
+    var addressIndex = 100 + _appGlobal.rentIndex;
     template = template.replace(/(\{\#indexPlus\})/g, addressIndex);
 
 
@@ -481,7 +483,7 @@ function addRent(){
     .on('keyup', formatCurrency);
 
 
-    rentsHolder.append(rent);
+    _appGlobal.rentsHolder.append(rent);
 
     rent.slideDown();
 
@@ -498,7 +500,7 @@ function addRent(){
 }//// fun. addRent
 
 function removeRent(removeIndex){
-    var position = rentsArray.indexOf(removeIndex);
+    var position = _appGlobal.rentsArray.indexOf(removeIndex);
 
     $('#property_' + removeIndex).slideUp({
         complete:function(){
@@ -506,7 +508,7 @@ function removeRent(removeIndex){
             updateTabIndex($('.cc-form'));
         }
     });
-    rentsArray.splice(position, 1);
+    _appGlobal.rentsArray.splice(position, 1);
 
     updateRentsFields();
 
@@ -519,11 +521,11 @@ function removeRent(removeIndex){
  * this function assume the fields names and ids contain ONE number of 1 or 2 digits
  */
 function updateRentsFields(){
-    var limit = rentsArray.length;
+    var limit = _appGlobal.rentsArray.length;
     if(limit < 1) return;
 
     for(var x=0; x<limit; x++){
-        var index = rentsArray[x];
+        var index = _appGlobal.rentsArray[x];
 
         var rentDiv = $('#property_'+index);
 
@@ -542,18 +544,18 @@ function updateRentsFields(){
  * it will be called from addRent and removeRent
  */
 function updateRentCloseBtn(){
-    if(rentsArray.length > 1){
-        var index = rentsArray[0];
+    if(_appGlobal.rentsArray.length > 1){
+        var index = _appGlobal.rentsArray[0];
         var rentDiv = $('#property_'+index);
         rentDiv.find('a.close').show();
     }
     else{
-        var index = rentsArray[0];
+        var index = _appGlobal.rentsArray[0];
         var rentDiv = $('#property_'+index);
         rentDiv.find('a.close').hide();
     }
 
-    if(rentsArray.length >= 5){
+    if(_appGlobal.rentsArray.length >= 5){
         // $('#addRentProperty').attr({'disabled':true}).css({'opacity':0.5});
         $('#addRentProperty').hide();
     }

@@ -1,7 +1,10 @@
+/**
+ * Global variables for this page
+ * var _appGlobal.assetTemplate, _appGlobal.assetIndex, _appGlobal.assetsHolder, _appGlobal.assetsArray;
+ * var _appGlobal.estateTemplate, _appGlobal.estateIndex, _appGlobal.estatesHolder, _appGlobal.estatesArray;
+ */
 (function() {
     $(document).ready(assetsReady);
-    var assetTemplate, assetIndex, assetsHolder, assetsArray;
-    var estateTemplate, estateIndex, estatesHolder, estatesArray;
 
     function assetsReady(){
 
@@ -14,31 +17,31 @@
         /**
          * [rentTemplate variable to hold the html template as string]
          */
-        assetTemplate = $('#assetTmplt').text();
-        estateTemplate = $('#estateTmplt').text();
+        _appGlobal.assetTemplate = $('#assetTmplt').text();
+        _appGlobal.estateTemplate = $('#estateTmplt').text();
 
         /**
-         * [assetIndex a variable to track the asset property inside the DOM
+         * [_appGlobal.assetIndex a variable to track the asset property inside the DOM
          * this variable work similar to auto increment field in data base and it is not related to fields name and fields id]
          * @type {Number}
          */
-        assetIndex = 0;
-        estateIndex = 0;
+        _appGlobal.assetIndex = 0;
+        _appGlobal.estateIndex = 0;
 
         /**
-         * [assetsHolder the div where asset properties will be appended]
+         * [_appGlobal.assetsHolder the div where asset properties will be appended]
          */
-        assetsHolder = $('#assetsHolder');
-        estatesHolder = $('#estateHolder');
+        _appGlobal.assetsHolder = $('#assetsHolder');
+        _appGlobal.estatesHolder = $('#estateHolder');
 
         /**
-         * [assetsArray will track the position of each asset property index
+         * [_appGlobal.assetsArray will track the position of each asset property index
          * when user start adding and removing assets randomly this array will keep track of
          * e.g retnsArray = [4, 6] means the first asset has index of 4 and second asset has index of 6
          * the positions of this array elements will help enforce the fields names and ids to stay in sequence of 1,2,3,... with help of updateassetsFields function
          */
-        assetsArray = [];
-        estatesArray = [];
+        _appGlobal.assetsArray = [];
+        _appGlobal.estatesArray = [];
 
         updateTabIndex( myForm); //// function in main.js
 
@@ -105,13 +108,13 @@
         /**
          * initialize the form when its preloaded with saved data for asset
          */
-        assetsHolder.children().each(function(x){
+        _appGlobal.assetsHolder.children().each(function(x){
             var myIndex = parseInt($(this).attr('data-index'), 10);
             var myId = parseInt($(this).find('input[id^=as_bank]').eq(0).attr('id').split('as_bank')[1], 10);
 
 
-            assetIndex = myIndex;
-            assetsArray.push(assetIndex);
+            _appGlobal.assetIndex = myIndex;
+            _appGlobal.assetsArray.push(_appGlobal.assetIndex);
 
             $(this).find('a.close').on('click', function(e){
                 var i = parseInt($(this).attr('data-index'), 10);
@@ -152,8 +155,8 @@
                 /**
                  * Remove all properties
                  */
-                while(assetsArray.length > 0){
-                    var idToRemove = assetsArray.pop();
+                while(_appGlobal.assetsArray.length > 0){
+                    var idToRemove = _appGlobal.assetsArray.pop();
                     $('#asset_' + idToRemove).slideUp(function(){
                         $(this).remove();
                     })
@@ -179,8 +182,8 @@
                 /**
                  * Remove all properties
                  */
-                while(estatesArray.length > 0){
-                    var idToRemove = estatesArray.pop();
+                while(_appGlobal.estatesArray.length > 0){
+                    var idToRemove = _appGlobal.estatesArray.pop();
                     $('#estate_' + idToRemove).slideUp(function(){
                         $(this).remove();
                     })
@@ -197,13 +200,13 @@
 
     function addAsset(){
 
-        if(assetsArray.length >= 5) return;
+        if(_appGlobal.assetsArray.length >= 5) return;
 
-        assetIndex++;
-        assetsArray.push(assetIndex);
-        var template = assetTemplate.replace(/(\{\#index\})/g, assetIndex);
+        _appGlobal.assetIndex++;
+        _appGlobal.assetsArray.push(_appGlobal.assetIndex);
+        var template = _appGlobal.assetTemplate.replace(/(\{\#index\})/g, _appGlobal.assetIndex);
 
-        var id = assetsArray.length;
+        var id = _appGlobal.assetsArray.length;
         template = template.replace(/(\{\#id\})/g, id);
 
 
@@ -225,7 +228,7 @@
         dropdownLabel(asset);
 
 
-        assetsHolder.append(asset);
+        _appGlobal.assetsHolder.append(asset);
 
         asset.slideDown();
 
@@ -235,7 +238,7 @@
     }//// fun. addRent
 
     function removeAsset(removeIndex){
-        var position = assetsArray.indexOf(removeIndex);
+        var position = _appGlobal.assetsArray.indexOf(removeIndex);
 
         $('#asset_' + removeIndex).slideUp({
             complete:function(){
@@ -243,7 +246,7 @@
                 updateTabIndex($('.cc-form'));
             }
         });
-        assetsArray.splice(position, 1);
+        _appGlobal.assetsArray.splice(position, 1);
 
         updateAssetsFields();
 
@@ -256,11 +259,11 @@
      * this function assume the fields names and ids contain ONE number of 1 or 2 digits
     */
     function updateAssetsFields(){
-        var limit = assetsArray.length;
+        var limit = _appGlobal.assetsArray.length;
         if(limit < 1) return;
 
         for(var x=0; x<limit; x++){
-            var index = assetsArray[x];
+            var index = _appGlobal.assetsArray[x];
 
             var assetDiv = $('#asset_'+index);
 
@@ -280,18 +283,18 @@
     //  */
     function updateAssetCloseBtn(){
 
-        if(assetsArray.length > 1){
-            var index = assetsArray[0];
+        if(_appGlobal.assetsArray.length > 1){
+            var index = _appGlobal.assetsArray[0];
             var assetDiv = $('#asset_'+index);
             assetDiv.find('a.close').show();
         }
         else{
-            var index = assetsArray[0];
+            var index = _appGlobal.assetsArray[0];
             var assetDiv = $('#asset_'+index);
             assetDiv.find('a.close').hide();
         }
 
-        if(assetsArray.length >= 5){
+        if(_appGlobal.assetsArray.length >= 5){
             $('#addAnotherAsset').hide();
         }
         else{
@@ -303,13 +306,13 @@
 
     function addEstate(){
 
-        if(estatesArray.length >= 5) return;
+        if(_appGlobal.estatesArray.length >= 5) return;
 
-        estateIndex++;
-        estatesArray.push(estateIndex);
-        var template = estateTemplate.replace(/(\{\#index\})/g, estateIndex);
+        _appGlobal.estateIndex++;
+        _appGlobal.estatesArray.push(_appGlobal.estateIndex);
+        var template = _appGlobal.estateTemplate.replace(/(\{\#index\})/g, _appGlobal.estateIndex);
 
-        var id = estatesArray.length;
+        var id = _appGlobal.estatesArray.length;
         template = template.replace(/(\{\#id\})/g, id);
 
 
@@ -328,13 +331,13 @@
         .on('keydown', restrictCurrency)
         .on('keyup', formatCurrency);
 
-        estatesHolder.append(estate);
+        _appGlobal.estatesHolder.append(estate);
 
         dropdownLabel(estate);
         yesNoRadio(estate);
         fillStateDropdown(estate);
-        addAutoAddress(estateIndex, true); /// true is to force the label to start from 1, default 1 will be ignored
-        bindEstateMortgage(estateIndex);
+        addAutoAddress(_appGlobal.estateIndex, true); /// true is to force the label to start from 1, default 1 will be ignored
+        bindEstateMortgage(_appGlobal.estateIndex);
 
         estate.slideDown();
 
@@ -344,7 +347,7 @@
     }//// fun. addRent
 
     function removeEstate(removeIndex){
-        var position = estatesArray.indexOf(removeIndex);
+        var position = _appGlobal.estatesArray.indexOf(removeIndex);
 
         $('#estate_' + removeIndex).slideUp({
             complete:function(){
@@ -352,7 +355,7 @@
                 updateTabIndex($('.cc-form'));
             }
         });
-        estatesArray.splice(position, 1);
+        _appGlobal.estatesArray.splice(position, 1);
 
         updateEstatesFields();
 
@@ -365,11 +368,11 @@
      * this function assume the fields names and ids contain ONE number of 1 or 2 digits
     */
     function updateEstatesFields(){
-        var limit = estatesArray.length;
+        var limit = _appGlobal.estatesArray.length;
         if(limit < 1) return;
 
         for(var x=0; x<limit; x++){
-            var index = estatesArray[x];
+            var index = _appGlobal.estatesArray[x];
 
             var estateDiv = $('#estate_'+index);
 
@@ -389,18 +392,18 @@
      */
     function updateEstateCloseBtn(){
 
-        if(estatesArray.length > 1){
-            var index = estatesArray[0];
+        if(_appGlobal.estatesArray.length > 1){
+            var index = _appGlobal.estatesArray[0];
             var estateDiv = $('#estate_'+index);
             estateDiv.find('a.close').show();
         }
         else{
-            var index = estatesArray[0];
+            var index = _appGlobal.estatesArray[0];
             var estateDiv = $('#estate_'+index);
             estateDiv.find('a.close').hide();
         }
 
-        if(estatesArray.length >= 5){
+        if(_appGlobal.estatesArray.length >= 5){
             $('#addAnotherEstate').hide();
         }
         else{

@@ -1,7 +1,8 @@
 /**
- * These global variables shared with
+ * These global variables shared with 02-coborrower.js
+ * _appGlobal.addressTemplate, _appGlobal.addressIndex;
  */
-var addressTemplate, addressIndex;
+
 (function(){
     $(document).ready(borrowerReady);
 
@@ -14,12 +15,12 @@ var addressTemplate, addressIndex;
         if(myForm.length <= 0) return;
 
         /**
-         * [addressIndex will track the number of address added and stop if total of 4 address]
+         * [_appGlobal.addressIndex will track the number of address added and stop if total of 4 address]
          * @type {Number}
          */
-        addressIndex = 1;
+        _appGlobal.addressIndex = 1;
 
-        addressTemplate = $('#addressTemplate').html();
+        _appGlobal.addressTemplate = $('#addressTemplate').html();
 
         updateTabIndex( myForm); //// function in main.js
 
@@ -111,7 +112,7 @@ var addressTemplate, addressIndex;
         /**
          * check for address length change
          */
-        checkAddressLength(myForm, addressIndex); //// function in main.js
+        checkAddressLength(myForm, _appGlobal.addressIndex); //// function in main.js
 
         /**
          * Check number of dependents change and show ages fields
@@ -268,21 +269,21 @@ function checkAddressLength(container, index){
 
 function addAddress(nextId){
     if(nextId >= 5) return false;
-    if(addressIndex >= nextId) return false;
+    if(_appGlobal.addressIndex >= nextId) return false;
 
     var section = $('#preAddress');
-    addressIndex = nextId;
-    var address = $(addressTemplate.replace(/(\{\#\})/g, addressIndex));
+    _appGlobal.addressIndex = nextId;
+    var address = $(_appGlobal.addressTemplate.replace(/(\{\#\})/g, _appGlobal.addressIndex));
 
     address.find('.cc-field.cc-to-be-validate').addClass('cc-validate');
     fillStateDropdown( address.find('.state-dropdown') ); //// fun. in main.js
 
     address.find('input.numbers').on('keydown', restrictNumbers);
 
-    checkAddressLength(address, addressIndex);
+    checkAddressLength(address, _appGlobal.addressIndex);
 
     section.append(address);
-    addAutoAddress(addressIndex);
+    addAutoAddress(_appGlobal.addressIndex);
 
     updateTabIndex( $('.cc-form')); //// function in main.js
     section.slideDown();
@@ -291,17 +292,17 @@ function addAddress(nextId){
 function removeAddress(idRemove){
 
     if(idRemove <=1) return false;
-    if(idRemove > addressIndex) return false;
+    if(idRemove > _appGlobal.addressIndex) return false;
 
     var section = $('#preAddress');
-    for(var x = idRemove; x<=addressIndex; x++){
+    for(var x = idRemove; x<=_appGlobal.addressIndex; x++){
         var address = section.find('#address_' + x);
 
         address.find('.cc-field').removeClass('cc-validate error correct');
         address.remove();
         updateTabIndex( $('.cc-form')); //// function in main.js
     }
-    addressIndex = idRemove-1;
-    if(addressIndex <= 1) section.slideUp()
+    _appGlobal.addressIndex = idRemove-1;
+    if(_appGlobal.addressIndex <= 1) section.slideUp()
 }
 

@@ -10,12 +10,12 @@
         if(myForm.length <= 0) return;
 
         /**
-         * [addressIndex will track the number of address added and stop if total of 4 address]
+         * [_appGlobal.addressIndex will track the number of address added and stop if total of 4 address]
          * @type {Number}
          */
-        addressIndex = 1;
+        _appGlobal.addressIndex = 1;
 
-        addressTemplate = $('#addressTemplate').html();
+        _appGlobal.addressTemplate = $('#addressTemplate').html();
 
         updateTabIndex( myForm); //// function in main.js
 
@@ -117,7 +117,7 @@
          * check for address length change
          * function in 01-borrower.js
          */
-        checkAddressLength(myForm, addressIndex);
+        checkAddressLength(myForm, _appGlobal.addressIndex);
 
         /**
          * Check number of dependents change and show ages fields

@@ -1,4 +1,8 @@
-var _appVars = {};
+/**
+ * [_appGlobal Namespace for global variables]
+ * @type {Object}
+ */
+var _appGlobal = {};
 jQuery(document).ready(ccDocumentReady);
 
 function ccDocumentReady(){
@@ -468,7 +472,7 @@ var formatCurrency = function(keyEv){
 
 var animateScroll = function(y, time){
 
-    clearInterval(_appVars.scrollInte);//// stop anyscrolling
+    clearInterval(_appGlobal.scrollInte);//// stop anyscrolling
 
     if(undefined === time) time = 1;//// set default value for time
     var fps = 60; //// frames per secons
@@ -503,7 +507,7 @@ var animateScroll = function(y, time){
     if(Math.abs(c) < 1) return;
 
     //// start time ticker
-    _appVars.scrollInte = setInterval(function(){
+    _appGlobal.scrollInte = setInterval(function(){
         /// ease out math
         var per = 1 - t/d;
         var newY =  -c * (1-per*per*per*per) + b;
@@ -513,7 +517,7 @@ var animateScroll = function(y, time){
 
 
         if(t == d){
-            clearInterval(_appVars.scrollInte);
+            clearInterval(_appGlobal.scrollInte);
             $(window).trigger('animateScrollEnd');
         }
         t++;

@@ -12,34 +12,34 @@
         /**
          * Below global variables defined in 05-income.js
          */
-        employerTemplate = $('#employerTmplt').text();
-        employerIndex = 1;
-        employersHolder = $('#employersHolder');
+        _appGlobal.employerTemplate = $('#employerTmplt').text();
+        _appGlobal.employerIndex = 1;
+        _appGlobal.employersHolder = $('#employersHolder');
 
 
         /**
-         * [rentTemplate variable to hold the html template as string]
+         * [_appGlobal.rentTemplate variable to hold the html template as string]
          */
-        rentTemplate = $('#rentTmplt').text();
+        _appGlobal.rentTemplate = $('#rentTmplt').text();
         /**
-         * [rentIndex a variable to track the rent property inside the DOM
+         * [_appGlobal.rentIndex a variable to track the rent property inside the DOM
          * this variable work similar to auto increment field in data base and it is not related to fields name and fields id]
          * @type {Number}
          */
-        rentIndex = 0;
+        _appGlobal.rentIndex = 0;
 
         /**
-         * [rentsHolder the div where rent properties will be appended]
+         * [_appGlobal.rentsHolder the div where rent properties will be appended]
          */
-        rentsHolder = $('#rentsHolder');
+        _appGlobal.rentsHolder = $('#rentsHolder');
 
         /**
-         * [rentsArray will track the position of each rent property index
+         * [_appGlobal.rentsArray will track the position of each rent property index
          * when user start adding and removing rents randomly this array will keep track of
          * e.g retnsArray = [4, 6] means the first rent has index of 4 and second rent has index of 6
          * the positions of this array elements will help enforce the fields names and ids to stay in sequence of 1,2,3,... with help of updateRentsFields function
          */
-        rentsArray = [];
+        _appGlobal.rentsArray = [];
 
         updateTabIndex( myForm); //// function in main.js
 
@@ -112,24 +112,24 @@
         /**
          * initialize the form when its preloaded with saved data for employers
          */
-        employersHolder.children().each(function(x){
+        _appGlobal.employersHolder.children().each(function(x){
             var myIndex = parseInt($(this).attr('data-index'), 10);
             addAutoAddress(myIndex);
             bindEmploymentDate(myIndex);
-            employerIndex = myIndex;
+            _appGlobal.employerIndex = myIndex;
         });
 
         /**
          * initialize the form when its preloaded with saved data for rent properties
          */
-        rentsHolder.children().each(function(x){
+        _appGlobal.rentsHolder.children().each(function(x){
             var myIndex = parseInt($(this).attr('data-index'), 10);
             var myId = parseInt($(this).find('input[id^=re_co_address]').eq(0).attr('id').split('re_co_address')[1], 10);
 
             addAutoAddress(100 + myIndex);
 
-            rentIndex = myIndex;
-            rentsArray.push(rentIndex);
+            _appGlobal.rentIndex = myIndex;
+            _appGlobal.rentsArray.push(_appGlobal.rentIndex);
 
             bindRentMortgage(myId);
 
@@ -160,7 +160,7 @@
                     validationClass:'.cc-to-be-validate-em, .cc-to-be-validate-pre'
                 }); //// function in main.js
 
-                if(employerIndex > 1){
+                if(_appGlobal.employerIndex > 1){
                     removeEmployer(2); /// will take care of the rest of
                 }
             }
@@ -279,7 +279,7 @@
                 /**
                  * Add new property if the property count is 0
                  */
-                if(rentsArray.length < 1){
+                if(_appGlobal.rentsArray.length < 1){
                     addRent();
                     $('#addRentProperty').show();
                 }
@@ -291,8 +291,8 @@
                     validationClass:'.cc-to-be-validate'
                 }); //// function in main.js
 
-                while(rentsArray.length > 0){
-                    removeRent(rentsArray[rentsArray.length-1]);
+                while(_appGlobal.rentsArray.length > 0){
+                    removeRent(_appGlobal.rentsArray[_appGlobal.rentsArray.length-1]);
                 }/// while
             }
         })
