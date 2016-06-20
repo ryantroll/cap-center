@@ -4,6 +4,7 @@
  */
 
 (function(){
+    var loginForm, loginOverlay, appOverlay;
     $(document).ready(borrowerReady);
 
     function borrowerReady(){
@@ -167,7 +168,7 @@
 
             if(val && true === isValid){
                 $.ajax({
-                    url:"api-response/is-email-exists.json",
+                    url:"http://apps.stirringinteractive.com/api-response/is-email-exists.json",
                     data:{email:val},
                     method:"post",
                     dataType:"json",
@@ -176,11 +177,8 @@
                         updateLoginSection(false);
                     },
                     success:function(ret){
-                        if(ret.email.toLowerCase() == val.toLowerCase() ){
+                        if(ret.email.toLowerCase() == val.toLowerCase() && ret.exists === true){
                             updateLoginSection(ret.exists);
-                            if(ret.exists === true){
-                                $('#login_email').val(val);
-                            }
                         }
                         else{
                             updateLoginSection(false);
@@ -199,6 +197,76 @@
          */
         addAutoAddress(1);
 
+
+        /**
+         * Login Form
+         */
+        loginForm = $("#loginForm");
+        loginOverlay = $("#loginOverlay");
+        $('#loginForm').validate(function(isValid, invalidFields){
+            if(true === isValid){
+                /**
+                 * Login form is valid do ajax call to authentication
+                 */
+                var data = {};
+
+                data.email = $.trim($("#login_email").val());
+                data.password = $.trim($("#login_password").val());
+                var msg = loginOverlay.addClass("busy").find('.error-message').hide();
+                msg.text(msg.attr('data-default'));
+                $("#login_password").val('');
+
+                $.ajax({
+                    url:"http://apps.stirringinteractive.com/api-response/authentication.json",
+                    data:data,
+                    method:"post",
+                    dataType:"json",
+                    error:function(err){
+                        console.log(err);
+                        loginOverlay.removeClass('busy').find('.error-message').slideDown();
+                    },
+                    success:function(ret){
+                        if(
+                            true === ret.success
+                            && ret.email.toLowerCase() === data.email.toLowerCase()
+                        ){
+                            _appGlobal.overlay.closeOverlay();
+                            hideLoginForm();
+
+                            showApplicationsList();
+                        }
+                        else{
+                            loginOverlay.removeClass('busy').find('.error-message').text(ret.message).slideDown();
+                        }
+                    }
+                });
+            }
+            return false;
+        }); //// no callback is required
+
+        $('#loginSkipBtn').on('click', function(e){
+            excludeFields({selector:'#loginSection', validationClass:'.cc-to-be-validate'});
+        });
+
+        $('#loginBtn').on('click', function(e){
+
+            $('#login_email').val( $('#bo_email').val() );
+
+            overlay({
+                selector:'#loginOverlay',
+                onBeforeLoad:function(){
+                    //// nothing
+                },
+                onBeforeClose:function(){
+                    hideLoginForm();
+                }
+            });
+        });
+
+        appOverlay = $('#appsList');
+
+
+        // showApplicationsList();
     };//// borrowerReady
 
     function updateLoginSection(emailExists){
@@ -209,6 +277,69 @@
             excludeFields({selector:'#loginSection', validationClass:'.cc-to-be-validate'}); //// function in main.js
         }
     }///// fun. updateLoginSection
+
+    function hideLoginForm(){
+        resetFields(loginForm); /// resetFields in main.js
+        loginOverlay.removeClass('busy').find('.error-message').hide();
+    }//// fun. hideLoginForm
+
+    function loadApplications(){
+        appOverlay.addClass('busy');
+        var template = $('#appTemplate').text();
+        var appsHolder = $('#appsHolder');
+
+        var data = {};
+        data.email = $.trim( $('#login_email').val() );
+        data.userId = '0000000';
+        data.username = 'usa';
+        data.password = 'newyork';
+
+        $.ajax({
+            url:"http://apps.stirringinteractive.com/api-response/applications-list.json",
+            data:data,
+            method:"post",
+            dataType:"json",
+            error:function(err){
+                console.log(err);
+                // loginOverlay.removeClass('busy').find('.error-message').slideDown();
+            },
+            success:function(ret){
+                if(Array.isArray(ret)){
+                    var x;
+                    for(x=0; x<ret.length; x++){
+                        var obj = ret[x];
+                        var row = template;
+
+                        for(label in obj){
+                            var regex = new RegExp('\{\#' + label + '\}', 'g');
+                            row = row.replace( regex , obj[label]);
+                        } /// for
+                        row = $(row);
+                        row.find('a').on('click', function(){
+                            appOverlay.find('a.close').trigger('click')
+                        })
+                        appsHolder.append(row);
+                    }/// for
+
+                    _appGlobal.overlay.adjust();
+                    appOverlay.removeClass('busy');
+                }//// if
+            }//// success
+        });
+    }//// fun. loadApplications
+
+    function showApplicationsList(){
+        overlay({
+            selector:'#appsList',
+            onBeforeLoad:function(){
+                loadApplications();
+            },
+            onBeforeClose:function(){
+                $('#appsHolder').empty();
+            }
+        });
+    }//// fun. showApplicationsList
+
 })();
 
 

@@ -26,8 +26,14 @@
             }); /// .each
 
 
-            var extra = callback(isFormValid, invalidFields.length > 0 ? invalidFields : null);
-
+            /**
+             * capture the callback function return if it exists
+             * @type {Boolean}
+             */
+            var extra = true;
+            if('function' === typeof callback){
+                extra = callback(isFormValid, invalidFields.length > 0 ? invalidFields : null);
+            }
             isFormValid = isFormValid && !!extra;
 
 

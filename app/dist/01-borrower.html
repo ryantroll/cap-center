@@ -173,52 +173,25 @@
                 </div><!--field-->
               </div>
 
-
             </div><!--row-->
 
-            <div class="cc-form-section" id="loginSection" style="display:none">
+            <div class="cc-form-section" id="loginSection" style="display:none;">
               <div class="row">
-                <div class="col-sm-12 text-center">
-                  <h4>Client Login</h4>
-                  <p>There is a account associated with the e-mail address you provided. Please login to continue</p>
+                <div class="col-sm-12">
+                  <h4>Saved application found!</h4>
+                  <p>We found an account with a saved application in our records for that email address. Please log in to complete or skip to create a new applicaiton.</p>
                 </div>
 
               </div><!--row-->
 
               <div class="row">
-                <div class="col-sm-6">
-                  <div class="cc-field cc-to-be-validate cc-required cc-email">
-                    <label for="login_email">Email </label>
-                    <input type="text" tabindex="5" name="login_email" id="login_email" />
-                    <div class="message cc-required">Required</div>
-                    <div class="message cc-email">Invalid email</div>
-                  </div><!--field-->
-                </div>
-
-                <div class="col-sm-6">
-                  <div class="cc-field cc-to-be-validate cc-required">
-                    <label for="login_password">Password</label>
-                    <input type="password" tabindex="7" name="login_password" id="login_password" />
-                    <div class="message cc-required">Required</div>
-                  </div><!--field-->
-                </div>
-
-              </div><!--row-->
-
-              <div class="row">
-                <div class="col-sm-12 text-center">
-                  <div class="cc-field cc-buttons center ">
-                    <button class="gray" name="login" id="login">Login</button>
-                  </div><!--field-->
-                </div>
-
-              </div><!--row-->
-
-              <div class="row">
-                <div class="col-sm-12 text-center">
-                  <p>
-                    <a href="javascript:void(0)">Forgot Password?</a>
-                  </p>
+                <div class="col-sm-12">
+                  <div class="links clear-fixe pull-right">
+                    <ul>
+                      <li><a href="javascript:void(0);" id="loginBtn">LOG IN</a></li>
+                      <li><a href="javascript:void(0);" id="loginSkipBtn">SKIP</a></li>
+                    </ul>
+                  </div>
                 </div>
 
               </div><!--row-->
@@ -247,10 +220,7 @@
 
             </div><!--row-->
 
-
               <div class="row">
-
-
                 <div class="col-sm-6">
                   <div class="cc-field cc-validate cc-ssn">
                     <label for="bo_ssn">Social Security Number</label>
@@ -268,6 +238,7 @@
                     <h4>Tell us about where you currently live</h4>
                   </div>
                 </div>
+
             </div><!--row-->
 
 
@@ -613,13 +584,126 @@
   </div><!--support-panel-->
 
   <div class="cc-support-popup"></div><!--support-popup-->
+
 </div><!--support-->
+
+<div class="cc-login-overlay cc-form" id="loginOverlay" style="display:none;">
+  <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove"></i></a>
+
+  <form method="post" id="loginForm">
+    <fieldset>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h4>Client Login</h4>
+          <p>To access your saved application(s), please log in to your CapCenter account.</p>
+          <p>&nbsp;</p>
+        </div>
+
+      </div><!--row-->
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="cc-field cc-validate cc-required cc-email">
+            <label for="login_email">Email</label>
+            <input type="tel" tabindex="1" name="login_email" id="login_email" />
+            <div class="message cc-required">Required</div>
+            <div class="message cc-email">Invalid email</div>
+          </div><!--field-->
+        </div>
+
+        <div class="col-sm-6">
+          <div class="cc-field cc-validate cc-required">
+            <label for="login_password">Password</label>
+            <input type="password" tabindex="2" name="login_password" id="login_password" />
+            <div class="message cc-required">Required</div>
+          </div>
+        </div>
+
+      </div><!--row-->
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="cc-field">
+            <div class="error-message" style="display:none;" data-default="Error while trying to login, please try again"></div>
+          </div><!--field-->
+        </div>
+
+      </div><!--row-->
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="cc-field cc-buttons center more-padding--">
+            <button class="gray" name="login" id="login">Log In</button>
+          </div><!--field-->
+        </div>
+
+      </div><!--row-->
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="cc-field center cc-buttons">
+              <button class="" name="login" id="login">Forgot Password?</button>
+            </div><!--field-->
+        </div>
+
+      </div><!--row-->
+
+    </fieldset>
+  </form>
+</div><!--cc-login-->
+
+<div class="cc-applications-overlay cc-form" id="appsList" style="display:none;">
+  <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove"></i></a>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Saved Applications</h4>
+      <p>We found the following saved applications on your account. Please select an application you would like to complete or continue to create a new application.</p>
+      <p>&nbsp;</p>
+    </div>
+
+  </div><!--row-->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="cc-app-list">
+        <thead class="hidden-xs">
+          <tr>
+            <th>Application#</th>
+            <th>Type</th>
+            <th>Loan Amount</th>
+            <th>Status</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody id="appsHolder">
+
+        </tbody>
+      </table>
+    </div>
+
+  </div><!--row-->
+</div><!--cc-app-list-->
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmhRm89_rJvOBbb-6fKl4ZL5rGK0D5IoM&libraries=places"></script>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/all.js"></script>
 
+<script type="text/template" id="appTemplate">
+  <tr>
+    <th>Application#</th>
+    <td>{#id}</td>
+    <th>Type</th>
+    <td>{#type}</td>
+    <th>Loan Amount</th>
+    <td>${#loan}</td>
+    <th>Status</th>
+    <td>{#status}</td>
+    <td align="left" style="width:70px;"><a href="javascript:void(0)" class="cc-btn gray app-select">Select</a></td>
+
+  </tr>
+</script>
 
 
 <script id="addressTemplate" type="text/template">

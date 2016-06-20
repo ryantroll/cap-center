@@ -1,6 +1,6 @@
 /**
  * [_appGlobal Namespace for global variables]
- * @type {Object}
+ * this will define a protect name space for global variable to prvent any conflect with local variables
  */
 var _appGlobal = {};
 jQuery(document).ready(ccDocumentReady);
@@ -524,6 +524,85 @@ var animateScroll = function(y, time){
 
     }, frameTime);
 }//// fun. animateScroll
+
+function overlay(o){
+    // add a background to overlay
+    var w = $(document).width();
+    var h = $(document).height();
+
+    /// cassh the overlay Div
+    var overlayDiv = $(o['selector']);
+
+    this.closeOverlay= function(){
+        // remove keypress event lisnter
+        $(window).off('keypress');
+
+        if(o.onBeforeClose) o.onBeforeClose();
+
+        // hide the maks and overlay
+        overlayDiv.hide();
+
+        $('#overlayMask').remove();
+        overlayDiv.find('a.close').off('click');
+        delete _appGlobal.overlay;
+    };
+
+    /**
+     * [adjust set the top and left position of overlayed div to be centered
+     */
+    this.adjust = function(){
+      var l = ($(window).width() - overlayDiv.outerWidth() ) / 2;
+      var t = ($(window).height() - overlayDiv.height() ) / 2;
+
+      if(t<0) t = 0;
+
+      if($(window).width() < 768){
+        l = 0; /// if mobile make it cover all screen
+        t = 0;
+      }
+
+      overlayDiv.css('left', l+'px').css('top', t+'px');
+    }//// fun. adjust
+
+    $('body').append('<div id="overlayMask" style="top:0; right:0; bottom:0; left:0; position:fixed; background-color:#000; z-index:9998; top:0px; left:0px;"></div>');
+    // $('body').append('<div id="overlayMask" style="width:'+ w +'px; height:'+ h +'px; position:absolute; background-color:#000; z-index:9998; top:0px; left:0px;"></div>');
+    var mask = $('#overlayMask');
+    mask.addClass("fadeto90").css("opacity", '0.6');
+
+    // assing click to close
+    mask.on('click', function(){
+        closeOverlay();
+    });
+
+    // append the close button
+    if(overlayDiv.find('.close').length<=0){
+        overlayDiv.append('<a href="javascript:void(0);" class="close icon-close"><a/>');
+    }
+    overlayDiv.find('.close').css('z-index', 1001).on('click', function(){
+        closeOverlay();
+    });
+
+    if(o.onBeforeLoad) o.onBeforeLoad();
+
+    overlayDiv.css('z-index','9999').removeClass('fadein').show().addClass('fadein');
+
+    /**
+     * Center the overlay div
+     */
+    this.adjust();
+
+    if(o.onAfterLoad) o.onAfterLoad();
+
+    /// add listener for Esc key
+    $(window).on('keypress', function(k){
+        if(k.keyCode && k.keyCode == 27) closeOverlay();
+    });
+
+    /////// set reference in application variables
+    _appGlobal.overlay = this;
+
+    return this;
+}// end of fun. overlay
 
 /**
  * [resetFields will search for input field inside a container and rest its value and any error status]

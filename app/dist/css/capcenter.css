@@ -341,6 +341,20 @@ body.cc-body {
     margin-right: 0;
     float: right; }
 
+.cc-form.busy:after {
+  display: block;
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999;
+  background-image: url("../images/preloader.gif");
+  background-repeat: no-repeat;
+  background-position: center center; }
+
 .cc-form .cc-field {
   margin-bottom: 12px;
   position: relative; }
@@ -435,52 +449,6 @@ body.cc-body {
     /* future proofing */
     -khtml-border-radius: 3px;
     /* for old Konqueror browsers */ }
-  .cc-form .cc-field button,
-  .cc-form .cc-field input[type="button"],
-  .cc-form .cc-field .cc-btn {
-    display: table;
-    width: auto;
-    padding: 0 1em;
-    border: none;
-    background-color: transparent;
-    height: 42px;
-    line-height: 42px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    /* future proofing */
-    -khtml-border-radius: 3px;
-    /* for old Konqueror browsers */
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-    text-transform: uppercase;
-    text-decoration: none; }
-    .cc-form .cc-field button:hover,
-    .cc-form .cc-field input[type="button"]:hover,
-    .cc-form .cc-field .cc-btn:hover {
-      color: #F47C29;
-      border-color: #F47C29; }
-    .cc-form .cc-field button.gray,
-    .cc-form .cc-field input[type="button"].gray,
-    .cc-form .cc-field .cc-btn.gray {
-      background-color: #403e3c;
-      color: #fff; }
-      .cc-form .cc-field button.gray:hover,
-      .cc-form .cc-field input[type="button"].gray:hover,
-      .cc-form .cc-field .cc-btn.gray:hover {
-        color: #F47C29;
-        border-color: #403e3c; }
-    .cc-form .cc-field button.green,
-    .cc-form .cc-field input[type="button"].green,
-    .cc-form .cc-field .cc-btn.green {
-      background-color: #50a54c;
-      color: #fff; }
-      .cc-form .cc-field button.green:hover,
-      .cc-form .cc-field input[type="button"].green:hover,
-      .cc-form .cc-field .cc-btn.green:hover {
-        background-color: #046e3d; }
   .cc-form .cc-field.cc-buttons button, .cc-form .cc-field.cc-buttons .cc-btn {
     display: table;
     width: auto;
@@ -734,6 +702,19 @@ body.cc-body {
   .cc-form .cc-form-section .cc-in-box-label {
     background-color: #fff;
     border-color: #fff; }
+  .cc-form .cc-form-section .links ul {
+    display: table;
+    width: auto;
+    list-style: none; }
+    .cc-form .cc-form-section .links ul:after {
+      display: block;
+      content: " ";
+      clear: both; }
+  .cc-form .cc-form-section .links li {
+    float: left;
+    margin-right: 1em; }
+    .cc-form .cc-form-section .links li:last-child {
+      margin-right: 0; }
 
 .cc-form .cc-dropdown {
   position: relative; }
@@ -1057,6 +1038,187 @@ body.cc-body {
       .cc-form .cc-credit-card .cc-cards li:last-child {
         margin-right: 0; }
 
+.cc-form button,
+.cc-form input[type="button"],
+.cc-form .cc-btn {
+  display: inline-block;
+  width: auto;
+  padding: 0 1em;
+  border: none;
+  background-color: transparent;
+  height: 42px;
+  line-height: 42px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* future proofing */
+  -khtml-border-radius: 3px;
+  /* for old Konqueror browsers */
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  text-transform: uppercase;
+  text-decoration: none; }
+  .cc-form button:hover,
+  .cc-form input[type="button"]:hover,
+  .cc-form .cc-btn:hover {
+    color: #F47C29;
+    border-color: #F47C29; }
+  .cc-form button.gray,
+  .cc-form input[type="button"].gray,
+  .cc-form .cc-btn.gray {
+    background-color: #403e3c;
+    color: #fff; }
+    .cc-form button.gray:hover,
+    .cc-form input[type="button"].gray:hover,
+    .cc-form .cc-btn.gray:hover {
+      color: #F47C29;
+      border-color: #403e3c; }
+  .cc-form button.green,
+  .cc-form input[type="button"].green,
+  .cc-form .cc-btn.green {
+    background-color: #50a54c;
+    color: #fff; }
+    .cc-form button.green:hover,
+    .cc-form input[type="button"].green:hover,
+    .cc-form .cc-btn.green:hover {
+      background-color: #046e3d; }
+
+/**
+ * ****************************************************************
+ * Login-overlay ************************************************
+ * ****************************************************************
+ */
+.cc-login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 24px;
+  width: 100%;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  /* future proofing */
+  -khtml-border-radius: 2px;
+  /* for old Konqueror browsers */ }
+  @media screen and (min-width: 768px) {
+    .cc-login-overlay {
+      max-width: 600px;
+      width: auto;
+      top: auto;
+      left: auto;
+      bottom: auto;
+      right: auto; } }
+  .cc-login-overlay .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    opacity: 1;
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 1em;
+    line-height: 30px; }
+  .cc-login-overlay .error-message {
+    color: #F47C29; }
+
+/**
+ * ****************************************************************
+ * Application List Overlay ***************************************
+ * ****************************************************************
+ */
+.cc-applications-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 24px;
+  overflow: all-scroll;
+  width: 100%;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  /* future proofing */
+  -khtml-border-radius: 2px;
+  /* for old Konqueror browsers */ }
+  @media screen and (min-width: 768px) {
+    .cc-applications-overlay {
+      max-width: 700px;
+      width: auto;
+      top: auto;
+      left: auto;
+      bottom: auto;
+      right: auto; } }
+  .cc-applications-overlay .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    opacity: 1;
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 1em;
+    line-height: 30px; }
+  .cc-applications-overlay table.cc-app-list {
+    width: 100%; }
+    .cc-applications-overlay table.cc-app-list thead tr th {
+      background-color: #c2b7af;
+      color: #fff;
+      padding: 20px 5px;
+      display: table-cell !important;
+      float: none !important;
+      width: auto !important; }
+    .cc-applications-overlay table.cc-app-list tbody tr {
+      padding-bottom: 2em;
+      display: block; }
+      @media screen and (min-width: 768px) {
+        .cc-applications-overlay table.cc-app-list tbody tr {
+          display: table-row;
+          padding-bottom: 0; } }
+      .cc-applications-overlay table.cc-app-list tbody tr:after {
+        display: block;
+        content: " ";
+        clear: both; }
+      .cc-applications-overlay table.cc-app-list tbody tr th {
+        float: left;
+        width: 40%;
+        font-weight: 700px; }
+        @media screen and (min-width: 768px) {
+          .cc-applications-overlay table.cc-app-list tbody tr th {
+            display: none; } }
+    .cc-applications-overlay table.cc-app-list tbody td {
+      padding: 5px;
+      display: block;
+      float: left;
+      width: 60%; }
+      @media screen and (min-width: 768px) {
+        .cc-applications-overlay table.cc-app-list tbody td {
+          display: table-cell;
+          float: none !important;
+          width: inherit; } }
+
+/**
+ * ****************************************************************
+ * PRELOADER GIF **************************************************
+ * ****************************************************************
+ */
+.cc-preloader {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("../images/preloader.gif"); }
+
 /**
  * ****************************************************************
  * SUPPORT CLASSES ************************************************
@@ -1241,3 +1403,50 @@ body.cc-body {
 .cc-note {
   text-align: center;
   color: #fff; }
+
+/**
+ * ***************************************************************************************************
+ * ***************************************************************************************************
+ * ANIMATION CLASSES *********************************************************************************
+ * ***************************************************************************************************
+ * ***************************************************************************************************
+ */
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fadein {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-name: fadein;
+  -webkit-animation-direction: alternate;
+  animation-duration: 0.5s;
+  animation-name: fadein;
+  animation-direction: alternate; }
+
+@keyframes fadeout {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.fadeout {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-name: fadeout;
+  -webkit-animation-direction: alternate;
+  animation-duration: 0.5s;
+  animation-name: fadeout;
+  animation-direction: alternate; }

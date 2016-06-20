@@ -421,6 +421,23 @@ body.cc-body{
 }//// .cc-message
 
 .cc-form{
+    &.busy{
+        &:after{
+            display: block;
+            content:" ";
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index:999;
+            background-image:url('../images/preloader.gif');
+            background-repeat:no-repeat;
+            background-position:center center;
+        }
+
+    }
 
     .cc-field{
         margin-bottom: 12px;
@@ -431,6 +448,7 @@ body.cc-body{
             content: " ";
             clear: both;
         }
+
 
         input, textarea, select, option{
             font-size:16px;/// fixing the iphone zoom issue
@@ -525,45 +543,7 @@ body.cc-body{
             @include mxRoundCorners(3px);
         }//// text area
 
-        button,
-        input[type="button"],
-        .cc-btn{
-            display: table;
-            width:auto;
-            padding:0 1em;
-            border:none;
-            background-color:transparent;
-            // border:1px solid $cMidGray;
-            height: $nFieldHeight;
-            line-height: $nFieldHeight;
-            @include mxRoundCorners(3px);
-            @include mxTransition(all, 0.3s, ease-out);
-            text-transform: uppercase;
-            text-decoration: none;
-            &:hover{
-                color:$cOrange;
-                border-color:$cOrange;
-            }
 
-            &.gray{
-                background-color:$cMidGray;
-                color:$cWhite;
-                &:hover{
-                    color:$cOrange;
-                    border-color: $cMidGray;
-                }
-            }
-
-            &.green{
-                background-color:$cLightGreen;
-                color:$cWhite;
-                &:hover{
-                    background-color:$cDarkGreen;
-                    // color:$cOrange;
-                    // border-color: $cMidGray;
-                }
-            }
-        }//// button
 
         &.cc-buttons{
             button, .cc-btn{
@@ -906,6 +886,28 @@ body.cc-body{
         .cc-in-box-label{
             background-color:$cWhite;
             border-color:$cWhite;
+        }
+
+        .links{
+
+            ul{
+                display: table;
+                width:auto;
+                list-style: none;
+                &:after{
+                    display: block;
+                    content: " ";
+                    clear: both;
+                }
+            }
+            li{
+                float:left;
+                margin-right:1em;
+
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
         }
     }//// .cc-form-section
 
@@ -1296,9 +1298,202 @@ body.cc-body{
             }
         }
     }/////.cc-credit-card
+
+    button,
+    input[type="button"],
+    .cc-btn{
+        display: inline-block;
+        width:auto;
+        padding:0 1em;
+        border:none;
+        background-color:transparent;
+        // border:1px solid $cMidGray;
+        height: $nFieldHeight;
+        line-height: $nFieldHeight;
+        @include mxRoundCorners(3px);
+        @include mxTransition(all, 0.3s, ease-out);
+        text-transform: uppercase;
+        text-decoration: none;
+        &:hover{
+            color:$cOrange;
+            border-color:$cOrange;
+        }
+
+        &.gray{
+            background-color:$cMidGray;
+            color:$cWhite;
+            &:hover{
+                color:$cOrange;
+                border-color: $cMidGray;
+            }
+        }
+
+        &.green{
+            background-color:$cLightGreen;
+            color:$cWhite;
+            &:hover{
+                background-color:$cDarkGreen;
+                // color:$cOrange;
+                // border-color: $cMidGray;
+            }
+        }
+    }//// button
+
 }//// .cc-form
 
+/**
+ * ****************************************************************
+ * Login-overlay ************************************************
+ * ****************************************************************
+ */
+.cc-login-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:$cWhite;
+    padding:24px;
+    // max-width:320px;
+    width:100%;
+    @include mxRoundCorners(2px);
 
+    @media screen and (min-width:$wTablet){
+        max-width:600px;
+        width:auto;
+        top:auto;
+        left:auto;
+        bottom:auto;
+        right:auto;
+    }
+
+    .close{
+        position:absolute;
+        top:5px;
+        right: 5px;
+        opacity: 1;
+        display: block;
+        width:30px;
+        height: 30px;
+        text-align: center;
+        font-size:1em;
+        line-height: 30px;
+    }
+    .error-message{
+        color:$cOrange;
+    }
+}//// .cc-login-overlay
+
+/**
+ * ****************************************************************
+ * Application List Overlay ***************************************
+ * ****************************************************************
+ */
+.cc-applications-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:$cWhite;
+    padding:24px;
+    overflow: all-scroll;
+
+    width:100%;
+    @include mxRoundCorners(2px);
+
+    @media screen and (min-width:$wTablet){
+        max-width:700px;
+        width:auto;
+        top:auto;
+        left:auto;
+        bottom:auto;
+        right:auto;
+    }
+
+    .close{
+        position:absolute;
+        top:5px;
+        right: 5px;
+        opacity: 1;
+        display: block;
+        width:30px;
+        height: 30px;
+        text-align: center;
+        font-size:1em;
+        line-height: 30px;
+    }
+
+    table.cc-app-list{
+        width:100%;
+
+        thead{
+            tr{
+                th{
+                    background-color:$cBGLightGray;
+                    color:$cWhite;
+                    padding: 20px 5px;
+                    display: table-cell!important;
+                    float:none!important;
+                    width:auto!important;
+                }
+            }
+
+        }/// thead
+
+        tbody{
+            tr{
+                padding-bottom: 2em;
+                display: block;
+
+                @media screen and (min-width:$wTablet){
+                    display: table-row;
+                    padding-bottom: 0;
+                }
+                &:after{
+                    display: block;
+                    content: " ";
+                    clear: both;
+                }
+                th{
+                    float:left;
+                    width:40%;
+                    font-weight: 700px;
+                    @media screen and (min-width:$wTablet){
+                        display: none;
+                    }
+                }
+            }
+
+            td{
+                padding:5px;
+                display: block;
+                float:left;
+                width:60%;
+                @media screen and (min-width:$wTablet){
+                    display: table-cell;
+                    float:none!important;
+                    width:inherit;
+                }
+            }//// td
+        }//// tbody
+
+    }//// table
+}//// .cc-login-overlay
+/**
+ * ****************************************************************
+ * PRELOADER GIF **************************************************
+ * ****************************************************************
+ */
+.cc-preloader{
+    display: block;
+    width:36px;
+    height: 36px;
+    margin:0 auto;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-image:url('../images/preloader.gif')
+}
 /**
  * ****************************************************************
  * SUPPORT CLASSES ************************************************
@@ -1514,3 +1709,65 @@ body.cc-body{
     text-align: center;
     color:$cWhite;
 }//// .cc-note
+
+/**
+ * ***************************************************************************************************
+ * ***************************************************************************************************
+ * ANIMATION CLASSES *********************************************************************************
+ * ***************************************************************************************************
+ * ***************************************************************************************************
+ */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.fadein{
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: fadein;
+    -webkit-animation-direction:alternate;
+
+    animation-duration: 0.5s;
+    animation-name: fadein;
+    animation-direction:alternate;
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+.fadeout{
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: fadeout;
+    -webkit-animation-direction:alternate;
+
+    animation-duration: 0.5s;
+    animation-name: fadeout;
+    animation-direction:alternate;
+}

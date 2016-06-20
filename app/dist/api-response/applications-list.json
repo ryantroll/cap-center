@@ -1,0 +1,20 @@
+[
+    {
+        "id":73655,
+        "type":"Purchase",
+        "loan":240000,
+        "status":"Started"
+    },
+    {
+        "id":73656,
+        "type":"Refinance",
+        "loan":600000,
+        "status":"Started"
+    },
+    {
+        "id":73657,
+        "type":"Purchase",
+        "loan":100000,
+        "status":"Started"
+    }
+]
