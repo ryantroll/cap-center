@@ -21,12 +21,9 @@ gulp.task('sass', function(){
 
 gulp.task('scripts', function(){
     return gulp.src([
-        // './app/source/js/vendors/jquery-1.12.3.js',
         './app/source/js/us-states.js',
-        // './app/source/js/cookie-plugin.js',
-        // './app/source/js/dropdown-plugin.js',
         './app/source/js/validation-plugin.js',
-        './app/source/js/support.js',
+        './app/source/js/support-plugin.js',
         './app/source/js/main.js',
         './app/source/js/01-borrower.js',
         './app/source/js/02-coborrower.js',
