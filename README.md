@@ -76,6 +76,12 @@ Call back function gives option for:
 2. stopping the submit process by returning false
 3. read the validity status of the form and also list of invalid fields through the variable passed
 
+#### Special Class for validation ####
+
+For each field to be included in validation the .cc-field should has this special class .cc-validate
+
+This feature will give the ability to add field to form and exclude/include them in validation based on input of other fields
+
 #### Types of Validation ####
 
 Each field in the form need to be enclosed with .cc-field div for the validation to work
@@ -96,6 +102,7 @@ All type of validation can by done by adding the blow classes to .cc-field div
 #### Other Functions ####
 
 Plugin add extra functions for input DOM object as
+
 1. addError(class): will add an error to the field to error list without showing it
 ```javascript
     $('#inputID').addError('cc-phone');
@@ -104,5 +111,29 @@ Plugin add extra functions for input DOM object as
 ```javascript
     $('#inputID').removeError('cc-phone');
 ```
+3. showError(): will show the list of errors added to this field
+```javascript
+    $('#inputID').showError();
+```
+4. hideError(): will hide the errors of field without removing them from error list
+```javascript
+    $('#inputID').hideError();
+```
+5. validateField(): will do the validation on this specific field and show the errors
+```javascript
+    $('#inputID').validateField();
+```
+
+#### Error Messages ####
+
+Error message for each validation is passed to the plugin through special HTML tags inside .cc-field div
+
+e.g. to set the error message if the field is required and not filled add below tag to .cc-field div
+
+```
+<div class="message cc-required">Required</div>
+```
+
+Where the second class "cc-required" is matching the validation class cc-required for .cc-field
 
 
