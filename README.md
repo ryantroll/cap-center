@@ -76,4 +76,33 @@ Call back function gives option for:
 2. stopping the submit process by returning false
 3. read the validity status of the form and also list of invalid fields through the variable passed
 
+#### Types of Validation ####
+
+Each field in the form need to be enclosed with .cc-field div for the validation to work
+
+All type of validation can by done by adding the blow classes to .cc-field div
+
+1. required: by adding "cc-required" class to .cc-field div
+2. Number: by adding "cc-number" class to .cc-field div
+3. Email: by adding "cc-email" class to .cc-field div
+4. Date: by adding "cc-date" class to .cc-field div
+5. Date greater than: by adding "cc-date cc-date-gt" classes to .cc-field div also data-date-gt attribute should be added to .cc-field and should be set to the fields id to the other field we comparing to
+6. Credit Card Expiration: by adding "cc-card-expiration" class to .cc-field div
+7. Phone: by adding "cc-phone" class to .cc-field div
+8. Currency: by adding "cc-currency" class to .cc-field div
+9. Social Security Number: by adding "cc-ssn" class to .cc-field div
+10. One Check box required: by adding "cc-required-one-of" class to .cc-field div
+
+#### Other Functions ####
+
+Plugin add extra functions for input DOM object as
+1. addError(class): will add an error to the field to error list without showing it
+```javascript
+    $('#inputID').addError('cc-phone');
+```
+2. removeError(class): will remove an error to the field
+```javascript
+    $('#inputID').removeError('cc-phone');
+```
+
 
