@@ -30,5 +30,6 @@ contains all .sass files
 #### source/sass/includes folder ####
 
 This folder contains common sass definitions for mixins, variables and colors
-
 Files in this folder are included in other sass files
+
+
