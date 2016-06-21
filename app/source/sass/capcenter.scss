@@ -1343,10 +1343,10 @@ body.cc-body{
 
 /**
  * ****************************************************************
- * Login-overlay ************************************************
+ * OVERLAY ********************************************************
  * ****************************************************************
  */
-.cc-login-overlay{
+.cc-overlay{
     position:fixed;
     top:0;
     left:0;
@@ -1357,50 +1357,7 @@ body.cc-body{
     // max-width:320px;
     width:100%;
     @include mxRoundCorners(2px);
-
-    @media screen and (min-width:$wTablet){
-        max-width:600px;
-        width:auto;
-        top:auto;
-        left:auto;
-        bottom:auto;
-        right:auto;
-    }
-
-    .close{
-        position:absolute;
-        top:5px;
-        right: 5px;
-        opacity: 1;
-        display: block;
-        width:30px;
-        height: 30px;
-        text-align: center;
-        font-size:1em;
-        line-height: 30px;
-    }
-    .error-message{
-        color:$cOrange;
-    }
-}//// .cc-login-overlay
-
-/**
- * ****************************************************************
- * Application List Overlay ***************************************
- * ****************************************************************
- */
-.cc-applications-overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    background-color:$cWhite;
-    padding:24px;
-    overflow: all-scroll;
-
-    width:100%;
-    @include mxRoundCorners(2px);
+    @include mxTransition(all, 0.3s, ease-out)
 
     @media screen and (min-width:$wTablet){
         max-width:700px;
@@ -1424,6 +1381,51 @@ body.cc-body{
         line-height: 30px;
     }
 
+    .links{
+        padding-top:1.5em;
+        ul{
+            display: table;
+            width:auto;
+            list-style: none;
+            &:after{
+                display: block;
+                content: " ";
+                clear: both;
+            }
+        }
+        li{
+            float:left;
+            margin-right:1em;
+
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+        &.right{
+            ul{
+                float:right;
+            }
+        }//// &.right
+    }/// links
+}//// .cc-overlay
+/**
+ * ****************************************************************
+ * Login-overlay **************************************************
+ * ****************************************************************
+ */
+.cc-login-overlay{
+    .error-message{
+        color:$cOrange;
+    }
+}//// .cc-login-overlay
+
+/**
+ * ****************************************************************
+ * Application List Overlay ***************************************
+ * ****************************************************************
+ */
+.cc-applications-overlay{
+
     table.cc-app-list{
         width:100%;
 
@@ -1438,17 +1440,32 @@ body.cc-body{
                     width:auto!important;
                 }
             }
-
         }/// thead
 
         tbody{
+
             tr{
-                padding-bottom: 2em;
+                padding-bottom: 0.5em;
+                margin-bottom: 0.5em;
                 display: block;
+                position:relative;
+                border-bottom: 1px solid $cBGLightGray;
+
+                &:last-child{
+                    padding-bottom: 0;
+                    margin-bottom: 0;
+                    border-bottom: 0;
+                }
+                &:first-child{
+                    margin-top: 1em;
+                }
 
                 @media screen and (min-width:$wTablet){
                     display: table-row;
                     padding-bottom: 0;
+                    margin-bottom: 0;
+                    border-bottom: 0;
+                    position:static;
                 }
                 &:after{
                     display: block;
@@ -1459,23 +1476,33 @@ body.cc-body{
                     float:left;
                     width:40%;
                     font-weight: 700px;
+                    display: inline-block;
                     @media screen and (min-width:$wTablet){
                         display: none;
                     }
                 }
-            }
+                td{
+                    padding:5px;
+                    display: inline-block;
+                    float:left;
+                    width:60%;
+                    @media screen and (min-width:$wTablet){
+                        display: table-cell;
+                        float:none!important;
+                        width:inherit;
+                    }
+                }//// td
+            }//// tr
 
-            td{
-                padding:5px;
-                display: block;
-                float:left;
-                width:60%;
+            td.link{
+                position:absolute;
+                top:20px;
+                right:20px;
+
                 @media screen and (min-width:$wTablet){
-                    display: table-cell;
-                    float:none!important;
-                    width:inherit;
+                    position:static;
                 }
-            }//// td
+            }//// td.link
         }//// tbody
 
     }//// table

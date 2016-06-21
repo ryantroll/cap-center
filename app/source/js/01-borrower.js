@@ -48,7 +48,7 @@
                 return false;
             }/// if isValid
             else{
-                console.log(isContinueClicked)
+
                 //// if the form is not valid and continue button is clicked
                 //// scroll to the page to first field with error
                 if(invalidFields && true === isContinueClicked){
@@ -263,7 +263,7 @@
             });
         });
 
-        appOverlay = $('#appsList');
+        // appOverlay = $('#appsList');
 
 
         // showApplicationsList();
@@ -283,62 +283,7 @@
         loginOverlay.removeClass('busy').find('.error-message').hide();
     }//// fun. hideLoginForm
 
-    function loadApplications(){
-        appOverlay.addClass('busy');
-        var template = $('#appTemplate').text();
-        var appsHolder = $('#appsHolder');
 
-        var data = {};
-        data.email = $.trim( $('#login_email').val() );
-        data.userId = '0000000';
-        data.username = 'usa';
-        data.password = 'newyork';
-
-        $.ajax({
-            url:"http://apps.stirringinteractive.com/api-response/applications-list.json",
-            data:data,
-            method:"post",
-            dataType:"json",
-            error:function(err){
-                console.log(err);
-                // loginOverlay.removeClass('busy').find('.error-message').slideDown();
-            },
-            success:function(ret){
-                if(Array.isArray(ret)){
-                    var x;
-                    for(x=0; x<ret.length; x++){
-                        var obj = ret[x];
-                        var row = template;
-
-                        for(label in obj){
-                            var regex = new RegExp('\{\#' + label + '\}', 'g');
-                            row = row.replace( regex , obj[label]);
-                        } /// for
-                        row = $(row);
-                        row.find('a').on('click', function(){
-                            appOverlay.find('a.close').trigger('click')
-                        })
-                        appsHolder.append(row);
-                    }/// for
-
-                    _appGlobal.overlay.adjust();
-                    appOverlay.removeClass('busy');
-                }//// if
-            }//// success
-        });
-    }//// fun. loadApplications
-
-    function showApplicationsList(){
-        overlay({
-            selector:'#appsList',
-            onBeforeLoad:function(){
-                loadApplications();
-            },
-            onBeforeClose:function(){
-                $('#appsHolder').empty();
-            }
-        });
-    }//// fun. showApplicationsList
 
 })();
 

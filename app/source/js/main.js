@@ -3,10 +3,16 @@
  * this will define a protect name space for global variable to prvent any conflect with local variables
  */
 var _appGlobal = {};
+_appGlobal.urlSaveTemplate = "template-save.html";
+_appGlobal.saveModal = null;
+
+_appGlobal.urlApsListTempalte = "template-applications.html"
+_appGlobal.urlApplicationsList = "api-response/applications-list.json";
+_appGlobal.appsListModal = null;
+
 jQuery(document).ready(ccDocumentReady);
 
 function ccDocumentReady(){
-
     /**
      * Progress navigation mobile behavior
      */
@@ -139,9 +145,161 @@ function ccDocumentReady(){
     });
 
 
+    /**
+     * Loas Save or login external later template
+     */
+    $('.saveBtn').hide();//// hide until template is loaded
+    $.ajax({
+      url: _appGlobal.urlSaveTemplate,
+      method:'GET',
+      error:function(err){
+        console.log(err);
+      },
+      success: function(ret){
+        _appGlobal.saveModal = $(ret);
+
+        initializeSaveModal();
+      }
+    });
+
+    /**
+     * Load applications list template
+     */
+    $.ajax({
+      url: _appGlobal.urlApsListTempalte,
+      method:'GET',
+      error:function(err){
+        console.log(err);
+      },
+      success: function(ret){
+        _appGlobal.appsListModal = $(ret);
+
+        $('body').append(_appGlobal.appsListModal)
+      }
+    });
+
+    $('#myAppsBtn').on('click', function(e){
+      if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
+      showApplicationsList();
+    })
 
 }//// fun. ccDocumentReady
 
+
+/**
+ * [initializeSaveModal will be called to initialize the save for later form after it loaded from ajax]
+ * and set the click event for 'Save for Later' button
+ */
+function initializeSaveModal(){
+  if(false === !!_appGlobal.saveModal) return;
+
+  $('body').append(_appGlobal.saveModal);
+
+  yesNoRadio(_appGlobal.saveModal);
+
+  updateTabIndex(_appGlobal.saveModal.find('#login'), 100)
+  updateTabIndex(_appGlobal.saveModal.find('#register'), 120)
+
+  _appGlobal.saveModal.find('form#loginForm').validate(function(isValid, invalidFields){
+      return false;
+  });
+  _appGlobal.saveModal.find('form#registerFrom').validate(function(isValid, invalidFields){
+    return false;
+  });
+
+  _appGlobal.saveModal.find('input.phone')
+  .on('keydown', restrictPhone)
+  .on('keyup', formatPhone)
+
+  _appGlobal.saveModal.find('input[name=save_login]').on('change', function(){
+    var val = $(this).val();
+    if(true === !!$(this).attr('checked') && val === 'login'){
+      _appGlobal.saveModal.find('#login').show();
+      _appGlobal.saveModal.find('#register').hide();
+    }
+    else{
+      _appGlobal.saveModal.find('#login').hide();
+      _appGlobal.saveModal.find('#register').show();
+    }
+    _appGlobal.overlay.adjust();
+  })
+
+  $('.saveBtn').show().on('click', function(e){
+    if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
+    overlay({
+      selector:"#saveModal"
+    });////overlay
+    return false;
+  });
+}//// fun. initializeSaveModal
+
+/**
+ * [showApplicationsList shows user saved application modal the modal is loaded from external template]
+ */
+function showApplicationsList(){
+    overlay({
+        selector:'#appsList',
+        onBeforeLoad:function(){
+            loadApplications();
+        },
+        onBeforeClose:function(){
+            $('#appsHolder').empty();
+        }
+    });
+}//// fun. showApplicationsList
+
+/**
+ * [loadApplications load the list of previously saved applications and display them inside form]
+ * This function use extra template that is saved as <script> tag inside the modal external HTML to display the applications rows
+ * @return {[type]} [none]
+ */
+function loadApplications(){
+    _appGlobal.appsListModal.addClass('busy');
+
+    var template = _appGlobal.appsListModal.find('#appTemplate').eq(0).text();
+    var appsHolder = _appGlobal.appsListModal.find('#appsHolder').eq(0);
+
+    var data = {};
+    data.email = $.trim( $('#login_email').val() );
+    data.userId = '0000000';
+
+    $.ajax({
+        url:_appGlobal.urlApplicationsList,
+        data:data,
+        method:"post",
+        dataType:"json",
+        error:function(err){
+            console.log(err);
+        },
+        success:function(ret){
+            if(Array.isArray(ret)){
+                var x;
+                for(x=0; x<ret.length; x++){
+                    var obj = ret[x];
+                    var row = template;
+
+                    for(label in obj){
+                        var regex = new RegExp('\{\#' + label + '\}', 'g');
+                        row = row.replace( regex , obj[label]);
+                    } /// for
+                    row = $(row);
+                    row.find('a').on('click', function(){
+                        _appGlobal.appsListModal.find('a.close').trigger('click')
+                    })
+                    appsHolder.append(row);
+                }/// for
+
+                _appGlobal.overlay.adjust();
+                _appGlobal.appsListModal.removeClass('busy');
+            }//// if
+        }//// success
+    });
+}//// fun. loadApplications
+
+
+/**
+ * [mainScroll Window scroll event hanlder to make progress header sticky on mobile]
+ */
 function mainScroll(e){
     if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
     if($('body').width() > 678) return;
@@ -162,10 +320,16 @@ function mainScroll(e){
 }//// fun. mainScroll
 
 
-function updateTabIndex(selector){
-  var x = 0;
+/**
+ * [updateTabIndex Willl update the tab index of from fields found inside the selector passed]
+ * @param  {[jQuery]} selector  [used to locate the fields inside it]
+ * @param  {[int]} startFrom [number to start the tab index from if not passed 0 will be used, useful when page has muliple forms]
+ */
+function updateTabIndex(selector, startFrom){
+  var x = startFrom || 0;
+
     selector.find('.cc-field').each(function(i){
-        var s = $(this).find('input[type=text], input[type=email], input[type=date], input[type=tel], input[type=radio], input[type=checkbox], input[type=number], textarea, select')
+        var s = $(this).find('input[type=text], input[type=password], input[type=email], input[type=date], input[type=tel], input[type=radio], input[type=checkbox], input[type=number], textarea, select')
         s.each(function(z){
           $(this).attr('tabindex', x+1);
           x++;
@@ -575,10 +739,12 @@ function overlay(o){
     });
 
     // append the close button
-    if(overlayDiv.find('.close').length<=0){
-        overlayDiv.append('<a href="javascript:void(0);" class="close icon-close"><a/>');
-    }
-    overlayDiv.find('.close').css('z-index', 1001).on('click', function(){
+    // if(overlayDiv.find('.close').length<=0){
+    //     overlayDiv.append('<a href="javascript:void(0);" class="close icon-close close-overlay"><a/>');
+    // }
+    overlayDiv.find('.close').css('z-index', 1001);
+
+    overlayDiv.find('.close-overlay').on('click', function(){
         closeOverlay();
     });
 

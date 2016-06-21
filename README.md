@@ -54,6 +54,10 @@ These .js files contains a plenty of code comment to describe the purpose of eac
 
 Where the production code is placed
 
+#### dist/api-response folder ####
+
+Contains .json files as samples of APIs responses required by app front-end
+
 ### Validation Plugin ###
 
 This function once initialized will intercept the submit event of the a form and validate the field based on css class that should be added to .cc-field div
@@ -136,4 +140,19 @@ e.g. to set the error message if the field is required and not filled add below 
 
 Where the second class "cc-required" is matching the validation class cc-required for .cc-field
 
+### APIs Required ###
 
+Front-end needs the below APIs end point, URLs to these end points are defined in top of main.js file
+
+1. Authentication: response sample in dist/api-response/authenticaiton.json
+2. Account Exits: response sample in dist/api-response/is-email-exists.json
+3. User previously saved applications: response sample in dist/api-response/applications-list.json
+
+### External Templates ###
+
+The applications used 2 external templates
+
+1. dist/template-applications.html: HTML of my application modal that appears as overlay
+2. dist/template-save.html: HTML of login/register form that appears when "Save for Later" button is clicked
+
+These templates move to external files because they are shared between all forms and loaded inside main.js files through AJAX call and then added to DOM with reference to them as property of _appGlobal

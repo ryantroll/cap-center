@@ -1,0 +1,60 @@
+<div class="cc-overlay cc-applications-overlay cc-form" id="appsList" style="display:none;">
+  <!-- <a href="javascript:void(0);" class="close close-overlay"><i class="glyphicon glyphicon-remove"></i></a> -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Saved Applications</h4>
+      <p>We found the following saved applications on your account. Please select an application you would like to complete or continue to create a new application.</p>
+      <p>&nbsp;</p>
+    </div>
+
+  </div><!--row-->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="cc-app-list">
+        <thead class="hidden-sm hidden-md hidden-lg">
+          <tr>
+            <th colspan="4">Application</th>
+          </tr>
+        </thead>
+        <thead class="hidden-xs">
+          <tr>
+            <th>Application#</th>
+            <th>Type</th>
+            <th>Loan Amount</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody id="appsHolder">
+
+        </tbody>
+      </table>
+    </div>
+
+  </div><!--row-->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="links right">
+        <ul>
+          <li><a href="javascript:void(0)" class="close-overlay">CANCEL</a></li>
+        </ul>
+      </div><!--links-->
+    </div>
+
+  </div><!--row-->
+
+  <script type="text/template" id="appTemplate">
+    <tr>
+      <th>Application#</th>
+      <td>{#id}</td>
+      <th>Type</th>
+      <td>{#type}</td>
+      <th>Loan Amount</th>
+      <td>${#loan}</td>
+      <td align="left" style="width:70px;" class="link"><a href="javascript:void(0)" class="cc-btn gray app-select">Select</a></td>
+
+    </tr>
+  </script>
+</div><!--cc-app-list-->
