@@ -3,11 +3,14 @@
  * this will define a protect name space for global variable to prvent any conflect with local variables
  */
 var _appGlobal = {};
+_appGlobal.urlEmailExistsAPI = "api-response/is-email-exists.json";
+_appGlobal.urlAuthenticationAPI = "api-response/authentication.json";
+_appGlobal.urlApplicationsListAPI = "api-response/applications-list.json";
+
 _appGlobal.urlSaveTemplate = "template-save.html";
 _appGlobal.saveModal = null;
 
 _appGlobal.urlApsListTempalte = "template-applications.html"
-_appGlobal.urlApplicationsList = "api-response/applications-list.json";
 _appGlobal.appsListModal = null;
 
 jQuery(document).ready(ccDocumentReady);
@@ -264,7 +267,7 @@ function loadApplications(){
     data.userId = '0000000';
 
     $.ajax({
-        url:_appGlobal.urlApplicationsList,
+        url:_appGlobal.urlApplicationsListAPI,
         data:data,
         method:"post",
         dataType:"json",
@@ -289,8 +292,18 @@ function loadApplications(){
                     appsHolder.append(row);
                 }/// for
 
-                _appGlobal.overlay.adjust();
-                _appGlobal.appsListModal.removeClass('busy');
+                /**
+                 * Wait for some time for accurate width and height reading
+                 * @param  {[type]} ){                               _appGlobal.overlay.adjust();                  _appGlobal.appsListModal.removeClass('busy');                } [description]
+                 * @param  {[type]} 200 [description]
+                 * @return {[type]}     [description]
+                 */
+                setTimeout(function(){
+                  _appGlobal.overlay.adjust();
+                  _appGlobal.appsListModal.removeClass('busy');
+                }, 200)
+
+
             }//// if
         }//// success
     });
@@ -715,17 +728,25 @@ function overlay(o){
      * [adjust set the top and left position of overlayed div to be centered
      */
     this.adjust = function(){
-      var l = ($(window).width() - overlayDiv.outerWidth() ) / 2;
-      var t = ($(window).height() - overlayDiv.height() ) / 2;
+      var windowW = $(window).width();
+      var windowH = $(window).height();
+      var l = (windowW - overlayDiv.outerWidth() ) / 2;
+      var t = (windowH - overlayDiv.height() ) / 2;
 
       if(t<0) t = 0;
 
-      if($(window).width() < 768){
+      if(windowW < 768){
         l = 0; /// if mobile make it cover all screen
         t = 0;
       }
-
-      overlayDiv.css('left', l+'px').css('top', t+'px');
+      else{
+        //// if not mobile make sure the the max height is set if height is bigger than window height
+        if(windowH < overlayDiv.height()){
+          overlayDiv.css('max-height', windowH - 20)
+        }
+      }
+      console.log(overlayDiv.outerWidth())
+      overlayDiv.css('margin-left', '-'+(overlayDiv.outerWidth()/2)+'px').css('left', '50%').css('top', t+'px');
     }//// fun. adjust
 
     $('body').append('<div id="overlayMask" style="top:0; right:0; bottom:0; left:0; position:fixed; background-color:#000; z-index:9998; top:0px; left:0px;"></div>');
@@ -852,11 +873,13 @@ function fillInAddress(){
     //// this refer to the auto complete object
 
     var place = this.getPlace();
+
     var componentForm = {
         street_number: 'short_name',
         route: 'long_name',
         locality: 'long_name',
         administrative_area_level_1: 'short_name',
+        administrative_area_level_2: 'long_name',
         country: 'long_name',
         postal_code: 'short_name'
     };
@@ -880,6 +903,6 @@ function fillInAddress(){
     $('.typeahead_address'+this.post).eq(0).val(address.street_number + ' ' + address.route).trigger('change');
     $('.typeahead_city'+this.post).eq(0).val(address.locality).trigger('change');
     $('.typeahead_state'+this.post).eq(0).val(address.administrative_area_level_1).trigger('change');
-    // $('#state_label'+this.post).val(address.administrative_area_level_1_long_name).trigger('change');
+    $('.typeahead_county'+this.post).val(address.administrative_area_level_2).trigger('change');
     $('.typeahead_zip'+this.post).eq(0).val(address.postal_code).trigger('change');
 }

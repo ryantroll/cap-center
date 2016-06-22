@@ -37,7 +37,7 @@
     <a href="javascript:void(0);" class="switch" id="progress_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
     <ul>
       <li class="done"><a href="01-borrower.html"><span>Borrower</span></a></li>
-      <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
+      <li class="done"><a href="03-purchase.html"><span>Property</span></a></li>
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
       <li class="done"><a href="07-assets.html"><span>Assets</span></a></li>
       <li class="active"><a href="08-liabilities.html"><span>Liabilities</span></a></li>
@@ -69,91 +69,30 @@
         <form method="post" id="liabilitiesForm" action="09-declarations.html">
           <fieldset>
 
-            <div id="liabilitiesHolder">
-              <div class="cc-form-section close-btn" id="liability_1" data-index="1">
-                <a href="javascript:void(0);" class="close" data-index="1"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="title">
-                      <h5>Liability</h5>
-                    </div>
-                  </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                  <label for="have_liabilities_yes">DO YOU OR YOUR CO-BORROWER HAVE ANY Liabilities TO INCLUDE?</label>
 
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-dropdown cc-validate cc-required">
-                      <label for="li_type1">Type </label>
-
-                      <select name="li_type1" id="li_type1" data-index="1">
-                        <option value="">Select</option>
-                        <option value="1">Credit Card</option>
-                        <option value="2">Installment Loan</option>
-                        <option value="4">Lease Payment</option>
-                        <option value="5">Student Loans</option>
-                        <option value="6">Job related expense</option>
-                        <option value="6">Other</option>
-                      </select>
-                      <label for="li_type1" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required">
-                      <label for="li_creditor1">Bank or Institution</label>
-                      <input type="text" tabindex="12" name="li_creditor1" id="li_creditor1"  data-index="1"/>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required cc-currency">
-                      <label for="li_unpaid1">Balance </label>
-                      <input type="tel" tabindex="11" class="currency" maxlength="11" name="li_unpaid1" id="li_unpaid1"  data-index="1"/>
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-currency">Invalid value</div>
-                      <div class="message cc-numbers-only">Numbers Only</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-validate cc-required cc-currency">
-                      <label for="li_minpay1">Payment</label>
-
-                      <div class="cc-in-box-label">
-                        <input type="tel" tabindex="14" class="currency" name="li_minpay1" id="li_minpay1" maxlength="7" data-index="1"/>
-                        <label class="label1" for="li_minpay1">/ Month</label>
-                      </div>
-
-                      <div class="message cc-required">Required</div>
-                      <div class="message cc-numbers-only">Numbers only</div>
-                    </div><!--field-->
-                  </div>
-
-                  <div class="col-sm-4">
-                    <div class="cc-field cc-radio cc-validate cc-required">
-                      <label for="li_yesno1_yes">Paying of with this loan</label>
+                    <div class="half-width">
                       <div class="radio-yesno">
-                        <label><input type="radio" name="li_yesno1" value="yes" id="li_yesno1_yes" data-index="1" /><span>Yes</span></label>
-                        <label><input type="radio" name="li_yesno1" value="no" id="li_yesno1_no" data-index="1" /><span>No</span></label>
+                        <label><input type="radio" name="have_liabilities" value="yes" id="have_liabilities_yes" /><span>Yes</span></label>
+                        <label><input type="radio" name="have_liabilities" value="no" id="have_liabilities_no" /><span>No</span></label>
                       </div>
-                      <!-- <div class="message cc-required">Required</div> -->
-                    </div><!--field-->
-                  </div>
+                    </div>
 
-                </div><!--row-->
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
 
-              </div><!--form-section-->
+            </div><!--row-->
+
+            <div class="liability" id="liabilitiesHolder" style="display:none;">
+
 
             </div><!--liabilitiesHolder-->
 
-            <div class="row">
+            <div class="row liability" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-buttons">
                   <a href=="javascript:void(0);" class="cc-btn gray" name="addAnotherLiability" id="addAnotherLiability">Add Another Liability</a>
@@ -216,9 +155,9 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="cc-field cc-dropdown cc-validate cc-required">
-          <label for="as_type{#id}">Type </label>
+          <label for="li_type{#id}">Type </label>
 
-          <select name="as_type{#id}" id="as_type{#id}" data-index="{#index}">
+          <select name="li_type{#id}" id="li_type{#id}" data-index="{#index}">
             <option value="">Select</option>
             <option value="1">Credit Card</option>
             <option value="2">Installment Loan</option>
@@ -227,7 +166,7 @@
             <option value="6">Job related expense</option>
             <option value="6">Other</option>
           </select>
-          <label for="as_type{#id}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+          <label for="li_type{#id}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
           <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
@@ -235,16 +174,16 @@
 
       <div class="col-sm-4">
         <div class="cc-field cc-validate cc-required">
-          <label for="as_bank{#id}">Bank or Institution</label>
-          <input type="text" tabindex="12" name="as_bank{#id}" id="as_bank{#id}"  data-index="{#index}"/>
+          <label for="li_bank{#id}">Bank or Institution</label>
+          <input type="text" tabindex="12" name="li_bank{#id}" id="li_bank{#id}"  data-index="{#index}"/>
           <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
 
       <div class="col-sm-4">
         <div class="cc-field cc-validate cc-required cc-currency">
-          <label for="as_cash{#id}">Balance </label>
-          <input type="tel" tabindex="11" class="currency" maxlength="11" name="as_cash{#id}" id="as_cash{#id}"  data-index="{#index}"/>
+          <label for="li_cash{#id}">Balance </label>
+          <input type="tel" tabindex="11" class="currency" maxlength="11" name="li_cash{#id}" id="li_cash{#id}"  data-index="{#index}"/>
           <div class="message cc-required">Required</div>
           <div class="message cc-currency">Invalid value</div>
           <div class="message cc-numbers-only">Numbers Only</div>

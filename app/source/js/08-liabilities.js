@@ -125,6 +125,28 @@
         });
 
 
+        $('input[name=have_liabilities]').on('change', function(){
+            var val = $(this).val().toLowerCase();
+
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.liability', validationClass:'.cc-to-be-validate-liab'}); //// function in main.js
+                addLiability();
+            }//// if
+            else{
+                excludeFields({
+                    selector:'.liability',
+                    validationClass:'.cc-to-be-validate-liab'
+                }); //// function in main.js
+
+                while(liabilitiesArray.length > 0){
+                    var li = liabilitiesArray.pop(liabilitiesArray.length -1 );
+                    $('#liability_'+li).slideUp(function(){
+                        $(this).remove();
+                    })
+                }//// wile
+            }
+        })
+        .trigger('change');
 
         $('#addAnotherLiability')
         .on('click', function(ev){
@@ -172,7 +194,10 @@
 
         liabilitiesHolder.append(liability);
 
-        liability.slideDown();
+        setTimeout(function(){
+            liability.slideDown();
+        }, 200)
+
 
         updateTabIndex($('.cc-form'));
 

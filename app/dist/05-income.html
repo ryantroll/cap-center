@@ -37,7 +37,7 @@
     <a href="javascript:void(0);" class="switch" id="progress_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
     <ul>
       <li class="done"><a href="01-borrower.html"><span>Borrower</span></a></li>
-      <li class="done"><a href="03-purchase.html"><span>Refinance</span></a></li>
+      <li class="done"><a href="03-purchase.html"><span>Property</span></a></li>
       <li class="active"><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets</span></a></li>
       <li><a href="08-liabilities.html"><span>Liabilities</span></a></li>
@@ -658,8 +658,24 @@
             </div><!--row-->
 
             <div class="row retirement" style="display:none;">
+              <div class="col-sm-6">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                  <label for="have_401_yes">Do you have a 401(k)?</label>
+
+                    <div class="radio-yesno">
+                      <label><input type="radio" name="have_401" value="yes" id="have_401_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="have_401" value="no" id="have_401_no" /><span>No</span></label>
+                    </div>
+
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row ret-401" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-retirement cc-required-one-of cc-currency" data-one-of-class="cc-to-be-validate-retirement">
+                <div class="cc-field cc-to-be-validate-401 cc-currency cc-required">
                   <label for="em_401k">401(k) Distribution</label>
 
                   <div class="cc-in-box-label">
@@ -669,12 +685,30 @@
 
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers only</div>
-                  <div class="message cc-required-one-of">One field is required</div>
                 </div><!--field-->
               </div>
 
+            </div><!--row-->
+
+            <div class="row retirement" style="display:none;">
+              <div class="col-sm-6">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                  <label for="have_ira_yes">Do you have an IRA?</label>
+
+                    <div class="radio-yesno">
+                      <label><input type="radio" name="have_ira" value="yes" id="have_ira_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="have_ira" value="no" id="have_ira_no" /><span>No</span></label>
+                    </div>
+
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row ret-ira" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-retirement cc-required-one-of cc-currency" data-one-of-class="cc-to-be-validate-retirement">
+                <div class="cc-field cc-to-be-validate-ira cc-currency cc-required" >
                   <label for="em_ira">IRA Distribution</label>
 
                   <div class="cc-in-box-label">
@@ -684,12 +718,30 @@
 
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers only</div>
-                  <div class="message cc-required-one-of">One field is required</div>
                 </div><!--field-->
               </div>
 
+            </div><!--row-->
+
+            <div class="row retirement" style="display:none;">
+              <div class="col-sm-6">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                  <label for="have_pen_yes">Do you have a pension?</label>
+
+                    <div class="radio-yesno">
+                      <label><input type="radio" name="have_pen" value="yes" id="have_pen_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="have_pen" value="no" id="have_pen_no" /><span>No</span></label>
+                    </div>
+
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row ret-pen" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-retirement cc-required-one-of cc-currency" data-one-of-class="cc-to-be-validate-retirement">
+                <div class="cc-field cc-to-be-validate-pen cc-currency cc-required" >
                   <label for="em_pension">Pension/Retirement</label>
 
                   <div class="cc-in-box-label">
@@ -699,15 +751,30 @@
 
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers only</div>
-                  <div class="message cc-required-one-of">One field is required</div>
                 </div><!--field-->
               </div>
 
             </div><!--row-->
 
             <div class="row retirement" style="display:none;">
+              <div class="col-sm-6">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                  <label for="have_annuity_yes">Do you have an annuity?</label>
+
+                    <div class="radio-yesno">
+                      <label><input type="radio" name="have_annuity" value="yes" id="have_annuity_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="have_annuity" value="no" id="have_annuity_no" /><span>No</span></label>
+                    </div>
+
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row ret-annuity" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-retirement cc-required-one-of cc-currency" data-one-of-class="cc-to-be-validate-retirement">
+                <div class="cc-field cc-to-be-validate-annuity cc-currency cc-required">
                   <label for="em_annuity">Annuity Distribution</label>
 
                   <div class="cc-in-box-label">
@@ -717,7 +784,6 @@
 
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers only</div>
-                  <div class="message cc-required-one-of">One field is required</div>
                 </div><!--field-->
               </div>
 

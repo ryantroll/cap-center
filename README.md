@@ -156,3 +156,7 @@ The applications used 2 external templates
 2. dist/template-save.html: HTML of login/register form that appears when "Save for Later" button is clicked
 
 These templates move to external files because they are shared between all forms and loaded inside main.js files through AJAX call and then added to DOM with reference to them as property of _appGlobal
+
+### Address Type Ahead ###
+
+I implemented this using Google Maps API, and use API key from my own account please update this with your API key from Google.

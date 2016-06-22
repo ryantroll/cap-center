@@ -168,7 +168,7 @@
 
             if(val && true === isValid){
                 $.ajax({
-                    url:"http://apps.stirringinteractive.com/api-response/is-email-exists.json",
+                    url:_appGlobal.urlEmailExistsAPI,
                     data:{email:val},
                     method:"post",
                     dataType:"json",
@@ -217,7 +217,7 @@
                 $("#login_password").val('');
 
                 $.ajax({
-                    url:"http://apps.stirringinteractive.com/api-response/authentication.json",
+                    url:_appGlobal.urlAuthenticationAPI,
                     data:data,
                     method:"post",
                     dataType:"json",

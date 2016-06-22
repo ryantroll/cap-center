@@ -341,6 +341,9 @@ body.cc-body {
     margin-right: 0;
     float: right; }
 
+.cc-form ul {
+  padding-left: 50px; }
+
 .cc-form.busy:after {
   display: block;
   content: " ";
@@ -863,6 +866,13 @@ body.cc-body {
       margin-right: 3%; }
     .cc-form .cc-radio .radio-yesno.three label:last-of-type {
       margin-right: 0; }
+  .cc-form .cc-radio .radio-yesno.orange-gray label span {
+    color: #fff; }
+  .cc-form .cc-radio .radio-yesno.orange-gray label:after {
+    background-color: #403e3c; }
+  .cc-form .cc-radio .radio-yesno.orange-gray label.checked:after {
+    background-color: #F47C29;
+    border-color: #F47C29; }
 
 .cc-form .cc-radio.question .radio-yesno {
   width: 100%;
@@ -1098,17 +1108,14 @@ body.cc-body {
   right: 0;
   background-color: #fff;
   padding: 24px;
+  overflow-y: auto;
   width: 100%;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
   /* future proofing */
   -khtml-border-radius: 2px;
-  /* for old Konqueror browsers */
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out; }
+  /* for old Konqueror browsers */ }
   @media screen and (min-width: 768px) {
     .cc-overlay {
       max-width: 700px;
@@ -1319,23 +1326,26 @@ body.cc-body {
       visibility: visible;
       opacity: 1; }
   .cc-support .cc-support-panel {
-    display: table;
+    display: block;
     width: 100%;
     height: 100%;
     background-color: #dfdfdf;
     position: fixed;
     right: -100%;
     top: 0;
+    bottom: 0;
     z-index: 2000;
     border-left: 1px solid #a89b94;
     padding: 0 15px;
+    max-height: 100%;
+    overflow-y: auto;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out; }
     @media screen and (min-width: 768px) {
       .cc-support .cc-support-panel {
-        width: 320px; } }
+        width: 360px; } }
     .cc-support .cc-support-panel.expanded {
       right: 0; }
     .cc-support .cc-support-panel a.close {
@@ -1346,7 +1356,7 @@ body.cc-body {
       text-align: center;
       position: absolute;
       top: 14px;
-      right: 15px;
+      right: 14px;
       opacity: 1;
       z-index: 2001; }
     .cc-support .cc-support-panel .cc-support-questions {
@@ -1383,8 +1393,11 @@ body.cc-body {
     display: none; }
   .cc-support .white {
     background-color: #fff; }
-    .cc-support .white h5 {
-      margin: 20px 0; }
+    .cc-support .white h4 {
+      margin: 20px 0;
+      font-size: 16px; }
+  .cc-support .title h4 {
+    margin-top: 30px; }
 
 /**
  * Targeting Firefox on windows for <select> element

@@ -421,6 +421,9 @@ body.cc-body{
 }//// .cc-message
 
 .cc-form{
+    ul{
+        padding-left: 50px;
+    }
     &.busy{
         &:after{
             display: block;
@@ -1094,6 +1097,23 @@ body.cc-body{
                 }
             }//// &.three
 
+            &.orange-gray{
+                label{
+                    span{
+                        color:$cWhite;
+                    }
+                    &:after{
+                        background-color:$cMidGray;
+                    }
+                }
+                label.checked{
+                    &:after{
+                        background-color:$cOrange;
+                        border-color:$cOrange;
+                    }
+                }
+            }//// $orange-gray
+
         }//// .radio-yesno
 
     }//// .cc-radio
@@ -1354,10 +1374,11 @@ body.cc-body{
     right:0;
     background-color:$cWhite;
     padding:24px;
-    // max-width:320px;
+    overflow-y: auto;
+    // max-height: 95vh;
     width:100%;
     @include mxRoundCorners(2px);
-    @include mxTransition(all, 0.3s, ease-out)
+    // @include mxTransition(all, 0.3s, ease-out)
 
     @media screen and (min-width:$wTablet){
         max-width:700px;
@@ -1534,6 +1555,7 @@ body.cc-body{
     bottom:20px;
     right: 20px;
     z-index: 2000;
+    // overflow-y: auto;
 
     > a.btn{
         display: block;
@@ -1604,20 +1626,23 @@ body.cc-body{
     }///// popup
 
     .cc-support-panel{
-        display: table;
+        display: block;
         width:100%;
         height: 100%;
         background-color:$cFormSectionBG;
         position:fixed;
         right: -100%;
         top:0;
+        bottom:0;
         z-index: 2000;
         border-left:1px solid $cBGMidGray;
         padding:0 15px;
+        max-height: 100%;
+        overflow-y: auto;
         @include mxTransition(all, 0.3s, ease-out);
 
         @media screen and (min-width:$wTablet){
-            width:320px;
+            width:360px;
         }
 
         &.expanded{
@@ -1632,7 +1657,7 @@ body.cc-body{
             text-align: center;
             position:absolute;
             top:14px;
-            right:15px;
+            right:14px;
             opacity: 1;
             z-index: 2001;
         }
@@ -1685,8 +1710,14 @@ body.cc-body{
 
     .white{
         background-color:$cWhite;
-        h5{
+        h4{
             margin:20px 0;
+            font-size: 16px;
+        }
+    }
+    .title{
+        h4{
+            margin-top: 30px;
         }
     }
 }//// .cc-support
@@ -1696,6 +1727,8 @@ body.cc-body{
  */
 @-moz-document url-prefix() {
   .cc-form{
+
+
     .cc-field{
         select {
          padding-right: 0;

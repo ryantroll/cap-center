@@ -216,8 +216,73 @@
             }//// if
             else{
                 excludeFields({
-                    selector:'.retirement',
-                    validationClass:'.cc-to-be-validate-retirement'
+                    selector:'.retirement, .ret-401, .ret-ira, .ret-pen, .ret-annuity',
+                    validationClass:'.cc-to-be-validate-retirement, cc-to-be-validate-annuity, cc-to-be-validate-pen, cc-to-be-validate-ira, cc-to-be-validate-401'
+                }); //// function in main.js
+
+            }
+        })
+        .trigger('change');
+
+        $('input[name=have_401]').on('change', function(){
+            var val = $(this).val().toLowerCase();
+
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.ret-401', validationClass:'.cc-to-be-validate-401'}); //// function in main.js
+
+            }//// if
+            else{
+                excludeFields({
+                    selector:'.ret-401',
+                    validationClass:'.cc-to-be-validate-401'
+                }); //// function in main.js
+
+            }
+        })
+        .trigger('change');
+
+        $('input[name=have_ira]').on('change', function(){
+            var val = $(this).val().toLowerCase();
+
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.ret-ira', validationClass:'.cc-to-be-validate-ira'}); //// function in main.js
+            }//// if
+            else{
+                excludeFields({
+                    selector:'.ret-ira',
+                    validationClass:'.cc-to-be-validate-ira'
+                }); //// function in main.js
+
+            }
+        })
+        .trigger('change');
+
+        $('input[name=have_pen]').on('change', function(){
+            var val = $(this).val().toLowerCase();
+
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.ret-pen', validationClass:'.cc-to-be-validate-pen'}); //// function in main.js
+            }//// if
+            else{
+                excludeFields({
+                    selector:'.ret-pen',
+                    validationClass:'.cc-to-be-validate-pen'
+                }); //// function in main.js
+
+            }
+        })
+        .trigger('change');
+
+        $('input[name=have_annuity]').on('change', function(){
+            var val = $(this).val().toLowerCase();
+
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.ret-annuity', validationClass:'.cc-to-be-validate-annuity'}); //// function in main.js
+            }//// if
+            else{
+                excludeFields({
+                    selector:'.ret-annuity',
+                    validationClass:'.cc-to-be-validate-annuity'
                 }); //// function in main.js
 
             }
