@@ -41,7 +41,7 @@
       <li><a href="07-assets.html"><span>Assets</span></a></li>
       <li><a href="08-liabilities.html"><span>Liabilities</span></a></li>
       <li><a href="09-declarations.html"><span>Questions</span></a></li>
-      <li><a href="15-deposit.html"><span>Submit</span></a></li>
+      <li><a href="14-instructions.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
 </nav>
@@ -54,7 +54,7 @@
         <!-- <a href="javascript:void(0);" class="close"><i class="glyphicon glyphicon-remove"></i></a> -->
         <h4>Thank you for your interest in CapCenter</h4>
         <p>
-          Thank you for your interest in CapCenter! we've streamlined the process of make as easy for you as possibl. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while competing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
+          We've streamlined the process to make it as easy for you as possible. After you submit your application we will contact you to confirm the information and answer your questions. if you need assistance while completing the online application, please feel free to contact us. We are available Monday through Friday from 8:30 am to 5:00 pm EST.
         </p>
         <p>
           <a href="javascript:void(0);" class="dismiss">DISMISS</a>
@@ -335,9 +335,9 @@
 
             </div><!--row-->
 
-            <div class="cc-form-section jsCollapse" id="preAddress" style="display:none;">
+            <div id="preAddress" style="display:none;">
 
-            </div><!--cc-form-section-->
+            </div><!--#preAddress-->
 
             <div class="row">
                 <div class="col-sm-6">
@@ -561,7 +561,6 @@
             </p>
           </li>
 
-
         </ul>
       </div>
 
@@ -669,7 +668,7 @@
 
 
 <script id="addressTemplate" type="text/template">
-<div id="address_{#}">
+<div class="cc-form-section" id="address_{#}" style="display:none;">
     <div class="title" style="margin-top:1.3em;">
       <h5>Previous Address</h5>
     </div>
@@ -747,7 +746,7 @@
             </div><!--row-->
 
     </div><!--row-->
-  </div><!--address-container-->
+  </div><!--cc-form-section-->
 </script>
 </body>
 </html>

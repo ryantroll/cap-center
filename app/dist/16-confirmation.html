@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
-    <title>Special Instructions - CapCenter</title>
+    <title>Confirmation - CapCenter</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900,300,100,700" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
@@ -32,20 +32,7 @@
   </div><!--container-->
 </header>
 
-<nav class="ss-progress" id="progress_nav">
-  <div class="container">
-    <a href="javascript:void(0);" class="switch" id="progress_switch"><i class="glyphicon glyphicon-chevron-down"></i></a>
-    <ul>
-      <li class="done"><a href="01-borrower.html"><span>Borrower</span></a></li>
-      <li class="done"><a href="03-purchase.html"><span>Property</span></a></li>
-      <li class="done"><a href="05-income.html"><span>Income</span></a></li>
-      <li class="done"><a href="07-assets.html"><span>Assets</span></a></li>
-      <li class="done"><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li class="done"><a href="09-declarations.html"><span>Questions</span></a></li>
-      <li class="active"><a href="14-instructions.html"><span>Submit</span></a></li>
-    </ul>
-  </div><!--container-->
-</nav>
+
 
 <section class="cc-content">
   <div class="container">
@@ -63,48 +50,50 @@
 
       <div class="cc-box cc-form">
         <div class="form-title">
-            <h3>Special Instructions</h3>
+            <h3>Application Submitted!</h3>
         </div>
-        <form method="post" id="instructionsForm" action="15-deposit.html">
+        <form method="post" id="confirmForm" action="14-instructions.html">
           <fieldset>
           <div class="row">
               <div class="col-sm-12">
-
-                    <p>Please provide any additional information that we should be aware of below.</p>
-
+                <div class="title">
+                    <p>Thank you for submitting your application to CapCenter. We look forward to working with you.</p>
+                    <p>You will be assigned a Loan Consultant who will contact you within one business day, either by telephone or email.</p>
+                    <p>Please note that your interest rate is not locked at this time. You will be able to lock in your interest rate after we have reviewed your application and made an approval decision.</p>
+                  </div>
                 </div>
 
           </div><!--row-->
 
           <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-to-be-validate cc-required">
-                  <!-- <label for="instructions">Please briefly describe the construction or renovation</label> -->
-                  <textarea tabindex="6" name="instructions" id="instructions"></textarea>
-                  <div class="message cc-required">Required</div>
-                </div><!--field-->
+                <div class="title-box">
+                  <h4>Loan Summary</h4>
+                </div>
               </div>
 
-            </div><!--row-->
+          </div><!--row-->
 
-            <div class="row">
+          <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-buttons right more-padding">
-                  <button class="green" name="continue" id="continue">Continue</button>
-                  <button class="gray" name="back" id="back">Back</button>
-                </div><!--field-->
+                <div class="cc-confirm">
+                  <p><strong>Home Value:</strong>   $300,000</p>
+                  <p><strong>State:</strong>       Virginia</p>
+                  <p><strong>Loan Amount:</strong>     $240,000</p>
+                  <p><strong>Loan Purpose:</strong>    Refinance</p>
+                  <p><strong>Loan Type:</strong>     Fixed, 30 Year</p>
+                </div>
               </div>
 
-            </div><!--row-->
+          </div><!--row-->
 
-            <div class="row">
+          <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-buttons right">
-                  <button  name="saveBtn" id="saveBtn" class="saveBtn">Save For Later</button>
-                </div><!--field-->
+                <p>&nbsp;</p>
               </div>
 
-            </div><!--row-->
+          </div><!--row-->
+
 
           </fieldset>
         </form>
@@ -114,6 +103,7 @@
     </div><!--cc-content-inner-->
   </div><!--container-->
 </section>
+
 
 <div class="cc-support">
   <a href="javascript:void(0)" class="btn out">?</a>

@@ -35,9 +35,9 @@
         /**
          * initialize form validation
          */
-        myForm.validate(function(isVald, invalidFields){
+        myForm.validate(function(isValid, invalidFields){
 
-            if(isVald){
+            if(isValid){
 
                 var isCoBorrower =  String('234').split('').indexOf( $('#bo_applytype').val() ) > -1;
 
@@ -45,7 +45,7 @@
                     myForm.attr('action', '02-coborrower.html');
                 }
 
-                return false;
+                return true;
             }/// if isValid
             else{
 
@@ -68,7 +68,6 @@
          * Continue Click
          */
         $('#continue').on('mousedown touchstart', function(e){
-            console.log("sll")
             isContinueClicked = true;
         });
 
@@ -358,11 +357,11 @@ function addAddress(nextId){
 
     checkAddressLength(address, _appGlobal.addressIndex);
 
-    section.append(address);
+    section.append(address).show();
     addAutoAddress(_appGlobal.addressIndex);
 
     updateTabIndex( $('.cc-form')); //// function in main.js
-    section.slideDown();
+    address.slideDown();
 }
 
 function removeAddress(idRemove){
@@ -375,7 +374,10 @@ function removeAddress(idRemove){
         var address = section.find('#address_' + x);
 
         address.find('.cc-field').removeClass('cc-validate error correct');
-        address.remove();
+        // address.remove();
+        address.slideUp(function(){
+            $(this).remove();
+        })
         updateTabIndex( $('.cc-form')); //// function in main.js
     }
     _appGlobal.addressIndex = idRemove-1;

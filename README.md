@@ -140,6 +140,16 @@ e.g. to set the error message if the field is required and not filled add below 
 
 Where the second class "cc-required" is matching the validation class cc-required for .cc-field
 
+### Support Plugin ###
+
+The code for this function in source/js/support-plugin.js
+
+this code is developed to the required event handlers and elements behaviors for slide in support panel, it is initiated in main.js by calling
+
+```javascript
+$(document).ccSupport();
+```
+
 ### APIs Required ###
 
 Front-end needs the below APIs end point, URLs to these end points are defined in top of main.js file
