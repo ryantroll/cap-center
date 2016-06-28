@@ -69,7 +69,7 @@
         <form method="post" id="assetsForm" action="08-liabilities.html">
           <fieldset>
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate">
                   <label for="as_assets_yes">Do you or your co-borrower have any liquid asset accounts to include?</label>
@@ -78,19 +78,72 @@
                       <label><input type="radio" name="as_assets" value="yes" id="as_assets_yes" /><span>Yes</span></label>
                       <label><input type="radio" name="as_assets" value="no" id="as_assets_no" /><span>No</span></label>
                     </div>
-                  </div><!--half-width-->
-                  <!-- <div class="message cc-required">Required</div> -->
-                </div><!--field-->
+                  </div>
+                </div>
               </div>
 
-            </div><!--row-->
+            </div> -->
 
-            <div id="assetsHolder" class="assets" style="display:none;">
+            <div id="assetsHolder" class="assets">
+              <div class="cc-form-section close-btn" style="" id="asset_1" data-index="1">
+                <a href="javascript:void(0);" class="close" data-index="1"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title">
+                      <h5>Asset</h5>
+                    </div>
+                  </div>
 
+                </div><!--row-->
+
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="cc-field cc-dropdown cc-validate">
+                      <label for="as_type1">Type </label>
+
+                      <select name="as_type1" id="as_type1" data-index="1">
+                        <option value="">Select</option>
+                        <option value="1">Checking Account</option>
+                        <option value="2">Saving Account</option>
+                        <option value="3">Certificate of Deposit</option>
+                        <option value="4">Money Market Fund</option>
+                        <option value="5">Mutual Fund</option>
+                        <option value="6">Stocks and Bonds</option>
+                        <option value="7">Retirement</option>
+                        <option value="8">Gift Not Deposited</option>
+                        <option value="9">Trust Funds</option>
+                      </select>
+                      <label for="as_type1" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                      <div class="message cc-required">Required</div>
+                    </div><!--field-->
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <div class="cc-field cc-validate">
+                      <label for="as_bank1">Bank or Institution</label>
+                      <input type="text" tabindex="12" name="as_bank1" id="as_bank1"  data-index="1"/>
+                      <div class="message cc-required">Required</div>
+                    </div><!--field-->
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="cc-field cc-validate cc-currency">
+                      <label for="as_cash1">Balance </label>
+                      <input type="tel" tabindex="11" class="currency" maxlength="11" name="as_cash1" id="as_cash{#id}"  data-index="1"/>
+                      <div class="message cc-required">Required</div>
+                      <div class="message cc-currency">Invalid value</div>
+                      <div class="message cc-numbers-only">Numbers Only</div>
+                    </div><!--field-->
+                  </div>
+
+                </div><!--row-->
+
+              </div><!--form-section-->
 
             </div><!--assetsHolder-->
 
-            <div class="row assets" style="display:none;">
+            <div class="row assets">
               <div class="col-sm-12">
                 <div class="cc-field cc-buttons">
                   <a href="javascript:void(0);" class="cc-btn gray" name="addAnotherAsset" id="addAnotherAsset">Add Another Asset</a>
