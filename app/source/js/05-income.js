@@ -470,7 +470,7 @@ function checkEmploymentDate(ev){
     var startDateField = $('.startDate'+index).eq(0);
     var endDate, startDate;
 
-    if(endDateField.val().length === 10){
+    if(true === !!endDateField.val() && endDateField.val().length === 10){
         var dateSplit = endDateField.val().split('/');
         endDate = new Date(Number(dateSplit[2]), Number(dateSplit[0])-1, Number(dateSplit[1]));
     }

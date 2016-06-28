@@ -373,6 +373,9 @@ function yesNoRadio(container){
     $(this).parent().removeClass('focus');
   });
 
+  /**
+   * Add circle check mark to radio button label
+   */
   radios.each(function(){
     $(this).parent().find('span').prepend('<i class="circle glyphicon glyphicon-ok"></i>')
   })
