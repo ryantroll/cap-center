@@ -373,6 +373,10 @@ function yesNoRadio(container){
     $(this).parent().removeClass('focus');
   });
 
+  radios.each(function(){
+    $(this).parent().find('span').prepend('<i class="circle glyphicon glyphicon-ok"></i>')
+  })
+
   /**
    * Trigger change to set the right appearance when form is pre-loaded with data
    */

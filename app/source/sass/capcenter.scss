@@ -1076,11 +1076,31 @@ body.cc-body{
                         background-color:$cLightGreen;
                         border-color:$cLightGreen;
                     }
+                    i.circle{
+                        border-color:$cWhite;
+                        color:$cLightGreen;
+                        background-color:$cWhite;
+                    }
                 }
                 &.focus{
                     &:after{
                         border:1px solid $cTextGray;
                     }
+                }
+                i.circle{
+                    display: inline-block;
+                    width:20px;
+                    height: 20px;
+                    border:1px solid $cTextGray;
+                    line-height: 20px;
+                    text-align: center;
+                    @include mxRoundCorners(10px);
+                    // @include mxVerticalAlign(absolute);
+                    vertical-align: -2px;
+                    position:static;
+                    margin-right: 5px;
+                    left:1em;
+                    color:$cWhite;
                 }
             }//// label
 

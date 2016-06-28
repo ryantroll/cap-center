@@ -857,8 +857,30 @@ body.cc-body {
       .cc-form .cc-radio .radio-yesno label.checked:after {
         background-color: #50a54c;
         border-color: #50a54c; }
+      .cc-form .cc-radio .radio-yesno label.checked i.circle {
+        border-color: #fff;
+        color: #50a54c;
+        background-color: #fff; }
     .cc-form .cc-radio .radio-yesno label.focus:after {
       border: 1px solid #767371; }
+    .cc-form .cc-radio .radio-yesno label i.circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #767371;
+      line-height: 20px;
+      text-align: center;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      /* future proofing */
+      -khtml-border-radius: 10px;
+      /* for old Konqueror browsers */
+      vertical-align: -2px;
+      position: static;
+      margin-right: 5px;
+      left: 1em;
+      color: #fff; }
   .cc-form .cc-radio .radio-yesno.three label {
     width: 31.33333%;
     margin-right: 3%; }

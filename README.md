@@ -170,3 +170,9 @@ These templates move to external files because they are shared between all forms
 ### Address Type Ahead ###
 
 I implemented this using Google Maps API, and use API key from my own account please update this with your API key from Google.
+
+### Yes/No radio button ###
+
+the behaviors of these button is set by yesNoRadio() in main.js
+
+the circle icon inside the button is been add to the HTML by the above function
