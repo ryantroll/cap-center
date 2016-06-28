@@ -144,14 +144,17 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 /**
                  * Delay adding for smooth slid down animation
+                 * and add the  first assets fields only if no assets is added or pre-loaded in form
                  */
+
+                if(_appGlobal.assetsArray.length < 1)
                 setTimeout(function(){
                     addAsset();
                 }, 300)
                 includeFields({selector:'.assets', validationClass:'.cc-to-be-validate'}); //// function in main.js
 
             }
-            else{
+            else if(true === !!$(this).attr('checked') && val === 'no'){
                 /**
                  * Remove all properties
                  */
@@ -163,7 +166,8 @@
                 }/// while
                 excludeFields({selector:'.assets', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-        });
+
+        }).trigger('change');
 
 
         $('input[name=as_additionalrealestate]').on('change', function(){
@@ -171,14 +175,16 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 /**
                  * Delay adding for smooth slid down animation
+                 * Add the first estate only if no estates is add or pre-loaded inside the form
                  */
+                if(_appGlobal.estatesArray.length < 1)
                 setTimeout(function(){
                     addEstate();
                 }, 300)
                 includeFields({selector:'.property', validationClass:'.cc-to-be-validate'}); //// function in main.js
 
             }
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 /**
                  * Remove all properties
                  */

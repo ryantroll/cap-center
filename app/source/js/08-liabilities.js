@@ -120,7 +120,7 @@
                 var i = parseInt($(this).attr('data-index'), 10);
                 removeLiability(i);
             });
-            console.log(liabilitiesArray)
+
             updateLiabilityCloseBtn();
         });
 
@@ -130,9 +130,9 @@
 
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 includeFields({selector:'.liability', validationClass:'.cc-to-be-validate-liab'}); //// function in main.js
-                addLiability();
+                if(liabilitiesArray.length < 1) addLiability();
             }//// if
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({
                     selector:'.liability',
                     validationClass:'.cc-to-be-validate-liab'

@@ -71,7 +71,7 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-radio cc-validate cc-required">
+                <div class="cc-field cc-radio cc-validate">
                   <label for="as_assets_yes">Do you or your co-borrower have any liquid asset accounts to include?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
@@ -108,7 +108,7 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-radio cc-validate cc-required">
+                <div class="cc-field cc-radio cc-validate">
                   <label for="as_additionalrealestate_yes">Do you or your co-borrower any other real estate that is not included in the list of properties with rental income?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
@@ -282,7 +282,7 @@
 
     <div class="row">
       <div class="col-sm-4">
-        <div class="cc-field cc-dropdown cc-validate cc-required">
+        <div class="cc-field cc-dropdown cc-validate">
           <label for="as_type{#id}">Type </label>
 
           <select name="as_type{#id}" id="as_type{#id}" data-index="{#index}">
@@ -304,7 +304,7 @@
 
 
       <div class="col-sm-4">
-        <div class="cc-field cc-validate cc-required">
+        <div class="cc-field cc-validate">
           <label for="as_bank{#id}">Bank or Institution</label>
           <input type="text" tabindex="12" name="as_bank{#id}" id="as_bank{#id}"  data-index="{#index}"/>
           <div class="message cc-required">Required</div>
@@ -312,7 +312,7 @@
       </div>
 
       <div class="col-sm-4">
-        <div class="cc-field cc-validate cc-required cc-currency">
+        <div class="cc-field cc-validate cc-currency">
           <label for="as_cash{#id}">Balance </label>
           <input type="tel" tabindex="11" class="currency" maxlength="11" name="as_cash{#id}" id="as_cash{#id}"  data-index="{#index}"/>
           <div class="message cc-required">Required</div>
@@ -347,7 +347,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-8">
-      <div class="cc-field cc-validate cc-required">
+      <div class="cc-field cc-validate">
         <label for="re_address{#id}">Street Address </label>
         <input type="text" tabindex="9" class="typeahead_address{#index}" name="re_address{#id}" id="re_address{#id}" placeholder=""  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -365,7 +365,7 @@
 
   <div class="row">
     <div class="col-sm-4">
-      <div class="cc-field cc-validate cc-required">
+      <div class="cc-field cc-validate">
         <label for="re_city{#id}">City </label>
         <input type="text" tabindex="12" class="typeahead_city{#index}" name="re_city{#id}" id="re_city{#id}"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -373,7 +373,7 @@
     </div>
 
     <div class="col-sm-4">
-      <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
+      <div class="cc-field cc-dropdown cc-validate state-dropdown">
         <label for="re_state{#id}">State </label>
 
         <select name="re_state{#id}" id="re_state{#id}" class="typeahead_state{#index}" data-index="{#index}">
@@ -385,7 +385,7 @@
     </div>
 
     <div class="col-sm-4">
-      <div class="cc-field cc-validate cc-required cc-number">
+      <div class="cc-field cc-validate cc-number">
         <label for="re_zip{#id}">Zip </label>
         <input type="tel" tabindex="11" class="numbers typeahead_zip{#index}" maxlength="6" name="re_zip{#id}" id="re_zip{#id}"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -398,7 +398,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <div class="cc-field cc-validate cc-required cc-currency">
+      <div class="cc-field cc-validate cc-currency">
         <label for="re_presval{#id}">Estimated Property Value</label>
         <input type="tel" tabindex="9" class="currency" name="re_presval{#id}" id="re_presval{#id}" placeholder="" maxlength="11"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -411,7 +411,7 @@
 
   <div class="row">
     <div class="col-sm-6">
-      <div class="cc-field cc-radio cc-validate cc-required">
+      <div class="cc-field cc-radio cc-validate">
         <label for="as_additionalrealestatehasmortgage{#id}_yes">Do you have mortgage on this property?</label>
         <div class="radio-yesno">
           <label><input type="radio" class="mortgageRadio{#index}" name="as_additionalrealestatehasmortgage{#id}" value="yes" id="as_additionalrealestatehasmortgage{#id}_yes" data-index="{#index}" /><span>Yes</span></label>

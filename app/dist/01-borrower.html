@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
-    <title>About Borrower - CapCenter</title>
+    <title>About You - CapCenter</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900,300,100,700" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
@@ -63,7 +63,7 @@
 
       <div class="cc-box cc-form">
         <div class="title">
-            <h3>About Borrower</h3>
+            <h3>About You</h3>
         </div>
         <form method="post" id="borrowerForm" action="03-purchase.html">
           <fieldset>
@@ -205,7 +205,7 @@
               </div>
 
               <div class="col-sm-6">
-                <div class="cc-field cc-validate cc-phone">
+                <div class="cc-field cc-phone">
                   <label for="bo_cphone1">Mobile Phone </label>
                   <input type="tel" tabindex="8" name="bo_cphone1" id="bo_cphone1" class="phone" maxlength="14"  placeholder="(xxx) xxx-xxxx" />
                   <div class="message cc-phone">Invalid Phone Number</div>
@@ -290,7 +290,7 @@
 
             <div class="row">
               <div class="col-sm-4">
-                <div class="cc-field cc-required cc-validate cc-number">
+                <div class="cc-field cc-validate cc-number">
                   <label for="bo_time_year">Time At Address </label>
 
                   <div class="cc-address-length">
@@ -308,7 +308,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-radio cc-validate cc-required">
+                <div class="cc-field cc-radio cc-validate">
                   <label for="bo_propertyusage_own">CURRENTLY</label>
                   <div class="radio-yesno">
                     <label><input type="radio" name="bo_currently" value="own" id="bo_currently_own" /><span>Own</span></label>
@@ -319,7 +319,7 @@
               </div>
 
               <div class="col-sm-4 hidden" id="monthlyRent">
-                <div class="cc-field cc-to-be-validate cc-required cc-currency">
+                <div class="cc-field cc-to-be-validate cc-currency">
                   <label for="bo_rentpermonth">MONTHLY RENT</label>
 
                    <div class="cc-in-box-label">
@@ -453,7 +453,7 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-dropdown cc-validate cc-required">
+                <div class="cc-field cc-dropdown cc-validate">
                   <label for="bo_applytype">Applying</label>
                     <select name="bo_applytype" id="bo_applytype">
                       <option value="">Please Select</option>

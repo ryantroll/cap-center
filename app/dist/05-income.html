@@ -71,10 +71,10 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <div class="cc-field cc-checkbox cc-validate cc-required">
+                <div class="cc-field cc-checkbox cc-validate">
                   <label for="">What are your source of income? (select all that apply)</label>
                   <div class="two-cols">
-                    <label><input type="checkbox" id="in_ck_income2" name="in_ck_income2" value="Employment"/><i class="glyphicon glyphicon-ok"></i>Employment</label>
+                    <label><input type="checkbox" id="in_ck_income2" name="in_ck_income2" value="Employment"/><i class="glyphicon glyphicon-ok"></i>Current Employment</label>
                     <label><input type="checkbox" id="in_ck_income3" name="in_ck_income3" value="Self Employment"/><i class="glyphicon glyphicon-ok"></i>Self Employment</label>
                     <label><input type="checkbox" id="in_ck_income4" name="in_ck_income4" value="Additional Job"/><i class="glyphicon glyphicon-ok"></i>Additional Job</label>
                     <label><input type="checkbox" id="in_ck_income5" name="in_ck_income5" value="Retirement/Pension"/><i class="glyphicon glyphicon-ok"></i>Retirement/Pension</label>
@@ -92,7 +92,7 @@
             <div class="row employment" style="display:none;">
               <div class="col-sm-12">
                 <div class="title-box">
-                  <h4>Employment</h4>
+                  <h4>Current Employment</h4>
                 </div>
               </div>
 
@@ -100,7 +100,7 @@
 
             <div class="row employment" style="display:none;">
               <div class="col-sm-12">
-                <div class="cc-field cc-radio cc-to-be-validate-em cc-required">
+                <div class="cc-field cc-radio cc-to-be-validate-em">
                   <!-- <label for="em_type_full">Full time or part time</label> -->
                   <div class="half-width">
                     <div class="radio-yesno">
@@ -116,7 +116,7 @@
 
             <div class="row employment" style="display:none;">
               <div class="col-sm-8">
-                <div class="cc-field cc-to-be-validate-em cc-required">
+                <div class="cc-field cc-to-be-validate-em">
                   <label for="em_name">Employer Name</label>
                   <input type="text" tabindex="6"  name="em_name" id="em_name" />
                   <div class="message cc-required">Required</div>
@@ -124,7 +124,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-em cc-required cc-phone">
+                <div class="cc-field cc-to-be-validate-em cc-phone">
                   <label for="em_phone1">Employer Phone</label>
                   <input type="tel" tabindex="1" class="phone" name="em_phone1" id="em_phone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
                   <div class="message cc-required">Required</div>
@@ -136,26 +136,20 @@
             </div><!--row-->
 
             <div class="row employment" style="display:none;">
-              <div class="col-xs-12 col-sm-8">
-                <div class="cc-field cc-to-be-validate-em cc-required">
+              <div class="col-xs-12 col-sm-12">
+                <div class="cc-field cc-to-be-validate-em">
                   <label for="rf_address">Street Address </label>
                   <input type="text" tabindex="9" class="typeahead_address" name="rf_address" id="rf_address" placeholder="" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
-              <div class="col-xs-12 col-sm-4">
-                <div class="cc-field">
-                  <label for="rf_unit">Apt/Unit</label>
-                  <input type="text" tabindex="10" name="rf_unit" id="rf_unit" />
-                </div><!--field-->
-              </div>
 
             </div><!--row-->
 
             <div class="row employment" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-em cc-required">
+                <div class="cc-field cc-to-be-validate-em">
                   <label for="rf_city">City </label>
                   <input type="text" tabindex="12" class="typeahead_city" name="rf_city" id="rf_city" />
                   <div class="message cc-required">Required</div>
@@ -163,7 +157,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-dropdown cc-to-be-validate-em cc-required state-dropdown">
+                <div class="cc-field cc-dropdown cc-to-be-validate-em state-dropdown">
                   <label for="rf_state">State </label>
 
                   <select name="rf_state" id="rf_state" class="typeahead_state">
@@ -175,7 +169,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-em cc-required cc-number">
+                <div class="cc-field cc-to-be-validate-em cc-number">
                   <label for="rf_zip">Zip </label>
                   <input type="tel" tabindex="11" class="numbers typeahead_zip" maxlength="6" name="rf_zip" id="rf_zip" />
                   <div class="message cc-required">Required</div>
@@ -188,7 +182,7 @@
 
             <div class="row employment" style="display:none;">
               <div class="col-sm-12">
-                <div class="cc-field cc-to-be-validate-em cc-required">
+                <div class="cc-field cc-to-be-validate-em">
                   <label for="em_title">Job Title</label>
                   <input type="text" tabindex="9" name="em_title" id="em_title" placeholder="" />
                   <div class="message cc-required">Required</div>
@@ -199,7 +193,7 @@
 
             <div class="row employment" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-em cc-required cc-date">
+                <div class="cc-field cc-to-be-validate-em cc-date">
                   <label for="em_startdate">Start Date</label>
                   <input type="tel" class="date startDate1" tabindex="9" name="em_startdate" id="em_startdate" placeholder="mm/dd/yyyy" maxlength="10" data-index="1" />
                   <div class="message cc-required">Required</div>
@@ -219,7 +213,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-em cc-required cc-numbers">
+                <div class="cc-field cc-to-be-validate-em cc-numbers">
                   <label for="em_workyears">Years in line of work</label>
                   <input type="tel" class="numbers" tabindex="9" name="em_workyears" id="em_workyears"  maxlength="2" />
                   <div class="message cc-required">Required</div>
@@ -231,7 +225,7 @@
 
             <div class="row employment" style="display:none;">
               <div class="col-sm-3">
-                <div class="cc-field cc-to-be-validate-em cc-required cc-currency">
+                <div class="cc-field cc-to-be-validate-em cc-currency">
                   <label for="em_income">Base Income</label>
 
                   <div class="cc-in-box-label">
@@ -307,7 +301,7 @@
 
             <div class="row self" style="display:none;">
               <div class="col-sm-8">
-                <div class="cc-field cc-to-be-validate-self cc-required">
+                <div class="cc-field cc-to-be-validate-self">
                   <label for="e3_name">Business Name</label>
                   <input type="text" tabindex="6"  name="e3_name" id="e3_name" />
                   <div class="message cc-required">Required</div>
@@ -315,7 +309,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-self cc-required cc-phone">
+                <div class="cc-field cc-to-be-validate-self cc-phone">
                   <label for="e3_phone1">Business Phone</label>
                   <input type="tel" tabindex="1" class="phone" name="e3_phone1" id="e3_phone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
                   <div class="message cc-required">Required</div>
@@ -327,26 +321,26 @@
             </div><!--row-->
 
             <div class="row self" style="display:none;">
-              <div class="col-xs-12 col-sm-8">
-                <div class="cc-field cc-to-be-validate-self cc-required">
+              <div class="col-xs-12 col-sm-12">
+                <div class="cc-field cc-to-be-validate-self">
                   <label for="e3_address">Street Address </label>
                   <input type="text" tabindex="9" class="typeahead_address5" name="e3_address" id="e3_address" placeholder="" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
-              <div class="col-xs-12 col-sm-4">
+              <!-- <div class="col-xs-12 col-sm-4">
                 <div class="cc-field">
                   <label for="e3_unit">Apt/Unit</label>
                   <input type="text" tabindex="10" name="e3_unit" id="e3_unit" />
-                </div><!--field-->
-              </div>
+                </div>
+              </div> -->
 
             </div><!--row-->
 
             <div class="row self" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-self cc-required">
+                <div class="cc-field cc-to-be-validate-self">
                   <label for="e3_city">City </label>
                   <input type="text" tabindex="12" class="typeahead_city5" name="e3_city" id="e3_city" />
                   <div class="message cc-required">Required</div>
@@ -354,7 +348,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-dropdown cc-to-be-validate-self cc-required state-dropdown">
+                <div class="cc-field cc-dropdown cc-to-be-validate-self state-dropdown">
                   <label for="e3_state">State </label>
 
                   <select name="e3_state" id="e3_state" class="typeahead_state5">
@@ -366,7 +360,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-self cc-required cc-number">
+                <div class="cc-field cc-to-be-validate-self cc-number">
                   <label for="e3_zip">Zip </label>
                   <input type="tel" tabindex="11" class="numbers typeahead_zip5" maxlength="6" name="e3_zip" id="e3_zip" />
                   <div class="message cc-required">Required</div>
@@ -379,7 +373,7 @@
 
             <div class="row self" style="display:none;">
               <div class="col-sm-12">
-                <div class="cc-field cc-to-be-validate-self cc-required">
+                <div class="cc-field cc-to-be-validate-self">
                   <label for="e3_title">Job Title</label>
                   <input type="text" tabindex="9" name="e3_title" id="e3_title" placeholder="" />
                   <div class="message cc-required">Required</div>
@@ -390,7 +384,7 @@
 
             <div class="row self" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-self cc-required cc-date">
+                <div class="cc-field cc-to-be-validate-self cc-date">
                   <label for="e3_startdate">Start Date</label>
                   <input type="tel" class="date" tabindex="9" name="e3_startdate" id="e3_startdate" placeholder="mm/dd/yyyy" maxlength="10" data-index="1" />
                   <div class="message cc-required">Required</div>
@@ -410,7 +404,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-self cc-required cc-numbers">
+                <div class="cc-field cc-to-be-validate-self cc-numbers">
                   <label for="e3_workyears">Years in line of work</label>
                   <input type="tel" class="numbers" tabindex="9" name="e3_workyears" id="e3_workyears"  maxlength="2" />
                   <div class="message cc-required">Required</div>
@@ -422,7 +416,7 @@
 
             <div class="row self" style="display:none;">
               <div class="col-sm-8">
-                <div class="cc-field cc-to-be-validate-self cc-required cc-currency">
+                <div class="cc-field cc-to-be-validate-self cc-currency">
                   <label for="e3_income">Net Earnings (AGI) Per Year</label>
 
                   <div class="cc-in-box-label">
@@ -454,7 +448,7 @@
 
             <div class="row additional" style="display:none;">
               <div class="col-sm-12">
-                <div class="cc-field cc-radio cc-to-be-validate-additional cc-required">
+                <div class="cc-field cc-radio cc-to-be-validate-additional">
                   <!-- <label for="e2_type_full">Full time or part time or self employed</label> -->
 
                     <div class="radio-yesno three">
@@ -471,7 +465,7 @@
 
             <div class="row additional" style="display:none;">
               <div class="col-sm-8">
-                <div class="cc-field cc-to-be-validate-additional cc-required">
+                <div class="cc-field cc-to-be-validate-additional">
                   <label for="e2_name">Employer Name</label>
                   <input type="text" tabindex="6"  name="e2_name" id="e2_name" />
                   <div class="message cc-required">Required</div>
@@ -479,7 +473,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-additional cc-required cc-phone">
+                <div class="cc-field cc-to-be-validate-additional cc-phone">
                   <label for="e2_phone1">Employer Phone</label>
                   <input type="tel" tabindex="1" class="phone" name="e2_phone1" id="e2_phone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
                   <div class="message cc-required">Required</div>
@@ -491,26 +485,26 @@
             </div><!--row-->
 
             <div class="row additional" style="display:none;">
-              <div class="col-xs-12 col-sm-8">
-                <div class="cc-field cc-to-be-validate-additional cc-required">
+              <div class="col-xs-12 col-sm-12">
+                <div class="cc-field cc-to-be-validate-additional">
                   <label for="e2_address">Street Address </label>
                   <input type="text" tabindex="9" class="typeahead_address6" name="e2_address" id="e2_address" placeholder="" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
-              <div class="col-xs-12 col-sm-4">
+              <!-- <div class="col-xs-12 col-sm-4">
                 <div class="cc-field">
                   <label for="e2_unit">Apt/Unit</label>
                   <input type="text" tabindex="10" name="e2_unit" id="e2_unit" />
-                </div><!--field-->
-              </div>
+                </div>
+              </div> -->
 
             </div><!--row-->
 
             <div class="row additional" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-additional cc-required">
+                <div class="cc-field cc-to-be-validate-additional">
                   <label for="e2_city">City </label>
                   <input type="text" tabindex="12" class="typeahead_city6" name="e2_city" id="e2_city" />
                   <div class="message cc-required">Required</div>
@@ -518,7 +512,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-dropdown cc-to-be-validate-additional cc-required state-dropdown">
+                <div class="cc-field cc-dropdown cc-to-be-validate-additional state-dropdown">
                   <label for="e2_state">State </label>
 
                   <select name="e2_state" id="e2_state" class="typeahead_state6">
@@ -530,7 +524,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-additional cc-required cc-number">
+                <div class="cc-field cc-to-be-validate-additional  cc-number">
                   <label for="e2_zip">Zip </label>
                   <input type="tel" tabindex="11" class="numbers typeahead_zip6" maxlength="6" name="e2_zip" id="e2_zip" />
                   <div class="message cc-required">Required</div>
@@ -543,7 +537,7 @@
 
             <div class="row additional" style="display:none;">
               <div class="col-sm-12">
-                <div class="cc-field cc-to-be-validate-additional cc-required">
+                <div class="cc-field cc-to-be-validate-additional">
                   <label for="e2_title">Job Title</label>
                   <input type="text" tabindex="9" name="e2_title" id="e2_title" placeholder="" />
                   <div class="message cc-required">Required</div>
@@ -554,7 +548,7 @@
 
             <div class="row additional" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-additional cc-required cc-date">
+                <div class="cc-field cc-to-be-validate-additional cc-date">
                   <label for="e2_startdate">Start Date</label>
                   <input type="tel" class="date" tabindex="9" name="e2_startdate" id="e2_startdate" placeholder="mm/dd/yyyy" maxlength="10" data-index="1" />
                   <div class="message cc-required">Required</div>
@@ -574,7 +568,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-additional cc-required cc-numbers">
+                <div class="cc-field cc-to-be-validate-additional cc-numbers">
                   <label for="e2_workyears">Years in line of work</label>
                   <input type="tel" class="numbers" tabindex="9" name="e2_workyears" id="e2_workyears"  maxlength="2" />
                   <div class="message cc-required">Required</div>
@@ -586,7 +580,7 @@
 
             <div class="row additional" style="display:none;">
               <div class="col-sm-3">
-                <div class="cc-field cc-to-be-validate-additional cc-required cc-currency">
+                <div class="cc-field cc-to-be-validate-additional cc-currency">
                   <label for="e2_income">Base Income</label>
 
                   <div class="cc-in-box-label">
@@ -659,7 +653,7 @@
 
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
-                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement">
                   <label for="have_401_yes">Do you have a 401(k)?</label>
 
                     <div class="radio-yesno">
@@ -675,7 +669,7 @@
 
             <div class="row ret-401" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-401 cc-currency cc-required">
+                <div class="cc-field cc-to-be-validate-401 cc-currency">
                   <label for="em_401k">401(k) Distribution</label>
 
                   <div class="cc-in-box-label">
@@ -692,7 +686,7 @@
 
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
-                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement">
                   <label for="have_ira_yes">Do you have an IRA?</label>
 
                     <div class="radio-yesno">
@@ -708,7 +702,7 @@
 
             <div class="row ret-ira" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-ira cc-currency cc-required" >
+                <div class="cc-field cc-to-be-validate-ira cc-currency" >
                   <label for="em_ira">IRA Distribution</label>
 
                   <div class="cc-in-box-label">
@@ -725,7 +719,7 @@
 
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
-                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement">
                   <label for="have_pen_yes">Do you have a pension?</label>
 
                     <div class="radio-yesno">
@@ -741,7 +735,7 @@
 
             <div class="row ret-pen" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-pen cc-currency cc-required" >
+                <div class="cc-field cc-to-be-validate-pen cc-currency" >
                   <label for="em_pension">Pension/Retirement</label>
 
                   <div class="cc-in-box-label">
@@ -758,7 +752,7 @@
 
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
-                <div class="cc-field cc-radio cc-to-be-validate-retirement cc-required">
+                <div class="cc-field cc-radio cc-to-be-validate-retirement">
                   <label for="have_annuity_yes">Do you have an annuity?</label>
 
                     <div class="radio-yesno">
@@ -774,7 +768,7 @@
 
             <div class="row ret-annuity" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-annuity cc-currency cc-required">
+                <div class="cc-field cc-to-be-validate-annuity cc-currency">
                   <label for="em_annuity">Annuity Distribution</label>
 
                   <div class="cc-in-box-label">
@@ -805,7 +799,7 @@
 
             <div class="row ssn" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-ssn cc-required cc-currency">
+                <div class="cc-field cc-to-be-validate-ssn cc-currency">
                   <label for="em_ss">Income Amount</label>
 
                   <div class="cc-in-box-label">
@@ -836,7 +830,7 @@
 
             <div class="row child" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-child cc-required-one-of cc-currency" data-one-of-class="cc-to-be-validate-child">
+                <div class="cc-field cc-to-be-validate-child  cc-currency" data-one-of-class="cc-to-be-validate-child">
                   <label for="em_childsupport">Child Support</label>
 
                   <div class="cc-in-box-label">
@@ -851,7 +845,7 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-child cc-required-one-of cc-currency" data-one-of-class="cc-to-be-validate-child">
+                <div class="cc-field cc-to-be-validate-child cc-currency" data-one-of-class="cc-to-be-validate-child">
                   <label for="em_alimony">Alimony</label>
 
                   <div class="cc-in-box-label">
@@ -883,7 +877,7 @@
 
             <div class="row dividend" style="display:none;">
               <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate-dividend cc-required cc-currency">
+                <div class="cc-field cc-to-be-validate-dividend cc-currency">
                   <label for="em_interest">Income Amount</label>
 
                   <div class="cc-in-box-label">
@@ -1072,7 +1066,7 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <div class="cc-field cc-radio cc-validate cc-required">
+          <div class="cc-field cc-radio cc-validate">
             <label for="bo_e{#}type_full">Full time or part time</label>
             <div class="half-width">
               <div class="radio-yesno">
@@ -1088,7 +1082,7 @@
 
       <div class="row">
         <div class="col-sm-8">
-          <div class="cc-field cc-validate cc-required">
+          <div class="cc-field cc-validate">
             <label for="bo_e{#}employer">Employer Name</label>
             <input type="text" tabindex="6"  name="bo_e{#}employer" id="bo_e{#}employer" />
             <div class="message cc-required">Required</div>
@@ -1096,7 +1090,7 @@
         </div>
 
         <div class="col-sm-4">
-          <div class="cc-field cc-validate cc-required cc-phone">
+          <div class="cc-field cc-validate cc-phone">
             <label for="bo_e{#}employerphone1">Employer Phone</label>
             <input type="tel" tabindex="1" class="phone" name="bo_e{#}employerphone1" id="bo_e{#}employerphone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
             <div class="message cc-required">Required</div>
@@ -1108,26 +1102,26 @@
       </div><!--row-->
 
       <div class="row">
-        <div class="col-xs-12 col-sm-8">
-          <div class="cc-field cc-validate cc-required">
+        <div class="col-xs-12 col-sm-12">
+          <div class="cc-field cc-validate">
             <label for="bo_e{#}employeraddress">Street Address </label>
             <input type="text" tabindex="9" class="typeahead_address{#}" name="bo_e{#}employeraddress" id="bo_e{#}employeraddress" placeholder="" />
             <div class="message cc-required">Required</div>
           </div><!--field-->
         </div>
 
-        <div class="col-xs-12 col-sm-4">
+        <!--<div class="col-xs-12 col-sm-4">
           <div class="cc-field">
             <label for="bo_e{#}employerunit">Apt/Unit</label>
             <input type="text" tabindex="10" name="bo_e{#}employerunit" id="bo_e{#}employerunit" />
-          </div><!--field-->
-        </div>
+          </div>
+        </div>-->
 
       </div><!--row-->
 
       <div class="row">
         <div class="col-sm-4">
-          <div class="cc-field cc-validate cc-required">
+          <div class="cc-field cc-validate">
             <label for="bo_e{#}employercity">City </label>
             <input type="text" tabindex="12" class="typeahead_city{#}" name="bo_e{#}employercity" id="bo_e{#}employercity" />
             <div class="message cc-required">Required</div>
@@ -1135,7 +1129,7 @@
         </div>
 
         <div class="col-sm-4">
-          <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
+          <div class="cc-field cc-dropdown cc-validate state-dropdown">
             <label for="bo_e{#}state">State </label>
 
             <select name="bo_e{#}state" id="bo_e{#}state" class="typeahead_state{#}">
@@ -1147,7 +1141,7 @@
         </div>
 
         <div class="col-sm-4">
-          <div class="cc-field cc-validate cc-required cc-number">
+          <div class="cc-field cc-validate cc-number">
             <label for="bo_e{#}employerzip">Zip </label>
             <input type="tel" tabindex="11" class="numbers typeahead_zip{#}" maxlength="6" name="bo_e{#}employerzip" id="bo_e{#}employerzip" />
             <div class="message cc-required">Required</div>
@@ -1160,7 +1154,7 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <div class="cc-field cc-validate cc-required">
+          <div class="cc-field cc-validate">
             <label for="bo_e{#}jobtitle">Job Title</label>
             <input type="text" tabindex="9" name="bo_e{#}jobtitle" id="bo_e{#}jobtitle" placeholder="" />
             <div class="message cc-required">Required</div>
@@ -1171,7 +1165,7 @@
 
       <div class="row">
         <div class="col-sm-4">
-          <div class="cc-field cc-validate cc-required cc-date">
+          <div class="cc-field cc-validate cc-date">
             <label for="bo_e{#}employmentstartdate">Start Date</label>
             <input type="tel" class="date startDate{#}" tabindex="9" name="bo_e{#}employmentstartdate" id="bo_e{#}employmentstartdate" placeholder="mm/dd/yyyy" maxlength="10" data-index="{#}" />
             <div class="message cc-required">Required</div>
@@ -1181,7 +1175,7 @@
         </div>
 
         <div class="col-sm-4">
-          <div class="cc-field cc-validate cc-required cc-date cc-date-gt" data-date-gt="bo_e{#}employmentstartdate">
+          <div class="cc-field cc-validate cc-date cc-date-gt" data-date-gt="bo_e{#}employmentstartdate">
             <label for="bo_e{#}employmentenddate">End Date</label>
             <input type="tel" class="date endDate{#}" tabindex="9" name="bo_e{#}employmentenddate" id="bo_e{#}employmentenddate" placeholder="mm/dd/yyyy" maxlength="10" data-index="{#}" />
             <div class="message cc-required">Required</div>
@@ -1192,7 +1186,7 @@
         </div>
 
         <div class="col-sm-4">
-          <div class="cc-field cc-validate cc-required cc-numbers">
+          <div class="cc-field cc-validate cc-numbers">
             <label for="bo_e{#}yearslineofwork">Years in line of work</label>
             <input type="tel" class="numbers" tabindex="9" name="bo_e{#}yearslineofwork" id="bo_e{#}yearslineofwork"  maxlength="2" />
             <div class="message cc-required">Required</div>
@@ -1204,7 +1198,7 @@
 
       <div class="row">
         <div class="col-sm-3">
-          <div class="cc-field cc-validate cc-required cc-currency">
+          <div class="cc-field cc-validate cc-currency">
             <label for="bo_e{#}income">Base Income</label>
 
             <div class="cc-in-box-label">
@@ -1267,26 +1261,26 @@
   <a href="javascript:void(0);" class="close" data-index="{#index}"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div class="cc-field cc-validate cc-required">
+    <div class="col-xs-12 col-sm-12">
+      <div class="cc-field cc-validate">
         <label for="re_address{#id}">Street Address </label>
         <input type="text" tabindex="9" class="typeahead_address{#indexPlus}" name="re_address{#id}" id="re_address{#id}" placeholder=""  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
       </div><!--field-->
     </div>
 
-    <div class="col-xs-12 col-sm-4">
+    <!--<div class="col-xs-12 col-sm-4">
       <div class="cc-field">
         <label for="re_unit{#id}">Apt/Unit</label>
         <input type="text" tabindex="10" name="re_unit{#id}" id="re_unit{#id}"  data-index="{#index}"/>
-      </div><!--field-->
-    </div>
+      </div>
+    </div>-->
 
   </div><!--row-->
 
   <div class="row">
     <div class="col-sm-4">
-      <div class="cc-field cc-validate cc-required">
+      <div class="cc-field cc-validate">
         <label for="re_city{#id}">City </label>
         <input type="text" tabindex="12" class="typeahead_city{#indexPlus}" name="re_city{#id}" id="re_city{#id}"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -1294,7 +1288,7 @@
     </div>
 
     <div class="col-sm-4">
-      <div class="cc-field cc-dropdown cc-validate cc-required state-dropdown">
+      <div class="cc-field cc-dropdown cc-validate state-dropdown">
         <label for="re_state{#id}">State </label>
 
         <select name="re_state{#id}" id="re_state{#id}" class="typeahead_state{#indexPlus}" data-index="{#index}">
@@ -1306,7 +1300,7 @@
     </div>
 
     <div class="col-sm-4">
-      <div class="cc-field cc-validate cc-required cc-number">
+      <div class="cc-field cc-validate cc-number">
         <label for="re_zip{#id}">Zip </label>
         <input type="tel" tabindex="11" class="numbers typeahead_zip{#indexPlus}" maxlength="6" name="re_zip{#id}" id="re_zip{#id}"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -1319,7 +1313,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <div class="cc-field cc-validate cc-required cc-currency">
+      <div class="cc-field cc-validate cc-currency">
         <label for="re_gross{#id}">Gross Annual Rental Income?</label>
         <input type="tel" tabindex="9" class="currency" name="re_gross{#id}" id="re_gross{#id}" placeholder="" maxlength="7"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -1329,7 +1323,7 @@
     </div>
 
     <div class="col-xs-12 col-sm-6">
-      <div class="cc-field cc-validate cc-required cc-currency">
+      <div class="cc-field cc-validate cc-currency">
         <label for="re_presval{#id}">Estimate Property Value</label>
         <input type="tel" class="currency" tabindex="10" name="re_presval{#id}" id="re_presval{#id}" maxlength="11" data-index="{#index}" />
         <div class="message cc-required">Required</div>
@@ -1342,7 +1336,7 @@
 
   <div class="row">
     <div class="col-sm-6">
-      <div class="cc-field cc-radio cc-validate cc-required">
+      <div class="cc-field cc-radio cc-validate">
         <label for="re_hasmortgage{#id}_yes">Do you have mortgage on this property?</label>
         <div class="radio-yesno">
           <label><input type="radio" class="mortgageRadio{#id}" name="re_hasmortgage{#id}" value="yes" id="re_hasmortgage{#id}_yes" data-index="{#index}" /><span>Yes</span></label>
@@ -1356,7 +1350,7 @@
 
   <div class="row mortgage{#index}" style="display:none">
     <div class="col-sm-12">
-      <div class="cc-field cc-to-be-validate-mort{#index} cc-required">
+      <div class="cc-field cc-to-be-validate-mort{#index}">
         <label for="re_lender{#id}">Lender</label>
         <input type="text" tabindex="6" name="re_lender{#id}" id="re_lender{#id}" data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -1367,7 +1361,7 @@
 
   <div class="row  mortgage{#index}" style="display:none">
     <div class="col-sm-6">
-      <div class="cc-field cc-to-be-validate-mort{#index} cc-required cc-currency">
+      <div class="cc-field cc-to-be-validate-mort{#index} cc-currency">
         <label for="re_monthmort{#id}">Monthly Payment</label>
         <input type="tel" tabindex="6" class="currency" name="re_monthmort{#id}" id="re_monthmort{#id}" maxlength="7" data-index="{#index}"/>
         <div class="message cc-required">Required</div>
@@ -1377,7 +1371,7 @@
     </div>
 
     <div class="col-sm-6">
-      <div class="cc-field cc-to-be-validate-mort{#index} cc-required cc-currency">
+      <div class="cc-field cc-to-be-validate-mort{#index} cc-currency">
         <label for="re_mort{#id}">Balance Owned</label>
         <input type="tel" tabindex="6" class="currency" name="re_mort{#id}" id="re_mort{#id}" data-index="{#index}"/>
         <div class="message cc-required">Required</div>
