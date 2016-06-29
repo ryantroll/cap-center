@@ -80,27 +80,18 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 includeFields({selector:'.property', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({selector:'.property', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
 
-        $('input[name=ot_workingwith]').on('change', function(){
-            var val = $(this).val();
-            if(true === !!$(this).attr('checked') && val === 'yes'){
-                includeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-            else{
-                excludeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-        });
 
         $('input[name=de_citizen]').on('change', function(){
             var val = $(this).val();
             if(true === !!$(this).attr('checked') && val === 'no'){
                 includeFields({selector:'.resident', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({selector:'.resident', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
@@ -110,7 +101,7 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 includeFields({selector:'.ownership', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({selector:'.ownership, .property', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });

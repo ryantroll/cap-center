@@ -914,17 +914,6 @@ body.cc-body {
   font-size: 1em;
   font-weight: 400;
   text-transform: none; }
-  @media screen and (min-width: 768px) {
-    .cc-form .cc-radio.question label.question {
-      position: absolute;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-      margin-left: 40%;
-      padding-left: 1em;
-      width: 60%;
-      float: left; } }
 
 .cc-form .cc-checkbox .two-cols {
   border: 1px solid transparent;
@@ -982,6 +971,61 @@ body.cc-body {
   .cc-form .cc-checkbox .two-cols label.checked i {
     background-color: #50a54c; }
   .cc-form .cc-checkbox .two-cols input[type="checkbox"] {
+    position: absolute;
+    left: -50px; }
+
+.cc-form .cc-checkbox .one-col {
+  border: 1px solid transparent;
+  padding: 2px;
+  clear: both;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  /* future proofing */
+  -khtml-border-radius: 3px;
+  /* for old Konqueror browsers */ }
+  .cc-form .cc-checkbox .one-col:after {
+    display: block;
+    content: " ";
+    clear: both; }
+  .cc-form .cc-checkbox .one-col label {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #a89b94;
+    float: left;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 0 15px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1em;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 0; }
+    .cc-form .cc-checkbox .one-col label:nth-child(2n+2) {
+      border-right: none; }
+    .cc-form .cc-checkbox .one-col label i {
+      display: block;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      background-color: #fff;
+      color: #fff;
+      position: absolute;
+      right: 15px;
+      top: 12px;
+      -moz-border-radius: 15px;
+      -webkit-border-radius: 15px;
+      border-radius: 15px;
+      /* future proofing */
+      -khtml-border-radius: 15px;
+      /* for old Konqueror browsers */ }
+  .cc-form .cc-checkbox .one-col label.checked i {
+    background-color: #50a54c; }
+  .cc-form .cc-checkbox .one-col input[type="checkbox"] {
     position: absolute;
     left: -50px; }
 

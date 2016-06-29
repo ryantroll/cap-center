@@ -225,7 +225,7 @@
                 includeFields({selector:'.ret-401', validationClass:'.cc-to-be-validate-401'}); //// function in main.js
 
             }//// if
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({
                     selector:'.ret-401',
                     validationClass:'.cc-to-be-validate-401'
@@ -241,7 +241,7 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 includeFields({selector:'.ret-ira', validationClass:'.cc-to-be-validate-ira'}); //// function in main.js
             }//// if
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({
                     selector:'.ret-ira',
                     validationClass:'.cc-to-be-validate-ira'
@@ -257,7 +257,7 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 includeFields({selector:'.ret-pen', validationClass:'.cc-to-be-validate-pen'}); //// function in main.js
             }//// if
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({
                     selector:'.ret-pen',
                     validationClass:'.cc-to-be-validate-pen'
@@ -273,7 +273,7 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 includeFields({selector:'.ret-annuity', validationClass:'.cc-to-be-validate-annuity'}); //// function in main.js
             }//// if
-            else{
+            if(true === !!$(this).attr('checked') && val === 'no'){
                 excludeFields({
                     selector:'.ret-annuity',
                     validationClass:'.cc-to-be-validate-annuity'

@@ -140,6 +140,44 @@
             </div><!--row-->
 
             <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-radio cc-validate">
+                    <label class="" for="ot_workingwith_yes">Are you currently working with or do you wish to work with a specific CapCenter employee?</label>
+
+                  <div class="radio-yesno">
+                    <div class="half-width">
+                      <label><input type="radio" name="ot_workingwith" value="yes" id="ot_workingwith_yes" data-index="1" /><span>Yes</span></label>
+                      <label><input type="radio" name="ot_workingwith" value="no" id="ot_workingwith_no" data-index="1" /><span>No</span></label>
+                    </div>
+                  </div>
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row employee" style="display:none;">
+              <div class="col-sm-6">
+                <div class="cc-field cc-dropdown cc-to-be-validate">
+                  <label for="ot_workwith">Which one of our representatives do you wish to work with?</label>
+
+                  <select name="ot_workwith" id="ot_workwith" data-index="1">
+                    <option value="">Select</option>
+                    <option value="Fraser Davidson">Fraser Davidson</option>
+                    <option value="Jimmy Mouser">Jimmy Mouser</option>
+                    <option value="Pam Livesay">Pam Livesay</option>
+                    <option value="Stephanie Harrison">Stephanie Harrison</option>
+                    <option value="Wes Keating">Wes Keating</option>
+                    <option value="Consultant Not Listed">Consultant Not Listed</option>
+                  </select>
+                  <label for="ot_workwith" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                  <div class="message cc-required">Required</div>
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row">
                 <div class="col-sm-6">
                   <div class="title">
                     <h4>Tell us more about the property</h4>

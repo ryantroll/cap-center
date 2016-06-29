@@ -89,7 +89,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#agentContact', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({
                     selector:'#agentFields, #agentContact',
                     validationClass:'.cc-to-be-validate'
@@ -108,7 +108,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#agentFields', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#agentFields', validationClass:'.cc-to-be-validate'}); //// function in main.js
 
             }
@@ -124,7 +124,7 @@
             if(true === isProperty){
                 includeFields({selector:'.property-fields', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({
                     selector:'.property-fields, #subName, #closingDate, #monthlyHOA',
                     validationClass:'.cc-to-be-validate, .cc-to-be-validate-sub, .cc-to-be-validate-closing, .cc-to-be-validate-HOA'
@@ -141,7 +141,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#monthlyHOA', validationClass:'.cc-to-be-validate-HOA'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#monthlyHOA', validationClass:'.cc-to-be-validate-HOA'}); //// function in main.js
             }
         });
@@ -152,7 +152,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#closingDate', validationClass:'.cc-to-be-validate-closing'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#closingDate', validationClass:'.cc-to-be-validate-closing'}); //// function in main.js
             }
         });
@@ -163,8 +163,18 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#subName', validationClass:'.cc-to-be-validate-sub'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#subName', validationClass:'.cc-to-be-validate-sub'}); //// function in main.js
+            }
+        });
+
+        $('input[name=ot_workingwith]').on('change', function(){
+            var val = $(this).val();
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
+            }
+            else{
+                excludeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
     };//// purchaseReady

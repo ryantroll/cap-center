@@ -74,6 +74,36 @@
         .on('keydown', restrictCurrency)
         .on('keyup', formatCurrency);
 
+        $('input#bo_ck_noinfo').on('change', function(){
+            if(true === !!$(this).attr('checked')){
+                excludeFields({
+                    selector:'.borrower',
+                    validationClass:'.cc-to-be-validate-bo'
+                }); //// function in main.js
+            }
+            else{
+                includeFields({
+                    selector:'.borrower',
+                    validationClass:'.cc-to-be-validate-bo'
+                }); //// function in main.js
+            }
+        });
+
+        $('input#co_ck_noinfo').on('change', function(){
+            if(true === !!$(this).attr('checked')){
+                excludeFields({
+                    selector:'.coborrower',
+                    validationClass:'.cc-to-be-validate-co'
+                }); //// function in main.js
+            }
+            else{
+                includeFields({
+                    selector:'.coborrower',
+                    validationClass:'.cc-to-be-validate-co'
+                }); //// function in main.js
+            }
+        });
+
 
     };//// governmentReady
 })();

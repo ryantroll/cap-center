@@ -89,7 +89,7 @@
             if(val === 'no' && !!$(this).attr('checked')){
                 includeFields({selector:'.otherAddress', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'yes' && !!$(this).attr('checked')){
                 excludeFields({selector:'.otherAddress', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
@@ -103,7 +103,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#monthlyHOA', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#monthlyHOA', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
@@ -114,7 +114,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#dateOffMarket', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#dateOffMarket', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
@@ -125,7 +125,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#constructionBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#constructionBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
@@ -136,7 +136,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#trustBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#trustBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
@@ -147,7 +147,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#subName', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#subName', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
@@ -158,7 +158,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'.firstMortgage', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({
                     selector:'.firstMortgage, .secondMortgage, .credit-limit',
                     validationClass:'.cc-to-be-validate, .cc-to-be-validate-mortgage2, .cc-to-be-validate-cl'
@@ -172,7 +172,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'.secondMortgage', validationClass:'.cc-to-be-validate-mortgage2'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({
                     selector:'.secondMortgage, .credit-limit, #additionalLiens',
                     validationClass:'.cc-to-be-validate-mortgage2, .cc-to-be-validate-cl, .cc-to-be-validate-line'
@@ -186,7 +186,7 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'.credit-limit', validationClass:'.cc-to-be-validate-cl'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'.credit-limit', validationClass:'.cc-to-be-validate-cl'}); //// function in main.js
             }
         });
@@ -197,8 +197,18 @@
             if(val === 'yes' && !!$(this).attr('checked')){
                 includeFields({selector:'#additionalLiens', validationClass:'.cc-to-be-validate-lien'}); //// function in main.js
             }//// if
-            else{
+            if(val === 'no' && !!$(this).attr('checked')){
                 excludeFields({selector:'#additionalLiens', validationClass:'.cc-to-be-validate-lien'}); //// function in main.js
+            }
+        });
+
+        $('input[name=ot_workingwith]').on('change', function(){
+            var val = $(this).val();
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
+            }
+            if(true === !!$(this).attr('checked') && val === 'no'){
+                excludeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
         });
     };//// borrowerReady

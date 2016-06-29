@@ -1159,13 +1159,13 @@ body.cc-body{
             font-weight: 400;
             text-transform: none;
 
-            @media screen and (min-width:$wTablet){
-                @include mxVerticalAlign(absolute);
-                margin-left: 40%;
-                padding-left:1em;
-                width:60%;
-                float:left;
-            }
+            // @media screen and (min-width:$wTablet){
+            //     @include mxVerticalAlign(absolute);
+            //     margin-left: 40%;
+            //     padding-left:1em;
+            //     width:60%;
+            //     float:left;
+            // }
         }
     }
 
@@ -1233,6 +1233,70 @@ body.cc-body{
                 left:-50px;
             }//// input
         }//// .two-cols
+
+        .one-col{
+            border: 1px solid transparent;
+            padding:2px;
+            clear: both;
+            @include mxRoundCorners(3px);
+
+            &:after{
+                display: block;
+                content: " ";
+                clear: both;
+            }
+
+            label{
+                display: block;
+                width:100%;
+                height: 50px;
+                line-height: 50px;
+                background-color:$cBGMidGray;
+                float:left;
+                color:$cWhite;
+                position: relative;
+                overflow: hidden;
+                padding:0 15px;
+                cursor:pointer;
+                font-weight: 400;
+                font-size:1em;
+                border-bottom:1px solid $cWhite;
+                margin-bottom:0;
+
+                // @media screen and (min-width:$wTablet){
+                //     width:50%;
+                //     border-right:1px solid $cWhite;
+                // }
+
+                &:nth-child(2n+2){
+                    border-right:none;
+                }
+
+                i{
+                    display: block;
+                    width:25px;
+                    height: 25px;
+                    line-height: 25px;
+                    text-align: center;
+                    background-color:$cWhite;
+                    color:$cWhite;
+                    position:absolute;
+                    right:15px;
+                    top:12px;
+                    @include mxRoundCorners(15px);
+                }
+            }//// label
+
+            label.checked{
+                i{
+                    background-color:$cLightGreen;
+                }
+            }
+            input[type="checkbox"]{
+                position:absolute;
+                left:-50px;
+            }//// input
+        }//// .one-col
 
         .check-box{
             display: block;

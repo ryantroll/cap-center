@@ -80,60 +80,6 @@
 
                 <div class="row">
                   <div class="col-sm-12">
-                    <div class="cc-field cc-dropdown cc-required">
-                      <label for="di_goveth">Ethnicity</label>
-
-                      <select name="di_goveth" id="di_goveth" data-index="1">
-                        <option value="">Select</option>
-                        <option value="1">Hispanic or Latino</option>
-                        <option value="2">Not Hispanic or Latino</option>
-                      </select>
-                      <label for="di_goveth" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="cc-field cc-dropdown cc-required">
-                      <label for="di_govsex">Gender</label>
-
-                      <select name="di_govsex" id="di_govsex" data-index="1">
-                        <option value="">Select</option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                      </select>
-                      <label for="di_govsex" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="cc-field cc-dropdown cc-required">
-                      <label for="di_govrace">Race</label>
-
-                      <select name="di_govrace" id="di_govrace" data-index="1">
-                        <option value="">Select</option>
-                        <option value="1">American Indian or Alaska Native</option>
-                        <option value="2">Asian</option>
-                        <option value="3">Black or African American</option>
-                        <option value="4">Native Hawaiian or Other Pacific Islander</option>
-                        <option value="5">White</option>
-                      </select>
-                      <label for="di_govrace" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-12">
                     <div class="cc-field cc-checkbox">
 
                       <!-- <label for="de_q_1" class="visible-xs">I do not wish for this information to be used by the government in analyzing the results of these surveys</label> -->
@@ -141,12 +87,62 @@
                         <label class="check-box">
                           <i class="glyphicon glyphicon-ok"></i>
                           <input type="checkbox" id="bo_ck_noinfo" name="bo_ck_noinfo" value="yes"/>
-                          <span class="visible-xs"> I do not wish for this information to be used by the government in analyzing the results of these surveys</span>
+                          <span class="visible-xs"> I Don't wish to furnish this information</span>
                         </label>
 
-                        <label for="bo_ck_noinfo" class="visible-sm visible-md visible-lg">I do not wish for this information to be used by the government in analyzing the results of these surveys</label>
+                        <label for="bo_ck_noinfo" class="visible-sm visible-md visible-lg">I Don't wish to furnish this information</label>
                       </div>
                     </div><!--field-->
+
+                </div><!--row-->
+
+
+
+                <div class="row borrower">
+                  <div class="col-sm-12">
+                    <div class="cc-field cc-checkbox cc-to-be-validate-bo">
+                      <label for="">Ethnicity</label>
+                      <div class="one-col">
+                        <label><input type="checkbox" id="di_goveth_hispanic" name="di_goveth_hispanic" value="Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Hispanic or Latino</label>
+                        <label><input type="checkbox" id="di_goveth_not_hispanic" name="di_goveth_not_hispanic" value="Not Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Not Hispanic or Latino</label>
+                      </div>
+                    </div><!--field-->
+                  </div>
+
+                </div><!--row-->
+
+
+
+                <div class="row borrower">
+                  <div class="col-sm-12">
+                    <div class="cc-field cc-radio cc-to-be-validate-bo">
+                      <label for="di_govsex_male">Gender</label>
+
+                        <div class="radio-yesno">
+                          <label><input type="radio" name="di_govsex" value="male" id="di_govsex_male" /><span>Male</span></label>
+                          <label><input type="radio" name="di_govsex" value="female" id="di_govsex_female" /><span>Female</span></label>
+                        </div>
+
+                      <!-- <div class="message cc-required">Required</div> -->
+                    </div><!--field-->
+                  </div>
+
+                </div><!--row-->
+
+
+                <div class="row borrower">
+                  <div class="col-sm-12">
+                    <div class="cc-field cc-checkbox cc-to-be-validate-bo">
+                      <label for="">Race</label>
+                      <div class="one-col">
+                        <label><input type="checkbox" id="di_govrace_indian" name="di_govrace_indian" value="American Indian or Alaska Native"/><i class="glyphicon glyphicon-ok"></i>American Indian or Alaska Native</label>
+                        <label><input type="checkbox" id="di_govrace_asian" name="di_govrace_asian" value="Asian"/><i class="glyphicon glyphicon-ok"></i>Asian</label>
+                        <label><input type="checkbox" id="di_govrace_black" name="di_govrace_black" value="Black or African American"/><i class="glyphicon glyphicon-ok"></i>Black or African American</label>
+                        <label><input type="checkbox" id="di_govrace_hawaiian" name="di_govrace_hawaiian" value="Native Hawaiian or Other Pacific Islander"/><i class="glyphicon glyphicon-ok"></i>Native Hawaiian or Other Pacific Islander</label>
+                        <label><input type="checkbox" id="di_govrace_white" name="di_govrace_white" value="White"/><i class="glyphicon glyphicon-ok"></i>White</label>
+                      </div>
+                    </div><!--field-->
+                  </div>
 
                 </div><!--row-->
 
@@ -164,60 +160,6 @@
 
                 <div class="row">
                   <div class="col-sm-12">
-                    <div class="cc-field cc-dropdown cc-required">
-                      <label for="di_cogoveth">Ethnicity</label>
-
-                      <select name="di_cogoveth" id="di_cogoveth" data-index="1">
-                        <option value="">Select</option>
-                        <option value="1">Hispanic or Latino</option>
-                        <option value="2">Not Hispanic or Latino</option>
-                      </select>
-                      <label for="di_cogoveth" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="cc-field cc-dropdown cc-required">
-                      <label for="di_cogovsex">Gender</label>
-
-                      <select name="di_cogovsex" id="di_cogovsex" data-index="1">
-                        <option value="">Select</option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                      </select>
-                      <label for="di_cogovsex" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="cc-field cc-dropdown cc-required">
-                      <label for="di_cogovrace">Race</label>
-
-                      <select name="di_cogovrace" id="di_cogovrace" data-index="1">
-                        <option value="">Select</option>
-                        <option value="1">American Indian or Alaska Native</option>
-                        <option value="2">Asian</option>
-                        <option value="3">Black or African American</option>
-                        <option value="4">Native Hawaiian or Other Pacific Islander</option>
-                        <option value="5">White</option>
-                      </select>
-                      <label for="di_cogovrace" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                      <div class="message cc-required">Required</div>
-                    </div><!--field-->
-                  </div>
-
-                </div><!--row-->
-
-                <div class="row">
-                  <div class="col-sm-12">
                     <div class="cc-field cc-checkbox">
 
                       <!-- <label for="de_q_1" class="visible-xs">I do not wish for this information to be used by the government in analyzing the results of these surveys</label> -->
@@ -225,12 +167,61 @@
                         <label class="check-box">
                           <i class="glyphicon glyphicon-ok"></i>
                           <input type="checkbox" id="co_ck_noinfo" name="co_ck_noinfo" value="yes"/>
-                          <span class="visible-xs"> I do not wish for this information to be used by the government in analyzing the results of these surveys</span>
+                          <span class="visible-xs"> I Don't wish to furnish this information</span>
                         </label>
 
-                        <label for="co_ck_noinfo" class="visible-sm visible-md visible-lg">I do not wish for this information to be used by the government in analyzing the results of these surveys</label>
+                        <label for="co_ck_noinfo" class="visible-sm visible-md visible-lg">I Don't wish to furnish this information</label>
                       </div>
                     </div><!--field-->
+
+                </div><!--row-->
+
+
+                <div class="row coborrower">
+                  <div class="col-sm-12">
+                    <div class="cc-field cc-checkbox cc-to-be-validate-co">
+                      <label for="">Ethnicity</label>
+                      <div class="one-col">
+                        <label><input type="checkbox" id="di_cogoveth_hispanic" name="di_cogoveth_hispanic" value="Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Hispanic or Latino</label>
+                        <label><input type="checkbox" id="di_cogoveth_not_hispanic" name="di_cogoveth_not_hispanic" value="Not Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Not Hispanic or Latino</label>
+                      </div>
+                    </div><!--field-->
+                  </div>
+
+                </div><!--row-->
+
+
+
+                <div class="row coborrower">
+                  <div class="col-sm-12">
+                    <div class="cc-field cc-radio cc-to-be-validate-co">
+                      <label for="di_cogovsex_male">Gender</label>
+
+                        <div class="radio-yesno">
+                          <label><input type="radio" name="di_cogovsex" value="male" id="di_cogovsex_male" /><span>Male</span></label>
+                          <label><input type="radio" name="di_cogovsex" value="female" id="di_cogovsex_female" /><span>Female</span></label>
+                        </div>
+
+                      <!-- <div class="message cc-required">Required</div> -->
+                    </div><!--field-->
+                  </div>
+
+                </div><!--row-->
+
+
+                <div class="row coborrower">
+                  <div class="col-sm-12">
+                    <div class="cc-field cc-checkbox cc-to-be-validate-co">
+                      <label for="">Race</label>
+                      <div class="one-col">
+                        <label><input type="checkbox" id="di_cogovrace_indian" name="di_cogovrace_indian" value="American Indian or Alaska Native"/><i class="glyphicon glyphicon-ok"></i>American Indian or Alaska Native</label>
+                        <label><input type="checkbox" id="di_cogovrace_asian" name="di_cogovrace_asian" value="Asian"/><i class="glyphicon glyphicon-ok"></i>Asian</label>
+                        <label><input type="checkbox" id="di_cogovrace_black" name="di_cogovrace_black" value="Black or African American"/><i class="glyphicon glyphicon-ok"></i>Black or African American</label>
+                        <label><input type="checkbox" id="di_cogovrace_hawaiian" name="di_cogovrace_hawaiian" value="Native Hawaiian or Other Pacific Islander"/><i class="glyphicon glyphicon-ok"></i>Native Hawaiian or Other Pacific Islander</label>
+                        <label><input type="checkbox" id="di_cogovrace_white" name="di_cogovrace_white" value="White"/><i class="glyphicon glyphicon-ok"></i>White</label>
+                      </div>
+                    </div><!--field-->
+                  </div>
 
                 </div><!--row-->
 
