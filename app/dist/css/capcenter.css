@@ -1161,6 +1161,12 @@ body.cc-body {
     .cc-form input[type="button"].green:hover,
     .cc-form .cc-btn.green:hover {
       background-color: #046e3d; }
+  .cc-form button .icon,
+  .cc-form input[type="button"] .icon,
+  .cc-form .cc-btn .icon {
+    display: inline-block;
+    vertical-align: -1px;
+    margin-right: 5px; }
 
 /**
  * ****************************************************************

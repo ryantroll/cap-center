@@ -377,7 +377,7 @@ function yesNoRadio(container){
    * Add circle check mark to radio button label
    */
   radios.each(function(){
-    $(this).parent().find('span').prepend('<i class="circle glyphicon glyphicon-ok"></i>')
+    $(this).parent().not('.no-icon').find('span').prepend('<i class="circle glyphicon glyphicon-ok"></i>')
   })
 
   /**

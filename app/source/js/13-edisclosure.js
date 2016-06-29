@@ -74,6 +74,21 @@
         .on('keydown', restrictCurrency)
         .on('keyup', formatCurrency);
 
+        $('#moreBtn').on('click', function(ev){
+            if(ev.preventDefault) ev.preventDefault(); else ev.returnValue = false;
+
+            if($(this).hasClass('expanded')){
+                $('.more').slideUp();
+                $(this).removeClass('expanded').find('span').text('Read More');
+                $(this).find('.icon').eq(0).removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down')
+            }
+            else{
+                $('.more').slideDown();
+                $(this).addClass('expanded').find('span').text('Read Less');
+                $(this).find('.icon').eq(0).addClass('glyphicon-arrow-up').removeClass('glyphicon-arrow-down')
+            }
+        });
+
 
     };//// edisclosureReady
 })();
