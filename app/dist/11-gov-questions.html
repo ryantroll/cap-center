@@ -100,12 +100,17 @@
 
                 <div class="row borrower">
                   <div class="col-sm-12">
-                    <div class="cc-field cc-checkbox cc-to-be-validate-bo">
-                      <label for="">Ethnicity</label>
-                      <div class="one-col">
-                        <label><input type="checkbox" id="di_goveth_hispanic" name="di_goveth_hispanic" value="Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Hispanic or Latino</label>
-                        <label><input type="checkbox" id="di_goveth_not_hispanic" name="di_goveth_not_hispanic" value="Not Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Not Hispanic or Latino</label>
-                      </div>
+                    <div class="cc-field cc-dropdown cc-validate">
+                      <label for="di_goveth">Ethnicity</label>
+
+                      <select id="di_goveth" name="di_goveth">
+                        <option value="">Please Select</option>
+                        <option value="Hispanic or Latino">Hispanic or Latino</option>
+                        <option value="Not Hispanic or Latino">Not Hispanic or Latino</option>
+                      </select>
+                      <label for="di_goveth" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                      <div class="message cc-required">Required</div>
+
                     </div><!--field-->
                   </div>
 
@@ -179,12 +184,17 @@
 
                 <div class="row coborrower">
                   <div class="col-sm-12">
-                    <div class="cc-field cc-checkbox cc-to-be-validate-co">
-                      <label for="">Ethnicity</label>
-                      <div class="one-col">
-                        <label><input type="checkbox" id="di_cogoveth_hispanic" name="di_cogoveth_hispanic" value="Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Hispanic or Latino</label>
-                        <label><input type="checkbox" id="di_cogoveth_not_hispanic" name="di_cogoveth_not_hispanic" value="Not Hispanic or Latino"/><i class="glyphicon glyphicon-ok"></i>Not Hispanic or Latino</label>
-                      </div>
+                    <div class="cc-field cc-dropdown cc-validate">
+                      <label for="di_cogoveth">Ethnicity</label>
+
+                      <select id="di_cogoveth" name="di_cogoveth">
+                        <option value="">Please Select</option>
+                        <option value="Hispanic or Latino">Hispanic or Latino</option>
+                        <option value="Not Hispanic or Latino">Not Hispanic or Latino</option>
+                      </select>
+                      <label for="di_cogoveth" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                      <div class="message cc-required">Required</div>
+
                     </div><!--field-->
                   </div>
 

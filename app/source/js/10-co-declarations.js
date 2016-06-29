@@ -79,9 +79,10 @@
             if(true === !!$(this).attr('checked') && val === 'no'){
                 includeFields({selector:'.alien', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
-            else{
+            if(true === !!$(this).attr('checked') && val === 'yes'){
                 excludeFields({selector:'.alien', validationClass:'.cc-to-be-validate'}); //// function in main.js
             }
+
         });
 
         $('input[name=de_co_bprimary]').on('change', function(){

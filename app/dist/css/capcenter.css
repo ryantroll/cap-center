@@ -1168,6 +1168,14 @@ body.cc-body {
     vertical-align: -1px;
     margin-right: 5px; }
 
+.cc-form hr {
+  border-color: #a89b94;
+  margin-top: 0;
+  margin-bottom: 15px; }
+
+.cc-form label {
+  font-weight: 400; }
+
 /**
  * ****************************************************************
  * CONFIRMATION ***************************************************

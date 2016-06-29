@@ -75,37 +75,132 @@
         .on('keyup', formatCurrency);
 
 
-        $('input[name=de_ownership]').on('change', function(){
-            var val = $(this).val();
-            if(true === !!$(this).attr('checked') && val === 'yes'){
-                includeFields({selector:'.property', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-            if(true === !!$(this).attr('checked') && val === 'no'){
-                excludeFields({selector:'.property', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-        });
-
-
         $('input[name=de_citizen]').on('change', function(){
             var val = $(this).val();
             if(true === !!$(this).attr('checked') && val === 'no'){
-                includeFields({selector:'.resident', validationClass:'.cc-to-be-validate'}); //// function in main.js
+                $('.cc-to-be-validate-bo').addClass("cc-validate").show();
+                $('.resident').slideDown();
             }
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                //// check the co-borrower if answer is no so slide up the otherwise so straight hide
+                if(false === !!$('input#de_co_citizen_no').attr('checked')){
+                    $('.resident').slideUp(function(){
+                        $('.cc-to-be-validate-bo').removeClass("cc-validate").hide();
+                    });
+                }
+                else{
+                    $('.cc-to-be-validate-bo').removeClass("cc-validate").hide();
+                }
+            }
+        });
+
+        $('input[name=de_co_citizen]').on('change', function(){
+            var val = $(this).val();
             if(true === !!$(this).attr('checked') && val === 'no'){
-                excludeFields({selector:'.resident', validationClass:'.cc-to-be-validate'}); //// function in main.js
+                $('.cc-to-be-validate-co').addClass("cc-validate").show();
+                $('.resident').slideDown();
+                // includeFields({selector:'.resident, .cc-to-be-validate-co', validationClass:'.cc-to-be-validate-co'}); //// function in main.js
+            }
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                //// check the borrower if answer is no so slide up the otherwise so straight hide
+                if(false === !!$('input#de_citizen_no').attr('checked')){
+                    $('.resident').slideUp(function(){
+                        $('.cc-to-be-validate-co').removeClass("cc-validate").hide();
+                    });
+                }
+                else{
+                    $('.cc-to-be-validate-co').removeClass("cc-validate").hide();
+                }
             }
         });
 
         $('input[name=de_bprimary]').on('change', function(){
             var val = $(this).val();
             if(true === !!$(this).attr('checked') && val === 'yes'){
-                includeFields({selector:'.ownership', validationClass:'.cc-to-be-validate'}); //// function in main.js
+                $('.cc-to-be-validate-own-bo').addClass('cc-validate').show();
+                $('.ownership').slideDown();
             }
             if(true === !!$(this).attr('checked') && val === 'no'){
-                excludeFields({selector:'.ownership, .property', validationClass:'.cc-to-be-validate'}); //// function in main.js
+                if(false === !!$('input#de_co_bprimary_yes').attr('checked')){
+                    $('.ownership').slideUp(function(){
+                        $('.cc-to-be-validate-own-bo').removeClass("cc-validate").hide();
+                        $('#boProperty').hide().find('.cc-to-be-validate-pro-bo').removeClass("cc-validate");
+                        resetFields($('#boProperty, .ownership'));
+                    });
+                }
+                else{
+                    $('.cc-to-be-validate-own-bo').removeClass("cc-validate").hide();
+                    $('#boProperty').hide().find('.cc-to-be-validate-pro-bo').removeClass("cc-validate");
+                    resetFields($('#boProperty, .ownership'));
+                }
             }
         });
 
+        $('input[name=de_co_bprimary]').on('change', function(){
+            var val = $(this).val();
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                $('.cc-to-be-validate-own-co').addClass('cc-validate').show();
+                $('.ownership').slideDown();
+            }
+            if(true === !!$(this).attr('checked') && val === 'no'){
+                if(false === !!$('input#de_bprimary_yes').attr('checked')){
+                    $('.ownership, .property').slideUp(function(){
+                        $('.cc-to-be-validate-own-co').removeClass("cc-validate").hide();
+                        $('#coProperty').hide().find('.cc-to-be-validate-pro-co').removeClass("cc-validate");
+                        resetFields($('#coProperty, .ownership'));
+                    });
+                }
+                else{
+                    $('.cc-to-be-validate-own-co').removeClass("cc-validate").hide();
+                    $('#coProperty').hide().find('.cc-to-be-validate-pro-co').removeClass("cc-validate");
+                    resetFields($('#coProperty, .ownership'));
+                }
+            }
+        });
+
+        $('input[name=de_ownership]').on('change', function(){
+            var val = $(this).val();
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+
+                $('#boProperty').show().find('.cc-to-validate-pro-bo').addClass('cc-validate');
+                $('.property').slideDown();
+
+            }
+            if(true === !!$(this).attr('checked') && val === 'no'){
+
+                if(false === !!$('input#de_co_ownership_yes').attr('checked')){
+                    $('.property').slideUp(function(){
+                        $('.cc-to-be-validate-pro-bo').removeClass("cc-validate").hide();
+                        resetFields($('#boProperty'));
+
+                    });
+                }
+                else{
+                    $('#boProperty').hide().find('.cc-to-be-validate-pro-bo').removeClass("cc-validate");
+                    resetFields($('#boProperty'));
+                }
+            }
+        });
+
+        $('input[name=de_co_ownership]').on('change', function(){
+            var val = $(this).val();
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                $('#coProperty').show().find('.cc-to-validate-pro-co').addClass('cc-validate');
+                $('.property').slideDown();
+            }
+            if(true === !!$(this).attr('checked') && val === 'no'){
+                if(false === !!$('input#de_ownership_yes').attr('checked')){
+                    $('.property').slideUp(function(){
+                        $('.cc-to-be-validate-pro-co').removeClass("cc-validate").hide();
+                        resetFields($('#coProperty'));
+                    });
+                }
+                else{
+                    $('#coProperty').hide().find('.cc-to-be-validate-pro-bo').removeClass("cc-validate");
+                    resetFields($('#coProperty'));
+                }
+            }
+        });
 
     };//// declarationsReady
 })();

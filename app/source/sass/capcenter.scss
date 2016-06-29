@@ -805,6 +805,8 @@ body.cc-body{
         }
     }
 
+
+
     .cc-form-section{
         padding:15px;
         position:relative;
@@ -1448,6 +1450,16 @@ body.cc-body{
             margin-right: 5px;
         }
     }//// button
+
+    hr{
+        border-color:$cBGMidGray;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    label{
+        font-weight: 400;
+    }
 
 }//// .cc-form
 
