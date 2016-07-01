@@ -507,6 +507,10 @@ function checkEmploymentDate(ev){
         var years = Math.floor( dif / (365 * 24 * 60 * 60 * 1000) );
         dif -= years*(365 * 24 * 60 * 60 * 1000);
         var months = Math.floor( dif / (30 * 24 * 60 * 60 * 1000)  );
+        if(months === 12){
+            months =0;
+            ++years;
+        }
         $('.addressLengthM'+(index===0?'':index)).eq(0).val(months);
         $('.addressLengthY'+(index===0?'':index)).eq(0).val(years);
     }
