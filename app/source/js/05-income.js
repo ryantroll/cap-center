@@ -498,6 +498,18 @@ function checkEmploymentDate(ev){
             removeEmployer(index+1)
         }
     }//// else
+
+    /**
+     * Do time difference
+     */
+    if(endDate > startDate){
+        var dif = endDate - startDate;
+        var years = Math.floor( dif / (365 * 24 * 60 * 60 * 1000) );
+        dif -= years*(365 * 24 * 60 * 60 * 1000);
+        var months = Math.floor( dif / (30 * 24 * 60 * 60 * 1000)  );
+        $('.addressLengthM'+(index===0?'':index)).eq(0).val(months);
+        $('.addressLengthY'+(index===0?'':index)).eq(0).val(years);
+    }
 }//// fun. checkEmplymentDate
 
 function addRent(){

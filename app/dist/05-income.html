@@ -217,10 +217,10 @@
                   <label for="em_years">Length of employment</label>
 
                   <div class="cc-address-length">
-                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="em_years" id="em_years" maxlength="2" data-address="1" />
+                    <input type="tel" tabindex="14" class="numbers addressLengthY1" name="em_years" id="em_years" maxlength="2" data-address="1" />
                     <label class="label1" for="em_years">Years</label>
                     <div class="slash">/</div>
-                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="em_months" id="em_months" maxlength="2" data-address="1" />
+                    <input type="tel" tabindex="14" class="numbers addressLengthM1" name="em_months" id="em_months" maxlength="2" data-address="1" />
                     <label class="label1" for="em_months">Months</label>
                   </div>
 
@@ -1218,7 +1218,7 @@
       </div><!--row-->
 
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="cc-field cc-validate cc-date">
             <label for="bo_e{#}employmentstartdate">Start Date</label>
             <input type="tel" class="date startDate{#}" tabindex="9" name="bo_e{#}employmentstartdate" id="bo_e{#}employmentstartdate" placeholder="mm/dd/yyyy" maxlength="10" data-index="{#}" />
@@ -1228,7 +1228,7 @@
           </div><!--field-->
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="cc-field cc-validate cc-date cc-date-gt" data-date-gt="bo_e{#}employmentstartdate">
             <label for="bo_e{#}employmentenddate">End Date</label>
             <input type="tel" class="date endDate{#}" tabindex="9" name="bo_e{#}employmentenddate" id="bo_e{#}employmentenddate" placeholder="mm/dd/yyyy" maxlength="10" data-index="{#}" />
@@ -1239,7 +1239,25 @@
           </div><!--field-->
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+          <div class="cc-field cc-validate cc-number">
+            <label for="bo_e{#}employmentdurationyears">Length of employment</label>
+
+            <div class="cc-address-length">
+              <input type="tel" tabindex="14" class="numbers addressLengthY{#}" name="bo_e{#}employmentdurationyears" id="bo_e{#}employmentdurationyears" maxlength="2" data-address="{#}" />
+              <label class="label1" for="bo_e{#}employmentdurationyears">Years</label>
+              <div class="slash">/</div>
+              <input type="tel" tabindex="14" class="numbers addressLengthM{#}" name="bo_e{#}employmentdurationmonths" id="bo_e{#}employmentdurationmonths" maxlength="2" data-address="{#}" />
+              <label class="label1" for="bo_e{#}employmentdurationmonths">Months</label>
+            </div>
+
+            <div class="message cc-required">Required</div>
+            <div class="message cc-number">Invalid number</div>
+            <div class="message cc-numbers-only">Numbers Only</div>
+          </div><!--field-->
+        </div>
+
+        <div class="col-sm-3">
           <div class="cc-field cc-validate cc-numbers">
             <label for="bo_e{#}yearslineofwork">Years in line of work</label>
             <input type="tel" class="numbers" tabindex="9" name="bo_e{#}yearslineofwork" id="bo_e{#}yearslineofwork"  maxlength="2" />
