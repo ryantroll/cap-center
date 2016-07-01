@@ -196,8 +196,8 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-required cc-phone">
-                  <label for="bo_phone1">Phone</label>
-                  <input type="tel" tabindex="7" name="bo_phone1" id="bo_phone1" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
+                  <label for="bo_phone">Phone</label>
+                  <input type="tel" tabindex="7" name="bo_phone" id="bo_phone" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-phone">Invalid Phone Number</div>
                   <div class="message cc-numbers-only">Numbers only</div>
@@ -206,8 +206,8 @@
 
               <div class="col-sm-6">
                 <div class="cc-field cc-phone">
-                  <label for="bo_cphone1">Mobile Phone </label>
-                  <input type="tel" tabindex="8" name="bo_cphone1" id="bo_cphone1" class="phone" maxlength="14"  placeholder="(xxx) xxx-xxxx" />
+                  <label for="bo_cphone">Mobile Phone </label>
+                  <input type="tel" tabindex="8" name="bo_cphone" id="bo_cphone" class="phone" maxlength="14"  placeholder="(xxx) xxx-xxxx" />
                   <div class="message cc-phone">Invalid Phone Number</div>
                   <div class="message cc-numbers-only">Numbers only</div>
                 </div>
@@ -309,10 +309,10 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="bo_propertyusage_own">CURRENTLY</label>
+                  <label for="bo_ownrent_own">CURRENTLY</label>
                   <div class="radio-yesno">
-                    <label><input type="radio" name="bo_currently" value="own" id="bo_currently_own" /><span>Own</span></label>
-                    <label><input type="radio" name="bo_currently" value="rent" id="bo_currently_rent" /><span>Rent</span></label>
+                    <label><input type="radio" name="bo_ownrent" value="own" id="bo_ownrent_own" /><span>Own</span></label>
+                    <label><input type="radio" name="bo_ownrent" value="rent" id="bo_ownrent_rent" /><span>Rent</span></label>
                   </div>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
@@ -675,16 +675,16 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8">
         <div class="cc-field cc-required cc-to-be-validate">
-          <label for="bo_address{#}">Street Address </label>
-          <input type="text" tabindex="17"  class="typeahead_address{#}" name="bo_formeraddress{#}" id="bo_address{#}" placeholder=""/>
+          <label for="bo_formeraddress{#}">Street Address </label>
+          <input type="text" tabindex="17"  class="typeahead_address{#}" name="bo_formeraddress{#}" id="bo_formeraddress{#}" placeholder=""/>
         <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
 
       <div class="col-xs-12 col-sm-4">
         <div class="cc-field cc-required">
-          <label for="bo_unit{#}">Apt/Unit </label>
-          <input type="text" tabindex="18" name="bo_formerunit{#}" id="bo_unit{#}" />
+          <label for="bo_formerunit{#}">Apt/Unit </label>
+          <input type="text" tabindex="18" name="bo_formerunit{#}" id="bo_formerunit{#}" />
         <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
@@ -694,28 +694,28 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="cc-field cc-required cc-to-be-validate">
-          <label for="bo_city{#}">City </label>
-          <input type="text" tabindex="20" class="typeahead_city{#}" name="bo_formercity{#}" id="bo_city{#}" />
+          <label for="bo_formercity{#}">City </label>
+          <input type="text" tabindex="20" class="typeahead_city{#}" name="bo_formercity{#}" id="bo_formercity{#}" />
         <div class="message cc-required">Required</div>
         </div><!--field-->
       </div>
 
       <div class="col-sm-4">
           <div class="cc-field cc-dropdown cc-to-be-validate cc-required state-dropdown">
-            <label for="bo_state{#}">State </label>
+            <label for="bo_formerstate{#}">State </label>
 
-            <select name="bo_formerstate{#}" id="bo_state{#}" class="typeahead_state{#}">
+            <select name="bo_formerstate{#}" id="bo_formerstate{#}" class="typeahead_state{#}">
               <option value="">Select</option>
             </select>
-            <label for="bo_state{#}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+            <label for="bo_formerstate{#}" class="arrow glyphicon glyphicon-triangle-bottom"></label>
             <div class="message cc-required">Required</div>
           </div><!--field-->
         </div>
 
       <div class="col-sm-4">
         <div class="cc-field cc-to-be-validate cc-required cc-number">
-          <label for="bo_zip{#}">Zip </label>
-          <input type="tel" tabindex="19" class="numbers typeahead_zip{#}" maxlength="6" name="bo_formerzip{#}" id="bo_zip{#}" />
+          <label for="bo_formerzip{#}">Zip </label>
+          <input type="tel" tabindex="19" class="numbers typeahead_zip{#}" maxlength="6" name="bo_formerzip{#}" id="bo_formerzip{#}" />
         <div class="message cc-required">Required</div>
         <div class="message cc-number">Numbers only</div>
         <div class="message cc-numbers-only">Numbers Only</div>
@@ -727,14 +727,14 @@
     <div class="row">
               <div class="col-sm-4">
                 <div class="cc-field cc-required cc-to-be-validate cc-number">
-                  <label for="bo_time_year{#}">Time At Address </label>
+                  <label for="bo_formertime_year{#}">Time At Address </label>
 
                   <div class="cc-address-length">
-                    <input type="tel" tabindex="14" class="numbers addressLengthY{#}" name="bo_time_year{#}" id="bo_time_year{#}" maxlength="2" data-address="{#}" />
-                    <label class="label1" for="bo_time_year{#}">Years</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthY{#}" name="bo_formertime_year{#}" id="bo_formertime_year{#}" maxlength="2" data-address="{#}" />
+                    <label class="label1" for="bo_formertime_year{#}">Years</label>
                     <div class="slash">/</div>
-                    <input type="tel" tabindex="14" class="numbers addressLengthM{#}" name="bo_time_month{#}" id="bo_time_month{#}" maxlength="2" data-address="{#}" />
-                    <label class="label1" for="bo_time_month{#}">Months</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthM{#}" name="bo_formertime_month{#}" id="bo_formertime_month{#}" maxlength="2" data-address="{#}" />
+                    <label class="label1" for="bo_formertime_month{#}">Months</label>
                   </div>
 
                   <div class="message cc-required">Required</div>

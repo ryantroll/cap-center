@@ -170,7 +170,7 @@
         var template = liabilityTemplate.replace(/(\{\#index\})/g, liabilityIndex);
 
         var id = liabilitiesArray.length;
-        template = template.replace(/(\{\#id\})/g, id);
+        template = template.replace(/(\{\#id\})/g, id + 1); ///// +1 to keep the fields names compatible with data dictionary
 
 
         var liability = $(template);
@@ -236,7 +236,7 @@
 
             assetDiv.find('input').each(function(z){
                 var name = $(this).attr('name');
-                var newName = name.replace(/\d{1,2}/g, x+1);
+                var newName = name.replace(/\d{1,2}/g, x+1 + 1); ///// +1 to keep the fields names compatible with data dictionary
                 var label = $('label[for=' + name + ']');
                 $(this).attr({name:newName, id:newName});
                 label.attr('for', newName);

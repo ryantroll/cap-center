@@ -137,7 +137,7 @@
         /**
          * Check change of radio button current address own/rent
          */
-        $('input[name=bo_currently]').on('change', function(){
+        $('input[name=bo_ownrent]').on('change', function(){
             var val = $(this).val();
             var rentCol = $('#monthlyRent');
             var container = rentCol.find('.cc-field').eq(0);

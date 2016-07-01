@@ -318,7 +318,7 @@
         _appGlobal.estatesArray.push(_appGlobal.estateIndex);
         var template = _appGlobal.estateTemplate.replace(/(\{\#index\})/g, _appGlobal.estateIndex);
 
-        var id = _appGlobal.estatesArray.length;
+        var id = _appGlobal.estatesArray.length + 6; ///// +6 to keep the fields names compatible with data dictionary
         template = template.replace(/(\{\#id\})/g, id);
 
 
@@ -384,7 +384,7 @@
 
             estateDiv.find('input').each(function(z){
                 var name = $(this).attr('name');
-                var newName = name.replace(/\d{1,2}/g, x+1);
+                var newName = name.replace(/\d{1,2}/g, x+1 + 6);  ///// +6 to keep the fields names compatible with data dictionary
                 var label = $('label[for=' + name + ']');
                 $(this).attr({name:newName, id:newName});
                 label.attr('for', newName);

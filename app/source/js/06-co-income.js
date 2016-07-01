@@ -218,7 +218,7 @@
         })
         .trigger('change');
 
-        $('input[name=co_have_401]').on('change', function(){
+        $('input[name=em_co_retirement1]').on('change', function(){
             var val = $(this).val().toLowerCase();
 
             if(true === !!$(this).attr('checked') && val === 'yes'){
@@ -235,7 +235,7 @@
         })
         .trigger('change');
 
-        $('input[name=co_have_ira]').on('change', function(){
+        $('input[name=em_co_retirement2]').on('change', function(){
             var val = $(this).val().toLowerCase();
 
             if(true === !!$(this).attr('checked') && val === 'yes'){
@@ -251,7 +251,7 @@
         })
         .trigger('change');
 
-        $('input[name=co_have_pen]').on('change', function(){
+        $('input[name=em_co_retirement3]').on('change', function(){
             var val = $(this).val().toLowerCase();
 
             if(true === !!$(this).attr('checked') && val === 'yes'){
@@ -267,7 +267,7 @@
         })
         .trigger('change');
 
-        $('input[name=co_have_annuity]').on('change', function(){
+        $('input[name=em_co_retirement4]').on('change', function(){
             var val = $(this).val().toLowerCase();
 
             if(true === !!$(this).attr('checked') && val === 'yes'){

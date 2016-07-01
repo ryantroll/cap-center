@@ -121,8 +121,8 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate-em cc-phone">
-                  <label for="em_co_phone1">Employer Phone</label>
-                  <input type="tel" tabindex="1" class="phone" name="em_co_phone1" id="em_co_phone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
+                  <label for="em_co_phone">Employer Phone</label>
+                  <input type="tel" tabindex="1" class="phone" name="em_co_phone" id="em_co_phone" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
                   <div class="message cc-phone">Invalid phone number</div>
@@ -134,8 +134,8 @@
             <div class="row employment" style="display:none;">
               <div class="col-xs-12 col-sm-12">
                 <div class="cc-field cc-to-be-validate-em">
-                  <label for="rf_address">Street Address </label>
-                  <input type="text" tabindex="9" class="typeahead_address" name="rf_address" id="rf_address" placeholder="" />
+                  <label for="em_co_address">Street Address </label>
+                  <input type="text" tabindex="9" class="typeahead_address" name="em_co_address" id="em_co_address" placeholder="" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
@@ -152,28 +152,28 @@
             <div class="row employment" style="display:none;">
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate-em">
-                  <label for="rf_city">City </label>
-                  <input type="text" tabindex="12" class="typeahead_city" name="rf_city" id="rf_city" />
+                  <label for="em_co_city">City </label>
+                  <input type="text" tabindex="12" class="typeahead_city" name="em_co_city" id="em_co_city" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
               <div class="col-sm-4">
                 <div class="cc-field cc-dropdown cc-to-be-validate-em state-dropdown">
-                  <label for="rf_state">State </label>
+                  <label for="em_co_state">State </label>
 
-                  <select name="rf_state" id="rf_state" class="typeahead_state">
+                  <select name="em_co_state" id="em_co_state" class="typeahead_state">
                     <option value="">Select</option>
                   </select>
-                  <label for="rf_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                  <label for="em_co_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate-em cc-number">
-                  <label for="rf_zip">Zip </label>
-                  <input type="tel" tabindex="11" class="numbers typeahead_zip" maxlength="6" name="rf_zip" id="rf_zip" />
+                  <label for="em_co_zip">Zip </label>
+                  <input type="tel" tabindex="11" class="numbers typeahead_zip" maxlength="6" name="em_co_zip" id="em_co_zip" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-number">Invalid ZIP code</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
@@ -216,14 +216,14 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-validate cc-number">
-                  <label for="em_co_length_year">Length of employment</label>
+                  <label for="em_co_years">Length of employment</label>
 
                   <div class="cc-address-length">
-                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="em_co_length_year" id="em_co_length_year" maxlength="2" data-address="1" />
-                    <label class="label1" for="em_co_length_year">Years</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="em_co_years" id="em_co_years" maxlength="2" data-address="1" />
+                    <label class="label1" for="em_co_years">Years</label>
                     <div class="slash">/</div>
-                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="em_co_length_month" id="em_co_length_month" maxlength="2" data-address="1" />
-                    <label class="label1" for="em_co_length_month">Months</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="em_co_months" id="em_co_months" maxlength="2" data-address="1" />
+                    <label class="label1" for="em_co_months">Months</label>
                   </div>
 
                   <div class="message cc-required">Required</div>
@@ -330,8 +330,8 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate-self cc-phone">
-                  <label for="e3_co_phone1">Business Phone</label>
-                  <input type="tel" tabindex="1" class="phone" name="e3_co_phone1" id="e3_co_phone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
+                  <label for="e3_co_phone">Business Phone</label>
+                  <input type="tel" tabindex="1" class="phone" name="e3_co_phone" id="e3_co_phone" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
                   <div class="message cc-phone">Invalid phone number</div>
@@ -425,14 +425,14 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-validate cc-number">
-                  <label for="e3_co_length_year">Length of employment</label>
+                  <label for="e3_co_years">Length of employment</label>
 
                   <div class="cc-address-length">
-                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="e3_co_length_year" id="e3_co_length_year" maxlength="2" data-address="1" />
-                    <label class="label1" for="e3_co_length_year">Years</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="e3_co_years" id="e3_co_years" maxlength="2" data-address="1" />
+                    <label class="label1" for="e3_co_years">Years</label>
                     <div class="slash">/</div>
-                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="e3_co_length_month" id="e3_co_length_month" maxlength="2" data-address="1" />
-                    <label class="label1" for="e3_co_length_month">Months</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="e3_co_months" id="e3_co_months" maxlength="2" data-address="1" />
+                    <label class="label1" for="e3_co_months">Months</label>
                   </div>
 
                   <div class="message cc-required">Required</div>
@@ -512,8 +512,8 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate-additional cc-phone">
-                  <label for="e2_co_phone1">Employer Phone</label>
-                  <input type="tel" tabindex="1" class="phone" name="e2_co_phone1" id="e2_co_phone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
+                  <label for="e2_co_phone">Employer Phone</label>
+                  <input type="tel" tabindex="1" class="phone" name="e2_co_phone" id="e2_co_phone" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
                   <div class="message cc-phone">Invalid phone number</div>
@@ -607,14 +607,14 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-validate cc-number">
-                  <label for="e2_co_length_year">Length of employment</label>
+                  <label for="e2_co_years">Length of employment</label>
 
                   <div class="cc-address-length">
-                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="e2_co_length_year" id="e2_co_length_year" maxlength="2" data-address="1" />
-                    <label class="label1" for="e2_co_length_year">Years</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthY" name="e2_co_years" id="e2_co_years" maxlength="2" data-address="1" />
+                    <label class="label1" for="e2_co_years">Years</label>
                     <div class="slash">/</div>
-                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="e2_co_length_month" id="e2_co_length_month" maxlength="2" data-address="1" />
-                    <label class="label1" for="e2_co_length_month">Months</label>
+                    <input type="tel" tabindex="14" class="numbers addressLengthM" name="e2_co_months" id="e2_co_months" maxlength="2" data-address="1" />
+                    <label class="label1" for="e2_co_months">Months</label>
                   </div>
 
                   <div class="message cc-required">Required</div>
@@ -710,11 +710,11 @@
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-to-be-validate-retirement">
-                  <label for="co_have_401_yes">Do you have a 401(k)?</label>
+                  <label for="em_co_retirement1_yes">Do you have a 401(k)?</label>
 
                     <div class="radio-yesno">
-                      <label><input type="radio" name="co_have_401" value="yes" id="co_have_401_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="co_have_401" value="no" id="co_have_401_no" /><span>No</span></label>
+                      <label><input type="radio" name="em_co_retirement1" value="yes" id="em_co_retirement1_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="em_co_retirement1" value="no" id="em_co_retirement1_no" /><span>No</span></label>
                     </div>
 
                   <!-- <div class="message cc-required">Required</div> -->
@@ -743,11 +743,11 @@
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-to-be-validate-retirement">
-                  <label for="co_have_ira_yes">Do you have an IRA?</label>
+                  <label for="em_co_retirement2_yes">Do you have an IRA?</label>
 
                     <div class="radio-yesno">
-                      <label><input type="radio" name="co_have_ira" value="yes" id="co_have_ira_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="co_have_ira" value="no" id="co_have_ira_no" /><span>No</span></label>
+                      <label><input type="radio" name="em_co_retirement2" value="yes" id="em_co_retirement2_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="em_co_retirement2" value="no" id="em_co_retirement2_no" /><span>No</span></label>
                     </div>
 
                   <!-- <div class="message cc-required">Required</div> -->
@@ -776,11 +776,11 @@
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-to-be-validate-retirement">
-                  <label for="co_have_pen_yes">Do you have a pension?</label>
+                  <label for="em_co_retirement3_yes">Do you have a pension?</label>
 
                     <div class="radio-yesno">
-                      <label><input type="radio" name="co_have_pen" value="yes" id="co_have_pen_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="co_have_pen" value="no" id="co_have_pen_no" /><span>No</span></label>
+                      <label><input type="radio" name="em_co_retirement3" value="yes" id="em_co_retirement3_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="em_co_retirement3" value="no" id="em_co_retirement3_no" /><span>No</span></label>
                     </div>
 
                   <!-- <div class="message cc-required">Required</div> -->
@@ -809,11 +809,11 @@
             <div class="row retirement" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-to-be-validate-retirement">
-                  <label for="co_have_annuity_yes">Do you have an annuity?</label>
+                  <label for="em_co_retirement4_yes">Do you have an annuity?</label>
 
                     <div class="radio-yesno">
-                      <label><input type="radio" name="co_have_annuity" value="yes" id="co_have_annuity_yes" /><span>Yes</span></label>
-                      <label><input type="radio" name="co_have_annuity" value="no" id="co_have_annuity_no" /><span>No</span></label>
+                      <label><input type="radio" name="em_co_retirement4" value="yes" id="em_co_retirement4_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="em_co_retirement4" value="no" id="em_co_retirement4_no" /><span>No</span></label>
                     </div>
 
                   <!-- <div class="message cc-required">Required</div> -->
@@ -1147,8 +1147,8 @@
 
         <div class="col-sm-4">
           <div class="cc-field cc-validate cc-phone">
-            <label for="co_e{#}employerphone1">Employer Phone</label>
-            <input type="tel" tabindex="1" class="phone" name="co_e{#}employerphone1" id="co_e{#}employerphone1" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
+            <label for="co_e{#}employerphone">Employer Phone</label>
+            <input type="tel" tabindex="1" class="phone" name="co_e{#}employerphone" id="co_e{#}employerphone" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
             <div class="message cc-required">Required</div>
             <div class="message cc-numbers-only">Numbers Only</div>
             <div class="message cc-phone">Invalid phone number</div>
