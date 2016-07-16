@@ -340,6 +340,8 @@
         })
         .trigger('change');
 
+
+
         $('input[name=in_ck_income9]').on('change', function(){
             var val = $(this).val().toLowerCase();
 
@@ -350,8 +352,9 @@
                  * Add new property if the property count is 0
                  */
                 if(_appGlobal.rentsArray.length < 1){
-                    addRent();
-                    $('#addRentProperty').show();
+                    // addRent();
+                    // $('#addRentProperty').show();
+                    $('#re_numberofproperties').off('change', numRentalChange).on('change', numRentalChange);
                 }
 
             }//// if
@@ -377,6 +380,12 @@
     };//// borrowerReady
 })();
 
+function numRentalChange(){
+    var val = parseInt($(this).val(), 10);
+    if(val > 5) val = 5;
+
+    for(var x=0; x<val; x++) addRent();
+}
 
 function bindEmploymentDate(index){
 
@@ -603,6 +612,7 @@ function removeRent(removeIndex){
  */
 function updateRentsFields(){
     var limit = _appGlobal.rentsArray.length;
+
     if(limit < 1) return;
 
     for(var x=0; x<limit; x++){

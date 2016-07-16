@@ -96,6 +96,10 @@
         .on('keydown', restrictCurrency)
         .on('keyup', formatCurrency)
 
+        $('input.initial')
+        .on('keydown', restrictInitial)
+        .on('keyup', formatInitial)
+
 
 
         $('#bo_howhear').off('change').on('change', function(e){

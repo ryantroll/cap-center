@@ -41,7 +41,7 @@
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
       <li class="active"><a href="07-assets.html"><span>Assets</span></a></li>
       <li><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li><a href="09-declarations.html"><span>Government Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Borrower Declarations</span></a></li>
       <li><a href="14-instructions.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -130,7 +130,63 @@
                   <div class="col-sm-4">
                     <div class="cc-field cc-validate cc-currency">
                       <label for="as_cash1">Balance </label>
-                      <input type="tel" tabindex="11" class="currency" maxlength="11" name="as_cash1" id="as_cash{#id}"  data-index="1"/>
+                      <input type="tel" tabindex="11" class="currency" maxlength="11" name="as_cash1" id="as_cash1"  data-index="1"/>
+                      <div class="message cc-required">Required</div>
+                      <div class="message cc-currency">Invalid value</div>
+                      <div class="message cc-numbers-only">Numbers Only</div>
+                    </div><!--field-->
+                  </div>
+
+                </div><!--row-->
+
+              </div><!--form-section-->
+
+              <div class="cc-form-section close-btn" style="" id="asset_2" data-index="2">
+                <a href="javascript:void(0);" class="close" data-index="2"><i class="glyphicon glyphicon-remove"></i> REMOVE</a>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title">
+                      <h5>Asset</h5>
+                    </div>
+                  </div>
+
+                </div><!--row-->
+
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="cc-field cc-dropdown cc-validate">
+                      <label for="as_type2">Type </label>
+
+                      <select name="as_type2" id="as_type2" data-index="2">
+                        <option value="">Select</option>
+                        <option value="1">Checking Account</option>
+                        <option value="2">Saving Account</option>
+                        <option value="3">Certificate of Deposit</option>
+                        <option value="4">Money Market Fund</option>
+                        <option value="5">Mutual Fund</option>
+                        <option value="6">Stocks and Bonds</option>
+                        <option value="7">Retirement</option>
+                        <option value="8">Gift Not Deposited</option>
+                        <option value="9">Trust Funds</option>
+                      </select>
+                      <label for="as_type2" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                      <div class="message cc-required">Required</div>
+                    </div><!--field-->
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <div class="cc-field cc-validate">
+                      <label for="as_bank2">Bank or Institution</label>
+                      <input type="text" tabindex="12" name="as_bank2" id="as_bank2"  data-index="2"/>
+                      <div class="message cc-required">Required</div>
+                    </div><!--field-->
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="cc-field cc-validate cc-currency">
+                      <label for="as_cash2">Balance </label>
+                      <input type="tel" tabindex="11" class="currency" maxlength="11" name="as_cash2" id="as_cash2"  data-index="2"/>
                       <div class="message cc-required">Required</div>
                       <div class="message cc-currency">Invalid value</div>
                       <div class="message cc-numbers-only">Numbers Only</div>
@@ -439,7 +495,7 @@
 
     <div class="col-sm-4">
       <div class="cc-field cc-validate cc-number">
-        <label for="re_zip{#id}">Zip </label>
+        <label for="re_zip{#id}">Zip Code</label>
         <input type="tel" tabindex="11" class="numbers typeahead_zip{#index}" maxlength="6" name="re_zip{#id}" id="re_zip{#id}"  data-index="{#index}"/>
         <div class="message cc-required">Required</div>
         <div class="message cc-number">Invalid ZIP code</div>

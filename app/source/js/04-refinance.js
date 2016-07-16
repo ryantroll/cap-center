@@ -130,27 +130,27 @@
             }
         });
 
-        $('input[name=rf_istitled]').on('change', function(){
-            var val = $(this).val();
+        // $('input[name=rf_istitled]').on('change', function(){
+        //     var val = $(this).val();
 
-            if(val === 'yes' && !!$(this).attr('checked')){
-                includeFields({selector:'#trustBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }//// if
-            if(val === 'no' && !!$(this).attr('checked')){
-                excludeFields({selector:'#trustBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-        });
+        //     if(val === 'yes' && !!$(this).attr('checked')){
+        //         includeFields({selector:'#trustBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
+        //     }//// if
+        //     if(val === 'no' && !!$(this).attr('checked')){
+        //         excludeFields({selector:'#trustBrief', validationClass:'.cc-to-be-validate'}); //// function in main.js
+        //     }
+        // });
 
-        $('input[name=rf_manufactured]').on('change', function(){
-            var val = $(this).val();
+        // $('input[name=rf_manufactured]').on('change', function(){
+        //     var val = $(this).val();
 
-            if(val === 'yes' && !!$(this).attr('checked')){
-                includeFields({selector:'#subName', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }//// if
-            if(val === 'no' && !!$(this).attr('checked')){
-                excludeFields({selector:'#subName', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-        });
+        //     if(val === 'yes' && !!$(this).attr('checked')){
+        //         includeFields({selector:'#subName', validationClass:'.cc-to-be-validate'}); //// function in main.js
+        //     }//// if
+        //     if(val === 'no' && !!$(this).attr('checked')){
+        //         excludeFields({selector:'#subName', validationClass:'.cc-to-be-validate'}); //// function in main.js
+        //     }
+        // });
 
         $('input[name=rf_haveMortgage1]').on('change', function(){
             var val = $(this).val();
@@ -202,14 +202,9 @@
             }
         });
 
-        $('input[name=ot_workingwith]').on('change', function(){
+        $('#rf_state').on('change', function(){
             var val = $(this).val();
-            if(true === !!$(this).attr('checked') && val === 'yes'){
-                includeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-            if(true === !!$(this).attr('checked') && val === 'no'){
-                excludeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-        });
+            fillCountyDropdown($('#rfCounty'), val);
+        }).trigger('change');
     };//// borrowerReady
 })();

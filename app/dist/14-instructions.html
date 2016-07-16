@@ -41,7 +41,7 @@
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
       <li class="done"><a href="07-assets.html"><span>Assets</span></a></li>
       <li class="done"><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li class="done"><a href="09-declarations.html"><span>Government Questions</span></a></li>
+      <li class="done"><a href="09-declarations.html"><span>Borrower Declarations</span></a></li>
       <li class="active"><a href="14-instructions.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -67,14 +67,45 @@
         </div>
         <form method="post" id="instructionsForm" action="15-deposit.html">
           <fieldset>
-          <div class="row">
+
+            <div class="row">
               <div class="col-sm-12">
+                <div class="cc-field cc-radio cc-validate">
+                    <label class="" for="ot_workingwith_yes">Are you currently working with or do you wish to work with a specific Loan Consultant?</label>
 
-                    <p>Please provide any additional information that we should be aware of below.</p>
+                  <div class="radio-yesno">
+                    <div class="half-width">
+                      <label><input type="radio" name="ot_workingwith" value="yes" id="ot_workingwith_yes" data-index="1" /><span>Yes</span></label>
+                      <label><input type="radio" name="ot_workingwith" value="no" id="ot_workingwith_no" data-index="1" /><span>No</span></label>
+                    </div>
+                  </div>
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
 
-                </div>
+            </div><!--row-->
 
-          </div><!--row-->
+            <div class="row employee" style="display:none;">
+              <div class="col-sm-12">
+                <div class="cc-field cc-validate cc-required">
+                  <label for="ot_workwith">Which one of our representatives do you wish to work with?</label>
+                  <input type="text" tabindex="1" name="ot_workwith" id="ot_workwith" />
+                  <div class="message cc-required">Required</div>
+                </div><!--field-->
+
+
+              </div>
+
+            </div><!--row-->
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                      <p>Please provide any additional information that we should be aware of below.</p>
+
+                  </div>
+
+            </div><!--row-->
 
           <div class="row">
               <div class="col-sm-12">
@@ -86,6 +117,8 @@
               </div>
 
             </div><!--row-->
+
+
 
             <div class="row">
               <div class="col-sm-12">

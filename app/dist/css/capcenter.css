@@ -896,6 +896,12 @@ body.cc-body {
     background-color: #F47C29;
     border-color: #F47C29; }
 
+.cc-form .cc-radio .question label {
+  float: left;
+  margin-right: 1em; }
+  .cc-form .cc-radio .question label input {
+    margin-right: 5px; }
+
 .cc-form .cc-radio.question .radio-yesno {
   width: 100%;
   float: none; }

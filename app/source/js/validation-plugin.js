@@ -1,4 +1,5 @@
 (function( $ ) {
+
     $.fn.validate = function(callback) {
         var form = this.filter('form');
         var invalidFields = [];
@@ -12,7 +13,6 @@
                 // if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
 
                 var isValid = self.validateField();
-
 
                 //// false and true strictly test as null will returned is field is not validated
                 if(false === isValid){
@@ -323,6 +323,28 @@
             }
             else{
                 delete err['cc-currency'];
+            }
+        }
+
+        if(true === self.hasClass('cc-initial')){
+            if(v){
+
+                isValidated = true;
+                var regx = /^[a-zA-Z]{1}$/;
+                if(!regx.test(v)){
+                    isValid = false;
+                    var msg = self.find('.message.cc-initial');
+                    if(msg.length > 0){
+                        err['cc-initial'] = msg.eq(0).text();
+                    }
+                }
+                else{
+                    delete err['cc-initial'];
+                }
+            }
+            else{
+
+                delete err['cc-initial'];
             }
         }
 

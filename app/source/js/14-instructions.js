@@ -74,6 +74,16 @@
         .on('keydown', restrictCurrency)
         .on('keyup', formatCurrency);
 
+        $('input[name=ot_workingwith]').on('change', function(){
+            var val = $(this).val();
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                includeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
+            }
+            if(true === !!$(this).attr('checked') && val === 'no'){
+                excludeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
+            }
+        });
+
 
     };//// instructionsReady
 })();

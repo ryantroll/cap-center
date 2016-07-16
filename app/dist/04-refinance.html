@@ -41,7 +41,7 @@
       <li class=""><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets</span></a></li>
       <li><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li><a href="09-declarations.html"><span>Government Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Borrower Declarations</span></a></li>
       <li><a href="14-instructions.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -61,7 +61,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_propertyrefinancing_yes">Do live at the same address being refinanced?</label>
+                  <label for="rf_propertyrefinancing_yes">Do you currently live in the property you are refinancing?</label>
                   <div class="radio-yesno">
                     <label><input type="radio" name="rf_propertyrefinancing" value="yes" id="rf_propertyrefinancing_yes" /><span>Yes</span></label>
                     <label><input type="radio" name="rf_propertyrefinancing" value="no" id="rf_propertyrefinancing_no" /><span>No</span></label>
@@ -99,13 +99,6 @@
             </div><!--row-->
 
             <div class="row otherAddress" style="display:none;">
-              <div class="col-sm-4">
-                <div class="cc-field cc-to-be-validate">
-                  <label for="rf_county">County </label>
-                  <input type="text" tabindex="12" class="typeahead_county" name="rf_county" id="rf_county" />
-                  <div class="message cc-required">Required</div>
-                </div><!--field-->
-              </div>
 
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate">
@@ -116,11 +109,13 @@
               </div>
 
               <div class="col-sm-4">
-                <div class="cc-field cc-dropdown cc-to-be-validate state-dropdown">
+                <div class="cc-field cc-dropdown cc-to-be-validate xxxx-state-dropdown">
                   <label for="rf_state">State </label>
 
                   <select name="rf_state" id="rf_state" class="typeahead_state">
                     <option value="">Select</option>
+                    <option value="VA">Virginia</option>
+                    <option value="NC">North Carolina</option>
                   </select>
                   <label for="rf_state" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
@@ -129,7 +124,7 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate cc-number">
-                  <label for="rf_zip">Zip </label>
+                  <label for="rf_zip">Zip Code</label>
                   <input type="tel" tabindex="11" class="numbers typeahead_zip" maxlength="6" name="rf_zip" id="rf_zip" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-number">Invalid ZIP code</div>
@@ -137,45 +132,20 @@
                 </div><!--field-->
               </div>
 
-            </div><!--row-->
 
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-radio cc-validate">
-                    <label class="" for="ot_workingwith_yes">Are you currently working with or do you wish to work with a specific CapCenter employee?</label>
-
-                  <div class="radio-yesno">
-                    <div class="half-width">
-                      <label><input type="radio" name="ot_workingwith" value="yes" id="ot_workingwith_yes" data-index="1" /><span>Yes</span></label>
-                      <label><input type="radio" name="ot_workingwith" value="no" id="ot_workingwith_no" data-index="1" /><span>No</span></label>
-                    </div>
-                  </div>
-                  <!-- <div class="message cc-required">Required</div> -->
-                </div><!--field-->
-              </div>
-
-            </div><!--row-->
-
-            <div class="row employee" style="display:none;">
-              <div class="col-sm-6">
-                <div class="cc-field cc-dropdown cc-to-be-validate">
-                  <label for="ot_workwith">Which one of our representatives do you wish to work with?</label>
-
-                  <select name="ot_workwith" id="ot_workwith" data-index="1">
+              <div class="col-sm-4">
+                <div class="cc-field cc-dropdown cc-validate xxxx-state-dropdown" id="rfCounty">
+                  <label for="rf_county">Property County</label>
+                  <select id="rf_county" name="rf_county">
                     <option value="">Select</option>
-                    <option value="Fraser Davidson">Fraser Davidson</option>
-                    <option value="Jimmy Mouser">Jimmy Mouser</option>
-                    <option value="Pam Livesay">Pam Livesay</option>
-                    <option value="Stephanie Harrison">Stephanie Harrison</option>
-                    <option value="Wes Keating">Wes Keating</option>
-                    <option value="Consultant Not Listed">Consultant Not Listed</option>
                   </select>
-                  <label for="ot_workwith" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                  <label for="rf_county" class="arrow glyphicon glyphicon-triangle-bottom"></label>
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
               </div>
 
             </div><!--row-->
+
 
             <div class="row">
                 <div class="col-sm-6">
@@ -186,70 +156,6 @@
             </div><!--row-->
 
             <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-dropdown cc-validate">
-                  <label for="rf_propUse">Property Use?</label>
-                  <select id="rf_propUse" name="rf_propUse">
-                    <option value="">Please Select</option>
-                    <option value="1">Primary Residence</option>
-                    <option value="2">Second Home</option>
-                    <option value="3">Investment Property</option>
-                  </select>
-                  <label for="rf_propUse" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                  <div class="message cc-required">Required</div>
-
-                </div><!--field-->
-              </div>
-            </div><!--row-->
-
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-dropdown cc-validate">
-                  <label for="rf_typeProp">Property Type?</label>
-                  <select id="rf_typeProp" name="rf_typeProp">
-                    <option value="">Please Select</option>
-                    <option value="1">Single Family (detached) Residence</option>
-                    <option value="2">Townhouse</option>
-                    <option value="3">Condominium</option>
-                    <option value="4">Duplex (2 Units)</option>
-                    <option value="5">3 or 4 Units</option>
-                  </select>
-                  <label for="rf_typeProp" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                  <div class="message cc-required">Required</div>
-
-                </div><!--field-->
-              </div>
-            </div><!--row-->
-
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="cc-field cc-dropdown cc-validate">
-                  <label for="rf_acres">Property Acreage</label>
-                  <select id="rf_acres" name="rf_acres">
-                    <option value="">Please Select</option>
-                    <option value="1">Less Than 5</option>
-                    <option value="2">Greater Than 5</option>
-                  </select>
-                  <label for="rf_acres" class="arrow glyphicon glyphicon-triangle-bottom"></label>
-                  <div class="message cc-required">Required</div>
-
-                </div><!--field-->
-              </div>
-            </div><!--row-->
-
-            <div class="row">
-
-
-              <div class="col-sm-6">
-                <div class="cc-field cc-validate cc-currency">
-                  <label for="rf_cost">Purchase Price</label>
-                  <input type="tel" class="currency" tabindex="16" maxlength="11" name="rf_cost" id="rf_cost" />
-                  <div class="message cc-required">Required</div>
-                  <div class="message cc-currency">Invalid Value</div>
-                  <div class="message cc-numbers-only">Numbers Only</div>
-                </div><!--field-->
-              </div>
-
               <div class="col-sm-6">
                 <div class="cc-field cc-validate">
                   <label for="rf_year">Purchase Year</label>
@@ -260,29 +166,12 @@
                 </div><!--field-->
               </div>
 
-            </div><!--row-->
-
-            <div class="row">
               <div class="col-sm-6">
-                <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_plannedunit_yes">Required to pay HOA dues?</label>
-                  <div class="radio-yesno">
-                    <label><input type="radio" name="rf_plannedunit" value="yes" id="rf_plannedunit_yes" /><span>Yes</span></label>
-                    <label><input type="radio" name="rf_plannedunit" value="no" id="rf_plannedunit_no" /><span>No</span></label>
-                  </div>
-                  <!-- <div class="message cc-required">Required</div> -->
-                </div><!--field-->
-              </div>
-
-            </div><!--row-->
-
-            <div class="row" id="monthlyHOA" style="display:none;">
-              <div class="col-sm-6">
-                <div class="cc-field cc-to-be-validate cc-currency">
-                  <label for="rf_dues">Monthly HOA dues</label>
-                  <input type="tel" tabindex="6" class="currency"  name="rf_dues" id="rf_dues" maxlength="7"/>
+                <div class="cc-field cc-validate cc-currency">
+                  <label for="rf_cost">Original Purchase Price</label>
+                  <input type="tel" class="currency" tabindex="16" maxlength="11" name="rf_cost" id="rf_cost" />
                   <div class="message cc-required">Required</div>
-                  <div class="message cc-currency">Invalid value</div>
+                  <div class="message cc-currency">Invalid Value</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
                 </div><!--field-->
               </div>
@@ -292,7 +181,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_forsale_yes">Has the property been for sale in the last 6 months?</label>
+                  <label for="rf_forsale_yes">Has the property been for sale in the past 6 months?</label>
                   <div class="radio-yesno">
                     <label><input type="radio" name="rf_forsale" value="yes" id="rf_forsale_yes" /><span>Yes</span></label>
                     <label><input type="radio" name="rf_forsale" value="no" id="rf_forsale_no" /><span>No</span></label>
@@ -319,7 +208,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_subject_yes">Has any construction or renovation occurred during the past 6 months? </label>
+                  <label for="rf_subject_yes"> Is the property currently (or within the past 6 months) undergoing any construction or renovation, or do you plan to do so prior to closing your loan with us? </label>
                   <div class="half-width">
                     <div class="radio-yesno">
                       <label><input type="radio" name="rf_subject" value="yes" id="rf_subject_yes" /><span>Yes</span></label>
@@ -346,7 +235,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_istitled_yes">Is this property in trust, corporation, partnership or LLC?</label>
+                  <label for="rf_istitled_yes">Is this property titled in a trust, corporation, partnership or LLC?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
                       <label><input type="radio" name="rf_istitled" value="yes" id="rf_istitled_yes" /><span>Yes</span></label>
@@ -359,21 +248,37 @@
 
             </div><!--row-->
 
-            <div class="row" id="trustBrief" style="display:none;">
+            <!-- <div class="row" id="trustBrief" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-to-be-validate">
                   <label for="rf_contructionBrief">Please briefly describe the lien</label>
                   <textarea tabindex="6" name="rf_contructionBrief" id="rf_contructionBrief"></textarea>
                   <div class="message cc-required">Required</div>
-                </div><!--field-->
+                </div>
               </div>
 
+            </div> --><!--row-->
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-dropdown cc-validate">
+                  <label for="rf_acres">Property Acreage</label>
+                  <select id="rf_acres" name="rf_acres">
+                    <option value="">Please Select</option>
+                    <option value="1">Fewer Than 5 Acres</option>
+                    <option value="2">Greater Than 5 Acres</option>
+                  </select>
+                  <label for="rf_acres" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                  <div class="message cc-required">Required</div>
+
+                </div><!--field-->
+              </div>
             </div><!--row-->
 
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_farm_yes">Is the property used for farming, raising livestock or any farm-related income producing activity?</label>
+                  <label for="rf_farm_yes">IS PROPERTY USED FOR FARMING, RAISING LIVESTOCK OR ANY FARM-RELATED INCOME PRODUCING ACTIVITY, OR IS IT IN LAND USE?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
                       <label><input type="radio" name="rf_farm" value="yes" id="rf_farm_yes" /><span>Yes</span></label>
@@ -389,7 +294,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_manufactured_yes">Is the property a manufactured, modular built or log construction?</label>
+                  <label for="rf_manufactured_yes">IS THE PROPERTY MANUFACTURED OR LOG CONSTRUCTION?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
                       <label><input type="radio" name="rf_manufactured" value="yes" id="rf_manufactured_yes" /><span>Yes</span></label>
@@ -402,12 +307,39 @@
 
             </div><!--row-->
 
-            <div class="row" id="subName" style="display:none;">
+            <!-- <div class="row" id="subName" style="display:none;">
               <div class="col-sm-6">
                 <div class="cc-field cc-to-be-validate">
                   <label for="ot_subdivision">Subdivision Name</label>
                   <input type="text" tabindex="6"  name="ot_subdivision" id="ot_subdivision"/>
                   <div class="message cc-required">Required</div>
+                </div>
+              </div>
+
+            </div> --><!--row-->
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="cc-field cc-radio cc-validate">
+                  <label for="rf_plannedunit_yes">REQUIRED TO PAY HOMEOWNER'S ASSN. DUES?</label>
+                  <div class="radio-yesno">
+                    <label><input type="radio" name="rf_plannedunit" value="yes" id="rf_plannedunit_yes" /><span>Yes</span></label>
+                    <label><input type="radio" name="rf_plannedunit" value="no" id="rf_plannedunit_no" /><span>No</span></label>
+                  </div>
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row" id="monthlyHOA" style="display:none;">
+              <div class="col-sm-6">
+                <div class="cc-field cc-to-be-validate cc-currency">
+                  <label for="rf_dues">Monthly HOA dues</label>
+                  <input type="tel" tabindex="6" class="currency"  name="rf_dues" id="rf_dues" maxlength="7"/>
+                  <div class="message cc-required">Required</div>
+                  <div class="message cc-currency">Invalid value</div>
+                  <div class="message cc-numbers-only">Numbers Only</div>
                 </div><!--field-->
               </div>
 
@@ -416,7 +348,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-validate">
-                  <label for="rf_haveMortgage1_yes">is this property secured by mortgage?</label>
+                  <label for="rf_haveMortgage1_yes">Is there a mortgage on this property?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
                       <label><input type="radio" name="rf_haveMortgage1" value="yes" id="rf_haveMortgage1_yes" /><span>Yes</span></label>
@@ -452,7 +384,7 @@
 
                 <div class="col-sm-6">
                   <div class="cc-field cc-to-be-validate cc-currency">
-                    <label for="rf_1mortgage">Balance Owned</label>
+                    <label for="rf_1mortgage">Balance Owed</label>
                     <input type="tel" tabindex="6" class="currency" name="rf_1mortgage" id="rf_1mortgage"/>
                     <div class="message cc-required">Required</div>
                     <div class="message cc-numbers-only">Numbers only</div>
@@ -466,7 +398,7 @@
             <div class="row firstMortgage" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-to-be-validate">
-                  <label for="rf_secmortgage_yes">is this property secured by another mortgage or home equity lien (even if the balance is $0)?</label>
+                  <label for="rf_secmortgage_yes">is this property secured by another mortgage or home equity loan (even if the balance is $0)?</label>
                   <div class="half-width">
                     <div class="radio-yesno">
                       <label><input type="radio" name="rf_secmortgage" value="yes" id="rf_secmortgage_yes" /><span>Yes</span></label>
@@ -502,7 +434,7 @@
 
                 <div class="col-sm-6">
                   <div class="cc-field cc-to-be-validate-mortgage2 cc-currency">
-                    <label for="rf_2mortgage">Balance Owned</label>
+                    <label for="rf_2mortgage">Balance Owed</label>
                     <input type="tel" tabindex="6" class="currency" name="rf_2mortgage" id="rf_2mortgage"/>
                     <div class="message cc-required">Required</div>
                     <div class="message cc-numbers-only">Numbers only</div>
@@ -537,8 +469,11 @@
                   </div><!--field-->
                 </div>
 
+              </div><!--row-->
+
+              <div class="row  secondMortgage" style="display:none;">
                 <div class="col-sm-12">
-                  <div class="cc-field cc-radio cc-to-be-validate-cl">
+                  <div class="cc-field cc-radio cc-to-be-mortgage2">
                     <label for="rf_paidoff_yes">Are you planning to pay off this loan with your refinance?</label>
                     <div class="half-width">
                       <div class="radio-yesno">
@@ -580,6 +515,45 @@
               </div>
 
             </div><!--row-->
+
+
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-dropdown cc-validate">
+                  <label for="rf_propUse">Property USAGE?</label>
+                  <select id="rf_propUse" name="rf_propUse">
+                    <option value="">Please Select</option>
+                    <option value="1">Primary Residence</option>
+                    <option value="2">Second Home</option>
+                    <option value="3">Investment Property</option>
+                  </select>
+                  <label for="rf_propUse" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                  <div class="message cc-required">Required</div>
+
+                </div><!--field-->
+              </div>
+            </div><!--row-->
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="cc-field cc-dropdown cc-validate">
+                  <label for="rf_typeProp">Property Type?</label>
+                  <select id="rf_typeProp" name="rf_typeProp">
+                    <option value="">Please Select</option>
+                    <option value="1">Single Family (detached) Residence</option>
+                    <option value="2">Townhouse</option>
+                    <option value="3">Condominium</option>
+                    <option value="4">Duplex (2 Units)</option>
+                    <option value="5">3 or 4 Units</option>
+                  </select>
+                  <label for="rf_typeProp" class="arrow glyphicon glyphicon-triangle-bottom"></label>
+                  <div class="message cc-required">Required</div>
+
+                </div><!--field-->
+              </div>
+            </div><!--row-->
+
 
             <div class="row">
               <div class="col-sm-12">

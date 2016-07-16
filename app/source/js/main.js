@@ -435,6 +435,26 @@ function fillStateDropdown(selector){
 }//// fun. fillStateDropdown
 
 /**
+ * [fillCountyDropdown will fill dropdown of counties based on the state variable sent]
+ * this function depend on usCounties object defined in us-counties.js file
+ * @param  {[jQuery]} selector [jQuery selector to search for <select> tag inside it ]
+ * @param  {[type]} state    [state name in 2 letters abbreviation]
+ */
+function fillCountyDropdown(selector, state){
+  if(false === !!usCounties[state]) return;
+
+  selector.each(function(x){
+      var ul = $(this).find('select');
+      ul.find('option').remove();
+      ul.append('<option value="">Select</option>');
+      for(var s=0; s<usCounties[state].length; s++){
+          var li = $('<option value="' + usCounties[state][s] + '">' + usCounties[state][s] + '</option>');
+          ul.append(li);
+      }//// for
+  });
+}//// fun. fillCountyDropdown
+
+/**
  * [isAndroid simple function to detect Android OS]
  * this function is used to detect the bug in Android when keydown, keyup event doesn't send the right key code
  * @return {Boolean} [true if Android OS]
@@ -451,7 +471,8 @@ var restrictPhone = function(keyEv){
 
   var allowedChars = String("01234567890-() ").split('');
   var allowed = [189, 48, 57, 9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
-  $(this).removeError('cc-numbers-only')
+  for(var numpad=96; numpad<=105; numpad++) allowed.push(numpad); ///// numeric pad key codes
+  $(this).removeError('cc-numbers-only');
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
@@ -490,7 +511,9 @@ var restrictDate = function(keyEv){
 
   var allowedChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/']
   var allowed = [191, 9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
-  $(this).removeError('cc-numbers-only')
+  for(var numpad=96; numpad<=105; numpad++) allowed.push(numpad); ///// numeric pad key codes
+
+  $(this).removeError('cc-numbers-only');
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
     if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
@@ -558,6 +581,7 @@ var restrictSSN = function(keyEv){
   if(isAndroid() && code == 229) return;
   var allowedChars = String("01234567890-").split('');
   var allowed = [189, 9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  for(var numpad=96; numpad<=105; numpad++) allowed.push(numpad); ///// numeric pad key codes
   $(this).removeError('cc-numbers-only');
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
@@ -598,6 +622,7 @@ var restrictNumbers = function(keyEv){
   if(isAndroid() && code == 229) return;
   var allowedChars = String("01234567890").split('');
   var allowed = [9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  for(var numpad=96; numpad<=105; numpad++) allowed.push(numpad); ///// numeric pad key codes
   $(this).removeError('cc-numbers-only').hideError();
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
@@ -614,6 +639,8 @@ var restrictCurrency = function(keyEv){
   if(isAndroid() && code == 229) return;
   var allowedChars = String("01234567890$,").split('');
   var allowed = [9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  for(var numpad=96; numpad<=105; numpad++) allowed.push(numpad); ///// numeric pad key codes
+
   $(this).removeError('cc-numbers-only').hideError();
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
@@ -652,6 +679,30 @@ var formatCurrency = function(keyEv){
   }
 
   $(this).val(ret);
+}///// fun. formatCurrency
+
+var restrictInitial = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which || keyEv.charCode;
+  var char = String.fromCharCode(code).toLowerCase();
+  if(isAndroid() && code == 229) return;
+
+  var allowedChars = String("qwertyuiopasdfghjklmnbvcxz").split('');
+  var allowed = [9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
+  $(this).removeError('cc-chars-only').hideError();
+
+  if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){
+    if(keyEv.preventDefault) keyEv.preventDefault(); else keyEv.returnValue = false;
+    $(this).addError('cc-chars-only').showError();
+    return false;
+  }
+}//// fun. formateSSN
+
+var formatInitial = function(keyEv){
+  var code = keyEv.keyCode || keyEv.which;
+
+  var ret = $(this).val().toUpperCase()[0];
+
+  $(this).val(true === !!ret ? ret : '');
 }///// fun. formatCurrency
 
 var animateScroll = function(y, time){
@@ -860,7 +911,7 @@ function addAutoAddress(index, startFrom1){
     var autocomplete = new google.maps.places.Autocomplete(
         // document.getElementById('bo_address' + post),
         $('.typeahead_address' + post).filter('input')[0],
-        {types: ['geocode']}
+        {types: ['geocode'], componentRestrictions:{country:'US'}}
     );
     //// set the address index and post in autocomplete object to be used in fillInAddress function
     autocomplete.index = 0;

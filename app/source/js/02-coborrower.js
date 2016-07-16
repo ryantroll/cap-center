@@ -81,6 +81,10 @@
         .on('keydown', restrictCurrency)
         .on('keyup', formatCurrency)
 
+        $('input.initial')
+        .on('keydown', restrictInitial)
+        .on('keyup', formatInitial)
+
 
         /**
          * Check if co-borrower live in different address

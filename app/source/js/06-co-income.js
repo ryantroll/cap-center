@@ -345,8 +345,9 @@
                  * Add new property if the property count is 0
                  */
                 if(_appGlobal.rentsArray.length < 1){
-                    addRent();
-                    $('#addRentProperty').show();
+                    // addRent();
+                    // $('#addRentProperty').show();
+                    $('#re_co_numberofproperties').off('change', numRentalChange).on('change', numRentalChange);
                 }
 
             }//// if

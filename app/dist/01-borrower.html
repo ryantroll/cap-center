@@ -40,7 +40,7 @@
       <li class=""><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets</span></a></li>
       <li><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li><a href="09-declarations.html"><span>Government Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Borrower Declarations</span></a></li>
       <li><a href="14-instructions.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -75,7 +75,7 @@
 
                   <select id="bo_howhear" name="bo_howhear">
                     <option value="">Please Select</option>
-                    <option value="1">I’m A Past Client</option>
+                    <option value="1">I’m a Past Client</option>
                     <option value="2">Friend, Family or Co-Worker</option>
                     <option value="3">CapCenter Employee</option>
                     <option value="4">Financial Advisor/Accountant/Lawyer</option>
@@ -116,9 +116,11 @@
               </div>
 
               <div class="col-xs-4 col-sm-2">
-                <div class="cc-field">
-                  <label for="bo_minitial">Initial</label>
-                  <input type="text" tabindex="2" name="bo_minitial" id="bo_minitial" />
+                <div class="cc-field cc-validate cc-initial">
+                  <label for="bo_minitial">Middle Initial</label>
+                  <input type="text" tabindex="2" name="bo_minitial" id="bo_minitial" class="initial" maxlength="1" />
+                  <div class="message cc-chars-only">Characters Only </div>
+                  <div class="message cc-initial">One letter only</div>
                 </div>
               </div>
 
@@ -196,7 +198,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-required cc-phone">
-                  <label for="bo_phone">Phone</label>
+                  <label for="bo_phone">Home Phone</label>
                   <input type="tel" tabindex="7" name="bo_phone" id="bo_phone" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-phone">Invalid Phone Number</div>
@@ -278,7 +280,7 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-validate cc-required cc-number">
-                  <label for="bo_zip">Zip </label>
+                  <label for="bo_zip">Zip Code</label>
                   <input type="tel" tabindex="11" class="numbers typeahead_zip" maxlength="6" name="bo_zip" id="bo_zip" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-number">Invalid ZIP code</div>

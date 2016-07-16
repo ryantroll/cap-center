@@ -21,6 +21,7 @@ gulp.task('sass', function(){
 
 gulp.task('scripts', function(){
     return gulp.src([
+        './app/source/js/us-counties.js',
         './app/source/js/us-states.js',
         './app/source/js/validation-plugin.js',
         './app/source/js/support-plugin.js',

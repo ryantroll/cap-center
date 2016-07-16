@@ -125,6 +125,10 @@
         });
 
 
+        /**
+         * Ass second asset as default
+         */
+        // addAsset();
 
         $('#addAnotherAsset')
         .on('click', function(ev){

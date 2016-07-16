@@ -157,25 +157,9 @@
             }
         });
 
-        $('input[name=pu_manufactured]').on('change', function(){
+        $('#pu_state').on('change', function(){
             var val = $(this).val();
-
-            if(val === 'yes' && !!$(this).attr('checked')){
-                includeFields({selector:'#subName', validationClass:'.cc-to-be-validate-sub'}); //// function in main.js
-            }//// if
-            if(val === 'no' && !!$(this).attr('checked')){
-                excludeFields({selector:'#subName', validationClass:'.cc-to-be-validate-sub'}); //// function in main.js
-            }
-        });
-
-        $('input[name=ot_workingwith]').on('change', function(){
-            var val = $(this).val();
-            if(true === !!$(this).attr('checked') && val === 'yes'){
-                includeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-            else{
-                excludeFields({selector:'.employee', validationClass:'.cc-to-be-validate'}); //// function in main.js
-            }
-        });
+            fillCountyDropdown($('#puCounty'), val);
+        }).trigger('change');
     };//// purchaseReady
 })();

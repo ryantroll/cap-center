@@ -164,20 +164,18 @@
 
                 $('#boProperty').show().find('.cc-to-validate-pro-bo').addClass('cc-validate');
                 $('.property').slideDown();
-
             }
             if(true === !!$(this).attr('checked') && val === 'no'){
 
                 if(false === !!$('input#de_co_ownership_yes').attr('checked')){
                     $('.property').slideUp(function(){
                         $('.cc-to-be-validate-pro-bo').removeClass("cc-validate").hide();
-                        resetFields($('#boProperty'));
-
+                        resetFields($('#boProperty').hide());
                     });
                 }
                 else{
                     $('#boProperty').hide().find('.cc-to-be-validate-pro-bo').removeClass("cc-validate");
-                    resetFields($('#boProperty'));
+                    resetFields($('#boProperty').hide());
                 }
             }
         });
@@ -192,12 +190,12 @@
                 if(false === !!$('input#de_ownership_yes').attr('checked')){
                     $('.property').slideUp(function(){
                         $('.cc-to-be-validate-pro-co').removeClass("cc-validate").hide();
-                        resetFields($('#coProperty'));
+                        resetFields($('#coProperty').hide());
                     });
                 }
                 else{
                     $('#coProperty').hide().find('.cc-to-be-validate-pro-bo').removeClass("cc-validate");
-                    resetFields($('#coProperty'));
+                    resetFields($('#coProperty').hide());
                 }
             }
         });

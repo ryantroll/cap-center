@@ -41,7 +41,7 @@
       <li class="done"><a href="05-income.html"><span>Income</span></a></li>
       <li class="done"><a href="07-assets.html"><span>Assets</span></a></li>
       <li class="done"><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li class="active"><a href="09-declarations.html"><span>Government Questions</span></a></li>
+      <li class="active"><a href="09-declarations.html"><span>Borrower Declarations</span></a></li>
       <li><a href="14-instructions.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -69,17 +69,26 @@
         <form method="post" id="declarationsForm" action="11-gov-questions.html">
           <fieldset>
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_outstanding_yes">Are there any outstanding judgments against you?</label>
+            <div class="row hidden-xs" style="padding-bottom: 1em;">
+              <div class="col-sm-6">
+                  <label for="de_outstanding_yes">&nbsp;</label>
               </div>
-            </div><!--row-->
+              <div class="col-sm-3">
+                  Borrower
+              </div>
+              <div class="col-sm-3">
+                  Co-Borrower
+              </div>
+            </div>
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_outstanding_yes">Are there any outstanding judgments against you?</label>
+              </div>
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_outstanding_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_outstanding_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_outstanding" value="yes" id="de_outstanding_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_outstanding" value="no" id="de_outstanding_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -87,12 +96,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_outstanding_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_outstanding_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_outstanding" value="yes" id="de_co_outstanding_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_outstanding" value="no" id="de_co_outstanding_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -105,16 +113,13 @@
             <hr>
 
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                   <label for="de_bankrupt_yes">Have you declared bankruptcy in the past 7 years?</label>
               </div>
-            </div><!--row-->
-
-            <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label  for="de_bankrupt_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_bankrupt_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_bankrupt" value="yes" id="de_bankrupt_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_bankrupt" value="no" id="de_bankrupt_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -122,12 +127,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_bankrupt_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_bankrupt_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_bankrupt" value="yes" id="de_co_bankrupt_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_bankrupt" value="no" id="de_co_bankrupt_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -138,17 +142,17 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_foreclosed_yes">Have you foreclosed or given title or deed in lieu thereof in the past 7 years?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_foreclosed_yes">Have you foreclosed or given title or deed in lieu thereof in the past 7 years?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_foreclosed_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_foreclosed_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_foreclosed" value="yes" id="de_foreclosed_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_foreclosed" value="no" id="de_foreclosed_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -156,12 +160,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_foreclosed_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_foreclosed_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_foreclosed" value="yes" id="de_co_foreclosed_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_foreclosed" value="no" id="de_co_foreclosed_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -172,17 +175,16 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_lawsuit_yes">Are you a party to a lawsuit?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_lawsuit_yes">Are you a party to a lawsuit?</label>
+              </div>
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_lawsuit_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_lawsuit_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_lawsuit" value="yes" id="de_lawsuit_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_lawsuit" value="no" id="de_lawsuit_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -190,12 +192,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_lawsuit_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_lawsuit_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_lawsuit" value="yes" id="de_co_lawsuit_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_lawsuit" value="no" id="de_co_lawsuit_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -206,17 +207,17 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_judgment_yes">Have you directly/indirectly been obligated to any loan that resulted in a foreclosure or given title or deed in lieu thereof?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_judgment_yes">Have you directly/indirectly been obligated to any loan that resulted in a foreclosure or given title or deed in lieu thereof?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_judgment_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_judgment_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_judgment" value="yes" id="de_judgment_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_judgment" value="no" id="de_judgment_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -224,12 +225,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_judgment_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_judgment_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_judgment" value="yes" id="de_co_judgment_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_judgment" value="no" id="de_co_judgment_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -240,17 +240,17 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                    <label for="de_delinquent_yes">Are you presently delinquent or in default on any Federal debt, mortgage, bond, financial obligation, laon guarantee or any other?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                    <label for="de_delinquent_yes">Are you presently delinquent or in default on any Federal debt, mortgage, bond, financial obligation, loan guarantee or any other?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_delinquent_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_delinquent_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_delinquent" value="yes" id="de_delinquent_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_delinquent" value="no" id="de_delinquent_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -258,12 +258,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_delinquent_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_delinquent_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_delinquent" value="yes" id="de_co_delinquent_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_delinquent" value="no" id="de_co_delinquent_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -274,17 +273,17 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                    <label for="de_alimony_yes">Are you obligated to pay alimony, child support or seperate maintenance?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                    <label for="de_alimony_yes">Are you obligated to pay alimony, child support or separate maintenance?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_alimony_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_alimony_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_alimony" value="yes" id="de_alimony_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_alimony" value="no" id="de_alimony_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -292,12 +291,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_alimony_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_alimony_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_alimony" value="yes" id="de_co_alimony_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_alimony" value="no" id="de_co_alimony_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -308,17 +306,17 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_borrowed_yes">Is any part of the down payment borrowed?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_borrowed_yes">Is any part of the down payment borrowed?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_borrowed_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_borrowed_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_borrowed" value="yes" id="de_borrowed_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_borrowed" value="no" id="de_borrowed_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -326,12 +324,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_borrowed_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_borrowed_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_borrowed" value="yes" id="de_co_borrowed_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_borrowed" value="no" id="de_co_borrowed_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -342,17 +339,17 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_endorser_yes">Are you a co-maker or endorser on a note?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_endorser_yes">Are you a co-maker or endorser on a note?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_endorser_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_endorser_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_endorser" value="yes" id="de_endorser_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_endorser" value="no" id="de_endorser_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -360,12 +357,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_endorser_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_endorser_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_endorser" value="yes" id="de_co_endorser_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_endorser" value="no" id="de_co_endorser_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -376,17 +372,17 @@
 
             <hr>
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_citizen_yes">Are you a US citizen?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_citizen_yes">Are you a US citizen?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_citizen_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_citizen_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_citizen" value="yes" id="de_citizen_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_citizen" value="no" id="de_citizen_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -394,12 +390,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_citizen_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_citizen_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_citizen" value="yes" id="de_co_citizen_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_citizen" value="no" id="de_co_citizen_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -411,16 +406,18 @@
             <hr>
 
             <div class="row resident" style="display:none;">
-              <div class="col-sm-12">
-                  <label for="de_alien_yes">Are you a permanent resident alien?</label>
-              </div>
+
             </div><!--row-->
 
             <div class="row resident" style="display:none;">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_alien_yes">Are you a permanent resident alien?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-to-be-validate-bo" style="display:none;">
-                    <label for="de_alien_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_alien_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_alien" value="yes" id="de_alien_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_alien" value="no" id="de_alien_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -428,12 +425,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-to-be-validate-co" style="display:none;">
-                    <label for="de_co_alien_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_alien_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_alien" value="yes" id="de_co_alien_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_alien" value="no" id="de_co_alien_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -444,17 +440,17 @@
 
             <hr class="resident" style="display:none;">
 
-            <div class="row">
-              <div class="col-sm-12">
-                  <label for="de_bprimary_yes">Do you intend to occupy the property as a primary residence?</label>
-              </div>
-            </div><!--row-->
+
 
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_bprimary_yes">Do you intend to occupy the property as a primary residence?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_bprimary_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_bprimary_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_bprimary" value="yes" id="de_bprimary_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_bprimary" value="no" id="de_bprimary_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -462,12 +458,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-validate">
-                    <label for="de_co_bprimary_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_bprimary_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_bprimary" value="yes" id="de_co_bprimary_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_bprimary" value="no" id="de_co_bprimary_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -479,16 +474,18 @@
             <hr class="ownership" style="display:none;">
 
             <div class="row ownership" style="display:none;">
-              <div class="col-sm-12">
-                  <label for="de_ownership_yes">Have you had ownership interest in a property in the last 3 years?</label>
-              </div>
+
             </div><!--row-->
 
             <div class="row ownership" style="display:none;">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
+                  <label for="de_ownership_yes">Have you had ownership interest in a property in the last 3 years?</label>
+              </div>
+
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-to-be-validate-own-bo" style="display:none;">
-                    <label for="de_ownership_yes">Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_ownership_yes" class="visible-xs">Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_ownership" value="yes" id="de_ownership_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_ownership" value="no" id="de_ownership_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -496,12 +493,11 @@
                 </div><!--field-->
               </div>
 
-              <div class="col-sm-1"></div>
 
-              <div class="col-sm-5">
+              <div class="col-sm-3">
                 <div class="cc-field cc-radio cc-to-be-validate-own-co" style="display:none;">
-                    <label for="de_co_ownership_yes">Co-Borrower</label>
-                    <div class="radio-yesno">
+                    <label for="de_co_ownership_yes" class="visible-xs">Co-Borrower</label>
+                    <div class="question">
                       <label><input type="radio" name="de_co_ownership" value="yes" id="de_co_ownership_yes" data-index="1" /><span>Yes</span></label>
                       <label><input type="radio" name="de_co_ownership" value="no" id="de_co_ownership_no" data-index="1" /><span>No</span></label>
                     </div>
@@ -516,7 +512,7 @@
               <div class="col-sm-6">
                 <div id="boProperty" style="display:none;">
                   <div class="cc-field cc-dropdown cc-to-validate-pro-bo">
-                    <label for="de_propertytype">Property Type </label>
+                    <label for="de_propertytype">Property Type (Borrower)</label>
 
                     <select name="de_propertytype" id="de_propertytype" data-index="1">
                       <option value="">Select</option>
@@ -528,7 +524,7 @@
                   </div><!--field-->
 
                   <div class="cc-field cc-dropdown cc-to-validate-pro-bo">
-                    <label for="de_titlehold">How did you hold the title?</label>
+                    <label for="de_titlehold">How did you hold the title? (Borrower)</label>
 
                     <select name="de_titlehold" id="de_titlehold" data-index="1">
                       <option value="">Select</option>
@@ -545,7 +541,7 @@
               <div class="col-sm-6">
                 <div id="coProperty" style="display:none;">
                   <div class="cc-field cc-dropdown cc-to-validate-pro-co">
-                    <label for="de_propertytype">Property Type </label>
+                    <label for="de_propertytype">Property Type  (Co-Borrower)</label>
 
                     <select name="de_propertytype" id="de_propertytype" data-index="1">
                       <option value="">Select</option>
@@ -557,7 +553,7 @@
                   </div><!--field-->
 
                   <div class="cc-field cc-dropdown cc-to-validate-pro-co">
-                    <label for="de_titlehold">How did you hold the title?</label>
+                    <label for="de_titlehold">How did you hold the title? (Co-Borrower)</label>
 
                     <select name="de_titlehold" id="de_titlehold" data-index="1">
                       <option value="">Select</option>

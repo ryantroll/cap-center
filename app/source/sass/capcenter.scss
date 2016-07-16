@@ -1138,6 +1138,17 @@ body.cc-body{
 
         }//// .radio-yesno
 
+        .question{
+            label{
+                float:left;
+                margin-right:1em;
+
+                input{
+                    margin-right:5px;
+                }
+            }
+        }
+
     }//// .cc-radio
 
     .cc-radio.question{

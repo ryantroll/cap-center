@@ -41,7 +41,7 @@
       <li class=""><a href="05-income.html"><span>Income</span></a></li>
       <li><a href="07-assets.html"><span>Assets</span></a></li>
       <li><a href="08-liabilities.html"><span>Liabilities</span></a></li>
-      <li><a href="09-declarations.html"><span>Government Questions</span></a></li>
+      <li><a href="09-declarations.html"><span>Borrower Declarations</span></a></li>
       <li><a href="14-instructions.html"><span>Submit</span></a></li>
     </ul>
   </div><!--container-->
@@ -74,9 +74,11 @@
               </div>
 
               <div class="col-xs-4 col-sm-2">
-                <div class="cc-field">
-                  <label for="co_minitial">Initial</label>
-                  <input type="text" tabindex="2" name="co_minitial" id="co_minitial" />
+                <div class="cc-field cc-validate cc-initial">
+                  <label for="co_minitial">Middle Initial</label>
+                  <input type="text" tabindex="2" name="co_minitial" id="co_minitial" class="initial" maxlength="1" />
+                  <div class="message cc-chars-only">Characters Only </div>
+                  <div class="message cc-initial">One letter only</div>
                 </div>
               </div>
 
@@ -130,7 +132,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="cc-field cc-validate cc-phone">
-                  <label for="co_phone">Phone </label>
+                  <label for="co_phone">Home Phone </label>
                   <input type="tel" tabindex="7" name="co_phone" id="co_phone" class="phone" maxlength="14" placeholder="(xxx) xxx-xxxx" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-phone">Invalid Phone Number</div>
@@ -231,7 +233,7 @@
 
                 <div class="col-sm-4">
                   <div class="cc-field cc-validate cc-number">
-                    <label for="co_zip">Zip </label>
+                    <label for="co_zip">Zip Code</label>
                     <input type="tel" tabindex="11" class="numbers typeahead_zip" maxlength="6" name="co_zip" id="co_zip" />
                     <div class="message cc-required">Required</div>
                     <div class="message cc-number">Invalid ZIP code</div>
