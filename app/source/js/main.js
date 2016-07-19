@@ -582,6 +582,7 @@ var restrictSSN = function(keyEv){
   var allowedChars = String("01234567890-").split('');
   var allowed = [189, 9, 91, 8, 37, 38, 39, 40, 13, 16, 17, 18, 93, 20];
   for(var numpad=96; numpad<=105; numpad++) allowed.push(numpad); ///// numeric pad key codes
+
   $(this).removeError('cc-numbers-only');
 
   if(allowed.indexOf(code) == -1 && allowedChars.indexOf(char) == -1){

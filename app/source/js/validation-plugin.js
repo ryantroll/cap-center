@@ -503,6 +503,8 @@
         else{
             field.data('isValid', true)
         }
+        field.showError();//// reset the error message after removing one e
+
         return this;
     }
 
