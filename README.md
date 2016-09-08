@@ -176,3 +176,19 @@ I implemented this using Google Maps API, and use API key from my own account pl
 the behaviors of these button is set by yesNoRadio() in main.js
 
 the circle icon inside the button is been add to the HTML by the above function
+
+### Session Timeout functionality ###
+
+The session modal HTML is in separate file "template-session-expire.html" and is it loaded and added to DOM in main.js through the document ready function.
+
+for testing purpose the modal will popup after 5 sec this need to be changed and you are free to do any session checking mechanism through these functions in main.js
+
+showSessionModal: will display the modal, you can call this function after you implemented your session expiration check.
+
+extendSession: this function will be triggered when user click "Extend Session" button, you are free to implement your own mechanism through this function to extend session.
+
+endSession: this function will be called when user click "Logout" or when the seconds counter reaches 0, you are free to implement your own mechanism to end the session and log user out through this function.
+
+initializeSessionModal: this function is called after the the modal html is loaded async through ajax get call, it is only to set the click event handlers on button.
+
+

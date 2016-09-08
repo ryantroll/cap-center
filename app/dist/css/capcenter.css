@@ -292,8 +292,9 @@ body.cc-body {
     margin-top: 0;
     margin-bottom: 24px; }
   .cc-box .title h4 {
-    padding-top: 15px;
+    padding-top: 0;
     padding-bottom: 5px;
+    margin-top: 0;
     font-weight: 400; }
   .cc-box .title-box {
     padding: 10px 15px;
@@ -1259,6 +1260,30 @@ body.cc-body {
  */
 .cc-login-overlay .error-message {
   color: #F47C29; }
+
+/**
+ * ****************************************************************
+ * Session-overlay **************************************************
+ * ****************************************************************
+ */
+.cc-session-overlay {
+  width: 100%; }
+  @media screen and (min-width: 768px) {
+    .cc-session-overlay {
+      width: 450px; } }
+  .cc-session-overlay .error-message {
+    color: #F47C29; }
+  .cc-session-overlay .cc-buttons-session {
+    display: table;
+    width: auto;
+    margin: 0 auto; }
+    .cc-session-overlay .cc-buttons-session button {
+      float: left;
+      display: block;
+      margin-right: 15px;
+      width: 150px; }
+      .cc-session-overlay .cc-buttons-session button:last-child {
+        margin-right: 0; }
 
 /**
  * ****************************************************************

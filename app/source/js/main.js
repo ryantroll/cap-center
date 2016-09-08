@@ -13,6 +13,9 @@ _appGlobal.saveModal = null;
 _appGlobal.urlApsListTempalte = "template-applications.html"
 _appGlobal.appsListModal = null;
 
+_appGlobal.urlSessionTemplate = "template-session-expire.html"
+_appGlobal.sessionModal = null;
+
 jQuery(document).ready(ccDocumentReady);
 
 function ccDocumentReady(){
@@ -184,7 +187,23 @@ function ccDocumentReady(){
     $('#myAppsBtn').on('click', function(e){
       if(e.preventDefault) e.preventDefault(); else e.returnValue = false;
       showApplicationsList();
-    })
+    });
+
+    /**
+     * Load the session expire list
+     */
+    $.ajax({
+      url: _appGlobal.urlSessionTemplate,
+      method:'GET',
+      error:function(err){
+        console.log(err);
+      },
+      success: function(ret){
+        _appGlobal.sessionModal = $(ret);
+
+        initializeSessionModal();
+      }
+    });
 
 }//// fun. ccDocumentReady
 
@@ -308,6 +327,74 @@ function loadApplications(){
         }//// success
     });
 }//// fun. loadApplications
+
+function initializeSessionModal(){
+  if(false === !!_appGlobal.sessionModal) return;
+
+  $('body').append(_appGlobal.sessionModal);
+
+  _appGlobal.sessionModal.find('#logoutBtn').on('click', endSession);
+
+  _appGlobal.sessionModal.find('#extendBtn').on('click', extendSession)
+
+  _appGlobal.sessionInterval = setTimeout(function(){
+      showSessionModal();
+  }, 5 * 1000)
+}
+
+function showSessionModal(){
+  overlay({
+      selector:'.cc-session-overlay',
+      onBeforeLoad:function(){
+        startSessionCountdown();  
+      },
+      onBeforeClose:function(){
+          //// nothing
+      }
+  });
+}//// fun. showSessionModal
+
+function extendSession(e){
+  if(!!e) e.preventDefault();
+    
+  ////// do some stuff to logout user
+
+  clearInterval(_appGlobal.sessionCountdown);
+
+  _appGlobal.overlay.closeOverlay();
+
+  console.log('extend session');
+
+  
+}//// fun. extendSession
+
+function endSession(e){
+  if(!!e) e.preventDefault();
+    
+  ///// do some stuff to extend session 
+
+  clearInterval(_appGlobal.sessionCountdown);
+
+  console.log('logout');
+
+  window.location.href = '/';
+}//// fun. end session
+
+function startSessionCountdown(){
+
+    var counterDiv = _appGlobal.sessionModal.find('#counter');
+    var counter = 60;
+    counterDiv.text(counter);
+
+    _appGlobal.sessionCountdown = setInterval(function(){
+      counter--;
+      if(counter <= 0){
+        endSession();
+        return;
+      }
+      counterDiv.text(counter);
+    }, 1000);
+}//// fun. startSessionCoundonw
 
 
 /**
@@ -804,7 +891,7 @@ function overlay(o){
           overlayDiv.css('max-height', windowH - 20)
         }
       }
-      console.log(overlayDiv.outerWidth())
+      
       overlayDiv.css('margin-left', '-'+(overlayDiv.outerWidth()/2)+'px').css('left', '50%').css('top', t+'px');
     }//// fun. adjust
 

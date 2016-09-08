@@ -487,12 +487,27 @@
             <div class="row additional" style="display:none;">
               <div class="col-sm-12">
                 <div class="cc-field cc-radio cc-to-be-validate-additional">
+                  <label for="e2_co_selfemployed_yes">Are you self employed?</label>
+
+                    <div class="radio-yesno three">
+                      <label><input type="radio" name="e2_co_selfemployed" value="yes" id="e2_co_selfemployed_yes" /><span>Yes</span></label>
+                      <label><input type="radio" name="e2_co_selfemployed" value="no" id="e2_co_selfemployed_no" /><span>No</span></label>
+                    </div>
+
+                  <!-- <div class="message cc-required">Required</div> -->
+                </div><!--field-->
+              </div>
+
+            </div><!--row-->
+
+            <div class="row additional" style="display:none;">
+              <div class="col-sm-12">
+                <div class="cc-field cc-radio cc-to-be-validate-additional">
                   <!-- <label for="e2_co_type_full">Full time or part time or self employed</label> -->
 
                     <div class="radio-yesno three">
                       <label><input type="radio" name="e2_co_type" value="full" id="e2_co_type_full" /><span>Full Time</span></label>
                       <label><input type="radio" name="e2_co_type" value="part" id="e2_co_type_part" /><span>Part Time</span></label>
-                      <label><input type="radio" name="e2_co_type" value="self" id="e2_co_type_self" /><span>Self Employed</span></label>
                     </div>
 
                   <!-- <div class="message cc-required">Required</div> -->
@@ -504,7 +519,8 @@
             <div class="row additional" style="display:none;">
               <div class="col-sm-8">
                 <div class="cc-field cc-to-be-validate-additional">
-                  <label for="e2_co_name">Employer Name</label>
+                  <label for="e2_co_name" class="add-employer">Employer Name</label>
+                  <label for="e2_co_name" style="display:none;" class="add-business">Business Name</label>
                   <input type="text" tabindex="6"  name="e2_co_name" id="e2_co_name" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
@@ -512,7 +528,8 @@
 
               <div class="col-sm-4">
                 <div class="cc-field cc-to-be-validate-additional cc-phone">
-                  <label for="e2_co_phone">Employer Phone</label>
+                  <label for="e2_co_phone" class="add-employer">Employer Phone</label>
+                  <label for="e2_co_phone" style="display:none;" class="add-business">Business Phone</label>
                   <input type="tel" tabindex="1" class="phone" name="e2_co_phone" id="e2_co_phone" placeholder="(xxx) xxx-xxxx"  maxlength="14" />
                   <div class="message cc-required">Required</div>
                   <div class="message cc-numbers-only">Numbers Only</div>
@@ -525,7 +542,8 @@
             <div class="row additional" style="display:none;">
               <div class="col-xs-12 col-sm-12">
                 <div class="cc-field cc-to-be-validate-additional">
-                  <label for="e2_co_address">Employer Address </label>
+                  <label for="e2_co_address" class="add-employer">Employer Address </label>
+                  <label for="e2_co_address" style="display:none;" class="add-business">Business Address </label>
                   <input type="text" tabindex="9" class="typeahead_address6" name="e2_co_address" id="e2_co_address" placeholder="" />
                   <div class="message cc-required">Required</div>
                 </div><!--field-->
@@ -634,7 +652,7 @@
 
             </div><!--row-->
 
-            <div class="row additional" style="display:none;">
+            <div class="row additional additional-income" style="display:none;">
               <div class="col-sm-3">
                 <div class="cc-field cc-to-be-validate-additional cc-currency">
                   <label for="e2_co_income">Base Income</label>

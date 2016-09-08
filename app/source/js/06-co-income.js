@@ -197,6 +197,9 @@
                     validationClass:'.cc-to-be-validate-additional'
                 }); //// function in main.js
 
+                $('.add-business').hide();
+                $('.add-employer').show();
+
             }
         })
         .trigger('change');
@@ -368,7 +371,30 @@
             if(ev.preventDefault) ev.preventDefault(); else ev.returnValue = false;
 
             addRent();
+        });
+
+
+        $('input[name=e2_co_selfemployed]').on('change', function(){
+            var val = $(this).val().toLowerCase();
+
+            if(true === !!$(this).attr('checked') && val === 'yes'){
+                excludeFields({selector:'.additional-income', validationClass:'.cc-to-be-validate-additional'}); //// function in main.js
+
+                $('.add-business').show();
+                $('.add-employer').hide();
+
+            }//// if
+            if(true === !!$(this).attr('checked') && val === 'no'){
+                includeFields({
+                    selector:'.additional-income',
+                    validationClass:'.cc-to-be-validate-additional'
+                }); //// function in main.js
+                
+                $('.add-business').hide();
+                $('.add-employer').show();
+            }////
         })
+        .trigger('change');
 
     };//// coIncomeReady
 })();
