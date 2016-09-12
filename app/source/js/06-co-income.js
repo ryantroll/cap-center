@@ -193,7 +193,7 @@
             }//// if
             else{
                 excludeFields({
-                    selector:'.additional',
+                    selector:'.additional, .additional-income-self',
                     validationClass:'.cc-to-be-validate-additional'
                 }); //// function in main.js
 
@@ -380,6 +380,11 @@
             if(true === !!$(this).attr('checked') && val === 'yes'){
                 excludeFields({selector:'.additional-income', validationClass:'.cc-to-be-validate-additional'}); //// function in main.js
 
+                includeFields({
+                    selector:'.additional-income-self',
+                    validationClass:'.cc-to-be-validate-additional'
+                }); //// function in main.js
+
                 $('.add-business').show();
                 $('.add-employer').hide();
 
@@ -389,7 +394,12 @@
                     selector:'.additional-income',
                     validationClass:'.cc-to-be-validate-additional'
                 }); //// function in main.js
-                
+
+                excludeFields({
+                    selector:'.additional-income-self',
+                    validationClass:'.cc-to-be-validate-additional'
+                }); //// function in main.js
+
                 $('.add-business').hide();
                 $('.add-employer').show();
             }////
